@@ -1,0 +1,111 @@
+
+services:
+
+  vacations-database-service:
+
+    image: vacations-database-image
+
+    build: ./Database
+
+    container_name: vacations-database-container
+
+    ports:
+      - 3306:3306
+
+    environment:
+      MYSQL_HOST: localhost
+      MYSQL_DATABASE: vacations
+      MYSQL_USER: yoss
+      MYSQL_PASSWORD: yoss1234
+      MYSQL_RANDOM_ROOT_PASSWORD : 1
+
+    restart: unless-stopped
+
+    volumes:
+      - vacations-volume:/var/lib/mysql
+
+
+
+  vacations-backend-service:
+
+    image: vacations-backend-image
+
+    build: ./Backend
+
+    container_name: vacations-backend-container
+
+    ports:
+      - 3001:3001
+
+    environment:
+      PORT: 3001
+      MYSQL_HOST: vacations-database-service 
+      MYSQL_DATABASE: vacations
+      MYSQL_USER: yoss
+      MYSQL_PASSWORD: yoss1565
+      SITE_URL: http://localhost:3000
+
+    restart: unless-stopped
+
+    volumes:
+      - ./Backend:/app
+
+    depends_on:
+      - vacations-database-service
+
+
+
+  vacations-frontend-service:
+
+    image: vacations-frontend-image
+
+    build: ./front_end
+
+    container_name: vacations-frontend-container
+
+    ports:
+      - 3000:3000
+
+    environment:
+      - WATCHPACK_POLLING=true
+
+    restart: unless-stopped
+
+    volumes:
+      - ./front_end:/app
+
+    depends_on:
+      - vacations-database-service
+      - vacations-backend-service
+
+  vacations-pma-service:
+
+    image: phpmyadmin/phpmyadmin
+    
+    container_name: vacations-pma-container
+
+    ports:
+      - 80:80
+
+    environment:
+      PMA_HOST: vacations-database-service
+
+    links:
+      - vacations-database-service
+
+    restart: unless-stopped
+
+    depends_on:
+      - vacations-database-service
+
+
+
+volumes:
+  vacations-volume:
+
+# docker-compose up -d --build
+
+
+
+
+

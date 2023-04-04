@@ -9,10 +9,14 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
     if(err) throw new ValidationErrorModel(err);
     
     const sql = 'INSERT INTO orders VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?)'
-    const values = [order.orderID, order.cartID, order.price, order.city, order.street, order.deliveryDate, order.orderDate, order.CreditDetail]
+    const values = [ order.cartID, order.userID, order.price, order.city, order.street, order.deliveryDate, order.orderDate, order.CreditDetail]
 
     const info: OkPacket = await dal.execute(sql, values);
     order.orderID = info.insertId;
 
     return order;
+}
+
+export default {
+    addOrder
 }

@@ -19,7 +19,7 @@ router.get('/create_cart', async (req: Request, res: Response, next: NextFunctio
     }
 })
 
-router.get('/cart)',  async (req: Request, res: Response, next: NextFunction) => {
+router.get('/cart',  async (req: Request, res: Response, next: NextFunction) => {
     try { 
 
         const decodeUser: User = await cyber.getDecodeToken(req);
@@ -33,9 +33,9 @@ router.get('/cart)',  async (req: Request, res: Response, next: NextFunction) =>
 });
 
 
-router.get('/cart_products/:cartID([9-0]+)', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
+router.get('/cart_products/:cart_id([0-9]+)', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
     try {  
-        const products = await cardProductLogic.getCartProducts(+req.params.cartID);   
+        const products = await cardProductLogic.getCartProducts(+req.params.cart_id);   
         res.json(products);
     } catch (error) {
         next(error);
@@ -72,7 +72,7 @@ router.put('/cart_product', verifyLoggedIn, async (req: Request, res: Response, 
     }
 })
 
-router.delete('/cart_product/cart_product_id([9-0]+)', verifyLoggedIn, async (req: Request, res: Response, next: NextFunction) => {
+router.delete('/cart_product/:cart_product_id([0-9]+)', verifyLoggedIn, async (req: Request, res: Response, next: NextFunction) => {
     try {
         const cartProductID = +req.params.cart_product_id;
         await cardProductLogic.deleteCartProduct(cartProductID);
@@ -83,7 +83,7 @@ router.delete('/cart_product/cart_product_id([9-0]+)', verifyLoggedIn, async (re
     }
 })
 
-router.delete('/cart_products/cart_id([9-0]+)', verifyLoggedIn, async (req: Request, res: Response, next: NextFunction) => {
+router.delete('/cart_products/:cart_id([0-9]+)', verifyLoggedIn, async (req: Request, res: Response, next: NextFunction) => {
     try {
         const cartID = +req.params.cart_id;
         await cardProductLogic.deleteCartProduct(cartID);

@@ -3,6 +3,7 @@ import { OkPacket } from 'mysql';
 import { ValidationErrorModel } from "../../4-models/error-models";
 import dal from '../../2-utils/dal';
 import ProductCartModel from '../../4-models/product-models/product_cart-model';
+import User from '../../4-models/auth-models/user-model';
 
 async function createCart(userId: number): Promise<number>{
     const info: OkPacket = await dal.execute('INSERT INTO shopping_cart VALUES (DEFAULT, ?, ?)', [userId, new Date()]);
@@ -66,11 +67,6 @@ function deleteCartProduct(cartProductID: number) {
 function deleteCartProducts(cartID: number) {
     const sql = "DELETE FROM cart_product WHERE cartID =?";
     dal.execute(sql, [cartID]); 
-}
-
-async function orderCart(cartID: number): Promise<void> {
-    const price = await dal.execute('SELECT SUM(price) AS price FROM cart_product WHERE cartID = ?', [cartID])[0]['price'];
-    dal.execute('', )
 }
 
 export default {

@@ -66,4 +66,13 @@ router.put('/products/:id([0-9]+)', verifyAdmin, async (req: Request, res: Respo
 
 })
 
+router.delete('/products/:id([0-9]+)', verifyAdmin, async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        await productsLogic.deleteProduct(+req.params.id);
+        res.sendStatus(204);
+    } catch (error) {
+        next(error);
+    }
+})
+
 export default router;

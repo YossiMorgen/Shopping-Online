@@ -24,13 +24,13 @@ async function getProductsByCategory(categoryID: number,start: number, end: numb
 }
 
 
-async function getProductByName(name : string): Promise<ProductModel[]> {
-    const [product] = await dal.execute(
-        `SELECT * FROM products WHERE name LIKE %?%
-    `, [name]);
+// async function getProductByName(name : string): Promise<ProductModel[]> {
+//     const [product] = await dal.execute(
+//         `SELECT * FROM products WHERE name LIKE %?%
+//     `, [name]);
 
-    return product;
-}
+//     return product;
+// }
 
 async function addProduct(product:ProductModel): Promise<ProductModel> {
     
@@ -81,13 +81,13 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
     return product;
 }
 
-async function isProductNameExist(productName: string): Promise<boolean> {
+// async function isProductNameExist(productName: string): Promise<boolean> {
 
-    const sql = `SELECT COUNT(*) as productName FROM users WHERE productName = ?`;
-    const count = await dal.execute(sql,[productName]);
+//     const sql = `SELECT COUNT(*) as productName FROM users WHERE productName = ?`;
+//     const count = await dal.execute(sql,[productName]);
     
-    return count[0].productName > 0;
-}
+//     return count[0].productName > 0;
+// }
 
 async function getOneProduct(id:number): Promise<ProductModel> {
 
@@ -113,7 +113,6 @@ export default {
     deleteProduct,
     getCategories,
     updateProduct,
-    getProductByName
 };
 
 

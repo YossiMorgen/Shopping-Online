@@ -61,12 +61,12 @@ async function updateCartProducts( products : Array<ProductCartModel>): Promise<
 
 function deleteCartProduct(cartProductID: number) {
     const sql = "DELETE FROM cart_product WHERE cartProductID =?";
-    dal.execute(sql, [cartProductID]); 
+    return dal.execute(sql, [cartProductID]); 
 }
 
 function deleteCartProducts(cartID: number) {
     const sql = "DELETE FROM cart_product WHERE cartID =?";
-    dal.execute(sql, [cartID]); 
+    return dal.execute(sql, [cartID]); 
 }
 
 export default {

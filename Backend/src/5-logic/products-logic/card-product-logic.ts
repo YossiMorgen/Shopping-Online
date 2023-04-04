@@ -10,7 +10,7 @@ async function createCart(userId: number): Promise<number>{
     return info.insertId;
 }
 
-function getCart(userID: number): Promise<number> {
+async function getCart(userID: number): Promise<number> {
     return dal.execute('SELECT cartID FROM `shopping_cart` WHERE `userID` =?', [userID])[0]['cartID']
 }
 

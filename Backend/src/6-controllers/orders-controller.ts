@@ -7,7 +7,7 @@ import ordersLogic from "../5-logic/products-logic/orders-logic";
 
 const router = express.Router();
 
-router.post('/orders', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/create_order', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const order = new OrdersModel(req.body);
         const decodeUser: User = await cyber.getDecodeToken(req);

@@ -1,0 +1,22 @@
+
+ a{
+    color:  gray;
+    margin: 20px;
+    background-color: rgba(0, 255, 255, 0.301);
+    border-radius: 45%;
+    padding:1px 3px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.651);
+    margin-bottom: 48w;
+}
+
+a:hover{
+
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.767);
+
+}
+
+.active {
+    color: rgb(71, 70, 70);
+    background-color: rgba(0, 255, 255, 0.562);
+    box-shadow: 0 0 15px rgb(0, 255, 255);
+}

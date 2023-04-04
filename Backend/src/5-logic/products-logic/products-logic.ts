@@ -11,6 +11,19 @@ function getCategories():Promise<CategoryModel> {
     return dal.execute('SELECT * FROM categories');
 }
 
+function getRandomProducts (start: number, end: number): Promise<ProductModel[]> {
+    const sql = "SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName FROM products";
+    return dal.execute(sql)
+}
+
+async function getProductsByName(name : string, start: number, end: number): Promise<ProductModel[]> {
+    const [product] = await dal.execute(
+        `SELECT * FROM products WHERE name LIKE %?%
+    `, [name]);
+
+    return product;
+}
+
 async function getProductsByCategory(categoryID: number,start: number, end: number): Promise<ProductModel[]> {
     const products = await dal.execute(
         `SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName 
@@ -22,15 +35,6 @@ async function getProductsByCategory(categoryID: number,start: number, end: numb
 
     return products;
 }
-
-
-// async function getProductByName(name : string): Promise<ProductModel[]> {
-//     const [product] = await dal.execute(
-//         `SELECT * FROM products WHERE name LIKE %?%
-//     `, [name]);
-
-//     return product;
-// }
 
 async function addProduct(product:ProductModel): Promise<ProductModel> {
     
@@ -109,6 +113,8 @@ async function deleteProduct(id:number): Promise<void> {
 
 export default {
     getProductsByCategory,
+    getRandomProducts,
+    getProductsByName,
     addProduct,
     deleteProduct,
     getCategories,

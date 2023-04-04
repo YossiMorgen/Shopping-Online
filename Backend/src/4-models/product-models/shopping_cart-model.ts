@@ -1,8 +1,4 @@
 import Joi from "joi";
-import RoleModel from '../auth-models/role-model';
-
-
-
 class ShoppingCart{
     public cartID: number;
     public userID: number;

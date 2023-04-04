@@ -16,6 +16,24 @@ router.get('/categories', verifyLoggedIn,  async (req: Request, res: Response, n
     }
 });
 
+router.get('/random_products', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
+    try {  
+        const products = await productsLogic.getRandomProducts((+req.query.start | 0), (+req.query.limit | 10));        
+        res.json(products);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get('/search_products/:name', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
+    try {  
+        const products = await productsLogic.getProductsByName(req.params.name, (+req.query.start | 0), (+req.query.limit | 10));        
+        res.json(products);
+    } catch (error) {
+        next(error);
+    }
+});
+
 router.get('/products_by_category/:categoryID([0-9]+)', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const categoryID = +req.params.categoryID;
@@ -26,7 +44,7 @@ router.get('/products_by_category/:categoryID([0-9]+)', verifyLoggedIn,  async (
     }
 });
 
-router.post('/products', verifyAdmin, async (req: Request, res: Response, next: NextFunction)=>{
+router.post('/add_products', verifyAdmin, async (req: Request, res: Response, next: NextFunction)=>{
     try {
         req.body.image = req.files?.image;
         
@@ -40,7 +58,7 @@ router.post('/products', verifyAdmin, async (req: Request, res: Response, next: 
     }
 });
 
-router.delete('/products/:productID([0-9]+)', verifyAdmin, async (req: Request, res: Response, next: NextFunction) => {
+router.delete('/delete_product/:productID([0-9]+)', verifyAdmin, async (req: Request, res: Response, next: NextFunction) => {
     try {
         await productsLogic.deleteProduct(+req.params.productID);
         res.status(204).end();
@@ -49,7 +67,7 @@ router.delete('/products/:productID([0-9]+)', verifyAdmin, async (req: Request, 
     }
 })
 
-router.put('/products/:id([0-9]+)', verifyAdmin, async (req: Request, res: Response, next: NextFunction) => {
+router.put('/update_product/:id([0-9]+)', verifyAdmin, async (req: Request, res: Response, next: NextFunction) => {
     try {
         
         req.body.image = req.files?.image;
@@ -64,15 +82,6 @@ router.put('/products/:id([0-9]+)', verifyAdmin, async (req: Request, res: Respo
         next(error);
     }
 
-})
-
-router.delete('/products/:id([0-9]+)', verifyAdmin, async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        await productsLogic.deleteProduct(+req.params.id);
-        res.sendStatus(204);
-    } catch (error) {
-        next(error);
-    }
 })
 
 export default router;

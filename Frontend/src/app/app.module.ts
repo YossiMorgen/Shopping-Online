@@ -5,30 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { LayoutComponent } from './components/layout-area/layout/layout.component';
 import { HeaderComponent } from './components/layout-area/header/header.component';
 import { MenuComponent } from './components/layout-area/menu/menu.component';
-import { ListComponent } from './components/data-area/list/list.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './components/layout-area/page-not-found/page-not-found.component';
-import { AddComponent } from './components/data-area/add/add.component';
 import { LoginComponent } from './components/auth-area/login/login.component';
 import { RegisterComponent } from './components/auth-area/register/register.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     LayoutComponent,
     HeaderComponent,
     MenuComponent,
-    ListComponent,
-    AddComponent,
     PageNotFoundComponent,
     LoginComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [LayoutComponent]

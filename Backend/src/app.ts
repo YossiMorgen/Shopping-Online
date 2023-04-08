@@ -19,7 +19,7 @@ server.use(expressRateLimit({
     message: "Fuck Of "
 }));
 
-server.use(cors({ origin: 'http://localhost:3000' } ));
+server.use(cors({ origin: 'http://localhost:4200' } ));
 server.use(helmet({
     crossOriginResourcePolicy: {
         policy: "cross-origin"

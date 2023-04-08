@@ -1,1 +1,33 @@
-<p>register works!</p>
+<div class="box">
+
+    <!-- <form (ngSubmit)="register()" ngNativeValidate="true"> -->
+    <form (ngSubmit)="register()" #registerForm="ngForm">
+
+        <h2>Register</h2>
+
+        <label>
+            <span>First Name:*</span>
+            <input type="text" name="firstName" [(ngModel)]="user.firstName" minlength="2" required #firstName="ngModel">
+            <span class="red" *ngIf="firstName.errors?.['required'] && firstName.touched">Missing Name!</span>
+            <span class="red" *ngIf="firstName.errors?.['minlength'] && firstName.touched">Min length 2!</span>
+        </label>
+
+        <label>
+            <span>Last Name:</span>
+            <input type="text" name="lastName" [(ngModel)]="user.lastName">
+        </label>
+
+        <label>
+            <span>Email:</span>
+            <input type="email" name="username" [(ngModel)]="user.email">
+        </label>
+
+        <label>
+            <span>Password:</span>
+            <input type="password" name="password" [(ngModel)]="user.password">
+        </label>
+
+        <button [disabled]="registerForm.invalid" >Register</button>
+
+    </form>
+</div>

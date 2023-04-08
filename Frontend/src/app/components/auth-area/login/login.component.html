@@ -1,1 +1,21 @@
-<p>login works!</p>
+<div class="box">
+
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+
+        <h2>Login</h2>
+
+        <label>
+            <span>Email:</span>
+            <input type="text" name="email" [(ngModel)]="credentials.email">
+        </label>
+
+        <label>
+            <span>Password:</span>
+            <input type="password" name="password" [(ngModel)]="credentials.password">
+        </label>
+
+        <button [disabled]="loginForm.invalid" >Login</button>
+
+    </form>
+</div>
+

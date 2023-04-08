@@ -9,8 +9,8 @@ export class ConfigService {
 
     public operations = this.baseUrl + "operations/";
 
-    public login = this.baseUrl + "login";
-    public register = this.baseUrl + "register";
+    public login = this.baseUrl + "auth/login";
+    public register = this.baseUrl + "auth/register";
 
     public createCart = this.baseUrl + "create_cart";
     public getCartID = this.baseUrl + "cart_id";
@@ -30,8 +30,4 @@ export class ConfigService {
     public addProduct = this.baseUrl + "add_product";
     public deleteProduct = this.baseUrl + "delete_product";
     public updateProduct = this.baseUrl + "update_product";
-
-
-
 }
- 

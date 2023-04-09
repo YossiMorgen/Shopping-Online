@@ -18,7 +18,7 @@ export class LoginComponent {
         try {
             await this.auth.login( this.credentials );
             alert('Welcome back!');
-            this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/products');
         } catch (error:any) {
             alert( error.message )
         }

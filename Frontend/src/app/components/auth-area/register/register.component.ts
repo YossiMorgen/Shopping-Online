@@ -18,7 +18,7 @@ export class RegisterComponent {
         try {
             await this.auth.register( this.user );
             alert('Welcome!');    
-            this.router.navigateByUrl('/home');
+            this.router.navigateByUrl('/products');
         } catch (error:any) {
             alert( error.message )
         }

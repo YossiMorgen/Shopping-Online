@@ -11,6 +11,8 @@ import { PageNotFoundComponent } from './components/layout-area/page-not-found/p
 import { LoginComponent } from './components/auth-area/login/login.component';
 import { RegisterComponent } from './components/auth-area/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductsLayoutComponent } from './components/products-area/products-layout/products-layout.component';
+import { AuthMenuComponent } from './components/auth-area/auth-menu/auth-menu.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MenuComponent,
     PageNotFoundComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProductsLayoutComponent,
+    AuthMenuComponent
   ],
   imports: [
     BrowserModule,

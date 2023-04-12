@@ -2,6 +2,7 @@ html, body{
     height: 100%;
     padding: 0;
     margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     background: linear-gradient(45deg, rgba(173, 216, 230, 0.473), white);
 }
 
@@ -12,7 +13,3 @@ a{
 .active{
     font-weight: bolder;
 }
-
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,5 @@
+<div class="categoriesContainer">
+    <div (click)="getProductByCategory(category.categoryID)" class="categoriesCard" *ngFor="let category of productsService.categories">
+        <h2>{{category.categoryName}}</h2>
+    </div>
+</div>

@@ -16,9 +16,9 @@ export class ConfigService {
     public getCartID = this.baseUrl + "cart_id";
     public getCartProducts = this.baseUrl + "all_cart_products";
     public addCartProduct = this.baseUrl + "add_cart_product";
-    public updateOneCartProduct = this.baseUrl + "update_one_cart_product";
+    public updateOneCartProduct = this.baseUrl + "update_one_cart_product/";
     public updateFullCart = this.baseUrl + "update_cart_products";
-    public removeOneCartProduct = this.baseUrl + "remove_one_cart_product";
+    public removeOneCartProduct = this.baseUrl + "remove_one_cart_product/";
     public removeAllCartProducts = this.baseUrl + "remove_cart_products";
 
     public createOrder = this.baseUrl + "create_order"; 
@@ -26,8 +26,8 @@ export class ConfigService {
     public getAllCategories = this.baseUrl + "categories";
     public getRandomProducts = this.baseUrl + "random_products";
     public searchProducts = this.baseUrl + "search_products";
-    public getProductsByCategory = this.baseUrl + "products_by_category";
+    public getProductsByCategory = this.baseUrl + "products_by_category/";
     public addProduct = this.baseUrl + "add_product";
-    public deleteProduct = this.baseUrl + "delete_product";
-    public updateProduct = this.baseUrl + "update_product";
+    public deleteProduct = this.baseUrl + "delete_product/";
+    public updateProduct = this.baseUrl + "update_product/";
 }

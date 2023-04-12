@@ -1,11 +1,11 @@
 <div class="menu">
 
-    <div *ngIf="user.isLoggedin()">
+    <div *ngIf="user.isLoggedIn()">
         <span>{{ user.user.firstName }} {{ user.user.lastName}}</span> |
         <a (click)="user.logout()">Logout </a>
     </div>
 
-    <div *ngIf="!user.isLoggedin()">
+    <div *ngIf="!user.isLoggedIn()">
         <span>Welcome Guest</span> |
         <a routerLink="/login">login </a> | <a routerLink="/register" >Register </a>
     </div>

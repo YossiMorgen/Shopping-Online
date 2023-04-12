@@ -13,12 +13,13 @@ export class JwtInterceptor implements HttpInterceptor {
 
   constructor( private auth: AuthService) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     request = request.clone({
         setHeaders: {
             authorization: "Bearer " + this.auth.getToken()
         }
     })
+    
     return next.handle(request);
   }
 }

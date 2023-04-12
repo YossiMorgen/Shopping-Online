@@ -1,0 +1,15 @@
+.categoriesContainer{
+    overflow-x: scroll;
+    width: fit-content;
+    display: flex;
+}
+
+.categoriesCard{
+    padding: 10px;
+    
+    width: fit-content;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

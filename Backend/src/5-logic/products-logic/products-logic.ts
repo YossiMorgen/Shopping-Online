@@ -13,7 +13,7 @@ function getCategories():Promise<CategoryModel> {
 
 function getRandomProducts (start: number, end: number): Promise<ProductModel[]> {
     const sql = "SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName FROM products";
-    return dal.execute(sql)
+    return dal.execute(sql, ["http://localhost:3001/"])
 }
 
 async function getProductsByName(name : string, start: number, end: number): Promise<ProductModel[]> {

@@ -9,4 +9,5 @@ class User{
     public role: string;
 
 }
-export default User
+
+export default User;

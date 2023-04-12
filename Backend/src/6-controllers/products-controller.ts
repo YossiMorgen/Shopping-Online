@@ -44,7 +44,7 @@ router.get('/products_by_category/:categoryID([0-9]+)', verifyLoggedIn,  async (
     }
 });
 
-router.post('/add_products', verifyAdmin, async (req: Request, res: Response, next: NextFunction)=>{
+router.post('/add_product', verifyAdmin, async (req: Request, res: Response, next: NextFunction)=>{
     try {
         req.body.image = req.files?.image;
         

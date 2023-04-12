@@ -1,0 +1,12 @@
+<div class="product">
+    <span class="trash" (click)="deleteProduct()">🗑</span>
+    <div >
+        <span>
+            <b>{{ product.productName }}</b>
+        </span>
+        <img src={{product.imageName}} alt="product pic">
+        <span>
+            {{ product.price | currency:"ILS" }}
+        </span>
+    </div>
+</div>

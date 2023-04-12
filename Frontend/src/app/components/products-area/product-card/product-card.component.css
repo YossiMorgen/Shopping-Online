@@ -1,0 +1,29 @@
+.product{
+    position: relative;
+    padding: 10px;
+    display: flex;
+    border: 1px solid;
+    box-shadow: 1px 1px 5px lawngreen;
+    gap: 10px;
+    align-items: center;
+}
+
+.trash{
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.product div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

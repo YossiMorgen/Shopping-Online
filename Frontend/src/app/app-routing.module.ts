@@ -5,11 +5,13 @@ import { LoginComponent } from './components/auth-area/login/login.component';
 import { RegisterComponent } from './components/auth-area/register/register.component';
 import { AuthGuard } from './utils/auth.guard';
 import { ProductsLayoutComponent } from './components/products-area/products-layout/products-layout.component';
+import { AddProductComponent } from './components/products-area/add-product/add-product.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent },
     {path: 'register', component: RegisterComponent },
     {path: 'products', component: ProductsLayoutComponent, canActivate: [AuthGuard] },
+    {path: 'products/add', component: AddProductComponent, canActivate: [AuthGuard] },
     {path: '', redirectTo: '/products', pathMatch: "full" },
     {path: '**', component: PageNotFoundComponent }
 ];

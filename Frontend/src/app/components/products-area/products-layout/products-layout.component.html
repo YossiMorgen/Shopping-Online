@@ -1,5 +1,5 @@
 <div>
-    <a routerLink="add">➕</a>
+    <a *ngIf="auth.isAdmin()" routerLink="add">➕</a>
     <app-categories></app-categories>
     <app-product-list></app-product-list>
 </div>

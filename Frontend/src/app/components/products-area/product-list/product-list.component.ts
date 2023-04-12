@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import ProductModel from 'src/app/models/product-models/product.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class ProductListComponent implements OnInit{
 
   public products: ProductModel[] = [];
 
-  constructor (public productsService : ProductsService) {  }
+  constructor (public productsService : ProductsService, public auth : AuthService) {  }
 
   async ngOnInit(): Promise<void> {
     try {

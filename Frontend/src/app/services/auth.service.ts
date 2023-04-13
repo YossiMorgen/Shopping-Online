@@ -48,7 +48,7 @@ export class AuthService{
     }
 
     public isAdmin():boolean{
-        return this.user.role === 'admin';
+        return this.user?.role === 'admin';
     }
 
     public getToken():string{

@@ -36,6 +36,19 @@ async function getProductsByCategory(categoryID: number,start: number, end: numb
     return products;
 }
 
+async function getOneProduct(id:number): Promise<ProductModel> {
+
+    const res = await dal.execute(
+        `SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName
+        FROM products 
+        WHERE productId =?`,
+        ["http://localhost:3001/", id]
+    );
+    if(res.length === 0) throw new ResourceNotFoundErrorModel(id);
+
+    return res[0];  
+}
+
 async function addProduct(product:ProductModel): Promise<ProductModel> {
     
     const err = product.validation();
@@ -93,13 +106,7 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
 //     return count[0].productName > 0;
 // }
 
-async function getOneProduct(id:number): Promise<ProductModel> {
 
-    const res = await dal.execute("SELECT * FROM products WHERE productId =?", [id]);
-    if(res.length === 0) throw new ResourceNotFoundErrorModel(id);
-
-    return res[0];  
-}
 
 async function deleteProduct(id:number): Promise<void> {
 
@@ -115,6 +122,7 @@ export default {
     getProductsByCategory,
     getRandomProducts,
     getProductsByName,
+    getOneProduct,
     addProduct,
     deleteProduct,
     getCategories,

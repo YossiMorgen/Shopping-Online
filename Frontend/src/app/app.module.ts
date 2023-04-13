@@ -18,6 +18,7 @@ import { ProductListComponent } from './components/products-area/product-list/pr
 import { ProductCardComponent } from './components/products-area/product-card/product-card.component';
 import { JwtInterceptor } from './utils/jwt.interceptor';
 import { AddProductComponent } from './components/products-area/add-product/add-product.component';
+import { EditProductComponent } from './components/products-area/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AddProductComponent } from './components/products-area/add-product/add-
     ProductListComponent,
     ProductCardComponent,
     AddProductComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,

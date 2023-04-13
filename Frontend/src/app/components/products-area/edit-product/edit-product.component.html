@@ -1,19 +1,20 @@
-<div>
+<div >
 
-    <form (ngSubmit)="addProduct()" #addProductForm="ngForm">
+    <form (ngSubmit)="editProduct()" #addProductForm="ngForm">
 
-        <h2>Add Product</h2>
+        <h2>Edit Product</h2>
 
         <label>
             <span>Product Name:</span>
             <input type="text" name="productName" [(ngModel)]="product.productName" minlength="2" required #productName="ngModel">
-            <span class="red" *ngIf="productName.errors?.['required'] && productName.touched">Missing First Name!</span>
+            <span class="red" *ngIf="productName.errors?.['required'] && productName.touched">Missing Product Name!</span>
             <span class="red" *ngIf="productName.errors?.['minlength'] && productName.touched">Min Product Name!</span>
         </label>
 
         <label>
             <span>Category: </span>
             <select type="text" name="categoryID" [(ngModel)]="product.categoryID" required #categoryID="ngModel">
+                <option selected disabled >Select..</option>
                 <option *ngFor="let category of productsService.categories" value={{category.categoryID}}>
                     {{category.categoryName}}
                 </option>

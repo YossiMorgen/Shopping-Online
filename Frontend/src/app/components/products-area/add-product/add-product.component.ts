@@ -22,7 +22,6 @@ export class AddProductComponent implements OnInit {
     try {
       await this.productsService.getCategories();
       console.log(this.productsService.categories);
-      
     } catch (error : any) {
       alert(error.message);
     }

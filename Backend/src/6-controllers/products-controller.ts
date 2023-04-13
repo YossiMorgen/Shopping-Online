@@ -44,6 +44,16 @@ router.get('/products_by_category/:categoryID([0-9]+)', verifyLoggedIn,  async (
     }
 });
 
+router.get('/product_by_id/:product_id([0-9]+)', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
+    try {  
+        const product_id = +req.params.product_id;
+        const product = await productsLogic.getOneProduct(product_id);        
+        res.json(product);
+    } catch (error) {
+        next(error);
+    }
+});
+
 router.post('/add_product', verifyAdmin, async (req: Request, res: Response, next: NextFunction)=>{
     try {
         req.body.image = req.files?.image;

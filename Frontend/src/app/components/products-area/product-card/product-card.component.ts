@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import ProductModel from 'src/app/models/product-models/product.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { ConfigService } from 'src/app/utils/config.service';
 
@@ -12,7 +13,7 @@ export class ProductCardComponent {
   
   public constructor( 
     private productsService: ProductsService,
-    private config: ConfigService
+    public auth : AuthService
   ){}
   
   @Input()

@@ -1,13 +1,13 @@
 import Joi from "joi";
-class ShoppingCart{
+class Cart{
     public cartID: number;
     public userID: number;
     public productionDate: Date;
 
-    constructor(user: ShoppingCart) {
-        this.cartID = user.cartID;
-        this.userID = user.userID;
-        this.productionDate = new Date(user.productionDate);
+    constructor(cart: Cart) {
+        this.cartID = cart.cartID;
+        this.userID = cart.userID;
+        this.productionDate = new Date(cart.productionDate);
     }
 
     public static validationSchema = Joi.object({
@@ -17,8 +17,8 @@ class ShoppingCart{
     })
 
     public validation():string{
-        const res = ShoppingCart.validationSchema.validate(this);
+        const res = Cart.validationSchema.validate(this);
         return res.error?.message;
     }
 }
-export default ShoppingCart
+export default Cart

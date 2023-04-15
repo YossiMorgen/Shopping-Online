@@ -39,7 +39,7 @@ async function getProductsByCategory(categoryID: number,start: number, end: numb
 async function getOneProduct(id:number): Promise<ProductModel> {
 
     const res = await dal.execute(
-        `SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName
+        `SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID
         FROM products 
         WHERE productId =?`,
         ["http://localhost:3001/", id]
@@ -72,8 +72,8 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
     if(err) throw new ValidationErrorModel(err); 
 
     
-    let sql = "UPDATE products SET productName = ?, price = ?"
-    const arr: Array<any> = [product.productName, product.price]
+    let sql = "UPDATE products SET productName = ?, price = ?, categoryID = ?"
+    const arr: Array<any> = [product.productName, product.price, product.categoryID]
 
     
     if(product.image){

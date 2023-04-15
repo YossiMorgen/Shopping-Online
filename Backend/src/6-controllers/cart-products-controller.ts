@@ -10,22 +10,22 @@ router.get('/create_cart', async (req: Request, res: Response, next: NextFunctio
     try {
         
         const decodeUser: User = await cyber.getDecodeToken(req);
-        const cartID = await cardProductLogic.createCart(decodeUser.userID);
+        const cart = await cardProductLogic.createCart(decodeUser.userID);
         
-        res.send(cartID);
+        res.json(cart);
 
     } catch (error) {
         next(error);
     }
 })
 
-router.get('/cart_id',  async (req: Request, res: Response, next: NextFunction) => {
+router.get('/cart_details',  async (req: Request, res: Response, next: NextFunction) => {
     try { 
 
         const decodeUser: User = await cyber.getDecodeToken(req);
-        const cartID = await cardProductLogic.getCart(decodeUser.userID);   
+        const cart = await cardProductLogic.getCart(decodeUser.userID);   
         
-        res.send(cartID);
+        res.json(cart);
 
     } catch (error) {
         next(error);

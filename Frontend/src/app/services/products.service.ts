@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfigService } from '../utils/config.service';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, Observable } from 'rxjs';
 import ProductModel from '../models/product-models/product.model';
 import CategoryModel from '../models/product-models/category.model';
 
@@ -15,10 +15,10 @@ export class ProductsService {
   public constructor( private http:HttpClient, private config: ConfigService) { }
 
   public async getCategories ( ): Promise<void> {
+    
     if(this.categories.length !== 0){
       return new Promise(resolve => resolve())
     }
-    console.log(this.categories.length !== 0);
     
     const observable = this.http.get<CategoryModel[]>(this.config.getAllCategories)
     const categories = await firstValueFrom(observable);
@@ -26,9 +26,9 @@ export class ProductsService {
   }
 
   public async getRandomProducts ( ): Promise<void> {
-    // if(!this.products.length ){
-    //   return new Promise(resolve => resolve())
-    // }
+    if(this.products.length != 0 ){
+      return new Promise(resolve => resolve())
+    }
     const observable = this.http.get<ProductModel[]>(this.config.getRandomProducts)
     const products = await firstValueFrom(observable);
     this.products = products;
@@ -55,6 +55,18 @@ export class ProductsService {
 
     const observable = this.http.post(this.config.addProduct, formData);
     await firstValueFrom(observable);
+  }
+
+  public async updateProduct(product: ProductModel): Promise<void> {
+    const Observable = this.http.put<ProductModel>(this.config.updateProduct, product);
+    const newProduct = await firstValueFrom(Observable);
+    this.products = this.products.map((p: ProductModel) => {
+      if(p.productID === product.productID) {
+        return newProduct;
+      }
+      return p;
+    })
+
   }
 
   public async deleteProduct(id: number):Promise<void>{

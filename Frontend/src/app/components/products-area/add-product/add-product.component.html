@@ -14,6 +14,7 @@
         <label>
             <span>Category: </span>
             <select type="text" name="categoryID" [(ngModel)]="product.categoryID" required #categoryID="ngModel">
+                <option selected disabled >Select..</option>
                 <option *ngFor="let category of productsService.categories" value={{category.categoryID}}>
                     {{category.categoryName}}
                 </option>
@@ -28,10 +29,10 @@
             <span class="red" *ngIf="price.errors?.['min'] && price.touched">Min 2!</span>
         </label>
 
-        <label>
+        <!-- <label>
             <span>Image:</span>
-            <input type="file" required name="imageName" accept="image/*" #productImage>
-        </label>
+            <input type="file" required name="imageName" accept="image/*" [(ngModel)]="productImage" #productImage>
+        </label> -->
 
         <button [disabled]="addProductForm.invalid" >Add Product</button>
 

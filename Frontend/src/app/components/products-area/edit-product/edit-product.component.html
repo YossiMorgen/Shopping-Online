@@ -6,35 +6,32 @@
 
         <label>
             <span>Product Name:</span>
-            <input type="text" name="productName" [(ngModel)]="product.productName" minlength="2" required #productName="ngModel">
-            <span class="red" *ngIf="productName.errors?.['required'] && productName.touched">Missing Product Name!</span>
+            <input type="text" name="productName" [(ngModel)]="product.productName" minlength="2" #productName="ngModel">
             <span class="red" *ngIf="productName.errors?.['minlength'] && productName.touched">Min Product Name!</span>
         </label>
 
         <label>
             <span>Category: </span>
-            <select type="text" name="categoryID" [(ngModel)]="product.categoryID" required #categoryID="ngModel">
+            <select type="text"   name="categoryID" [(ngModel)]="product.categoryID" #product.categoryID="ngModel">
                 <option selected disabled >Select..</option>
                 <option *ngFor="let category of productsService.categories" value={{category.categoryID}}>
                     {{category.categoryName}}
                 </option>
             </select>
-            <span class="red" *ngIf="categoryID.errors?.['required'] && categoryID.touched">Missing Category!</span>
         </label>
 
         <label>
             <span>Price:</span>
-            <input type="number" name="price" [(ngModel)]="product.price" min="2" required #price="ngModel">
-            <span class="red" *ngIf="price.errors?.['required'] && price.touched">Missing Price!</span>
+            <input type="number" name="price" [(ngModel)]="product.price" min="2" #price="ngModel">
             <span class="red" *ngIf="price.errors?.['min'] && price.touched">Min 2!</span>
         </label>
 
         <label>
             <span>Image:</span>
-            <input type="file" required name="imageName" accept="image/*" #productImage>
+            <input type="file" name="imageName" accept="image/*" #productImage>
         </label>
 
-        <button [disabled]="addProductForm.invalid" >Add Product</button>
+        <button>Edit Product</button>
 
     </form>
 </div>

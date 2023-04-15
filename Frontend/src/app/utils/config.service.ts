@@ -13,7 +13,7 @@ export class ConfigService {
     public register = this.baseUrl + "auth/register";
 
     public createCart = this.baseUrl + "create_cart";
-    public getCartID = this.baseUrl + "cart_id";
+    public getCartDetails = this.baseUrl + "cart_details";
     public getCartProducts = this.baseUrl + "all_cart_products";
     public addCartProduct = this.baseUrl + "add_cart_product";
     public updateOneCartProduct = this.baseUrl + "update_one_cart_product/";

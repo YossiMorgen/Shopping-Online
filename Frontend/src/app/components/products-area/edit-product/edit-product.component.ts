@@ -12,6 +12,9 @@ export class EditProductComponent {
 
   public product : ProductModel = new ProductModel();
   public paramID : number;
+  public categoryID : number; 
+  @ViewChild('productImage')
+  public productImage: ElementRef<HTMLInputElement>
 
   constructor ( 
     public productsService: ProductsService, 
@@ -19,9 +22,6 @@ export class EditProductComponent {
     private activatedRoute :ActivatedRoute
   ) {}
 
-  
-  @ViewChild('productImage')
-  public productImage: ElementRef<HTMLInputElement>
 
   async ngOnInit(): Promise<void> {
 
@@ -36,10 +36,8 @@ export class EditProductComponent {
     // get categories and product details 
     try {
       await this.productsService.getCategories();
-      this.product = await this.productsService.getOneProduct(this.paramID);
-      console.log( this.product );
-      
-      console.log(this.productsService.categories); 
+      const product = await this.productsService.getOneProduct(this.paramID);
+      this.product = product;
     } catch (error : any) {
       alert(error.message);
     }
@@ -47,14 +45,15 @@ export class EditProductComponent {
 
   public async editProduct(){
     try {
+      console.log( this.product );
 
       if(this.productImage.nativeElement.files[0]){
         this.product.image = this.productImage.nativeElement.files[0];
         console.log("changed product image");
-
       }
+      console.log( this.product );
 
-      await this.productsService.addProduct(this.product);
+      await this.productsService.updateProduct(this.product);
       alert('Product Edited Successfully');
       this.router.navigateByUrl('/products');
 

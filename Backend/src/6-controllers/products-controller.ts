@@ -4,6 +4,7 @@ import verifyLoggedIn from "../3-middleware/auth-middlewares/verify-logged-in";
 import verifyAdmin from '../3-middleware/auth-middlewares/verify-admin';
 import cyber from "../2-utils/cyber";
 import ProductModel from "../4-models/product-models/product-model";
+import { log } from "console";
 
 const router = express.Router();
 
@@ -47,7 +48,7 @@ router.get('/products_by_category/:categoryID([0-9]+)', verifyLoggedIn,  async (
 router.get('/product_by_id/:product_id([0-9]+)', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const product_id = +req.params.product_id;
-        const product = await productsLogic.getOneProduct(product_id);        
+        const product = await productsLogic.getOneProduct(product_id);     
         res.json(product);
     } catch (error) {
         next(error);
@@ -77,13 +78,13 @@ router.delete('/delete_product/:productID([0-9]+)', verifyAdmin, async (req: Req
     }
 })
 
-router.put('/update_product/:id([0-9]+)', verifyAdmin, async (req: Request, res: Response, next: NextFunction) => {
+router.put('/update_product', verifyAdmin, async (req: Request, res: Response, next: NextFunction) => {
     try {
-        
+
         req.body.image = req.files?.image;
         const product = new ProductModel(req.body);
-        product.productID = +req.params.id;
-
+        console.log(product);
+        
         const newProduct = await productsLogic.updateProduct(product);
         
         res.status(201).json(newProduct);

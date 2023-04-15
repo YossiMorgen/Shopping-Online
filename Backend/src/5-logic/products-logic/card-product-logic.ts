@@ -3,6 +3,7 @@ import { OkPacket } from 'mysql';
 import { ValidationErrorModel } from "../../4-models/error-models";
 import dal from '../../2-utils/dal';
 import ProductCartModel from '../../4-models/product-models/product_cart-model';
+import Cart from '../../4-models/product-models/shopping_cart-model';
 
 async function createCart(userID: number): Promise<object>{
     const date = new Date();
@@ -10,12 +11,22 @@ async function createCart(userID: number): Promise<object>{
     return {userID, cartID: info.insertId, productionDate : date}
 }
 
-async function getCart(userID: number): Promise<number> {
-    return dal.execute('SELECT * FROM `shopping_cart` WHERE `userID` =?', [userID])[0];
+async function getCart(userID: number): Promise<Cart> {
+    const res = await dal.execute('SELECT * FROM `shopping_cart` WHERE `userID` =?', [userID]);
+    const cart = res[0];
+    console.log(cart);
+    return cart;
+    
 }
 
 function getCartProducts(cartID: number): Promise<ProductCartModel[]> {
-    return dal.execute('SELECT * FROM `cart_product` WHERE `cartID` =?', [cartID]);
+    return dal.execute(`
+        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, products.productName 
+        FROM cart_product 
+        LEFT JOIN products
+        ON cart_product.productID = products.productID
+        WHERE cartID = ?
+    `, [cartID]);
 }
 
 async function addCartProduct( product : ProductCartModel): Promise<ProductCartModel> {

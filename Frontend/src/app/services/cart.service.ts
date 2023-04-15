@@ -8,18 +8,25 @@ import Cart from '../models/product-models/shopping-cart.model';
 @Injectable({
 providedIn: 'root'
 })
-export class ProductsService {
-    public cart : Cart;
+export class CartService {
+    public cart: Cart;
     public products: ProductCartModel[] = [];
-    public constructor( private http:HttpClient, private config: ConfigService) { }
+    public constructor( private http: HttpClient, private config: ConfigService) { }
 
-    public async getCart(userID : number): Promise<void>{
+    public async createCart() {
+        const observable = this.http.get<Cart>(this.config.createCart);
+        this.cart = await firstValueFrom(observable)
+        this.getCartProducts();
+    }
+
+    public async getCart(): Promise<void>{
         if(this.cart){
             return new Promise(resolve => resolve())
         }
         
-        const observable = this.http.get<Cart>(this.config.getCartDetails + userID)
+        const observable = this.http.get<Cart>(this.config.getCartDetails)
         this.cart = await firstValueFrom(observable);
+        this.getCartProducts();
     }
 
     public async getCartProducts ( ): Promise<void> {

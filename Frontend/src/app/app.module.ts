@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutComponent } from './components/layout-area/layout/layout.component';
 import { HeaderComponent } from './components/layout-area/header/header.component';
-import { MenuComponent } from './components/layout-area/menu/menu.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { PageNotFoundComponent } from './components/layout-area/page-not-found/page-not-found.component';
@@ -19,12 +18,14 @@ import { ProductCardComponent } from './components/products-area/product-card/pr
 import { JwtInterceptor } from './utils/jwt.interceptor';
 import { AddProductComponent } from './components/products-area/add-product/add-product.component';
 import { EditProductComponent } from './components/products-area/edit-product/edit-product.component';
+import { CartLayoutComponent } from './components/cart-area/cart-layout/cart-layout.component';
+import { CartProductsComponent } from './components/cart-area/cart-products/cart-products.component';
+import { CartHeaderComponent } from './components/cart-area/cart-header/cart-header.component';
 
 @NgModule({
   declarations: [
     LayoutComponent,
     HeaderComponent,
-    MenuComponent,
     PageNotFoundComponent,
     LoginComponent,
     RegisterComponent,
@@ -35,6 +36,9 @@ import { EditProductComponent } from './components/products-area/edit-product/ed
     ProductCardComponent,
     AddProductComponent,
     EditProductComponent,
+    CartLayoutComponent,
+    CartProductsComponent,
+    CartHeaderComponent,
   ],
   imports: [
     BrowserModule,

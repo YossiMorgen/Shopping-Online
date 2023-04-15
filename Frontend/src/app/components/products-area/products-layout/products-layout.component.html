@@ -1,5 +1,8 @@
-<div>
-    <a *ngIf="auth.isAdmin()" routerLink="add">➕</a>
-    <app-categories></app-categories>
-    <app-product-list></app-product-list>
+<div class="products-cart-layout">
+    <app-cart-layout *ngIf="!auth.isAdmin()"></app-cart-layout>
+    <div class="products-layout">
+        <a *ngIf="auth.isAdmin()" routerLink="add">➕</a>
+        <app-categories></app-categories>
+        <app-product-list></app-product-list>
+    </div>
 </div>

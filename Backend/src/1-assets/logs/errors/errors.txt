@@ -432,3 +432,25 @@ Sat, 15 Apr 2023 14:01:02 GMT 	 error!!Stack: Error: connect ECONNREFUSED ::1:33
     at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\auth-logic\auth-logic.ts:44:29)
     at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\auth-logic\auth-logic.ts:33:23)
 ----------------------------------------------------------------------------------------------------
+Sat, 15 Apr 2023 17:35:33 GMT 	 error!!Stack: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at new NodeError (node:internal/errors:399:5)
+    at ServerResponse.setHeader (node:_http_outgoing:663:11)
+    at ServerResponse.header (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.contentType (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\express\lib\response.js:624:15)
+    at ServerResponse.sendStatus (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\express\lib\response.js:373:8)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:28:24
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:14:53)
+    at fulfilled (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:5:58)
+----------------------------------------------------------------------------------------------------
+Sat, 15 Apr 2023 17:36:37 GMT 	 error!!Stack: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at new NodeError (node:internal/errors:399:5)
+    at ServerResponse.setHeader (node:_http_outgoing:663:11)
+    at ServerResponse.header (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\express\lib\response.js:794:10)
+    at ServerResponse.contentType (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\express\lib\response.js:624:15)
+    at ServerResponse.sendStatus (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\express\lib\response.js:373:8)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:28:24
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:14:53)
+    at fulfilled (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:5:58)
+----------------------------------------------------------------------------------------------------

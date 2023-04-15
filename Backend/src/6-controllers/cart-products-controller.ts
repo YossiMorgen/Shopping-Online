@@ -24,6 +24,7 @@ router.get('/cart_details',  async (req: Request, res: Response, next: NextFunct
 
         const decodeUser: User = await cyber.getDecodeToken(req);
         const cart = await cardProductLogic.getCart(decodeUser.userID);   
+        console.log(cart);
         
         res.json(cart);
 
@@ -33,7 +34,7 @@ router.get('/cart_details',  async (req: Request, res: Response, next: NextFunct
 });
 
 
-router.get('/all_cart_products/:cart_id([0-9]+)', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
+router.get('/cart_products/:cart_id([0-9]+)', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const products = await cardProductLogic.getCartProducts(+req.params.cart_id);   
         res.json(products);

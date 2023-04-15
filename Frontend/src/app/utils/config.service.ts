@@ -14,7 +14,7 @@ export class ConfigService {
 
     public createCart = this.baseUrl + "create_cart";
     public getCartDetails = this.baseUrl + "cart_details";
-    public getCartProducts = this.baseUrl + "all_cart_products";
+    public getCartProducts = this.baseUrl + "cart_products/";
     public addCartProduct = this.baseUrl + "add_cart_product";
     public updateOneCartProduct = this.baseUrl + "update_one_cart_product/";
     public updateFullCart = this.baseUrl + "update_cart_products";

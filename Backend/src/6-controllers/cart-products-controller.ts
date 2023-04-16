@@ -6,7 +6,7 @@ import cyber from "../2-utils/cyber";
 import User from "../4-models/auth-models/user-model";
 const router = express.Router();
 
-router.get('/create_cart', async (req: Request, res: Response, next: NextFunction) => {
+router.get('/create_cart', verifyLoggedIn, async (req: Request, res: Response, next: NextFunction) => {
     try {
         
         const decodeUser: User = await cyber.getDecodeToken(req);
@@ -19,7 +19,7 @@ router.get('/create_cart', async (req: Request, res: Response, next: NextFunctio
     }
 })
 
-router.get('/cart_details',  async (req: Request, res: Response, next: NextFunction) => {
+router.get('/cart_details', verifyLoggedIn, async (req: Request, res: Response, next: NextFunction) => {
     try { 
 
         const decodeUser: User = await cyber.getDecodeToken(req);
@@ -46,7 +46,9 @@ router.get('/cart_products/:cart_id([0-9]+)', verifyLoggedIn,  async (req: Reque
 router.post('/add_cart_product', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const product = new ProductCartModel(req.body);   
-        const newProduct = await cardProductLogic.addCartProduct(product);   
+        console.log("hi");
+        
+        const newProduct = await cardProductLogic.addCartProduct(product); 
         res.json(newProduct);
     } catch (error) {
         next(error);

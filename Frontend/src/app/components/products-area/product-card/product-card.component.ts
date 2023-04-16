@@ -36,11 +36,13 @@ export class ProductCardComponent {
 
   public async addProductToCart() {
     try {
+      console.log("hi");
 
       const productCart = new ProductCartModel()
       productCart.cartID = this.cartService.cart.cartID;
       productCart.productID = this.product.productID;
-
+      productCart.amount = 1;
+      
       this.cartService.addProduct(productCart);
 
     } catch (error : any) {

@@ -35,33 +35,46 @@ export class CartService {
     }
 
     public async addProduct(product: ProductCartModel):Promise<void>{
+        const i = this.products.findIndex(p => p.productID === product.productID);
+        if( i !== -1 ) {
+            this.products[i].amount ++;
+            this.updateProduct(this.products[i]);
 
-        const observable = this.http.post(this.config.addCartProduct, product);
+            return;
+        }
+        const observable = this.http.post<ProductCartModel>(this.config.addCartProduct, product);
+        const newProduct = await firstValueFrom(observable);
+        this.products.push(newProduct);
+    }
+
+    public async deleteFromProduct(cartProductID: number):Promise<void>{
+        const i = this.products.findIndex(p => p.cartProductID === cartProductID);
+        if( i !== -1 && this.products[i].amount > 1 ) {
+            this.products[i].amount --;
+            this.updateProduct(this.products[i]);
+
+            return;
+        }
+
+        delete this.products[i];
+
+        const observable = this.http.delete(this.config.deleteProduct + cartProductID);
         await firstValueFrom(observable);
 
-    }
-
-    public async updateProduct(product: ProductCartModel): Promise<void> {
-        const Observable = this.http.put<ProductCartModel>(this.config.updateProduct, product);
-        const newProduct = await firstValueFrom(Observable);
-        
-        this.products = this.products.map((p: ProductCartModel) => {
-            if(p.productID === product.productID) {
-                return newProduct;
-            }
-
-            return p;
-        })
-
-    }
+    }    
 
     public async deleteProduct(cartProductID: number):Promise<void>{
 
         const observable = this.http.delete(this.config.deleteProduct + cartProductID);
         await firstValueFrom(observable);
 
-        this.products = this.products.filter((product: ProductCartModel) => product.productID != cartProductID )
+        this.products.filter(p => p.cartProductID === cartProductID)
 
+    }    
+
+    public async updateProduct( product : ProductCartModel): Promise<void> {
+        const Observable = this.http.put<ProductCartModel>(this.config.updateProduct, product);
+        const newProduct = await firstValueFrom(Observable);
     }
 
 }

@@ -34,9 +34,12 @@ async function addCartProduct( product : ProductCartModel): Promise<ProductCartM
     const err = product.validation();
     if(err) throw new ValidationErrorModel(err);
     
-    const sql = 'INSERT INTO products VALUES (DEFAULT, ?, ?, ?)'
+    const sql = 'INSERT INTO cart_product VALUES (DEFAULT, ?, ?, ?)'
     const values = [product.productID, product.amount, product.cartID]
-
+    
+    console.log(sql);
+    console.log(values);
+    
     const info: OkPacket = await dal.execute(sql, values);
     product.productID = info.insertId;
 
@@ -48,8 +51,8 @@ async function updateCartProduct( product : ProductCartModel): Promise<ProductCa
     const err = product.validation();
     if(err) throw new ValidationErrorModel(err);
     
-    const sql = 'UPDATE products SET amount =?, cartID = ? WHERE cartProductID = ?'
-    const values = [product.amount, product.cartID, product.cartProductID]
+    const sql = 'UPDATE cart_product SET amount =? WHERE cartProductID = ?'
+    const values = [product.amount, product.cartProductID]
 
     const info: OkPacket = await dal.execute(sql, values);
     if(info.affectedRows === 0)  throw new ResourceNotFoundErrorModel(product.cartProductID);
@@ -62,7 +65,7 @@ async function updateCartProducts( products : Array<ProductCartModel>): Promise<
         const err = products[i].validation();
         if(err) throw new ValidationErrorModel(err);
         
-        const sql = 'UPDATE products SET amount =?, cartID = ? WHERE cartProductID = ?'
+        const sql = 'UPDATE cart_product SET amount =?, cartID = ? WHERE cartProductID = ?'
         const values = [products[i].amount, products[i].cartID, products[i].cartProductID]
 
         const info: OkPacket = await dal.execute(sql, values);

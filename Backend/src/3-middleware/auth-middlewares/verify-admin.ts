@@ -8,7 +8,7 @@ async function verifyAdmin(req: Request, res: Response, next: NextFunction){
 
         const decodeUser = await cyber.getDecodeToken(req);
         if( decodeUser.role === 'user'){
-            throw new ValidationErrorModel('you are not allowed to access this resource');
+            throw new ValidationErrorModel('as user you are not allowed to access this resource');
         } 
 
         next();

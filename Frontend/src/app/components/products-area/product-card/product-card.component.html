@@ -1,5 +1,6 @@
 <div class="product">
     <span *ngIf="auth.isAdmin()" class="trash" (click)="deleteProduct()">🗑</span>
+    <span *ngIf="!auth.isAdmin()" class="trash" (click)="addProductToCart()">➕</span>
     <div >
         <span>
             <b>{{ product.productName }}</b>

@@ -6,7 +6,6 @@ async function verifyLoggedIn(req: Request, res: Response, next: NextFunction){
     try {
         const isValid = await cyber.verifyJwtToken(req);
         if(!isValid) throw new AuthErrorModel("you ain't logged in");
-        console.log("you logged in");
         
         next();
     } catch (error) {

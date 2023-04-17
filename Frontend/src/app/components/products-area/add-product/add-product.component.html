@@ -29,10 +29,10 @@
             <span class="red" *ngIf="price.errors?.['min'] && price.touched">Min 2!</span>
         </label>
 
-        <!-- <label>
+        <label>
             <span>Image:</span>
-            <input type="file" required name="imageName" accept="image/*" [(ngModel)]="productImage" #productImage>
-        </label> -->
+            <input type="file" required name="imageName" accept="image/*" #productImage>
+        </label>
 
         <button [disabled]="addProductForm.invalid" >Add Product</button>
 

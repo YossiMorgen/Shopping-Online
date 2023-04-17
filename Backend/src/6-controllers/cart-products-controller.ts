@@ -4,6 +4,7 @@ import cardProductLogic from "../5-logic/products-logic/card-product-logic";
 import ProductCartModel from "../4-models/product-models/product_cart-model";
 import cyber from "../2-utils/cyber";
 import User from "../4-models/auth-models/user-model";
+import Cart from "../4-models/product-models/shopping_cart-model";
 const router = express.Router();
 
 router.get('/create_cart', verifyLoggedIn, async (req: Request, res: Response, next: NextFunction) => {
@@ -23,8 +24,7 @@ router.get('/cart_details', verifyLoggedIn, async (req: Request, res: Response, 
     try { 
 
         const decodeUser: User = await cyber.getDecodeToken(req);
-        const cart = await cardProductLogic.getCart(decodeUser.userID);   
-        console.log(cart);
+        const cart : Cart = await cardProductLogic.getCart(decodeUser.userID);   
         
         res.json(cart);
 
@@ -32,7 +32,6 @@ router.get('/cart_details', verifyLoggedIn, async (req: Request, res: Response, 
         next(error);
     }
 });
-
 
 router.get('/cart_products/:cart_id([0-9]+)', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
     try {  

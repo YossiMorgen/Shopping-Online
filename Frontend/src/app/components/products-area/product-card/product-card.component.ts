@@ -39,7 +39,7 @@ export class ProductCardComponent {
       console.log("hi");
 
       const productCart = new ProductCartModel()
-      productCart.cartID = this.cartService.cart.cartID;
+      productCart.cartID = this.cartService.cart?.cartID;
       productCart.productID = this.product.productID;
       productCart.amount = 1;
       

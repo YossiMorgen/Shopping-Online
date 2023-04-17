@@ -21,6 +21,7 @@ import { EditProductComponent } from './components/products-area/edit-product/ed
 import { CartLayoutComponent } from './components/cart-area/cart-layout/cart-layout.component';
 import { CartProductsComponent } from './components/cart-area/cart-products/cart-products.component';
 import { CartHeaderComponent } from './components/cart-area/cart-header/cart-header.component';
+import { HttpResponseInterceptor } from './utils/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CartHeaderComponent } from './components/cart-area/cart-header/cart-hea
     BrowserAnimationsModule
   ],
   providers: [
-    {useClass: JwtInterceptor, provide: HTTP_INTERCEPTORS, multi: true}
+    {useClass: JwtInterceptor, provide: HTTP_INTERCEPTORS, multi: true},
+    {useClass: HttpResponseInterceptor, provide: HTTP_INTERCEPTORS, multi: true}
   ],
   bootstrap: [LayoutComponent]
 })

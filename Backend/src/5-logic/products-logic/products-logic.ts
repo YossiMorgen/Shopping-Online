@@ -42,7 +42,7 @@ async function getOneProduct(id:number): Promise<ProductModel> {
         `SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID
         FROM products 
         WHERE productId =?`,
-        ["http://localhost:3001/", id]
+        [appConfig.nodeUrl, id]
     );
     if(res.length === 0) throw new ResourceNotFoundErrorModel(id);
 
@@ -54,7 +54,7 @@ async function addProduct(product:ProductModel): Promise<ProductModel> {
     const err = product.validation();
     if(err) throw new ValidationErrorModel(err);
 
-    product.imageName = await fileHandler.saveFile(product.image);
+    product.imageName = appConfig.nodeUrl + await fileHandler.saveFile(product.image);
     delete product.image;
     
     const sql = "INSERT INTO products VALUES (DEFAULT, ?, ?, ?, ?)";

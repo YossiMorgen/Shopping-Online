@@ -14,6 +14,7 @@
     top: 2px;
     font-size: 15px;
     cursor: pointer;
+    z-index: 99;
 }
 
 img{

@@ -14,7 +14,6 @@ async function createCart(userID: number): Promise<object>{
 async function getCart(userID: number): Promise<Cart> {
     const res = await dal.execute('SELECT * FROM `shopping_cart` WHERE `userID` =?', [userID]);
     const cart = res[0];
-    console.log(cart);
     return cart;
     
 }
@@ -22,7 +21,7 @@ async function getCart(userID: number): Promise<Cart> {
 function getCartProducts(cartID: number): Promise<ProductCartModel[]> {
     return dal.execute(`
         SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, products.productName 
-        FROM cart_product 
+        FROM cart_product
         LEFT JOIN products
         ON cart_product.productID = products.productID
         WHERE cartID = ?
@@ -37,13 +36,18 @@ async function addCartProduct( product : ProductCartModel): Promise<ProductCartM
     const sql = 'INSERT INTO cart_product VALUES (DEFAULT, ?, ?, ?)'
     const values = [product.productID, product.amount, product.cartID]
     
-    console.log(sql);
-    console.log(values);
-    
     const info: OkPacket = await dal.execute(sql, values);
-    product.productID = info.insertId;
+    product.cartProductID = info.insertId;
 
-    return product;
+    const productDetails = await dal.execute(`
+    SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, products.productName 
+    FROM cart_product
+    LEFT JOIN products
+    ON cart_product.productID = products.productID
+    WHERE cart_product.cartProductID = ? 
+    `, [ product.cartProductID ])
+
+    return productDetails;
 }
 
 async function updateCartProduct( product : ProductCartModel): Promise<ProductCartModel> {

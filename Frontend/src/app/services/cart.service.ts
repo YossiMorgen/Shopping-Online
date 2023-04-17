@@ -35,6 +35,8 @@ export class CartService {
     }
 
     public async addProduct(product: ProductCartModel):Promise<void>{
+        console.log(this.cart);
+        
         const i = this.products.findIndex(p => p.productID === product.productID);
         if( i !== -1 ) {
             this.products[i].amount ++;

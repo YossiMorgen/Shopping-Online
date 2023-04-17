@@ -40,17 +40,10 @@ async function addCartProduct( product : ProductCartModel): Promise<ProductCartM
     const values = [product.productID, product.amount, product.cartID]
     
     const info: OkPacket = await dal.execute(sql, values);
-    product.cartProductID = info.insertId;
 
-    const productDetails = await dal.execute(`
-    SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, products.productName 
-    FROM cart_product
-    LEFT JOIN products
-    ON cart_product.productID = products.productID
-    WHERE cart_product.cartProductID = ? 
-    `, [ product.cartProductID ])
+    const productDetails = await getOneProductDetails(info.insertId);
 
-    return productDetails[0];
+    return productDetails;
 }
 
 async function updateCartProduct( product : ProductCartModel): Promise<ProductCartModel> {
@@ -64,7 +57,9 @@ async function updateCartProduct( product : ProductCartModel): Promise<ProductCa
     const info: OkPacket = await dal.execute(sql, values);
     if(info.affectedRows === 0)  throw new ResourceNotFoundErrorModel(product.cartProductID);
 
-    return product;
+    const productDetails = await getOneProductDetails(product.cartProductID);
+
+    return productDetails;
 }
 
 async function updateCartProducts( products : Array<ProductCartModel>): Promise<void> {
@@ -93,6 +88,18 @@ function deleteCartProducts(userID: number) {
     return dal.execute(sql, [userID]); 
 }
 
+async function getOneProductDetails(cartProductID: number): Promise<ProductCartModel>  {
+    const productDetails = await dal.execute(`
+    SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName 
+    FROM cart_product
+    LEFT JOIN products
+    ON cart_product.productID = products.productID
+    WHERE cart_product.cartProductID = ? 
+    `, [ cartProductID ])
+
+    return productDetails[0];
+}
+
 export default {
     createCart,
     getOrCreateCart,
@@ -101,5 +108,6 @@ export default {
     updateCartProduct,
     updateCartProducts,
     deleteCartProduct,
-    deleteCartProducts
+    deleteCartProducts,
+    getOneProductDetails
 }

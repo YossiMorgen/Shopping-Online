@@ -48,8 +48,19 @@ export class CartService {
     public async reduceQuantity(cartProductID: number):Promise<void>{
         
         const i = this.products.findIndex(p => p.cartProductID === cartProductID);
-        this.products[i].amount --;
-        const newProduct = await this.updateProduct(this.products[i]);
+        const product = this.products[i]
+        product.amount --;
+
+        if(product.amount === 0) {            
+            const observable = this.http.delete(this.config.removeOneCartProduct + cartProductID);
+            await firstValueFrom(observable);
+
+            delete this.products[i];
+            
+            return;
+        }
+
+        const newProduct = await this.updateProduct(product);
         this.products[i] = newProduct;
     }    
 
@@ -72,10 +83,10 @@ export class CartService {
     }   
 
     public async updateProduct( product : ProductCartModel): Promise<ProductCartModel> {
-        console.log(product);
-        
+
         const Observable = this.http.put<ProductCartModel>(this.config.updateOneCartProduct, product);
         const newProduct = await firstValueFrom(Observable);
+
         return newProduct;
     }
 

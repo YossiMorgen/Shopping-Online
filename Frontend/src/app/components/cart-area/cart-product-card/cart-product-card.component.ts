@@ -1,3 +1,4 @@
+import { CartService } from 'src/app/services/cart.service';
 import { Component, Input } from '@angular/core';
 import ProductCartModel from 'src/app/models/product-models/product-cart.model';
 
@@ -12,17 +13,19 @@ export class CartProductCardComponent {
   @Input()
   public product: ProductCartModel;
 
-  public reduceQuantity(){
+  constructor(private cartService : CartService) { }
+
+  public async reduceQuantity(){
     try {
-      
+      await this.cartService.reduceQuantity(this.product.cartProductID)
     } catch (error: any) {
       alert(error.message);
     }
   }
 
-  public increaseQuantity(){
+  public async increaseQuantity(){
     try {
-      
+      await this.cartService.addProduct(this.product)
     } catch (error: any) {
       alert(error.message);
     }

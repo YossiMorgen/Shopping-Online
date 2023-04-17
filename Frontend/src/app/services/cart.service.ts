@@ -20,13 +20,15 @@ export class CartService {
     }
 
     public async getCart(): Promise<void>{
+        
         if(this.cart){
             return new Promise(resolve => resolve())
         }
-        
+
         const observable = this.http.get<Cart>(this.config.getCartDetails)
         this.cart = await firstValueFrom(observable);
         this.getCartProducts();
+        
     }
 
     public async getCartProducts ( ): Promise<void> {
@@ -60,19 +62,28 @@ export class CartService {
 
         delete this.products[i];
 
-        const observable = this.http.delete(this.config.deleteProduct + cartProductID);
+        const observable = this.http.delete(this.config.removeOneCartProduct + cartProductID);
         await firstValueFrom(observable);
 
     }    
 
     public async deleteProduct(cartProductID: number):Promise<void>{
 
-        const observable = this.http.delete(this.config.deleteProduct + cartProductID);
+        const observable = this.http.delete(this.config.removeOneCartProduct + cartProductID);
         await firstValueFrom(observable);
 
         this.products.filter(p => p.cartProductID === cartProductID)
 
     }    
+
+    public async deleteAllProduct():Promise<void>{
+
+        const observable = this.http.delete(this.config.removeAllCartProducts + this.cart.cartID);
+        await firstValueFrom(observable);
+
+        this.products = []
+
+    }   
 
     public async updateProduct( product : ProductCartModel): Promise<void> {
         const Observable = this.http.put<ProductCartModel>(this.config.updateProduct, product);

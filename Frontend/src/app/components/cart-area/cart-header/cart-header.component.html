@@ -1,13 +1,10 @@
 <div class="cartHeader">
-    <div *ngIf="cartService.cart">
-        <p>cartID - {{cartService.cart?.cartID}}</p>
+    <div>
+        
         <p>products amount - </p>
         <p>total price - </p>
+
     </div>
-    <div *ngIf="!cartService.cart" class="buttons">
-        <!-- <button>Make an Order</button> -->
-        <button (click)="createNewCart()">Create New Cart</button>
-        <button (click)="getCart()">Continue Shopping </button>
-    </div>
+        <button (click)="deleteCartProducts()">Create New Cart</button>
 
 </div>

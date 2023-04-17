@@ -7,7 +7,7 @@ import User from "../4-models/auth-models/user-model";
 import Cart from "../4-models/product-models/shopping_cart-model";
 const router = express.Router();
 
-router.get('/create_cart', verifyLoggedIn, async (req: Request, res: Response, next: NextFunction) => {
+router.get('/create_cart', async (req: Request, res: Response, next: NextFunction) => {
     try {
         
         const decodeUser: User = await cyber.getDecodeToken(req);
@@ -20,11 +20,11 @@ router.get('/create_cart', verifyLoggedIn, async (req: Request, res: Response, n
     }
 })
 
-router.get('/cart_details', verifyLoggedIn, async (req: Request, res: Response, next: NextFunction) => {
+router.get('/cart_details', async (req: Request, res: Response, next: NextFunction) => {
     try { 
 
         const decodeUser: User = await cyber.getDecodeToken(req);
-        const cart : Cart = await cardProductLogic.getCart(decodeUser.userID);   
+        const cart : Cart = await cardProductLogic.getOrCreateCart(decodeUser.userID);   
         
         res.json(cart);
 

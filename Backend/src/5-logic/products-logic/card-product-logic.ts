@@ -11,9 +11,12 @@ async function createCart(userID: number): Promise<object>{
     return {userID, cartID: info.insertId, productionDate : date}
 }
 
-async function getCart(userID: number): Promise<Cart> {
+async function getOrCreateCart(userID: number): Promise<Cart> {
     const res = await dal.execute('SELECT * FROM `shopping_cart` WHERE `userID` =?', [userID]);
-    const cart = res[0];
+    let cart = res[0];
+    if(!cart){
+        cart = await createCart(userID);
+    }
     return cart;
     
 }
@@ -89,7 +92,7 @@ function deleteCartProducts(cartID: number) {
 
 export default {
     createCart,
-    getCart,
+    getOrCreateCart,
     getCartProducts,
     addCartProduct,
     updateCartProduct,

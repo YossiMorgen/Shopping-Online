@@ -1,0 +1,17 @@
+<div class="product_card">
+    {{product.productName}}
+    {{product.price | currency:"ILS"}}
+    <span class="buttons">
+        <button (click)="reduceQuantity()">
+            ➖
+        </button>
+        <button>
+            {{product.amount}}
+        </button>
+        <button (click)="increaseQuantity()">
+            ➕
+        </button>
+    </span>
+    <hr>
+    
+</div>

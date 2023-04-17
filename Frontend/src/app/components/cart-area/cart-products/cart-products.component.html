@@ -1,5 +1,5 @@
 <div>
     <div *ngFor="let product of cartService.products">
-        <span>Product Name: {{product.productName}}</span>
+        <app-cart-product-card [product]="product"></app-cart-product-card>
     </div>
 </div>

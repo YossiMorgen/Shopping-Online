@@ -21,7 +21,7 @@ export class CartHeaderComponent implements OnInit {
 
   public async deleteCartProducts(){
     try {
-      await this.cartService.createCart();
+      await this.cartService.deleteAllProducts();
     } catch (error: any) {
       alert(error.message);
     }

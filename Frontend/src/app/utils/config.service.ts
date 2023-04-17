@@ -19,7 +19,7 @@ export class ConfigService {
   public updateOneCartProduct = this.baseUrl + "update_one_cart_product/";
   public updateFullCart = this.baseUrl + "update_cart_products";
   public removeOneCartProduct = this.baseUrl + "remove_one_cart_product/";
-  public removeAllCartProducts = this.baseUrl + "remove_cart_products";
+  public removeAllCartProducts = this.baseUrl + "remove_cart_products/";
 
   public createOrder = this.baseUrl + "create_order"; 
 

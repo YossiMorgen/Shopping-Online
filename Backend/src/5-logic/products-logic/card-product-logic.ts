@@ -23,7 +23,7 @@ async function getOrCreateCart(userID: number): Promise<Cart> {
 
 function getCartProducts(cartID: number): Promise<ProductCartModel[]> {
     return dal.execute(`
-        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, products.productName 
+        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName 
         FROM cart_product
         LEFT JOIN products
         ON cart_product.productID = products.productID
@@ -50,7 +50,7 @@ async function addCartProduct( product : ProductCartModel): Promise<ProductCartM
     WHERE cart_product.cartProductID = ? 
     `, [ product.cartProductID ])
 
-    return productDetails;
+    return productDetails[0];
 }
 
 async function updateCartProduct( product : ProductCartModel): Promise<ProductCartModel> {
@@ -85,9 +85,12 @@ function deleteCartProduct(cartProductID: number) {
     return dal.execute(sql, [cartProductID]); 
 }
 
-function deleteCartProducts(cartID: number) {
-    const sql = "DELETE FROM cart_product WHERE cartID =?";
-    return dal.execute(sql, [cartID]); 
+function deleteCartProducts(userID: number) {
+    const sql = `
+        DELETE FROM cart_product 
+        WHERE cartID = (SELECT cartID FROM shopping_cart WHERE shopping_cart.userID = ?)
+    `;
+    return dal.execute(sql, [userID]); 
 }
 
 export default {

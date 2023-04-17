@@ -5,20 +5,8 @@ import ProductCartModel from "../4-models/product-models/product_cart-model";
 import cyber from "../2-utils/cyber";
 import User from "../4-models/auth-models/user-model";
 import Cart from "../4-models/product-models/shopping_cart-model";
+
 const router = express.Router();
-
-router.get('/create_cart', async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        
-        const decodeUser: User = await cyber.getDecodeToken(req);
-        const cart = await cardProductLogic.createCart(decodeUser.userID);
-        
-        res.json(cart);
-
-    } catch (error) {
-        next(error);
-    }
-})
 
 router.get('/cart_details', async (req: Request, res: Response, next: NextFunction) => {
     try { 
@@ -85,10 +73,11 @@ router.delete('/remove_one_cart_product/:cart_product_id([0-9]+)', verifyLoggedI
     }
 })
 
-router.delete('/remove_cart_products/:cart_id([0-9]+)', verifyLoggedIn, async (req: Request, res: Response, next: NextFunction) => {
+router.delete('/remove_cart_products', async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const cartID = +req.params.cart_id;
-        await cardProductLogic.deleteCartProduct(cartID);
+        const decodeUser: User = await cyber.getDecodeToken(req);
+
+        await cardProductLogic.deleteCartProducts(decodeUser.userID);
       
         res.sendStatus(204)
     } catch (error) {

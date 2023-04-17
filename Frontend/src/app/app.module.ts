@@ -22,6 +22,7 @@ import { CartLayoutComponent } from './components/cart-area/cart-layout/cart-lay
 import { CartProductsComponent } from './components/cart-area/cart-products/cart-products.component';
 import { CartHeaderComponent } from './components/cart-area/cart-header/cart-header.component';
 import { HttpResponseInterceptor } from './utils/auth.interceptor';
+import { CartProductCardComponent } from './components/cart-area/cart-product-card/cart-product-card.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { HttpResponseInterceptor } from './utils/auth.interceptor';
     CartLayoutComponent,
     CartProductsComponent,
     CartHeaderComponent,
+    CartProductCardComponent,
   ],
   imports: [
     BrowserModule,

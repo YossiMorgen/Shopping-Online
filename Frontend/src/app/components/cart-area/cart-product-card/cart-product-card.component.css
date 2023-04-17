@@ -1,0 +1,15 @@
+.product_card{
+    padding: 10px;
+    position: relative;
+}
+
+.buttons{
+    position: absolute;
+    right: 5px;
+}
+
+.buttons > button {
+    height: 25px;
+    background-color: transparent;
+    border: none;
+}

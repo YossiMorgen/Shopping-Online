@@ -13,12 +13,6 @@ export class CartService {
     public products: ProductCartModel[] = [];
     public constructor( private http: HttpClient, private config: ConfigService) { }
 
-    public async createCart() {
-        const observable = this.http.get<Cart>(this.config.createCart);
-        this.cart = await firstValueFrom(observable)
-        this.getCartProducts();
-    }
-
     public async getCart(): Promise<void>{
         
         if(this.cart){
@@ -51,20 +45,12 @@ export class CartService {
         this.products.push(newProduct);
     }
 
-    public async deleteFromProduct(cartProductID: number):Promise<void>{
+    public async reduceQuantity(cartProductID: number):Promise<void>{
+        
         const i = this.products.findIndex(p => p.cartProductID === cartProductID);
-        if( i !== -1 && this.products[i].amount > 1 ) {
-            this.products[i].amount --;
-            this.updateProduct(this.products[i]);
-
-            return;
-        }
-
-        delete this.products[i];
-
-        const observable = this.http.delete(this.config.removeOneCartProduct + cartProductID);
-        await firstValueFrom(observable);
-
+        this.products[i].amount --;
+        const newProduct = await this.updateProduct(this.products[i]);
+        this.products[i] = newProduct;
     }    
 
     public async deleteProduct(cartProductID: number):Promise<void>{
@@ -76,18 +62,21 @@ export class CartService {
 
     }    
 
-    public async deleteAllProduct():Promise<void>{
+    public async deleteAllProducts():Promise<void>{
 
-        const observable = this.http.delete(this.config.removeAllCartProducts + this.cart.cartID);
+        const observable = this.http.delete(this.config.removeAllCartProducts);
         await firstValueFrom(observable);
 
         this.products = []
 
     }   
 
-    public async updateProduct( product : ProductCartModel): Promise<void> {
-        const Observable = this.http.put<ProductCartModel>(this.config.updateProduct, product);
+    public async updateProduct( product : ProductCartModel): Promise<ProductCartModel> {
+        console.log(product);
+        
+        const Observable = this.http.put<ProductCartModel>(this.config.updateOneCartProduct, product);
         const newProduct = await firstValueFrom(Observable);
+        return newProduct;
     }
 
 }

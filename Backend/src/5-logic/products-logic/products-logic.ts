@@ -2,7 +2,6 @@ import { OkPacket } from 'mysql';
 import dal from "../../2-utils/dal";
 import { ResourceNotFoundErrorModel, ValidationErrorModel } from '../../4-models/error-models';
 import fileHandler from '../../2-utils/file-handler';
-import fileUpload, { UploadedFile } from 'express-fileupload';
 import appConfig from '../../2-utils/AppConfig';
 import ProductModel from '../../4-models/product-models/product-model';
 import CategoryModel from '../../4-models/product-models/category-model';
@@ -117,10 +116,13 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
 
 async function deleteProduct(id:number): Promise<void> {
 
-    const oldProduct = await getOneProduct(id);
+    const products = await dal.execute(`SELECT imageName FROM products WHERE productID = ?`, [id]);
+    const oldProduct = products[0];
+    console.log(oldProduct.imageName);
+    
     fileHandler.deleteFile(oldProduct.imageName);
-    const sql = "DELETE FROM products WHERE productID =?";
-    dal.execute(sql, [id]);
+
+    dal.execute("DELETE FROM products WHERE productID =?", [id]);
 
 }
 

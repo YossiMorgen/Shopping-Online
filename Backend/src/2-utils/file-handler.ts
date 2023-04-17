@@ -11,9 +11,9 @@ async function saveFile(file: UploadedFile){
     return fileName;
 }
 
-function deleteFile(fileName: string):void{
-    if(fs.existsSync("./src/1-assets/images" + fileName)){
-       fs.unlinkSync("./src/1-assets/images" + fileName);
+function deleteFile(fileName: string):void{    
+    if(fs.existsSync("./src/1-assets/images/" + fileName)){
+       fs.unlinkSync("./src/1-assets/images/" + fileName);
     }
 }
 

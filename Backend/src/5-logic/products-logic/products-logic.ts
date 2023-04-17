@@ -79,11 +79,9 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
     
     if(product.image){        
 
-        const oldProduct  = await getOneProduct(product.productID)[0];
-        console.log(oldProduct);
-
-
-        fileHandler.deleteFile(oldProduct?.imageName);
+        const products = await dal.execute(`SELECT imageName FROM products WHERE productID = ?`, [product.productID]);
+        const oldProduct = products[0];    
+        fileHandler.deleteFile(oldProduct.imageName);
         
         product.imageName = await fileHandler.saveFile(product.image);
         delete product.image;
@@ -117,9 +115,7 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
 async function deleteProduct(id:number): Promise<void> {
 
     const products = await dal.execute(`SELECT imageName FROM products WHERE productID = ?`, [id]);
-    const oldProduct = products[0];
-    console.log(oldProduct.imageName);
-    
+    const oldProduct = products[0];    
     fileHandler.deleteFile(oldProduct.imageName);
 
     dal.execute("DELETE FROM products WHERE productID =?", [id]);

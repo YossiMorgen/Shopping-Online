@@ -11,14 +11,22 @@ function getCategories():Promise<CategoryModel> {
 }
 
 function getRandomProducts (start: number, end: number): Promise<ProductModel[]> {
-    const sql = "SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName FROM products";
-    return dal.execute(sql, ["http://localhost:3001/"])
+    const sql = `
+    SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName 
+    FROM products
+    LIMIT ?
+    OFFSET ?
+    `;
+    return dal.execute(sql, ["http://localhost:3001/", end, start])
 }
 
 async function getProductsByName(name : string, start: number, end: number): Promise<ProductModel[]> {
-    const [product] = await dal.execute(
-        `SELECT * FROM products WHERE name LIKE %?%
-    `, [name]);
+    const [product] = await dal.execute(`
+        SELECT * FROM products 
+        WHERE name LIKE %?%
+        LIMIT ?
+        OFFSET ?
+    `, [name, end, start]);
 
     return product;
 }

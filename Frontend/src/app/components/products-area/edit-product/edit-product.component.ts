@@ -45,15 +45,20 @@ export class EditProductComponent {
 
   public async editProduct(){
     try {
-      console.log( this.product );
+      console.log( this.productImage.nativeElement.files );
+    
+      const formData = new FormData();
+      formData.append('productName', this.product.productName );
+      formData.append('imageName', this.product.imageName );
+      formData.append('price', this.product.price.toString() );
+      formData.append('categoryID', this.product.categoryID.toString() );
+      formData.append('productID', this.product.productID.toString() );
 
-      if(this.productImage.nativeElement.files[0]){
-        this.product.image = this.productImage.nativeElement.files[0];
-        console.log("changed product image");
+      if(this.productImage.nativeElement.files){
+        formData.append('image', this.productImage.nativeElement.files[0]);
       }
-      console.log( this.product );
 
-      await this.productsService.updateProduct(this.product);
+      await this.productsService.updateProduct(formData, this.product.productID);
       alert('Product Edited Successfully');
       this.router.navigateByUrl('/products');
 

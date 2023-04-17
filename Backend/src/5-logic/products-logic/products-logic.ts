@@ -45,7 +45,9 @@ async function getOneProduct(id:number): Promise<ProductModel> {
         [appConfig.nodeUrl, id]
     );
     if(res.length === 0) throw new ResourceNotFoundErrorModel(id);
-
+        
+    console.log(res);
+        
     return res[0];  
 }
 
@@ -54,14 +56,14 @@ async function addProduct(product:ProductModel): Promise<ProductModel> {
     const err = product.validation();
     if(err) throw new ValidationErrorModel(err);
 
-    product.imageName = appConfig.nodeUrl + await fileHandler.saveFile(product.image);
+    product.imageName = await fileHandler.saveFile(product.image);
     delete product.image;
     
     const sql = "INSERT INTO products VALUES (DEFAULT, ?, ?, ?, ?)";
     const info:OkPacket = await dal.execute(sql, [product.productName, product.categoryID, product.price, product.imageName]);
     
     product.productID = info.insertId;
-    
+    product.imageName = appConfig.nodeUrl + product.imageName;
     return product; 
 }
 
@@ -76,24 +78,29 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
     const arr: Array<any> = [product.productName, product.price, product.categoryID]
 
     
-    if(product.image){
+    if(product.image){        
 
         const oldProduct  = await getOneProduct(product.productID)[0];
-        fileHandler.deleteFile(oldProduct.imageName);
+        console.log(oldProduct);
 
+
+        fileHandler.deleteFile(oldProduct?.imageName);
+        
         product.imageName = await fileHandler.saveFile(product.image);
         delete product.image;
 
         sql += " , imageName =?";
         arr.push(product.imageName);
+
+        product.imageName = appConfig.nodeUrl + product.imageName
+    
     }
     
     sql += ` WHERE productID = ?`
     arr.push(product.productID);
 
-    const info: OkPacket = await dal.execute(sql, [...arr]);     
+    const info: OkPacket = await dal.execute(sql, arr);     
     if(info.affectedRows === 0) throw new ResourceNotFoundErrorModel(product.productID);
-    product.imageName = appConfig.nodeUrl + product.imageName
 
     return product;
 }
@@ -103,7 +110,7 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
 //     const sql = `SELECT COUNT(*) as productName FROM users WHERE productName = ?`;
 //     const count = await dal.execute(sql,[productName]);
     
-//     return count[0].productName > 0;
+//     return count[0];
 // }
 
 

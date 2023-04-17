@@ -58,11 +58,11 @@ export class ProductsService {
     this.products.push(newProduct);
   }
 
-  public async updateProduct(product: ProductModel): Promise<void> {
+  public async updateProduct(product: FormData, productID:number): Promise<void> {
     const Observable = this.http.put<ProductModel>(this.config.updateProduct, product);
     const newProduct = await firstValueFrom(Observable);
     this.products = this.products.map((p: ProductModel) => {
-      if(p.productID === product.productID) {
+      if(p.productID === productID) {
         return newProduct;
       }
       return p;

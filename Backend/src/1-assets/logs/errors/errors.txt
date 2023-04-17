@@ -569,3 +569,17 @@ Sun, 16 Apr 2023 13:19:57 GMT 	 error!!Stack: Error: ER_WRONG_VALUE_COUNT_ON_ROW
     at new Promise (<anonymous>)
     at __awaiter (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\card-product-logic.ts:4:12)
 ----------------------------------------------------------------------------------------------------
+Mon, 17 Apr 2023 10:59:07 GMT 	 error!!Stack: TypeError: Cannot read properties of undefined (reading 'imageName')
+    at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:84:43)
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:14:53)
+    at fulfilled (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+----------------------------------------------------------------------------------------------------
+Mon, 17 Apr 2023 11:00:47 GMT 	 error!!Stack: TypeError: Cannot read properties of undefined (reading 'imageName')
+    at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:84:32)
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:14:53)
+    at fulfilled (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+----------------------------------------------------------------------------------------------------

@@ -17,7 +17,7 @@ function getRandomProducts (start: number, end: number): Promise<ProductModel[]>
     LIMIT ?
     OFFSET ?
     `;
-    return dal.execute(sql, ["http://localhost:3001/", end, start])
+    return dal.execute(sql, [appConfig.nodeUrl, end, start])
 }
 
 async function getProductsByName(name : string, start: number, end: number): Promise<ProductModel[]> {
@@ -63,6 +63,9 @@ async function addProduct(product:ProductModel): Promise<ProductModel> {
     const err = product.validation();
     if(err) throw new ValidationErrorModel(err);
 
+    if(isProductNameExist(product.productName)) throw new ValidationErrorModel(`Product ${product.productName} already exists`);
+    console.log("hi");
+    
     product.imageName = await fileHandler.saveFile(product.image);
     delete product.image;
     
@@ -81,14 +84,18 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
     if(err) throw new ValidationErrorModel(err); 
 
     
+    const products = await dal.execute(`SELECT imageName FROM products WHERE productID = ?`, [product.productID]);
+    const oldProduct = products[0];    
+
+    if(isProductNameExist(product.productName)) throw new ValidationErrorModel(`Product ${product.productName} already exists`);
+        
+    
     let sql = "UPDATE products SET productName = ?, price = ?, categoryID = ?"
     const arr: Array<any> = [product.productName, product.price, product.categoryID]
 
     
     if(product.image){        
 
-        const products = await dal.execute(`SELECT imageName FROM products WHERE productID = ?`, [product.productID]);
-        const oldProduct = products[0];    
         fileHandler.deleteFile(oldProduct.imageName);
         
         product.imageName = await fileHandler.saveFile(product.image);
@@ -110,13 +117,13 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
     return product;
 }
 
-// async function isProductNameExist(productName: string): Promise<boolean> {
+async function isProductNameExist(productName: string): Promise<boolean> {
 
-//     const sql = `SELECT COUNT(*) as productName FROM users WHERE productName = ?`;
-//     const count = await dal.execute(sql,[productName]);
+    const sql = `SELECT COUNT(*) as productName FROM products WHERE productName = ?`;
+    const count = await dal.execute(sql,[productName]);
     
-//     return count[0];
-// }
+    return count[0]['productName'] > 0;
+}
 
 
 

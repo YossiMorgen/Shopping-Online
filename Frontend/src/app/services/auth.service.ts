@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
@@ -14,7 +15,7 @@ export class AuthService{
     public user: User;
     private token: string;
 
-    constructor( private http: HttpClient, private config: ConfigService ){ 
+    constructor( private http: HttpClient, private config: ConfigService, private router : Router ){ 
       const token = window.localStorage.getItem('token')
       if( token ) this.setUser(token)
     }
@@ -32,8 +33,10 @@ export class AuthService{
     }
 
     public logout():void{
+        delete this.user;
         this.token = '';
         window.localStorage.removeItem('token')
+        this.router.navigate(['/login']);
     }
 
     private setUser(token: string):void{

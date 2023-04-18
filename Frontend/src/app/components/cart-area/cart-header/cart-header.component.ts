@@ -13,7 +13,7 @@ export class CartHeaderComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     try {
-      await this.cartService.getCart()
+      await this.cartService.getCart();
     } catch (error : any) {
       alert(error.message);
     }

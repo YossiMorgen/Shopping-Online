@@ -46,8 +46,12 @@ export class CartService {
     }
 
     public async reduceQuantity(cartProductID: number):Promise<void>{
+
+        console.log(this.products);
+        
         
         const i = this.products.findIndex(p => p.cartProductID === cartProductID);
+        
         const product = this.products[i]
         product.amount --;
 
@@ -55,7 +59,7 @@ export class CartService {
             const observable = this.http.delete(this.config.removeOneCartProduct + cartProductID);
             await firstValueFrom(observable);
 
-            delete this.products[i];
+            this.products.splice(i, 1);
             
             return;
         }
@@ -88,6 +92,18 @@ export class CartService {
         const newProduct = await firstValueFrom(Observable);
 
         return newProduct;
+    }
+
+    public productsTotalAmountAndPrice(): Array<number>{
+        let sum = 0;
+        let count = 0;
+
+        for(const product of this.products){
+            sum += product.price;
+            count += product.amount;
+        }
+
+        return [sum, count];
     }
 
 }

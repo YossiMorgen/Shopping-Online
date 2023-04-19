@@ -1,4 +1,6 @@
 <div class="productsList">
+    <span *ngIf="productsService.products.length === 0">We Don't Have Products That Fit Your Search...</span>
+
     <div *ngFor="let product of productsService.products">
         
         <a *ngIf="auth.isAdmin()" [routerLink]="[]" [queryParams]="{ 'product_id': product.productID  }">

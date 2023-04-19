@@ -2,10 +2,10 @@
     position: relative;
     padding: 10px;
     display: flex;
-    border: 1px solid;
     box-shadow: 1px 1px 5px lawngreen;
     gap: 10px;
     align-items: center;
+    margin: 5px;
 }
 
 .trash{

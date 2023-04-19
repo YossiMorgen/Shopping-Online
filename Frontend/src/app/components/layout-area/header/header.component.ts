@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor (private auth: AuthService){}
+  constructor ( public auth: AuthService ){}
   public logout(){
     this.auth.logout();
   }

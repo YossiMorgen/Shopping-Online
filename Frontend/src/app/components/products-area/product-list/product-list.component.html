@@ -1,7 +1,7 @@
 <div class="productsList">
     <div *ngFor="let product of productsService.products">
         
-        <a *ngIf="auth.isAdmin()" [routerLink]="[ 'edit' ]" [queryParams]="{ 'product_id': product.productID  }">
+        <a *ngIf="auth.isAdmin()" [routerLink]="[]" [queryParams]="{ 'product_id': product.productID  }">
             <app-product-card  [product]="product"></app-product-card>
         </a>
 

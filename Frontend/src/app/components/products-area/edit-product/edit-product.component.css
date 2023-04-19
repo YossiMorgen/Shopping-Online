@@ -1,0 +1,7 @@
+.EditProduct{
+    width: 200px;
+}
+
+input, label, span{
+    display: block;
+}

@@ -21,14 +21,14 @@ function getRandomProducts (start: number, end: number): Promise<ProductModel[]>
 }
 
 async function getProductsByName(name : string, start: number, end: number): Promise<ProductModel[]> {
-    const [product] = await dal.execute(`
+    const products = await dal.execute(`
         SELECT * FROM products 
-        WHERE name LIKE %?%
+        WHERE productName LIKE ?
         LIMIT ?
         OFFSET ?
-    `, [name, end, start]);
+    `, [`%${name}%`, end, start ]);
 
-    return product;
+    return products;
 }
 
 async function getProductsByCategory(categoryID: number,start: number, end: number): Promise<ProductModel[]> {
@@ -45,26 +45,26 @@ async function getProductsByCategory(categoryID: number,start: number, end: numb
 
 async function getOneProduct(id:number): Promise<ProductModel> {
 
-    const res = await dal.execute(
+    const [res] = await dal.execute(
         `SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID
         FROM products 
         WHERE productId =?`,
         [appConfig.nodeUrl, id]
     );
-    if(res.length === 0) throw new ResourceNotFoundErrorModel(id);
+    if( !res ) throw new ResourceNotFoundErrorModel(id);
         
     console.log(res);
         
-    return res[0];  
+    return res;  
 }
 
 async function addProduct(product:ProductModel): Promise<ProductModel> {
     
     const err = product.validation();
     if(err) throw new ValidationErrorModel(err);
-
-    if(isProductNameExist(product.productName)) throw new ValidationErrorModel(`Product ${product.productName} already exists`);
-    console.log("hi");
+    console.log(await isProductNameExist(product.productName));
+    
+    if(await isProductNameExist(product.productName)) throw new ValidationErrorModel(`Product ${product.productName} already exists`);
     
     product.imageName = await fileHandler.saveFile(product.image);
     delete product.image;
@@ -84,10 +84,15 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
     if(err) throw new ValidationErrorModel(err); 
 
     
-    const products = await dal.execute(`SELECT imageName FROM products WHERE productID = ?`, [product.productID]);
-    const oldProduct = products[0];    
-
-    if(isProductNameExist(product.productName)) throw new ValidationErrorModel(`Product ${product.productName} already exists`);
+    const [oldProduct] = await dal.execute(`SELECT imageName FROM products WHERE productID = ?`, [product.productID]);
+    console.log(isProductNameExist(product.productName));
+    
+    if(
+        oldProduct.productName !== product.productName && 
+        await isProductNameExist(product.productName)
+    ) {
+        throw new ValidationErrorModel(`Product ${product.productName} already exists`);
+    }
         
     
     let sql = "UPDATE products SET productName = ?, price = ?, categoryID = ?"
@@ -120,9 +125,10 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
 async function isProductNameExist(productName: string): Promise<boolean> {
 
     const sql = `SELECT COUNT(*) as productName FROM products WHERE productName = ?`;
-    const count = await dal.execute(sql,[productName]);
+    const [count] = await dal.execute(sql,[productName]);
+    console.log(count['productName']);
     
-    return count[0]['productName'] > 0;
+    return (count['productName'] > 0);
 }
 
 

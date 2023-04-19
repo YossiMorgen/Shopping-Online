@@ -15,7 +15,6 @@ const routes: Routes = [
     {path: 'register', component: RegisterComponent, canActivate: [RegisteredGuard] },
     {path: 'products', component: ProductsLayoutComponent, canActivate: [AuthGuard] },
     {path: 'products/add', component: AddProductComponent, canActivate: [AdminGuard] },
-    {path: 'products/:product_id', component: EditProductComponent, canActivate: [AdminGuard] },
     {path: '', redirectTo: '/products', pathMatch: "full" },
     {path: '**', component: PageNotFoundComponent }
 ];

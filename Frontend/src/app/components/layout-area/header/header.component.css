@@ -9,6 +9,8 @@ header {
     linear-gradient(336deg, rgba(65, 65, 163, 0.164), rgba(0,0,255,0) 70.71%);
     border-bottom: 2px solid var(--border-color);
     box-shadow: 2px 3px 2px var(--border-color);
+
+    position: relative;
 }
 
 h1  {

@@ -1,0 +1,14 @@
+<form (ngSubmit)="search()" #searchProductForm="ngForm">
+    <input  
+        [(ngModel)]="input" 
+        name="input"
+        required 
+        type="text" 
+        placeholder="Search Products" 
+        pattern="([a-z]{1,7})"
+        title="Search Products"
+    >
+    <!-- <span class="red" *ngIf="input.errors?.['pattern'] && input.touched">1-7 letters only!!</span> -->
+    <button [disabled]="searchProductForm.invalid" type="submit">🔍</button>
+
+</form>

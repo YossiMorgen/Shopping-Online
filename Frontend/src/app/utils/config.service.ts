@@ -25,7 +25,7 @@ export class ConfigService {
 
   public getAllCategories = this.baseUrl + "categories";
   public getRandomProducts = this.baseUrl + "random_products";
-  public searchProducts = this.baseUrl + "search_products";
+  public searchProducts = this.baseUrl + "search_products/";
   public getProductsByCategory = this.baseUrl + "products_by_category/";
   public getOneProduct = this.baseUrl + "product_by_id/";
   public addProduct = this.baseUrl + "add_product";

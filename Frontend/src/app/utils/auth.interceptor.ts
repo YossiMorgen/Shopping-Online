@@ -24,9 +24,9 @@ export class HttpResponseInterceptor implements HttpInterceptor {
           if(error.status === 401) {
             alert('Unauthorized access!')
             this.auth.logout();
-        }
+          }
           else if(error.status === 404) {
-            alert('Not Found!')
+            // alert('Not Found!')
             this.router.navigate(['/products']);
           }
         }

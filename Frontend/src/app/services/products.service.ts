@@ -40,6 +40,12 @@ export class ProductsService {
     this.products = products;
   }
 
+  public async getProductsByName(name: string): Promise<void> {
+    const observable = this.http.get<ProductModel[]>(this.config.searchProducts + name );
+    const products = await firstValueFrom(observable);
+    this.products = products;
+  }
+
   public async getOneProduct(productID: number): Promise<ProductModel>{
     const observable = this.http.get<ProductModel>(this.config.getOneProduct + productID);
     return firstValueFrom(observable);

@@ -10,9 +10,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditProductComponent {
 
+  public visibility: boolean = false;
   public product : ProductModel = new ProductModel();
   public paramID : number;
   public categoryID : number; 
+
   @ViewChild('productImage')
   public productImage: ElementRef<HTMLInputElement>
 
@@ -31,16 +33,29 @@ export class EditProductComponent {
       
       this.paramID = +params['product_id'];
     })
-    console.log(this.paramID);    
+
+    if(!this.paramID) {
+       return;
+    }
+    console.log(this.paramID);
+    
+    this.visibility = true;
+    this.product = this.productsService.products.find(product => product.productID === this.paramID)
+    console.log(this.product);
+
+    if(!this.product) {
+      this.visibility = false;
+      return;
+    }
     
     // get categories and product details 
-    try {
-      await this.productsService.getCategories();
-      const product = await this.productsService.getOneProduct(this.paramID);
-      this.product = product;
-    } catch (error : any) {
-      alert(error.message);
-    }
+    // try {
+    //   await this.productsService.getCategories();
+    //   const product = await this.productsService.getOneProduct(this.paramID);
+    //   this.product = product;
+    // } catch (error : any) {
+    //   alert(error.message);
+    // }
   }
 
   public async editProduct(){

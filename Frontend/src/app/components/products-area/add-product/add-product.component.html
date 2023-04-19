@@ -32,9 +32,11 @@
         <label>
             <span>Image:</span>
             <input type="file" required name="imageName" accept="image/*" #productImage>
+            <!-- <span class="red" *ngIf="productImage.errors?.['required'] && price.touched">Missing Price!</span> -->
+
         </label>
 
-        <button [disabled]="addProductForm.invalid" >Add Product</button>
+        <button type="submit" [disabled]="addProductForm.invalid" >Add Product</button>
 
     </form>
 </div>

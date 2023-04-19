@@ -30,6 +30,10 @@ export class AddProductComponent implements OnInit {
   public async addProduct(){
     try {
       this.product.image = this.productImage.nativeElement.files[0];
+      if(!this.product.image) {
+        alert('Product Image Is Necessary ')
+        return;
+      }
       await this.productsService.addProduct(this.product);
       alert('Product Added Successfully');
       this.router.navigateByUrl('/products');

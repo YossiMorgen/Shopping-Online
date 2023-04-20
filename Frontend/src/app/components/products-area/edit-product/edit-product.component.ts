@@ -31,12 +31,10 @@ export class EditProductComponent {
 
   public async editProduct(){
     try {
-    
-      const formData = new FormData();
-      formData.append('productName', this.productsService.products[this.productsService.i].productName );
-      formData.append('imageName', this.productsService.products[this.productsService.i].imageName );
-      formData.append('price', this.productsService.products[this.productsService.i].price.toString() );
-      formData.append('categoryID', this.productsService.products[this.productsService.i].categoryID.toString() );
+      console.log(this.productsService.products[this.productsService.i]);
+      
+      const product = new ProductModel(this.productsService.products[this.productsService.i])
+      const formData = product.getFormData();
       formData.append('productID', this.productsService.products[this.productsService.i].productID.toString() );
 
       if(this.productImage.nativeElement.files){

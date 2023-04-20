@@ -56,13 +56,7 @@ export class ProductsService {
   }
 
   public async addProduct(product: ProductModel):Promise<void>{
-    
-    const formData = new FormData();
-    formData.append('productName', product.productName );
-    formData.append('price', product.price.toString() );
-    formData.append('categoryID', product.categoryID.toString() );
-    formData.append('image', product.image );
-
+    const formData = product.getFormData();
     const observable = this.http.post<ProductModel>(this.config.addProduct, formData);
     const newProduct = await firstValueFrom(observable);
     this.products.push(newProduct);

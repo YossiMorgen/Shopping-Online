@@ -22,7 +22,7 @@ export class HttpResponseInterceptor implements HttpInterceptor {
         },
         error: (error : any) => {
           if(error.status === 401) {
-            alert('Unauthorized access!')
+            // alert('Unauthorized access!')
             this.auth.logout();
           }
           else if(error.status === 404) {

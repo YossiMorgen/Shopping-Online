@@ -1,18 +1,18 @@
-<div *ngIf="this.visibility" class="EditProduct">
+<div *ngIf="auth.isAdmin() && this.productsService.i !== -1" class="EditProduct">
 
-    <form (ngSubmit)="editProduct()" #addProductForm="ngForm">
+    <form (ngSubmit)="editProduct()" #editProductForm="ngForm">
 
         <h2>Edit Product</h2>
 
         <label>
             <span>Product Name:</span>
-            <input type="text" name="productName" [(ngModel)]="product.productName" minlength="2" #productName="ngModel">
+            <input type="text" name="productName" [(ngModel)]="productsService.products[productsService.i].productName" minlength="2" #productName="ngModel">
             <span class="red" *ngIf="productName.errors?.['minlength'] && productName.touched">Min Product Name!</span>
         </label>
 
         <label>
             <span>Category: </span>
-            <select type="text"   name="categoryID" [(ngModel)]="product.categoryID" #product.categoryID="ngModel">
+            <select type="text"   name="categoryID" [(ngModel)]="productsService.products[productsService.i].categoryID" #product.categoryID="ngModel">
                 <option selected disabled >Select..</option>
                 <option *ngFor="let category of productsService.categories" value={{category.categoryID}}>
                     {{category.categoryName}}
@@ -22,7 +22,7 @@
 
         <label>
             <span>Price:</span>
-            <input type="number" name="price" [(ngModel)]="product.price" min="2" #price="ngModel">
+            <input type="number" name="price" [(ngModel)]="productsService.products[productsService.i].price" min="2" #price="ngModel">
             <span class="red" *ngIf="price.errors?.['min'] && price.touched">Min 2!</span>
         </label>
 
@@ -31,7 +31,7 @@
             <input type="file" name="imageName" accept="image/*" #productImage>
         </label>
 
-        <button>Edit Product</button>
+        <button [disabled]="editProductForm.invalid"  type="submit" >Edit Product</button>
 
     </form>
 </div>

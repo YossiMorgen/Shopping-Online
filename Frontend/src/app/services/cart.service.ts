@@ -39,11 +39,14 @@ export class CartService {
         console.log(this.cart);
         
         const i = this.products.findIndex(p => p.productID === product.productID);
+
         if( i !== -1 ) {
-            const newProduct = await this.updateProduct(product, 1);
-            this.products[i] = newProduct;
+            product.cartProductID = this.products[i].cartProductID;
+            this.products[i] = await this.updateProduct(product, 1);
+
             return;
         }
+        
         const observable = this.http.post<ProductCartModel>(this.config.addCartProduct, product);
         this.products.push(await firstValueFrom(observable));
     }

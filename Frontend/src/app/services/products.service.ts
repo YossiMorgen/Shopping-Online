@@ -12,6 +12,10 @@ export class ProductsService {
 
   public products: ProductModel[] = [];
   public categories: CategoryModel[] = [];
+
+  public seletor : Array<Number> = [];
+  public i : number = -1;
+
   public constructor( private http:HttpClient, private config: ConfigService) { }
 
   public async getCategories ( ): Promise<void> {

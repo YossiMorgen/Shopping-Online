@@ -1,10 +1,10 @@
 <div class="productsList">
     <span *ngIf="productsService.products.length === 0">We Don't Have Products That Fit Your Search...</span>
 
-    <div *ngFor="let product of productsService.products">
+    <div *ngFor="let product of productsService.products, let i = index">
         
         <a *ngIf="auth.isAdmin()" [routerLink]="[]" [queryParams]="{ 'product_id': product.productID  }">
-            <app-product-card  [product]="product"></app-product-card>
+            <app-product-card [i]="i"  [product]="product"></app-product-card>
         </a>
 
         <app-product-card *ngIf="!auth.isAdmin()" [product]="product"></app-product-card>

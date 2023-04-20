@@ -1,4 +1,4 @@
-<div class="product">
+<div (click)="showEdit()" class="product">
     <!-- <span *ngIf="auth.isAdmin()" class="trash" (click)="deleteProduct()">🗑</span> -->
     <span *ngIf="!auth.isAdmin()" class="trash" (click)="addProductToCart()">➕</span>
     <div >
@@ -9,6 +9,7 @@
         <span>
             {{ product.price | currency:"ILS" }}
         </span>
+        {{i}}
     </div>
     
 </div>

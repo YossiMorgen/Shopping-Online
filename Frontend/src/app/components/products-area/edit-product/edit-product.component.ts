@@ -51,4 +51,9 @@ export class EditProductComponent {
       alert(error.message);
     }
   }
+
+  
+  public hideEdit ( ) {
+    this.productsService.i = -1
+  }
 }

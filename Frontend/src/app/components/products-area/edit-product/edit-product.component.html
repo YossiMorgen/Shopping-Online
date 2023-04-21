@@ -1,4 +1,4 @@
-<div *ngIf="auth.isAdmin() && this.productsService.i !== -1" class="EditProduct">
+<div *ngIf=" auth.isAdmin() && productsService.products[productsService.i] " class="EditProduct">
         <span *ngIf="auth.isAdmin()" class="trash" (click)="hideEdit()">❌</span>
 
     <form (ngSubmit)="editProduct()" #editProductForm="ngForm">

@@ -24,11 +24,6 @@ export class EditProductComponent {
     public auth: AuthService
   ) {}
 
-
-  async ngOnInit(): Promise<void> {
-
-  }
-
   public async editProduct(){
     try {
       console.log(this.productsService.products[this.productsService.i]);

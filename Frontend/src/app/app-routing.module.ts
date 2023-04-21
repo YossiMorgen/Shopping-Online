@@ -7,14 +7,14 @@ import { AuthGuard } from './utils/auth.guard';
 import { ProductsLayoutComponent } from './components/products-area/products-layout/products-layout.component';
 import { AddProductComponent } from './components/products-area/add-product/add-product.component';
 import { EditProductComponent } from './components/products-area/edit-product/edit-product.component';
-import { AdminGuard } from './utils/admin.guard';
 import { RegisteredGuard } from './utils/registered.guard';
+import { OrderLayoutComponent } from './components/order-area/order-layout/order-layout.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent, canActivate: [RegisteredGuard] },
     {path: 'register', component: RegisterComponent, canActivate: [RegisteredGuard] },
     {path: 'products', component: ProductsLayoutComponent, canActivate: [AuthGuard] },
-    {path: 'products/add', component: AddProductComponent, canActivate: [AdminGuard] },
+    {path: 'order', component: OrderLayoutComponent, canActivate: [AuthGuard] },
     {path: '', redirectTo: '/products', pathMatch: "full" },
     {path: '**', component: PageNotFoundComponent }
 ];

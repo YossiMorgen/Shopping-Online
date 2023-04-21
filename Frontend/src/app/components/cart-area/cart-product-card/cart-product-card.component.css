@@ -1,6 +1,8 @@
 .product_card{
-    padding: 10px;
+    margin: 15px 10px;
+    /* padding-bottom: 5px; */
     position: relative;
+    /* border-bottom: 2px solid gray; */
 }
 
 .buttons{
@@ -9,7 +11,6 @@
 }
 
 .buttons > button {
-    height: 25px;
     background-color: transparent;
     border: none;
 }

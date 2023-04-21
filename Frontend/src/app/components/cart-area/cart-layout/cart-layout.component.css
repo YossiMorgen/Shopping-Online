@@ -1,7 +1,26 @@
 div{
     width: 30vw;
-    height: 80%;
+    height: fit-content;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.392);
     margin: 10px;
+    
     background-color: rgb(207, 228, 247);
+}
+.cartHeader{
+    display: flex;
+    background-color: #00abca;
+    padding: 10px;
+
+}
+
+.cartProductList {
+    height: fit-content;
+    margin-bottom: 0;
+}
+
+.cartFooter{
+    display: flex;
+    background-color: #00abca;
+    padding: 10px;
+
 }

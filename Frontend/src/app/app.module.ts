@@ -25,6 +25,9 @@ import { HttpResponseInterceptor } from './utils/auth.interceptor';
 import { CartProductCardComponent } from './components/cart-area/cart-product-card/cart-product-card.component';
 import { CartFooterComponent } from './components/cart-area/cart-footer/cart-footer.component';
 import { SearchProductsComponent } from './components/products-area/search-products/search-products.component';
+import { MyCartComponent } from './components/order-area/my-cart/my-cart.component';
+import { OrderLayoutComponent } from './components/order-area/order-layout/order-layout.component';
+import { OrderFormComponent } from './components/order-area/order-form/order-form.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { SearchProductsComponent } from './components/products-area/search-produ
     CartProductCardComponent,
     CartFooterComponent,
     SearchProductsComponent,
+    MyCartComponent,
+    OrderLayoutComponent,
+    OrderFormComponent,
   ],
   imports: [
     BrowserModule,

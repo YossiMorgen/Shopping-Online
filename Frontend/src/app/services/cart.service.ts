@@ -42,11 +42,12 @@ export class CartService {
 
         if( i !== -1 ) {
             product.cartProductID = this.products[i].cartProductID;
+            product.amount = this.products[i].amount;
             this.products[i] = await this.updateProduct(product, 1);
 
             return;
         }
-        
+
         const observable = this.http.post<ProductCartModel>(this.config.addCartProduct, product);
         this.products.push(await firstValueFrom(observable));
     }
@@ -96,6 +97,8 @@ export class CartService {
         console.log(product.amount + num);
         
         product.amount += num;
+        console.log(product.amount);
+
         const Observable = this.http.put<ProductCartModel>(this.config.updateOneCartProduct, product);
         const newProduct = await firstValueFrom(Observable);
 

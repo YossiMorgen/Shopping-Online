@@ -23,12 +23,25 @@ async function getOrCreateCart(userID: number): Promise<Cart> {
 
 function getCartProducts(cartID: number): Promise<ProductCartModel[]> {
     return dal.execute(`
-        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName 
+        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, products.imageName
         FROM cart_product
         LEFT JOIN products
         ON cart_product.productID = products.productID
         WHERE cartID = ?
     `, [cartID]);
+}
+
+function getCartProductsByUser(userID: number){
+    return dal.execute(` 
+        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, products.imageName
+        FROM cart_product
+        LEFT JOIN products
+        ON cart_product.productID = products.productID
+        WHERE cartID = (
+            SELECT shopping_cart.cartID from shopping_cart WHERE shopping_cart.userID = ?
+        )`, 
+        [userID]
+    )
 }
 
 async function addCartProduct( product : ProductCartModel): Promise<ProductCartModel> {

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { Component } from '@angular/core';
 import User from 'src/app/models/auth-models/user.model';
@@ -17,7 +18,8 @@ export class OrderFormComponent {
   constructor ( 
     private auth : AuthService,
     private orderService : OrderService,
-    private cartService : CartService
+    private cartService : CartService,
+    private router : Router
   ) { }
 
   public copyDefaultUserDetails(cell: 'city' | 'street'){
@@ -33,6 +35,8 @@ export class OrderFormComponent {
       this.order.price = this.cartService.productsTotalPrice();
       
       await this.orderService.makeAnOrder(this.order);
+
+      this.router.navigate(['/receipt'])
     } catch (error: any) {
       alert(error.message);
     }

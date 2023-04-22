@@ -28,6 +28,7 @@ import { SearchProductsComponent } from './components/products-area/search-produ
 import { MyCartComponent } from './components/order-area/my-cart/my-cart.component';
 import { OrderLayoutComponent } from './components/order-area/order-layout/order-layout.component';
 import { OrderFormComponent } from './components/order-area/order-form/order-form.component';
+import { ReceiptComponent } from './components/order-area/receipt/receipt.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { OrderFormComponent } from './components/order-area/order-form/order-for
     MyCartComponent,
     OrderLayoutComponent,
     OrderFormComponent,
+    ReceiptComponent,
   ],
   imports: [
     BrowserModule,

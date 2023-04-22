@@ -1,4 +1,3 @@
 <div class="cartFooter">
-        <a routerLink="/order">make an order</a>
-
+        <a *ngIf="cartService.productsTotalPrice()" routerLink="/order">make an order</a>
 </div>

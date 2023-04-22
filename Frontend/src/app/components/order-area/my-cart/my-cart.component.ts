@@ -22,6 +22,10 @@ export class MyCartComponent implements OnInit {
         alert(error.message);
       }
     }
+
+    if(this.cartService.productsTotalPrice() === 0){
+      this.router.navigate(['/products']);
+    }
   }
 
 }

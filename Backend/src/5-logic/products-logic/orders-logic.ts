@@ -8,9 +8,9 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
     const err = order.validation();
     if(err) throw new ValidationErrorModel(err);
 
-    let info: OkPacket = await dal.execute(`UPDATE shopping_cart SET ordered = 1 WHERE cartID = 8 AND userID = 2`, [order.cartID, order.userID])
+    let info: OkPacket = await dal.execute(`UPDATE shopping_cart SET ordered = 1 WHERE cartID = ? AND userID = ? AND ordered = 0`, [order.cartID, order.userID])
     if(info.affectedRows === 0) throw new ValidationErrorModel(`cart does'nt exist or it's not yours`);
-    
+
     const sql = 'INSERT INTO orders VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?)'
     const values = [ order.cartID, order.userID, order.price, order.city, order.street, order.deliveryDate, new Date(), order.creditCard]
 

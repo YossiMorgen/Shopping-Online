@@ -15,7 +15,7 @@ export class SearchProductsComponent {
   public input: string = '';
   constructor(
     private productsService : ProductsService,
-    private router : Router
+    public router : Router
   ) {}
 
   public async search () {

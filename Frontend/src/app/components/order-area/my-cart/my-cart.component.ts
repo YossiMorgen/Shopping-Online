@@ -18,6 +18,7 @@ export class MyCartComponent implements OnInit {
       try {
         this.cartService.getCart();
       } catch (error : any) {
+        this.router.navigate(['/products']);
         alert(error.message);
       }
     }

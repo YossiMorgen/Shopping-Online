@@ -8,12 +8,13 @@ import appConfig from '../../2-utils/AppConfig';
 
 async function createCart(userID: number): Promise<object>{
     const date = new Date();
-    const info: OkPacket = await dal.execute('INSERT INTO shopping_cart VALUES (DEFAULT, ?, ?)', [userID, date]);
+    const info: OkPacket = await dal.execute('INSERT INTO shopping_cart VALUES (DEFAULT, ?, ?, DEFAULT)', [userID, date]);
     return {userID, cartID: info.insertId, productionDate : date}
 }
 
 async function getOrCreateCart(userID: number): Promise<Cart> {
     const res = await dal.execute('SELECT * FROM `shopping_cart` WHERE `userID` =? AND shopping_cart.ordered = 0', [userID]);
+    
     let cart = res[0];
     if(!cart){
         cart = await createCart(userID);

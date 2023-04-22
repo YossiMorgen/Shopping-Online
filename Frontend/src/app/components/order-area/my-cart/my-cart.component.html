@@ -1,3 +1,23 @@
 <div *ngFor="let product of cartService.products">
-    <span>{{product.productName}}</span>
+    <span> name - {{product.productName}} </span>
+    <span> amount - {{product.amount}}</span>
 </div>
+
+<table>
+    <thead>
+        <tr>
+            <th>pic</th>
+            <th>name</th>
+            <th>amount</th>
+            <th>price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let product of cartService.products">
+            <td><img src={{product.imageName}} alt=""></td>
+            <td>{{product.productName}}</td>
+            <td>{{product.amount}}</td>
+            <td>{{product.price}}</td>
+        </tr>
+    </tbody>
+</table>

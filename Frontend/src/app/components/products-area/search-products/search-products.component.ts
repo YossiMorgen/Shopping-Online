@@ -20,6 +20,10 @@ export class SearchProductsComponent {
 
   public async search () {
     try {
+      console.log(this.router.url);
+      if (this.router.url === '/order') {
+        return
+      }      
       // this.router.navigate(['products'], {queryParams: {search: this.input}});
       await this.productsService.getProductsByName( this.input );
     } catch (error : any) {

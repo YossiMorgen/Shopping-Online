@@ -1,4 +1,4 @@
-export default class OrdersModel{
+export default class Order{
 
     public orderID: number;
     public cartID: number;
@@ -10,7 +10,7 @@ export default class OrdersModel{
     public orderDate: Date;
     public CreditDetail: number;
 
-    public constructor(product: OrdersModel){
+    public constructor(product: Order){
         this.orderID = product.orderID;
         this.cartID = product.cartID;
         this.userID = product.userID;

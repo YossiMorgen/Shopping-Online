@@ -24,7 +24,7 @@ async function getOrCreateCart(userID: number): Promise<Cart> {
 
 function getCartProducts(cartID: number): Promise<ProductCartModel[]> {
     return dal.execute(`
-        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, CONCAT(?, products.imageName)
+        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, CONCAT(?, products.imageName) as ImageName,
         FROM cart_product
         LEFT JOIN products
         ON cart_product.productID = products.productID

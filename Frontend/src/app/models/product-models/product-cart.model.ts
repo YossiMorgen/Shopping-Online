@@ -6,5 +6,6 @@ export default class ProductCartModel{
     public price: number;
     public cartID: number;
     public productName: string;
+    public imageName: string;
 
 }

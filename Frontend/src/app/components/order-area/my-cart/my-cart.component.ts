@@ -15,8 +15,11 @@ export class MyCartComponent implements OnInit {
 
   ngOnInit(): void {
     if(!this.cartService.products.length){
-      console.log('Please select products first');
-      this.router.navigate(['/products']);
+      try {
+        this.cartService.getCart();
+      } catch (error : any) {
+        alert(error.message);
+      }
     }
   }
 

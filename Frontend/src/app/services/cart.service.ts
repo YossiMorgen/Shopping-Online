@@ -26,12 +26,12 @@ export class CartService {
 
         const observable = this.http.get<Cart>(this.config.getCartDetails)
         this.cart = await firstValueFrom(observable);
-        this.getCartProducts();
+        this.getCartProductsByCartId();
         
     }
 
-    public async getCartProducts ( ): Promise<void> {
-        const observable = this.http.get<ProductCartModel[]>(this.config.getCartProducts + this.cart.cartID)
+    public async getCartProductsByCartId ( ): Promise<void> {
+        const observable = this.http.get<ProductCartModel[]>(this.config.getCartProductsByCartID + this.cart.cartID)
         this.products = await firstValueFrom(observable);
     }
 

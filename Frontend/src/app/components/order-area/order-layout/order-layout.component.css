@@ -3,3 +3,6 @@
     width: 100%;
     padding: 5px;
 }
+.cart{
+    flex-basis: 50%;
+}

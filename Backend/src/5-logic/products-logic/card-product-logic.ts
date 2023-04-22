@@ -24,7 +24,7 @@ async function getOrCreateCart(userID: number): Promise<Cart> {
 
 function getCartProducts(cartID: number): Promise<ProductCartModel[]> {
     return dal.execute(`
-        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, CONCAT(?, products.imageName) as ImageName,
+        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, CONCAT(?, products.imageName) as imageName
         FROM cart_product
         LEFT JOIN products
         ON cart_product.productID = products.productID
@@ -34,7 +34,7 @@ function getCartProducts(cartID: number): Promise<ProductCartModel[]> {
 
 function getCartProductsByUser(userID: number){
     return dal.execute(` 
-        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, CONCAT(?, products.imageName)
+        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, CONCAT(?, products.imageName) as imageName
         FROM cart_product
         LEFT JOIN products
         ON cart_product.productID = products.productID
@@ -104,7 +104,7 @@ function deleteCartProducts(userID: number) {
 
 async function getOneProductDetails(cartProductID: number): Promise<ProductCartModel>  {
     const [productDetails] = await dal.execute(`
-    SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, CONCAT(?, products.imageName)
+    SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, CONCAT(?, products.imageName) as imageName
     FROM cart_product
     LEFT JOIN products
     ON cart_product.productID = products.productID

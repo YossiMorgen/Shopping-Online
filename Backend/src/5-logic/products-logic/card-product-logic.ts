@@ -4,6 +4,7 @@ import { ValidationErrorModel } from "../../4-models/error-models";
 import dal from '../../2-utils/dal';
 import ProductCartModel from '../../4-models/product-models/product_cart-model';
 import Cart from '../../4-models/product-models/shopping_cart-model';
+import appConfig from '../../2-utils/AppConfig';
 
 async function createCart(userID: number): Promise<object>{
     const date = new Date();
@@ -23,24 +24,24 @@ async function getOrCreateCart(userID: number): Promise<Cart> {
 
 function getCartProducts(cartID: number): Promise<ProductCartModel[]> {
     return dal.execute(`
-        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, products.imageName
+        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, CONCAT(?, products.imageName)
         FROM cart_product
         LEFT JOIN products
         ON cart_product.productID = products.productID
         WHERE cartID = ?
-    `, [cartID]);
+    `, [appConfig.nodeUrl, cartID]);
 }
 
 function getCartProductsByUser(userID: number){
     return dal.execute(` 
-        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, products.imageName
+        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, CONCAT(?, products.imageName)
         FROM cart_product
         LEFT JOIN products
         ON cart_product.productID = products.productID
         WHERE cartID = (
             SELECT shopping_cart.cartID from shopping_cart WHERE shopping_cart.userID = ?
         )`, 
-        [userID]
+        [appConfig.nodeUrl, userID]
     )
 }
 
@@ -102,21 +103,22 @@ function deleteCartProducts(userID: number) {
 }
 
 async function getOneProductDetails(cartProductID: number): Promise<ProductCartModel>  {
-    const productDetails = await dal.execute(`
-    SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName 
+    const [productDetails] = await dal.execute(`
+    SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, CONCAT(?, products.imageName)
     FROM cart_product
     LEFT JOIN products
     ON cart_product.productID = products.productID
     WHERE cart_product.cartProductID = ? 
-    `, [ cartProductID ])
+    `, [ appConfig.nodeUrl, cartProductID ])
 
-    return productDetails[0];
+    return productDetails;
 }
 
 export default {
     createCart,
     getOrCreateCart,
     getCartProducts,
+    getCartProductsByUser,
     addCartProduct,
     updateCartProduct,
     updateCartProducts,

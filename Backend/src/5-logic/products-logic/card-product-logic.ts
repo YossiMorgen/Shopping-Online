@@ -13,7 +13,7 @@ async function createCart(userID: number): Promise<object>{
 }
 
 async function getOrCreateCart(userID: number): Promise<Cart> {
-    const res = await dal.execute('SELECT * FROM `shopping_cart` WHERE `userID` =?', [userID]);
+    const res = await dal.execute('SELECT * FROM `shopping_cart` WHERE `userID` =? AND shopping_cart.ordered = 0', [userID]);
     let cart = res[0];
     if(!cart){
         cart = await createCart(userID);
@@ -39,7 +39,7 @@ function getCartProductsByUser(userID: number){
         LEFT JOIN products
         ON cart_product.productID = products.productID
         WHERE cartID = (
-            SELECT shopping_cart.cartID from shopping_cart WHERE shopping_cart.userID = ?
+            SELECT shopping_cart.cartID from shopping_cart WHERE shopping_cart.userID = ? AND shopping_cart.ordered = 0
         )`, 
         [appConfig.nodeUrl, userID]
     )

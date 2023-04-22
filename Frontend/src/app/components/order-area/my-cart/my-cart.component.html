@@ -1,18 +1,21 @@
-<table>
-    <thead>
-        <tr>
-            <th>pic</th>
-            <th>name</th>
-            <th>amount</th>
-            <th>price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr  *ngFor="let product of cartService.products">
-            <td><img src={{product.imageName}} alt=""></td>
-            <td>{{product.productName}}</td>
-            <td>{{product.amount}}</td>
-            <td>{{product.price}}</td>
-        </tr>
-    </tbody>
-</table>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>pic</th>
+                <th>name</th>
+                <th>amount</th>
+                <th>price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let product of cartService.products">
+                <td><img src={{product.imageName}} alt=""></td>
+                <td>{{product.productName}}</td>
+                <td>{{product.amount}}</td>
+                <td>{{product.price | currency:"ILS"}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <span>total price - {{ cartService.productsTotalPrice() | currency:"ILS" }}</span>
+</div>

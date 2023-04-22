@@ -14,6 +14,8 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
     const info: OkPacket = await dal.execute(sql, values);
     order.orderID = info.insertId;
 
+    dal.execute(`UPDATE order SET ordered = 1`)
+
     return order;
 }
 

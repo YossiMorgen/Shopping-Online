@@ -117,4 +117,15 @@ export class CartService {
         return [sum, count];
     }
 
+    
+    public productsTotalPrice(): number{
+        let sum = 0;
+
+        for(const product of this.products){
+            sum += product.price;
+        }
+
+        return sum;
+    }
+
 }

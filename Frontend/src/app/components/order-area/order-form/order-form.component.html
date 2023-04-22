@@ -1,1 +1,42 @@
-<p>order-form works!</p>
+
+<form (ngSubmit)="makeAnOrder()" #orderForm="ngForm">
+
+    <h2>Order</h2>
+
+    <h3>Shipping Details:</h3>
+    <hr>
+
+    <label (dblclick)="copyDefaultUserDetails('city')">
+        <span>City:</span>
+        <input type="text" name="city" [(ngModel)]="order.city" minlength="2" required #city="ngModel">
+        <span class="red" *ngIf="city.errors?.['required'] && city.touched">Missing First Name!</span>
+        <span class="red" *ngIf="city.errors?.['minlength'] && city.touched">Min Product Name!</span>
+    </label>
+
+    <label (dblclick)="copyDefaultUserDetails('street')">
+        <span>Street:</span>
+        <input type="text" name="street" [(ngModel)]="order.street" minlength="2" required #street="ngModel">
+        <span class="red" *ngIf="street.errors?.['required'] && street.touched">Missing First Name!</span>
+        <span class="red" *ngIf="street.errors?.['minlength'] && street.touched">Min Product Name!</span>
+    </label>
+
+    <label>
+        <span>Shipping Date:</span>
+        <input type="datetime-local" name="deliveryDate" [(ngModel)]="order.deliveryDate" minlength="2" required #deliveryDate="ngModel">
+        <span class="red" *ngIf="deliveryDate.errors?.['required'] && deliveryDate.touched">Missing First Name!</span>
+        <span class="red" *ngIf="deliveryDate.errors?.['minlength'] && deliveryDate.touched">Min Product Name!</span>
+    </label>
+
+    <h3>Payments:</h3>
+    <hr>
+
+    <label>
+        <span>Credit Card:</span>
+        <input pattern="([1-9]{4})" type="text" name="creditCard" [(ngModel)]="order.creditCard" minlength="2" required #creditCard="ngModel">
+        <span class="red" *ngIf="creditCard.errors?.['required'] && creditCard.touched">Missing First Name!</span>
+        <span class="red" *ngIf="creditCard.errors?.['minlength'] && creditCard.touched">Min Product Name!</span>
+    </label>
+
+    <button type="submit" [disabled]="orderForm.invalid" >Make an Order</button>
+
+</form>

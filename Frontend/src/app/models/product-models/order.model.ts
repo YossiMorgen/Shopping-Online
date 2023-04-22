@@ -8,17 +8,6 @@ export default class Order{
     public street: string;
     public deliveryDate: Date;
     public orderDate: Date;
-    public CreditDetail: number;
-
-    public constructor(product: Order){
-        this.orderID = product.orderID;
-        this.cartID = product.cartID;
-        this.userID = product.userID;
-        this.price = product.price;
-        this.city = product.city;
-        this.street = product.street;
-        this.deliveryDate = product.deliveryDate;
-        this.orderDate = product.orderDate;
-    }
+    public creditCard: number;
 
 }

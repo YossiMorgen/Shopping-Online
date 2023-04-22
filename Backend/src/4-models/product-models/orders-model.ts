@@ -10,7 +10,7 @@ export default class OrdersModel{
     public street: string;
     public deliveryDate: Date;
     public orderDate: Date;
-    public CreditDetail: number;
+    public creditCard: number;
 
     public constructor(product: OrdersModel){
         this.orderID = product.orderID;
@@ -21,6 +21,7 @@ export default class OrdersModel{
         this.street = product.street;
         this.deliveryDate = product.deliveryDate;
         this.orderDate = product.orderDate;
+        this.creditCard = product.creditCard;
     }
 
     public static validationSchema = Joi.object({
@@ -31,8 +32,8 @@ export default class OrdersModel{
         city: Joi.string().min(2).max(30).required(),
         street: Joi.string().min(2).max(200).required(),
         deliveryDate: Joi.date().required(),
-        orderDate: Joi.date().required(),
-        CreditDetail: Joi.number().positive().max(9999).required()
+        orderDate: Joi.date().optional(),
+        creditCard: Joi.string().min(4).max(4).required()
     })
 
     public validation():string{

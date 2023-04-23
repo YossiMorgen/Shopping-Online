@@ -2,13 +2,13 @@
     {{product.productName}}
     {{product.price | currency:"ILS"}}
     <span class="buttons">
-        <button (click)="reduceQuantity()">
+        <button (click)="changeQuantity( amount - 1 )">
             ➖
         </button>
         <button>
             {{product.amount}}
         </button>
-        <button (click)="increaseQuantity()">
+        <button (click)="changeQuantity(amount + 1)">
             ➕
         </button>
         <button class="remove" (click)="removeProduct()"> - remove -</button>

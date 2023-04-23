@@ -1,5 +1,5 @@
 import { CartService } from 'src/app/services/cart.service';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import ProductCartModel from 'src/app/models/product-models/product-cart.model';
 
 @Component({
@@ -7,25 +7,22 @@ import ProductCartModel from 'src/app/models/product-models/product-cart.model';
   templateUrl: './cart-product-card.component.html',
   styleUrls: ['./cart-product-card.component.css']
 })
-export class CartProductCardComponent {
+export class CartProductCardComponent implements OnInit {
 
+  public amount: number = 0;
   
   @Input()
   public product: ProductCartModel;
 
   constructor(private cartService : CartService) { }
 
-  public async reduceQuantity(){
-    try {
-      await this.cartService.reduceQuantity(this.product.cartProductID)
-    } catch (error: any) {
-      alert(error.message);
-    }
+  ngOnInit(): void {
+    this.amount = this.cartService.products.find(product => product.productName === this.product.productName).amount || 0;
   }
 
-  public async increaseQuantity(){
+  public async changeQuantity(amount: number) {
     try {
-      await this.cartService.addProduct(this.product, 1)
+      await this.cartService.changeProductAmount(this.product, amount);
     } catch (error: any) {
       alert(error.message);
     }

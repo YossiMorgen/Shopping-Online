@@ -47,7 +47,7 @@ export class ProductCardComponent {
       productCart.productID = this.product.productID;
       productCart.amount = amount;
             
-      this.cartService.addProduct(productCart, amount);
+      this.cartService.changeProductAmount(productCart, amount);
 
     } catch (error : any) {
       alert(error.message);
@@ -64,7 +64,9 @@ export class ProductCardComponent {
         data: {...this.product}
       });
       dialogRef.afterClosed().subscribe(async (result: number) => {
-         await this.addProductToCart(result);
+        if(result){
+          await this.addProductToCart(result);
+        }
       });
     }
   }

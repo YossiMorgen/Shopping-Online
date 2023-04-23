@@ -30,8 +30,11 @@ import { OrderLayoutComponent } from './components/order-area/order-layout/order
 import { OrderFormComponent } from './components/order-area/order-form/order-form.component';
 import { ReceiptComponent } from './components/order-area/receipt/receipt.component';
 import { DownloadPdfComponent } from './components/order-area/download-pdf/download-pdf.component';
-import { MatStepper } from '@angular/material/stepper';
 import { PopupAddProductComponent } from './components/products-area/popup-add-product/popup-add-product.component';
+
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -66,6 +69,9 @@ import { PopupAddProductComponent } from './components/products-area/popup-add-p
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatDialogModule,
+    MatFormFieldModule
   ],
   providers: [
     {useClass: JwtInterceptor, provide: HTTP_INTERCEPTORS, multi: true},

@@ -3,7 +3,7 @@ import ProductCartModel from 'src/app/models/product-models/product-cart.model';
 import ProductModel from 'src/app/models/product-models/product.model';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
-import { MatDialogRef } from '@angular/material';
+import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-popup-add-product',

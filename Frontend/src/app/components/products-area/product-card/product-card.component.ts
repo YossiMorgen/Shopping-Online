@@ -5,6 +5,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { ConfigService } from 'src/app/utils/config.service';
 import ProductCartModel from 'src/app/models/product-models/product-cart.model';
+import { PopupAddProductComponent } from '../popup-add-product/popup-add-product.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product-card',
@@ -16,7 +18,8 @@ export class ProductCardComponent {
   public constructor( 
     public productsService: ProductsService,
     public auth : AuthService,
-    public cartService : CartService
+    public cartService : CartService,
+    public dialog: MatDialog
   ){}
   
   @Input()
@@ -54,7 +57,24 @@ export class ProductCardComponent {
   public showEdit() {
     this.productsService.i = this.i;  
     console.log(this.productsService.i);
-     
+
+    if(!this.auth.isAdmin()){const dialogRef = this.dialog.open(PopupAddProductComponent, {
+      width: '250px',
+      data: {product: this.product, i: this.i}
+    });}
+  }
+
+  
+  openDialog(): void {
+    const dialogRef = this.dialog.open(PopupAddProductComponent, {
+      width: '250px',
+      data: {product: this.product, i: this.i}
+    });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   this.animal = result;
+    // });
   }
 
 

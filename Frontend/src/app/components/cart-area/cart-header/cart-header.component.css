@@ -1,3 +1,10 @@
+.cartHeader{
+    display: flex;
+    background-color: #00abca;
+    padding: 10px;
+
+}
+
 button {
     padding: auto;
     height: 20px;

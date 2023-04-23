@@ -29,6 +29,9 @@ import { MyCartComponent } from './components/order-area/my-cart/my-cart.compone
 import { OrderLayoutComponent } from './components/order-area/order-layout/order-layout.component';
 import { OrderFormComponent } from './components/order-area/order-form/order-form.component';
 import { ReceiptComponent } from './components/order-area/receipt/receipt.component';
+import { DownloadPdfComponent } from './components/order-area/download-pdf/download-pdf.component';
+import { MatStepper } from '@angular/material/stepper';
+import { PopupAddProductComponent } from './components/products-area/popup-add-product/popup-add-product.component';
 
 @NgModule({
   declarations: [
@@ -54,13 +57,15 @@ import { ReceiptComponent } from './components/order-area/receipt/receipt.compon
     OrderLayoutComponent,
     OrderFormComponent,
     ReceiptComponent,
+    DownloadPdfComponent,
+    PopupAddProductComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     {useClass: JwtInterceptor, provide: HTTP_INTERCEPTORS, multi: true},

@@ -1,6 +1,6 @@
 <div (click)="showEdit()" class="product">
     <!-- <span *ngIf="auth.isAdmin()" class="trash" (click)="deleteProduct()">🗑</span> -->
-    <span *ngIf="!auth.isAdmin()" class="trash" (click)="addProductToCart()">➕</span>
+    <!-- <span *ngIf="!auth.isAdmin()" class="trash" (click)="addProductToCart()">➕</span> -->
     <div >
         <span>
             <b>{{ product.productName }}</b>
@@ -10,5 +10,5 @@
             {{ product.price | currency:"ILS" }}
         </span>
     </div>
-    
+    <app-popup-add-product *ngIf="productsService.i && !auth.isAdmin()" [product]="product" [i]="i" ></app-popup-add-product>
 </div>

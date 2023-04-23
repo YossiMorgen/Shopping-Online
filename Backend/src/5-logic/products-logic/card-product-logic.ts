@@ -98,7 +98,7 @@ function deleteCartProduct(cartProductID: number) {
 function deleteCartProducts(userID: number) {
     const sql = `
         DELETE FROM cart_product 
-        WHERE cartID = (SELECT cartID FROM shopping_cart WHERE shopping_cart.userID = ?)
+        WHERE cartID = (SELECT cartID FROM shopping_cart WHERE shopping_cart.userID = ? AND shopping_cart.ordered = 0)
     `;
     return dal.execute(sql, [userID]); 
 }

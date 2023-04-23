@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import { ConfigService } from 'src/app/utils/config.service';
 
 @Component({
   selector: 'app-receipt',
@@ -11,7 +12,8 @@ export class ReceiptComponent implements OnInit {
 
   constructor (
     public cartService : CartService,
-    private router : Router
+    private router : Router,
+    public config : ConfigService
   ) { }
 
   ngOnInit(): void {
@@ -19,4 +21,5 @@ export class ReceiptComponent implements OnInit {
       this.router.navigate(['products']);
     }
   }
+
 }

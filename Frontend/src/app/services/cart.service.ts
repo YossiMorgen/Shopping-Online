@@ -78,8 +78,9 @@ export class CartService {
         const observable = this.http.delete(this.config.removeOneCartProduct + cartProductID);
         await firstValueFrom(observable);
 
-        this.products.filter(p => p.cartProductID === cartProductID)
-
+        this.products = this.products.filter(p => p.cartProductID !== cartProductID)
+        console.log(this.products);
+        
     }    
 
     public async deleteAllProducts():Promise<void>{

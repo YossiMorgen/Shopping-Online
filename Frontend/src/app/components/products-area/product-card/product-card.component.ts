@@ -14,7 +14,7 @@ import ProductCartModel from 'src/app/models/product-models/product-cart.model';
 export class ProductCardComponent {
   
   public constructor( 
-    private productsService: ProductsService,
+    public productsService: ProductsService,
     public auth : AuthService,
     public cartService : CartService
   ){}
@@ -52,7 +52,9 @@ export class ProductCardComponent {
   }
 
   public showEdit() {
-    this.productsService.i = this.i;   
+    this.productsService.i = this.i;  
+    console.log(this.productsService.i);
+     
   }
 
 

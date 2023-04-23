@@ -1,0 +1,24 @@
+.pdf{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    padding: auto;
+    font-size: xx-large;
+}
+.pdf > div{
+    display: flex;
+    height: fit-content;
+}
+.pdf > div > div {
+    margin: auto;
+}
+table {
+    margin: 50px 0;
+}
+
+td, th , span{
+    padding: 50px;
+}

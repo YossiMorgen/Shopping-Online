@@ -1,0 +1,23 @@
+<div class="pdf">
+    <div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>amount</th>
+                        <th>price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let product of cartService.products">
+                        <td>{{product.productName}}</td>
+                        <td>{{product.amount}}</td>
+                        <td>{{product.price | currency:"ILS"}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <span>total price - {{ cartService.productsTotalPrice() | currency:"ILS" }}</span>
+        </div>
+    </div>
+</div>

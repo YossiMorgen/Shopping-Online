@@ -7,7 +7,7 @@
             <app-product-card [i]="i"  [product]="product"></app-product-card>
         </a>
 
-        <app-product-card *ngIf="!auth.isAdmin()" [product]="product"></app-product-card>
+        <app-product-card *ngIf="!auth.isAdmin()" [i]="i" [product]="product"></app-product-card>
 
     </div>
 </div>

@@ -40,14 +40,14 @@ export class ProductCardComponent {
     }
   }
 
-  public async addProductToCart() {
+  public async addProductToCart(amount: number) {
     try {
       const productCart = new ProductCartModel()
       productCart.cartID = this.cartService.cart?.cartID;
       productCart.productID = this.product.productID;
-      productCart.amount = 1;
+      productCart.amount = amount;
             
-      this.cartService.addProduct(productCart);
+      this.cartService.addProduct(productCart, amount);
 
     } catch (error : any) {
       alert(error.message);
@@ -58,17 +58,24 @@ export class ProductCardComponent {
     this.productsService.i = this.i;  
     console.log(this.productsService.i);
 
-    if(!this.auth.isAdmin()){const dialogRef = this.dialog.open(PopupAddProductComponent, {
-      width: '250px',
-      data: {product: this.product, i: this.i}
-    });}
+    if(!this.auth.isAdmin()){
+      const dialogRef = this.dialog.open(PopupAddProductComponent, {
+        width: '250px',
+        data: {...this.product}
+      });
+      dialogRef.afterClosed().subscribe(async (result: number) => {
+         await this.addProductToCart(result);
+      });
+    }
   }
+
+  
 
   
   openDialog(): void {
     const dialogRef = this.dialog.open(PopupAddProductComponent, {
       width: '250px',
-      data: {product: this.product, i: this.i}
+      data: {...this.product}
     });
 
     // dialogRef.afterClosed().subscribe(result => {

@@ -35,7 +35,7 @@ export class CartService {
         this.products = await firstValueFrom(observable);
     }
 
-    public async addProduct(product: ProductCartModel):Promise<void>{
+    public async addProduct(product: ProductCartModel, amount: number):Promise<void>{
         console.log(this.cart);
         
         const i = this.products.findIndex(p => p.productID === product.productID);
@@ -43,7 +43,7 @@ export class CartService {
         if( i !== -1 ) {
             product.cartProductID = this.products[i].cartProductID;
             product.amount = this.products[i].amount;
-            this.products[i] = await this.updateProduct(product, 1);
+            this.products[i] = await this.updateProduct(product, amount);
 
             return;
         }

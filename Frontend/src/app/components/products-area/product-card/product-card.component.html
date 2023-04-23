@@ -10,5 +10,4 @@
             {{ product.price | currency:"ILS" }}
         </span>
     </div>
-    <app-popup-add-product *ngIf="productsService.i && !auth.isAdmin()" [product]="product" [i]="i" ></app-popup-add-product>
 </div>

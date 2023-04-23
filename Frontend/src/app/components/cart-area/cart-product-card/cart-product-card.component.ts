@@ -25,7 +25,7 @@ export class CartProductCardComponent {
 
   public async increaseQuantity(){
     try {
-      await this.cartService.addProduct(this.product)
+      await this.cartService.addProduct(this.product, 1)
     } catch (error: any) {
       alert(error.message);
     }

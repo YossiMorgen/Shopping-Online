@@ -134,4 +134,12 @@ export class CartService {
         return sum;
     }
 
+    public regex : RegExp;
+
+    public changeRegexSearch(args: string): void{
+        this.regex = new RegExp("\\b("+args+"\\b)");
+        console.log(this.regex);
+        
+    }
+
 }

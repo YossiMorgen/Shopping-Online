@@ -3,6 +3,7 @@ import User from "../4-models/auth-models/user-model";
 import authLogic from "../5-logic/auth-logic/auth-logic";
 import CredentialsModel from "../4-models/auth-models/credentials-model";
 import RoleModel from "../4-models/auth-models/role-model";
+import verifyLoggedIn from "../3-middleware/auth-middlewares/verify-logged-in";
 
 const router = express.Router() 
 
@@ -30,6 +31,16 @@ router.post("/auth/login", async (req: Request, res: Response, next: NextFunctio
         console.log(credentials)
         const token = await authLogic.login(credentials);
         res.json(token);
+    } catch (error) {
+        next(error);
+    }
+})
+
+router.get("/auth/is_email_exist/:email", async (req: Request, res: Response, next: NextFunction) =>{
+    try {
+        const email = req.params.email;
+        const bool = await authLogic.isEmailExist(email)
+        res.send(bool)
     } catch (error) {
         next(error);
     }

@@ -14,7 +14,7 @@ export class ConfigService {
 
   public login = this.baseUrl + "auth/login";
   public register = this.baseUrl + "auth/register";
-
+  public isEmailExist = this.baseUrl + "auth/is_email_exist/";
   public createCart = this.baseUrl + "create_cart";
   public getCartDetails = this.baseUrl + "cart_details";
   public getCartProductsByCartID = this.baseUrl + "cart_products_by_cart_id/";

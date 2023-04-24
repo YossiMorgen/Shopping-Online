@@ -25,10 +25,6 @@ export class HttpResponseInterceptor implements HttpInterceptor {
             // alert('Unauthorized access!')
             this.auth.logout();
           }
-          else if(error.status === 404) {
-            // alert('Not Found!')
-            this.router.navigate(['/products']);
-          }
         }
       }));
   }

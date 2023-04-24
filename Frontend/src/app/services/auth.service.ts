@@ -32,6 +32,11 @@ export class AuthService{
         this.setUser(token)
     }
 
+    public async isEmailExist(email: string): Promise<boolean> {
+        const observable = this.http.get<boolean>( this.config.isEmailExist + email );
+        return firstValueFrom(observable);
+    }
+
     public logout():void{
         delete this.user;
         this.token = '';

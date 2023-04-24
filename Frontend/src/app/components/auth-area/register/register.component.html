@@ -76,47 +76,49 @@
             <button  [disabled]="validatePasswordAndEmailForm.invalid"  >Validate Details</button>
         </form>
             
-        <button *ngIf="complete" matStepperNext>Next</button>
-        <!-- <ng-template matStepLabel>Fill out your name</ng-template>
-        <mat-form-field appearance="fill">
-            <mat-label> Email </mat-label>
-            <input type="email" matInput formControlName="email" placeholder=" Email " required>
-        </mat-form-field> -->
-
-        <!-- <mat-form-field appearance="fill">
-            <mat-label> Password </mat-label>
-            <input type="password" matInput formControlName="password" required>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Confirm Password </mat-label>
-            <input type="password" matInput formControlName="confirmPassword" required>
-        </mat-form-field> -->
+        <div *ngIf="complete" >
+            <span> ✅ your details has been successfully checked 😊</span>
+            <br>
+            <button matStepperNext>Next</button>
+        </div>
+       
    
     </mat-step>
 
     <mat-step  label="Name And Address">
-        <div>
-            content 2
-        </div>
-        <!-- <mat-form-field appearance="fill">
-            <mat-label> First Name </mat-label>
-            <input type="text" matInput formControlName="firstName" required>
-        </mat-form-field> -->
+        <form #validateNameAndAddressForm="ngForm" (submit)="register()">
 
-        <!-- <mat-form-field appearance="fill">
-            <mat-label> Last Name </mat-label>
-            <input type="text" matInput formControlName="lastName" required>
-        </mat-form-field>
+            <label>
+                <span>First Name:</span>
+                <input type="text" name="firstName" [(ngModel)]="user.firstName" minlength="2" required #firstName="ngModel" />
+                <span class="red" *ngIf="firstName.errors?.['required'] && firstName.touched">Missing First Name!</span>
+                <span class="red" *ngIf="firstName.errors?.['minlength'] && firstName.touched">Min length 2!</span>
+            </label>
 
-        <mat-form-field appearance="fill">
-            <mat-label> City </mat-label>
-            <input type="text" matInput formControlName="city" placeholder="Ex. Main St" required>
-        </mat-form-field>
+            <label>
+                <span>Last Name:</span>
+                <input type="text" name="lastName" [(ngModel)]="user.lastName" minlength="2" required #lastName="ngModel" />
+                <span class="red" *ngIf="lastName.errors?.['required'] && lastName.touched">Missing Last Name!</span>
+                <span class="red" *ngIf="lastName.errors?.['minlength'] && lastName.touched">Min length 2!</span>
+            </label>
 
-        <mat-form-field appearance="fill">
-            <mat-label> street </mat-label>
-            <input type="text" matInput formControlName="street" placeholder="Ex. New York" required>
-        </mat-form-field> -->
+            <label>
+                <span>City:</span>
+                <input type="text" name="city" [(ngModel)]="user.city" minlength="2" required #city="ngModel" />
+                <span class="red" *ngIf="city.errors?.['required'] && city.touched">Missing City!</span>
+                <span class="red" *ngIf="city.errors?.['minlength'] && city.touched">Min length 2!</span>
+            </label>
+
+            <label>
+                <span>Street:</span>
+                <input type="text" name="street" [(ngModel)]="user.street" minlength="2" required #street="ngModel" />
+                <span class="red" *ngIf="street.errors?.['required'] && street.touched">Missing Name!</span>
+                <span class="red" *ngIf="street.errors?.['minlength'] && street.touched">Min length 2!</span>
+            </label>
+
+            <button  [disabled]="validateNameAndAddressForm.invalid"  >Register</button>
+
+        </form>
+        
     </mat-step>
 </mat-stepper>

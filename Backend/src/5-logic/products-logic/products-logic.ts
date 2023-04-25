@@ -143,6 +143,11 @@ async function deleteProduct(id:number): Promise<void> {
 
 }
 
+async function getProductsAmount(){
+    return await dal.execute('SELECT COUNT(*) as amount FROM products ')[0]['amount']
+
+}
+
 
 export default {
     getProductsByCategory,
@@ -153,6 +158,7 @@ export default {
     deleteProduct,
     getCategories,
     updateProduct,
+    getProductsAmount
 };
 
 

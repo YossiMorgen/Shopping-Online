@@ -5,6 +5,7 @@ import verifyAdmin from '../3-middleware/auth-middlewares/verify-admin';
 import cyber from "../2-utils/cyber";
 import ProductModel from "../4-models/product-models/product-model";
 import { log } from "console";
+import ordersLogic from "../5-logic/products-logic/orders-logic";
 
 const router = express.Router();
 
@@ -50,6 +51,15 @@ router.get('/product_by_id/:product_id([0-9]+)', verifyLoggedIn,  async (req: Re
         const product_id = +req.params.product_id;
         const product = await productsLogic.getOneProduct(product_id);     
         res.json(product);
+    } catch (error) {
+        next(error);
+    }
+});
+
+router.get('/orders_and_products_amount)', async (req: Request, res: Response, next: NextFunction) => {
+    try {  
+        const amounts = [await productsLogic.getProductsAmount(), await ordersLogic.getOrdersAmount()];     
+        res.send(amounts);
     } catch (error) {
         next(error);
     }

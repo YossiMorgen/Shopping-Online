@@ -21,6 +21,12 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
     return order;
 }
 
+
+async function getOrdersAmount() {
+    return await dal.execute('SELECT COUNT(*) as amount FROM orders ')[0]['amount']
+    
+}
 export default {
-    addOrder
+    addOrder,
+    getOrdersAmount
 }

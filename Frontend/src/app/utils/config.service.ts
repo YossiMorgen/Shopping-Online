@@ -26,6 +26,7 @@ export class ConfigService {
   public removeAllCartProducts = this.baseUrl + "remove_cart_products/";
 
   public createOrder = this.baseUrl + "create_order"; 
+  public ordersAndProductsAmount = this.baseUrl + 'orders_and_products_amount'
 
   public getAllCategories = this.baseUrl + "categories";
   public getRandomProducts = this.baseUrl + "random_products";

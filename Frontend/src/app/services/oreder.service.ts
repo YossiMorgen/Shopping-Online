@@ -11,6 +11,7 @@ import { ConfigService } from '../utils/config.service';
 export class OrderService {
 
     public order: Order;
+    public search : string;
 
     public constructor( 
         private http: HttpClient, 
@@ -22,15 +23,7 @@ export class OrderService {
         
         const observable = this.http.post<Order>(this.config.createOrder, order);
         this.order = (await firstValueFrom(observable))
-
+        this.cartService.cart.ordered = 1
     }
 
-    
-    public regex : string;
-
-    public changeRegexSearch(args: string): void{
-        // this.regex = new RegExp("\\b("+args+"\\b)");  
-        // this.regex = `/${args}/i`  
-        this.regex = args;    
-    }
 }

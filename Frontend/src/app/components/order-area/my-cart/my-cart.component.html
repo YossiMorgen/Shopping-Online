@@ -13,7 +13,7 @@
         <tbody>
             <tr  *ngFor="let product of cartService.products">
                 <td><img src={{product.imageName}} alt=""></td>
-                <td>{{markSearch(product.productName)}}</td>
+                <td [innerHtml]="orderService.search ? markSearch(product.productName) : product.productName"></td>
                 <td>{{product.amount}}</td>
                 <td>{{product.price | currency:"ILS"}}</td>
             </tr>

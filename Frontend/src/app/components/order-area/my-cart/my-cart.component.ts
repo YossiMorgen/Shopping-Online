@@ -12,7 +12,7 @@ export class MyCartComponent implements OnInit {
   constructor (
     public cartService : CartService,
     private router : Router,
-    private orderService: OrderService
+    public orderService: OrderService
   ) { }
 
   ngOnInit(): void {
@@ -30,13 +30,13 @@ export class MyCartComponent implements OnInit {
     }
   }
 
-  public markSearch(value: string){
-    console.log(this.orderService.regex);
+  public markSearch(value: string): string{
+    if(value.search(this.orderService.search) >= 0){
+      
+      const array = value.split(this.orderService.search)
+      value = array.join(`<span class="highlighted-text">${this.orderService.search}</span>`)    
     
-    console.log(value.search(this.orderService.regex));
-    
-    
-    
+    }
     console.log(value);
     return value;
     

@@ -20,7 +20,7 @@ export class CartService {
 
     public async getCart(): Promise<void>{
         
-        if(this.cart){
+        if(this.cart && this.cart?.ordered === 0){
             return new Promise(resolve => resolve())
         }
 

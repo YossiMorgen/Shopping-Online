@@ -26,7 +26,7 @@ export class SearchProductsComponent {
     try {
       console.log(this.router.url);
       if (this.router.url === '/order') {
-        this.orderService.changeRegexSearch(this.input);
+        this.orderService.search = this.input;
         return
       }      
       // this.router.navigate(['products'], {queryParams: {search: this.input}});

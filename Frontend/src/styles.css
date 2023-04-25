@@ -24,3 +24,9 @@ form > label {
 .red {
     color: red;
 }
+
+
+.highlighted-text{
+    background-color: yellow;
+    color: blue;
+}

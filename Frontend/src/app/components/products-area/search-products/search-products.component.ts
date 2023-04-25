@@ -2,6 +2,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { OrderService } from 'src/app/services/oreder.service';
 
 type Input = {
   input: string;
@@ -17,14 +18,15 @@ export class SearchProductsComponent {
   constructor(
     private productsService : ProductsService,
     public router : Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private orderService : OrderService
   ) {}
 
   public async search () {
     try {
       console.log(this.router.url);
       if (this.router.url === '/order') {
-        this.cartService.changeRegexSearch(this.input);
+        this.orderService.changeRegexSearch(this.input);
         return
       }      
       // this.router.navigate(['products'], {queryParams: {search: this.input}});

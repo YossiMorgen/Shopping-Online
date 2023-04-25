@@ -1,9 +1,9 @@
 <div mat-dialog-content>
   <mat-form-field>
-    <input type="number" matInput [(ngModel)]="amount">
+    <input min="1" type="number" matInput [(ngModel)]="amount">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button >No Thanks</button>
+  <button mat-button (click)="onNoClick()" >No Thanks</button>
   <button mat-button [mat-dialog-close]="amount" cdkFocusInitial>Ok</button>
 </div>

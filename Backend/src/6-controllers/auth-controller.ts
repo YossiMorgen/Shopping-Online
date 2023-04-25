@@ -3,7 +3,6 @@ import User from "../4-models/auth-models/user-model";
 import authLogic from "../5-logic/auth-logic/auth-logic";
 import CredentialsModel from "../4-models/auth-models/credentials-model";
 import RoleModel from "../4-models/auth-models/role-model";
-import verifyLoggedIn from "../3-middleware/auth-middlewares/verify-logged-in";
 
 const router = express.Router() 
 

@@ -24,4 +24,13 @@ export class OrderService {
         this.order = (await firstValueFrom(observable))
 
     }
+
+    
+    public regex : string;
+
+    public changeRegexSearch(args: string): void{
+        // this.regex = new RegExp("\\b("+args+"\\b)");  
+        // this.regex = `/${args}/i`  
+        this.regex = args;    
+    }
 }

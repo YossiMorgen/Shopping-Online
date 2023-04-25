@@ -22,7 +22,8 @@ export class CartProductCardComponent implements OnInit {
 
   public async changeQuantity(amount: number) {
     try {
-      await this.cartService.changeProductAmount(this.product, amount);
+      this.product.amount = amount;
+      await this.cartService.changeProductAmount(this.product);
     } catch (error: any) {
       alert(error.message);
     }

@@ -1,6 +1,7 @@
 import { CartService } from 'src/app/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { OrderService } from 'src/app/services/oreder.service';
 
 @Component({
   selector: 'app-my-cart',
@@ -10,8 +11,9 @@ import { Router } from '@angular/router';
 export class MyCartComponent implements OnInit {
   constructor (
     public cartService : CartService,
-    private router : Router
-    ) { }
+    private router : Router,
+    private orderService: OrderService
+  ) { }
 
   ngOnInit(): void {
     if(!this.cartService.products.length){
@@ -26,6 +28,18 @@ export class MyCartComponent implements OnInit {
     if(this.cartService.productsTotalPrice() === 0){
       this.router.navigate(['/products']);
     }
+  }
+
+  public markSearch(value: string){
+    console.log(this.orderService.regex);
+    
+    console.log(value.search(this.orderService.regex));
+    
+    
+    
+    console.log(value);
+    return value;
+    
   }
 
 }

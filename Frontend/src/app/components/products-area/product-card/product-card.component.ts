@@ -40,23 +40,8 @@ export class ProductCardComponent {
     }
   }
 
-  public async addProductToCart(amount: number) {
-    try {
-      const productCart = new ProductCartModel()
-      productCart.cartID = this.cartService.cart?.cartID;
-      productCart.productID = this.product.productID;
-      productCart.amount = amount;
-            
-      this.cartService.changeProductAmount(productCart, amount);
-
-    } catch (error : any) {
-      alert(error.message);
-    }
-  }
-
   public showEdit() {
     this.productsService.i = this.i;  
-    console.log(this.productsService.i);
 
     if(!this.auth.isAdmin()){
       const dialogRef = this.dialog.open(PopupAddProductComponent, {
@@ -65,26 +50,26 @@ export class ProductCardComponent {
       });
       dialogRef.afterClosed().subscribe(async (result: number) => {
         if(result){
+          console.log(result);
+          
           await this.addProductToCart(result);
         }
       });
     }
   }
 
-  
+  public async addProductToCart(amount: number) {
+    try {
+      const productCart = new ProductCartModel()
+      productCart.cartID = this.cartService.cart?.cartID;
+      productCart.productID = this.product.productID;
+      productCart.amount = amount;
+      console.log(productCart);
+      
+      this.cartService.changeProductAmount(productCart);
 
-  
-  openDialog(): void {
-    const dialogRef = this.dialog.open(PopupAddProductComponent, {
-      width: '250px',
-      data: {...this.product}
-    });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   this.animal = result;
-    // });
+    } catch (error : any) {
+      alert(error.message);
+    }
   }
-
-
 }

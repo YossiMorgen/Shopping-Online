@@ -35,56 +35,34 @@ export class CartService {
         this.products = await firstValueFrom(observable);
     }
 
-    public async changeProductAmount(product: ProductCartModel, amount: number):Promise<void>{
+    public async changeProductAmount(product: ProductCartModel):Promise<void>{
         console.log(this.cart);
+        console.log(product);
+        console.log(product.amount);
+        
         
         const i = this.products.findIndex(p => p.productID === product.productID);
-
-        if( i !== -1 && amount > 0) {
+        
+        if( i !== -1 && product.amount > 0) {
             product.cartProductID = this.products[i].cartProductID;
-            product.amount = amount;
             this.products[i] = await this.updateProduct(product);
 
             return;
         }
-
-        if( this.products[i].amount === 1 && amount === 0) {            
-            const observable = this.http.delete(this.config.removeOneCartProduct + product.cartProductID);
-            await firstValueFrom(observable);
-
-            this.products.splice(i, 1);
+        console.log(123);
+        
+        if( product.amount === 0) {            
+            await this.deleteProduct(product.cartProductID);
             
             return;
         }
+        console.log(1234);
 
         const observable = this.http.post<ProductCartModel>(this.config.addCartProduct, product);
         this.products.push(await firstValueFrom(observable));
     }
 
-    // public async reduceQuantity(cartProductID: number):Promise<void>{
-
-    //     console.log(this.products);
-        
-        
-    //     const i = this.products.findIndex(p => p.cartProductID === cartProductID);
-        
-
-    //     if( this.products[i].amount === 1) {            
-    //         const observable = this.http.delete(this.config.removeOneCartProduct + cartProductID);
-    //         await firstValueFrom(observable);
-
-    //         this.products.splice(i, 1);
-            
-    //         return;
-    //     }
-
-    //     this.products[i] = await this.updateProduct(this.products[i], -1);
- 
-    // }    
-
     public async updateProduct( product: ProductCartModel ): Promise<ProductCartModel> {
-
-        console.log(product.amount);
 
         const Observable = this.http.put<ProductCartModel>(this.config.updateOneCartProduct, product);
         const newProduct = await firstValueFrom(Observable);
@@ -100,7 +78,6 @@ export class CartService {
 
         this.products = this.products.filter(p => p.cartProductID !== cartProductID)
         console.log(this.products);
-        
     }    
 
     public async deleteAllProducts():Promise<void>{
@@ -134,12 +111,5 @@ export class CartService {
         return sum;
     }
 
-    public regex : RegExp;
-
-    public changeRegexSearch(args: string): void{
-        this.regex = new RegExp("\\b("+args+"\\b)");
-        console.log(this.regex);
-        
-    }
 
 }

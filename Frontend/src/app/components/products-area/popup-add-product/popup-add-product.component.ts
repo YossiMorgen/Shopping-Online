@@ -20,13 +20,16 @@ export class PopupAddProductComponent implements OnInit {
 
   ){}
 
-    ngOnInit(): void {
+  ngOnInit(): void {
 
-      this.amount = this.cartService.products.find(product => product.productName === this.product.productName)?.amount || 1;
-      
-    }
+    this.amount = this.cartService.products.find(product => product.productName === this.product.productName)?.amount || 1;
+    
+  }
+
 
   onNoClick(): void {
+    console.log(this.amount);
+    
     this.dialogRef.close();
   }
 

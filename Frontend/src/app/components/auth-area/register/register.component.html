@@ -1,54 +1,3 @@
-<!-- <div >
-
-    <form (ngSubmit)="register()" #registerForm="ngForm">
-
-        <h2>Register</h2>
-
-        <label>
-            <span>First Name:</span>
-            <input type="text" name="firstName" [(ngModel)]="user.firstName" minlength="2" required #firstName="ngModel" />
-            <span class="red" *ngIf="firstName.errors?.['required'] && firstName.touched">Missing First Name!</span>
-            <span class="red" *ngIf="firstName.errors?.['minlength'] && firstName.touched">Min length 2!</span>
-        </label>
-
-        <label>
-            <span>Last Name:</span>
-            <input type="text" name="lastName" [(ngModel)]="user.lastName" minlength="2" required #lastName="ngModel" />
-            <span class="red" *ngIf="lastName.errors?.['required'] && lastName.touched">Missing Last Name!</span>
-            <span class="red" *ngIf="lastName.errors?.['minlength'] && lastName.touched">Min length 2!</span>
-        </label>
-
-        <label>
-            <span>Email:</span>
-            <input type="text" name="email" [(ngModel)]="user.email" minlength="2" required #email="ngModel" />
-            <span class="red" *ngIf="email.errors?.['required'] && email.touched">Missing Email!</span>
-        </label>
-
-        <label>
-            <span>Password:</span>
-            <input type="text" name="password" [(ngModel)]="user.password" minlength="6" required #password="ngModel" />
-            <span class="red" *ngIf="password.errors?.['required'] && password.touched">Missing Password!</span>
-            <span class="red" *ngIf="password.errors?.['minlength'] && password.touched">Min length 6!</span>
-        </label>
-
-        <label>
-            <span>City:</span>
-            <input type="text" name="city" [(ngModel)]="user.city" minlength="2" required #city="ngModel" />
-            <span class="red" *ngIf="city.errors?.['required'] && city.touched">Missing City!</span>
-            <span class="red" *ngIf="city.errors?.['minlength'] && city.touched">Min length 2!</span>
-        </label>
-
-        <label>
-            <span>Street:</span>
-            <input type="text" name="street" [(ngModel)]="user.street" minlength="2" required #street="ngModel" />
-            <span class="red" *ngIf="street.errors?.['required'] && street.touched">Missing Name!</span>
-            <span class="red" *ngIf="street.errors?.['minlength'] && street.touched">Min length 2!</span>
-        </label>
-        
-        <button [disabled]="registerForm.invalid" >Register</button>
-
-    </form>
-</div> -->
 
 <mat-stepper linear #stepper>
     <mat-step [completed]="complete" [editable]="false" label="Email & password">
@@ -122,3 +71,8 @@
         
     </mat-step>
 </mat-stepper>
+
+<div>
+    in our store there is {{productsAmount}} products
+    and {{ordersAmount}} orders
+</div>

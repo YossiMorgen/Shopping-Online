@@ -8,6 +8,16 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
     const err = order.validation();
     if(err) throw new ValidationErrorModel(err);
 
+    console.log(order.deliveryDate);
+    
+    const sum = await dal.execute(`
+    SELECT COUNT(*) AS amount FROM orders
+    WHERE deliveryDate = ?`, [order.deliveryDate])
+
+    console.log(sum[0]['amount']);
+    return
+    
+
     let info: OkPacket = await dal.execute(`UPDATE shopping_cart SET ordered = 1 WHERE cartID = ? AND userID = ? AND ordered = 0`, [order.cartID, order.userID])
     if(info.affectedRows === 0) throw new ValidationErrorModel(`cart does'nt exist or it's not yours`);
 
@@ -23,8 +33,8 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
 
 
 async function getOrdersAmount() {
-    return await dal.execute('SELECT COUNT(*) as amount FROM orders ')[0]['amount']
-    
+    const amount = await dal.execute('SELECT COUNT(*) as amount FROM orders');
+    return amount[0]['amount'];
 }
 export default {
     addOrder,

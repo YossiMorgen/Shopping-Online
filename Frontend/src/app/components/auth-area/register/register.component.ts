@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ProductsService } from 'src/app/services/products.service';
+import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -10,36 +11,24 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent { 
+export class RegisterComponent implements OnInit { 
+
+    public complete = false;
+    public user = new User();
+    public productsAmount: number;
+    public ordersAmount: number;
 
     public constructor( 
         private auth: AuthService, private router: Router,
-        private _formBuilder: FormBuilder
+        private productsService :ProductsService
     ){}
-    public complete = false;
-    public user = new User();
 
-    public firstFormGroup = this._formBuilder.group({
-        email: [null, Validators.required],
-        // password: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
-        // conformPassword: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
-    })
-    public secondFormGroup = this._formBuilder.group({
-        firstName: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
-        // lastName: [null, Validators.required, Validators.minLength(2), Validators.maxLength(20)],
-        // city: [null, Validators.required, Validators.minLength(2), Validators.maxLength(20)],
-        // street: [null, Validators.required, Validators.minLength(2), Validators.maxLength(20)],
-    })
-
-    public isTenAsync(control: AbstractControl): 
-    Observable<ValidationErrors | null> {
-        const v: number = control.value;
-        if (v !== 10) {
-        // Emit an object with a validation error.
-        return of({ 'notTen': true, 'requiredValue': 10 });
+    async ngOnInit(): Promise<void> {
+        try {
+            [this.productsAmount, this.ordersAmount] = await this.productsService.getProductsAndOrdersAmount();
+        } catch (error : any) {
+            alert(error.message);
         }
-        // Emit null, to indicate no error occurred.
-        return of(null);
     }
 
     public async completeStep(){

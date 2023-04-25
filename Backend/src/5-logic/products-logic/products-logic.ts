@@ -144,8 +144,8 @@ async function deleteProduct(id:number): Promise<void> {
 }
 
 async function getProductsAmount(){
-    return await dal.execute('SELECT COUNT(*) as amount FROM products ')[0]['amount']
-
+    const amount = await dal.execute('SELECT COUNT(*) as amount FROM products');    
+    return amount[0]['amount'];
 }
 
 

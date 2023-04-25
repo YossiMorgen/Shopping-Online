@@ -83,4 +83,9 @@ export class ProductsService {
 
   }
 
+  public async getProductsAndOrdersAmount(): Promise<Array<number>> {
+    const observable = this.http.get<Array<number>>(this.config.ordersAndProductsAmount);
+    return await firstValueFrom(observable);
+  }
+
 }

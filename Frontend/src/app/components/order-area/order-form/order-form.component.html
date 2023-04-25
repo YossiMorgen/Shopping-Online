@@ -22,7 +22,7 @@
 
     <label>
         <span>Shipping Date:</span>
-        <input type="datetime-local" name="deliveryDate" [(ngModel)]="order.deliveryDate" minlength="2" required #deliveryDate="ngModel">
+        <input type="date" name="deliveryDate" [(ngModel)]="order.deliveryDate" minlength="2" required #deliveryDate="ngModel">
         <span class="red" *ngIf="deliveryDate.errors?.['required'] && deliveryDate.touched">Missing First Name!</span>
         <span class="red" *ngIf="deliveryDate.errors?.['minlength'] && deliveryDate.touched">Min Product Name!</span>
     </label>

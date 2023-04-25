@@ -56,7 +56,7 @@ router.get('/product_by_id/:product_id([0-9]+)', verifyLoggedIn,  async (req: Re
     }
 });
 
-router.get('/orders_and_products_amount)', async (req: Request, res: Response, next: NextFunction) => {
+router.get('/orders_and_products_amount', async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const amounts = [await productsLogic.getProductsAmount(), await ordersLogic.getOrdersAmount()];     
         res.send(amounts);

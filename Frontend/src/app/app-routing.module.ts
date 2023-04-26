@@ -6,7 +6,6 @@ import { RegisterComponent } from './components/auth-area/register/register.comp
 import { AuthGuard } from './utils/auth.guard';
 import { ProductsLayoutComponent } from './components/products-area/products-layout/products-layout.component';
 import { AddProductComponent } from './components/products-area/add-product/add-product.component';
-import { EditProductComponent } from './components/products-area/edit-product/edit-product.component';
 import { RegisteredGuard } from './utils/registered.guard';
 import { OrderLayoutComponent } from './components/order-area/order-layout/order-layout.component';
 import { ReceiptComponent } from './components/order-area/receipt/receipt.component';
@@ -17,6 +16,7 @@ const routes: Routes = [
     {path: 'register', component: RegisterComponent, canActivate: [RegisteredGuard] },
     {path: 'products', component: ProductsLayoutComponent, canActivate: [AuthGuard] },
     {path: 'order', component: OrderLayoutComponent, canActivate: [AuthGuard] },
+    {path: 'add', component: AddProductComponent, canActivate: [AuthGuard] },
     {path: 'receipt', component: ReceiptComponent, canActivate: [AuthGuard] },
     {path: 'dlpdf', component: DownloadPdfComponent, canActivate: [AuthGuard] },
     {path: '', redirectTo: '/products', pathMatch: "full" },

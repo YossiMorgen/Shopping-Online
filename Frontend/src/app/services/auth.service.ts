@@ -2,11 +2,11 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import jwtDecode  from 'jwt-decode';
 import User from '../models/auth-models/user.model';
 import { CredentialsModel } from '../models/auth-models/credential.model';
 import { ConfigService } from '../utils/config.service';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })

@@ -1,78 +1,73 @@
+<mat-card>
+    <mat-card-content>
+        <mat-stepper linear #stepper>
+            <mat-step [completed]="complete" [editable]="false" label="Email & password">
+                <form *ngIf="!complete" [formGroup]="emailAndPasswordForm" (submit)="completeStep()">
+                    
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" formControlName="email">
+                        <!-- <mat-error *ngIf="email.invalid">Please enter valid email</mat-error> -->
 
-<mat-stepper linear #stepper>
-    <mat-step [completed]="complete" [editable]="false" label="Email & password">
-        <form *ngIf="!complete" #validatePasswordAndEmailForm="ngForm" (submit)="completeStep()">
-            <label>
-                <span>Email:</span>
-                <input type="text" name="email" [(ngModel)]="user.email" minlength="2" required #email="ngModel" />
-                <span class="red" *ngIf="email.errors?.['required'] && email.touched">Missing Email!</span>
-            </label>
-    
-            <label>
-                <span>Password:</span>
-                <input type="text" name="password" [(ngModel)]="user.password" minlength="6" required #password="ngModel" />
-                <span class="red" *ngIf="password.errors?.['required'] && password.touched">Missing Password!</span>
-                <span class="red" *ngIf="password.errors?.['minlength'] && password.touched">Min length 6!</span>
-            </label>
-
-            <label>
-                <span>Confirm Password:</span>
-                <input type="text" name="confirmPassword" [(ngModel)]="user.confirmPassword" minlength="6" required #confirmPassword="ngModel" />
-                <span class="red" *ngIf="confirmPassword.errors?.['required'] && confirmPassword.touched">Missing Confirm Password!</span>
-                <span class="red" *ngIf="confirmPassword.errors?.['minlength'] && confirmPassword.touched">Min length 6!</span>
-            </label>
-
-            <button  [disabled]="validatePasswordAndEmailForm.invalid"  >Validate Details</button>
-        </form>
+                    </mat-form-field>
             
-        <div *ngIf="complete" >
-            <span> ✅ your details has been successfully checked 😊</span>
-            <br>
-            <button matStepperNext>Next</button>
-        </div>
-       
-   
-    </mat-step>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" formControlName="password">
+                        <!-- <mat-error *ngIf="password.invalid || password.errors?.['minlength']">Please enter password minimum 6 letters </mat-error> -->
+                    </mat-form-field>
 
-    <mat-step  label="Name And Address">
-        <form #validateNameAndAddressForm="ngForm" (submit)="register()">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Confirm Password:</mat-label>
+                        <input matInput type="password" formControlName="confirmPassword">
+                        <!-- <mat-error *ngIf="confirmPassword.invalid || confirmPassword.errors?.['minlength']">Please enter confirm password minimum 6 letters </mat-error> -->
+                    </mat-form-field>
 
-            <label>
-                <span>First Name:</span>
-                <input type="text" name="firstName" [(ngModel)]="user.firstName" minlength="2" required #firstName="ngModel" />
-                <span class="red" *ngIf="firstName.errors?.['required'] && firstName.touched">Missing First Name!</span>
-                <span class="red" *ngIf="firstName.errors?.['minlength'] && firstName.touched">Min length 2!</span>
-            </label>
-
-            <label>
-                <span>Last Name:</span>
-                <input type="text" name="lastName" [(ngModel)]="user.lastName" minlength="2" required #lastName="ngModel" />
-                <span class="red" *ngIf="lastName.errors?.['required'] && lastName.touched">Missing Last Name!</span>
-                <span class="red" *ngIf="lastName.errors?.['minlength'] && lastName.touched">Min length 2!</span>
-            </label>
-
-            <label>
-                <span>City:</span>
-                <input type="text" name="city" [(ngModel)]="user.city" minlength="2" required #city="ngModel" />
-                <span class="red" *ngIf="city.errors?.['required'] && city.touched">Missing City!</span>
-                <span class="red" *ngIf="city.errors?.['minlength'] && city.touched">Min length 2!</span>
-            </label>
-
-            <label>
-                <span>Street:</span>
-                <input type="text" name="street" [(ngModel)]="user.street" minlength="2" required #street="ngModel" />
-                <span class="red" *ngIf="street.errors?.['required'] && street.touched">Missing Name!</span>
-                <span class="red" *ngIf="street.errors?.['minlength'] && street.touched">Min length 2!</span>
-            </label>
-
-            <button  [disabled]="validateNameAndAddressForm.invalid"  >Register</button>
-
-        </form>
+                    <button mat-raised-button  [disabled]="emailAndPasswordForm.invalid"  >Validate Details</button>
+                </form>
+                    
+                <div *ngIf="complete" >
+                    <span> ✅ your details has been successfully checked 😊</span>
+                    <br>
+                    <button mat-raised-button matStepperNext>Next</button>
+                </div>
+            
         
-    </mat-step>
-</mat-stepper>
+            </mat-step>
 
-<div>
-    in our store there is {{productsAmount}} products
-    and {{ordersAmount}} orders
-</div>
+            <mat-step  label="Name And Address">
+                <form [formGroup]="nameAndAddressForm" (submit)="register()">
+                    <mat-form-field appearance="fill">
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstName">
+                        <!-- <mat-error *ngIf="confirmPassword.invalid || confirmPassword.errors?.['minlength']">Please enter confirm password minimum 6 letters </mat-error> -->
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastName">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>City</mat-label>
+                        <input matInput formControlName="city">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Street</mat-label>
+                        <input matInput formControlName="street">
+                    </mat-form-field>
+
+                    <button  mat-raised-button [disabled]="nameAndAddressForm.invalid"  >Register</button>
+
+                </form>
+                
+            </mat-step>
+        </mat-stepper>
+
+        <div>
+            in our store there is {{productsAmount}} products
+            and {{ordersAmount}} orders
+        </div>
+    </mat-card-content>
+</mat-card>

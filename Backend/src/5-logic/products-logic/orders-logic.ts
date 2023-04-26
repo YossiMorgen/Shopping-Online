@@ -14,8 +14,10 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
     SELECT COUNT(*) AS amount FROM orders
     WHERE deliveryDate = ?`, [order.deliveryDate])
 
-    console.log(sum[0]['amount']);
-    return
+    if(sum[0]['amount']){
+        throw new ValidationErrorModel("We can't have any more orders this day we are too busy")
+    }
+    
     
 
     let info: OkPacket = await dal.execute(`UPDATE shopping_cart SET ordered = 1 WHERE cartID = ? AND userID = ? AND ordered = 0`, [order.cartID, order.userID])

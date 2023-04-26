@@ -81,6 +81,7 @@ import {OverlayModule} from '@angular/cdk/overlay';
 import {CdkMenuModule} from '@angular/cdk/menu';
 import {DialogModule} from '@angular/cdk/dialog';
 
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     LayoutComponent,
@@ -115,6 +116,7 @@ import {DialogModule} from '@angular/cdk/dialog';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     
     MatFormFieldModule,
     A11yModule,

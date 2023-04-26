@@ -639,3 +639,143 @@ Tue, 25 Apr 2023 10:23:02 GMT 	 error!!Stack: TypeError: Cannot read properties 
     at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:33:23)
     at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:14:53)
 ----------------------------------------------------------------------------------------------------
+Tue, 25 Apr 2023 12:59:41 GMT 	 error!!Stack: Error: connect ECONNREFUSED ::1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+    --------------------
+    at Protocol._enqueue (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:48:16)
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getCategories (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:10:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:14:48
+----------------------------------------------------------------------------------------------------
+Tue, 25 Apr 2023 12:59:41 GMT 	 error!!Stack: Error: connect ECONNREFUSED ::1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+    --------------------
+    at Protocol._enqueue (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:48:16)
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getRandomProducts (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:20:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:23:46
+----------------------------------------------------------------------------------------------------
+Tue, 25 Apr 2023 12:59:41 GMT 	 error!!Stack: Error: connect ECONNREFUSED ::1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+    --------------------
+    at Protocol._enqueue (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:48:16)
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\card-product-logic.ts:16:27)
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\card-product-logic.ts:33:23)
+----------------------------------------------------------------------------------------------------
+Tue, 25 Apr 2023 12:59:41 GMT 	 error!!Stack: Error: connect ECONNREFUSED ::1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+    --------------------
+    at Protocol._enqueue (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:48:16)
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\card-product-logic.ts:16:27)
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\card-product-logic.ts:33:23)
+----------------------------------------------------------------------------------------------------
+Tue, 25 Apr 2023 12:59:52 GMT 	 error!!Stack: Error: connect ECONNREFUSED ::1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+    --------------------
+    at Protocol._enqueue (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:48:16)
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getCategories (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:10:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:14:48
+----------------------------------------------------------------------------------------------------
+Tue, 25 Apr 2023 12:59:52 GMT 	 error!!Stack: Error: connect ECONNREFUSED ::1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+    --------------------
+    at Protocol._enqueue (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:48:16)
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getRandomProducts (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:20:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:23:46
+----------------------------------------------------------------------------------------------------
+Tue, 25 Apr 2023 12:59:52 GMT 	 error!!Stack: Error: connect ECONNREFUSED ::1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+    --------------------
+    at Protocol._enqueue (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:48:16)
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\card-product-logic.ts:16:27)
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\card-product-logic.ts:33:23)
+----------------------------------------------------------------------------------------------------
+Tue, 25 Apr 2023 12:59:52 GMT 	 error!!Stack: Error: connect ECONNREFUSED ::1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+    --------------------
+    at Protocol._enqueue (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:48:16)
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\card-product-logic.ts:16:27)
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\card-product-logic.ts:33:23)
+----------------------------------------------------------------------------------------------------
+Tue, 25 Apr 2023 13:27:28 GMT 	 error!!Stack: Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:217:20)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\orders-logic.ts:38:30)
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\orders-logic.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\orders-logic.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\orders-logic.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\orders-logic.ts:4:12)
+----------------------------------------------------------------------------------------------------
+Tue, 25 Apr 2023 13:27:36 GMT 	 error!!Stack: Error: connect ECONNREFUSED ::1:3306
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+    --------------------
+    at Protocol._enqueue (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:144:48)
+    at Protocol.handshake (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:51:23)
+    at PoolConnection.connect (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:116:18)
+    at Pool.getConnection (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:48:16)
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:147:30)
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic\products-logic.ts:33:23)
+----------------------------------------------------------------------------------------------------

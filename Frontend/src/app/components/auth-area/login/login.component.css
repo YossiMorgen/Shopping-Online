@@ -1,0 +1,14 @@
+div{
+    display: flex;
+}
+
+mat-card {
+    margin: auto;
+}
+form {
+    text-align: center;
+}
+
+mat-form-field{
+    display: block;
+}

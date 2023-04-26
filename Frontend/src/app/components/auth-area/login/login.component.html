@@ -1,21 +1,26 @@
-<div class="box">
-
-    <form (ngSubmit)="login()" #loginForm="ngForm">
-
-        <h2>Login</h2>
-
-        <label>
-            <span>Email:</span>
-            <input type="text" name="email" [(ngModel)]="credentials.email">
-        </label>
-
-        <label>
-            <span>Password:</span>
-            <input type="password" name="password" [(ngModel)]="credentials.password">
-        </label>
-
-        <button [disabled]="loginForm.invalid" >Login</button>
-
-    </form>
+<div>
+    <mat-card>
+        <mat-card-content>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+        
+                <h2>Login</h2>
+        
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="email" formControlName="email">
+                    <!-- <mat-error *ngIf="email.invalid">Please enter email</mat-error> -->
+                </mat-form-field>
+        
+                <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput  type="password" formControlName="password" >
+                    <!-- <mat-error *ngIf="password.invalid">Please enter password</mat-error> -->
+                </mat-form-field>
+        
+                <button type="submit" [disabled]="!loginForm.valid" mat-raised-button>Submit</button>
+            </form>
+        </mat-card-content>
+    </mat-card>
 </div>
+
 

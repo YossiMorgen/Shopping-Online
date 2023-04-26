@@ -13,14 +13,25 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit { 
 
+    public emailAndPasswordForm = this.formBuilder.group({
+        email : ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
+        password : ['', [Validators.required, Validators.minLength(5)]],
+        confirmPassword : ['', [Validators.required, Validators.minLength(5)]]
+    })
+    public nameAndAddressForm = this.formBuilder.group({
+        firstName : ['', [Validators.required, Validators.minLength(2)]],
+        lastName : ['', [Validators.required, Validators.minLength(2)]],
+        city : ['', [Validators.required, Validators.minLength(2)]],
+        street : ['', [Validators.required, Validators.minLength(2)]],
+    })
     public complete = false;
-    public user = new User();
     public productsAmount: number;
     public ordersAmount: number;
 
     public constructor( 
         private auth: AuthService, private router: Router,
-        private productsService :ProductsService
+        private productsService :ProductsService,
+        private formBuilder : FormBuilder
     ){}
 
     async ngOnInit(): Promise<void> {
@@ -32,12 +43,12 @@ export class RegisterComponent implements OnInit {
     }
 
     public async completeStep(){
-        if(this.user.confirmPassword !== this.user.password){
+        if(this.emailAndPasswordForm.value.confirmPassword !== this.emailAndPasswordForm.value.password){
             alert('The Passwords do not match');
             return;
         }
         try {
-            if(await this.auth.isEmailExist(this.user.email)){
+            if(await this.auth.isEmailExist(this.emailAndPasswordForm.value.email)){
                 alert('Email already exists');
                 return;
             }
@@ -50,9 +61,9 @@ export class RegisterComponent implements OnInit {
 
     public async register():Promise<void>{
         try {
-            await this.auth.register( this.user );
-            alert('Welcome!');    
-            this.router.navigateByUrl('/products');
+            // await this.auth.register( this.user );
+            // alert('Welcome!');    
+            // this.router.navigateByUrl('/products');
         } catch (error:any) {
             alert( error.message )
         }

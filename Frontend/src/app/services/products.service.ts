@@ -55,9 +55,9 @@ export class ProductsService {
     return firstValueFrom(observable);
   }
 
-  public async addProduct(product: ProductModel):Promise<void>{
-    const formData = product.getFormData();
-    const observable = this.http.post<ProductModel>(this.config.addProduct, formData);
+  public async addProduct(product: ProductModel | FormData):Promise<void>{
+    // const formData : FormData = product.getFormData();   
+    const observable = this.http.post<ProductModel>(this.config.addProduct, product);
     const newProduct = await firstValueFrom(observable);
     this.products.push(newProduct);
   }

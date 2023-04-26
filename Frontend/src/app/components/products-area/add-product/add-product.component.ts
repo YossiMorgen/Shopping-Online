@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import ProductModel from 'src/app/models/product-models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
@@ -10,9 +11,17 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class AddProductComponent implements OnInit {
 
-  public product : ProductModel = new ProductModel();
+  public addProductForm = this.formBuilder.group({
+    productName : ['', [Validators.required, Validators.minLength(2)]],
+    categoryID : [0, [Validators.required]],
+    price : [1, [Validators.required, Validators.min(1)]]
+  })
 
-  constructor ( public productsService: ProductsService, private router: Router ) {}
+  constructor ( 
+    public productsService: ProductsService, 
+    private router: Router ,
+    private formBuilder : FormBuilder
+  ) {}
 
   
   @ViewChild('productImage')
@@ -27,14 +36,21 @@ export class AddProductComponent implements OnInit {
     }
   }
 
+
+
   public async addProduct(){
     try {
-      this.product.image = this.productImage.nativeElement.files[0];
-      if(!this.product.image) {
-        alert('Product Image Is Necessary ')
+      if(!this.productImage.nativeElement.files[0]) {
+        alert('Product Image Is Required')
         return;
       }
-      await this.productsService.addProduct(this.product);
+      
+      const formData = new FormData();
+      formData.append('image', this.productImage.nativeElement.files[0])
+      formData.append('productName', this.addProductForm.value.productName)
+      formData.append('categoryID', this.addProductForm.value.categoryID.toString())
+      formData.append('price', this.addProductForm.value.price.toString())
+      await this.productsService.addProduct(formData);
       alert('Product Added Successfully');
       this.router.navigateByUrl('/products');
 

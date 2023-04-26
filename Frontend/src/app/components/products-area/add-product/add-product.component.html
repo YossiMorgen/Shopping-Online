@@ -1,40 +1,30 @@
 <div>
 
-    <form (ngSubmit)="addProduct()" #addProductForm="ngForm">
+    <form (ngSubmit)="addProduct()" [formGroup]="addProductForm">
 
         <h2>Add Product</h2>
 
-        <label>
-            <span>Product Name:</span>
-            <input type="text" name="productName" [(ngModel)]="product.productName" minlength="2" required #productName="ngModel">
-            <span class="red" *ngIf="productName.errors?.['required'] && productName.touched">Missing First Name!</span>
-            <span class="red" *ngIf="productName.errors?.['minlength'] && productName.touched">Min Product Name!</span>
-        </label>
+        <mat-form-field appearance="fill">
+            <mat-label>Product Name</mat-label>
+            <input matInput type="text" formControlName="productName">
+        </mat-form-field>
 
-        <label>
-            <span>Category: </span>
-            <select type="text" name="categoryID" [(ngModel)]="product.categoryID" required #categoryID="ngModel">
-                <option selected disabled >Select..</option>
-                <option *ngFor="let category of productsService.categories" value={{category.categoryID}}>
+        <mat-form-field appearance="fill">
+            <mat-label>Category </mat-label>
+            <mat-select formControlName="categoryID" >
+                <mat-option *ngFor="let category of productsService.categories"  [value]="category.categoryID" >
                     {{category.categoryName}}
-                </option>
-            </select>
-            <span class="red" *ngIf="categoryID.errors?.['required'] && categoryID.touched">Missing Category!</span>
-        </label>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        
 
-        <label>
-            <span>Price:</span>
-            <input type="number" name="price" [(ngModel)]="product.price" min="2" required #price="ngModel">
-            <span class="red" *ngIf="price.errors?.['required'] && price.touched">Missing Price!</span>
-            <span class="red" *ngIf="price.errors?.['min'] && price.touched">Min 2!</span>
-        </label>
+        <mat-form-field appearance="fill">
+            <mat-label>Price </mat-label>
+            <input matInput type="number" formControlName="price">
+        </mat-form-field>
 
-        <label>
-            <span>Image:</span>
-            <input type="file" required name="imageName" accept="image/*" #productImage>
-            <!-- <span class="red" *ngIf="productImage.errors?.['required'] && price.touched">Missing Price!</span> -->
-
-        </label>
+        <input type="file" accept="image/*" class="file-input" #productImage>        
 
         <button type="submit" [disabled]="addProductForm.invalid" >Add Product</button>
 

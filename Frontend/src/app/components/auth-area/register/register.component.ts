@@ -61,9 +61,9 @@ export class RegisterComponent implements OnInit {
 
     public async register():Promise<void>{
         try {
-            // await this.auth.register( this.user );
-            // alert('Welcome!');    
-            // this.router.navigateByUrl('/products');
+            await this.auth.register( new User({...this.emailAndPasswordForm.value, ...this.nameAndAddressForm.value}) );
+            alert('Welcome!');    
+            this.router.navigateByUrl('/products');
         } catch (error:any) {
             alert( error.message )
         }

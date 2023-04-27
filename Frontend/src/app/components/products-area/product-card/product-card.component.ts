@@ -41,6 +41,7 @@ export class ProductCardComponent {
   }
 
   public showEdit() {
+    this.productsService.i = 0
     this.productsService.i = this.i;  
 
     if(!this.auth.isAdmin()){

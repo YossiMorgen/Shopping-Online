@@ -34,3 +34,25 @@ form > label {
 *::-webkit-scrollbar {
     display: none;
 }
+
+.file-input{
+    display: none;
+}
+
+
+mat-form-field{
+    display: block;
+    width: fit-content;
+  }
+  button[type = submit]{
+    display: block;
+    margin: 10px;
+  }
+  .file_button{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+  }
+  .file_button > div {
+    margin-left: 15px;
+  }

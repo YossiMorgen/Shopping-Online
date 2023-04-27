@@ -21,6 +21,7 @@ export class EditProductComponent {
     price : [1, [ Validators.min(1)]]
   })
 
+  public file: File;
   @ViewChild('productImage')
   public productImage: ElementRef<HTMLInputElement>
 
@@ -29,6 +30,10 @@ export class EditProductComponent {
     public auth: AuthService,
     private formBuilder : FormBuilder
   ) {}
+
+  public onFileSelected(event: any){
+    this.file = event.target.files[0];
+  }
 
   public async editProduct(){
     try {

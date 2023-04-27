@@ -2,38 +2,42 @@
     <mat-card-content> 
     <span *ngIf="auth.isAdmin()" (click)="hideEdit()">❌</span>
 
-    <form (ngSubmit)="editProduct()" #editProductForm="ngForm">
+    <form (ngSubmit)="editProduct()" [formGroup]="editProductForm">
+        <mat-card-header>
+            <h2>Edit Product</h2>
+        </mat-card-header>
 
-        <h2>Edit Product</h2>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Product Name</mat-label>
+            <input matInput type="text" formControlName="productName">
+        </mat-form-field>
 
-        <label>
-            <span>Product Name:</span>
-            <input type="text" name="productName" [(ngModel)]="productsService.products[productsService.i].productName" minlength="2" #productName="ngModel">
-            <span class="red" *ngIf="productName.errors?.['minlength'] && productName.touched">Min Product Name!</span>
-        </label>
-
-        <label>
-            <span>Category: </span>
-            <select type="text"   name="categoryID" [(ngModel)]="productsService.products[productsService.i].categoryID" #product.categoryID="ngModel">
-                <option selected disabled >Select..</option>
-                <option *ngFor="let category of productsService.categories" value={{category.categoryID}}>
+        <mat-form-field appearance="fill">
+            <mat-label>Category </mat-label>
+            <mat-select formControlName="categoryID" >
+                <mat-option *ngFor="let category of productsService.categories"  [value]="category.categoryID" >
                     {{category.categoryName}}
-                </option>
-            </select>
-        </label>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        
 
-        <label>
-            <span>Price:</span>
-            <input type="number" name="price" [(ngModel)]="productsService.products[productsService.i].price" min="2" #price="ngModel">
-            <span class="red" *ngIf="price.errors?.['min'] && price.touched">Min 2!</span>
-        </label>
+        <mat-form-field appearance="fill">
+            <mat-label>Price </mat-label>
+            <input min="1" matInput type="number" formControlName="price">
+        </mat-form-field>
 
-        <label>
-            <span>Image:</span>
-            <input type="file" name="imageName" accept="image/*" #productImage>
-        </label>
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" #productImage>   
+        <div class="file_button">
+            {{file?.name || "No file uploaded yet."}}
+            <button (click)="productImage.click()" type="button" mat-mini-fab color="primary" class="upload-btn">
 
-        <button [disabled]="editProductForm.invalid"  type="submit" >Edit Product</button>
+                <mat-icon>attach_file</mat-icon>
+            </button>
+        </div>     
+
+        <button mat-raised-button type="submit" [disabled]="editProductForm.invalid" >Submit</button>
 
     </form>
 </mat-card-content>

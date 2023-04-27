@@ -4,26 +4,7 @@
 mat-card{
   margin: auto;
 }
-.file-input {
-    display: none;
-  }
+
   form {
     text-align: center;
-  }
-
-  mat-form-field{
-    display: block;
-    width: fit-content;
-  }
-  button[type = submit]{
-    display: block;
-    margin: 10px;
-  }
-  .file_button{
-    display: flex;
-    align-items: center;
-    padding: 5px;
-  }
-  .file_button > div {
-    margin-left: 15px;
   }

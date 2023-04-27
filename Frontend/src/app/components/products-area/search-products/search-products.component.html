@@ -1,9 +1,10 @@
 <form *ngIf="this.router.url === '/products' || this.router.url === '/order'" (ngSubmit)="search()" #searchProductForm="ngForm">
     <input  
+        x-webkit-speech
         [(ngModel)]="input" 
         name="input"
         required 
-        type="search" 
+        type="text" 
         placeholder="Search Products" 
         pattern="([a-z]{1,7})"
         title="Search Products"

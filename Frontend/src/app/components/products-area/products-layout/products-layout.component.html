@@ -6,5 +6,5 @@
     </div>
     
     <app-cart-layout *ngIf="!auth.isAdmin()"></app-cart-layout>
-    <app-edit-product></app-edit-product>
+    <app-edit-product *ngIf=" auth.isAdmin() && productsService.products[productsService.i] "></app-edit-product>
 </div>

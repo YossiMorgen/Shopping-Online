@@ -8,3 +8,7 @@ mat-card{
   form {
     text-align: center;
   }
+
+  mat-form-field{
+    display: block;
+  }

@@ -12,7 +12,7 @@ function getCategories():Promise<CategoryModel> {
 
 function getRandomProducts (start: number, end: number): Promise<ProductModel[]> {
     const sql = `
-    SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName 
+    SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID
     FROM products
     LIMIT ?
     OFFSET ?
@@ -22,7 +22,7 @@ function getRandomProducts (start: number, end: number): Promise<ProductModel[]>
 
 async function getProductsByName(name : string, start: number, end: number): Promise<ProductModel[]> {
     const products = await dal.execute(`
-        SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName  FROM products 
+        SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName  FROM products, categoryID
         WHERE productName LIKE ?
         LIMIT ?
         OFFSET ?
@@ -33,7 +33,7 @@ async function getProductsByName(name : string, start: number, end: number): Pro
 
 async function getProductsByCategory(categoryID: number,start: number, end: number): Promise<ProductModel[]> {
     const products = await dal.execute(
-        `SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName 
+        `SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID
         FROM products
         WHERE products.categoryID = ?
         LIMIT ?
@@ -83,7 +83,7 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
     const err = product.validation();
     if(err) throw new ValidationErrorModel(err); 
 
-    
+    // need to change that and get the old photo from the old product
     const [oldProduct] = await dal.execute(`SELECT imageName FROM products WHERE productID = ?`, [product.productID]);
     console.log(isProductNameExist(product.productName));
     

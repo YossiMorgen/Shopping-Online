@@ -1,4 +1,4 @@
-<mat-card *ngIf=" auth.isAdmin() && productsService.products[productsService.i] " class="EditProduct">
+<mat-card class="EditProduct">
     <mat-card-content> 
     <span *ngIf="auth.isAdmin()" (click)="hideEdit()">❌</span>
 
@@ -15,8 +15,8 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Category </mat-label>
-            <mat-select formControlName="categoryID" >
-                <mat-option *ngFor="let category of productsService.categories"  [value]="category.categoryID" >
+            <mat-select [value]="productsService.products[productsService.i].categoryID" formControlName="categoryID" >
+                <mat-option  *ngFor="let category of productsService.categories"  [value]="category.categoryID" >
                     {{category.categoryName}}
                 </mat-option>
             </mat-select>

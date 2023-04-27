@@ -3,11 +3,11 @@
 
     <div *ngFor="let product of productsService.products, let i = index">
         
-        <a *ngIf="auth.isAdmin()" [routerLink]="[]" [queryParams]="{ 'product_id': product.productID  }">
+        <!-- <a *ngIf="auth.isAdmin()" [routerLink]="[]" [queryParams]="{ 'product_id': product.productID  }">
             <app-product-card [i]="i"  [product]="product"></app-product-card>
-        </a>
+        </a> -->
 
-        <app-product-card *ngIf="!auth.isAdmin()" [i]="i" [product]="product"></app-product-card>
+        <app-product-card [i]="i" [product]="product"></app-product-card>
 
     </div>
 </div>

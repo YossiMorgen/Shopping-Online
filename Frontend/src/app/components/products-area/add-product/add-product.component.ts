@@ -25,9 +25,6 @@ export class AddProductComponent implements OnInit {
 
   public file: File;
   
-  // @ViewChild('productImage')
-  // public productImage: ElementRef<HTMLInputElement>
-
   async ngOnInit(): Promise<void> {
     try {
       await this.productsService.getCategories();

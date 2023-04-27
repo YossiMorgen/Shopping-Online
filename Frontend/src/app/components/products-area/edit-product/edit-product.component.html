@@ -1,5 +1,6 @@
-<div *ngIf=" auth.isAdmin() && productsService.products[productsService.i] " class="EditProduct">
-        <span *ngIf="auth.isAdmin()" class="trash" (click)="hideEdit()">❌</span>
+<mat-card *ngIf=" auth.isAdmin() && productsService.products[productsService.i] " class="EditProduct">
+    <mat-card-content> 
+    <span *ngIf="auth.isAdmin()" (click)="hideEdit()">❌</span>
 
     <form (ngSubmit)="editProduct()" #editProductForm="ngForm">
 
@@ -35,5 +36,6 @@
         <button [disabled]="editProductForm.invalid"  type="submit" >Edit Product</button>
 
     </form>
-</div>
+</mat-card-content>
+</mat-card>
 

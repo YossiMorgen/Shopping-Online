@@ -3,6 +3,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import ProductModel from 'src/app/models/product-models/product.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-product',
@@ -14,14 +15,19 @@ export class EditProductComponent {
   public paramID : number;
   public categoryID : number; 
 
+  public editProductForm = this.formBuilder.group({
+    productName : ['', [ Validators.minLength(2)]],
+    categoryID : [0, [Validators.min(1)]],
+    price : [1, [ Validators.min(1)]]
+  })
+
   @ViewChild('productImage')
   public productImage: ElementRef<HTMLInputElement>
 
   constructor ( 
     public productsService: ProductsService, 
-    private router: Router, 
-    private activatedRoute :ActivatedRoute,
-    public auth: AuthService
+    public auth: AuthService,
+    private formBuilder : FormBuilder
   ) {}
 
   public async editProduct(){
@@ -38,7 +44,6 @@ export class EditProductComponent {
 
       await this.productsService.updateProduct(formData, this.productsService.products[this.productsService.i].productID);
       alert('Product Edited Successfully');
-      this.router.navigateByUrl('/products');
 
     } catch (error : any) {
       alert(error.message);

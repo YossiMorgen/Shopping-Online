@@ -30,3 +30,7 @@ form > label {
     background-color: yellow;
     color: blue;
 }
+
+*::-webkit-scrollbar {
+    display: none;
+}

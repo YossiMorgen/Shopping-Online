@@ -24,9 +24,13 @@
             <input matInput type="number" formControlName="price">
         </mat-form-field>
 
-        <input type="file" accept="image/*" class="file-input" #productImage>        
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" #productImage>        
+        {{file?.name || "No file uploaded yet."}}
+        <button (click)="productImage.click()" type="button" mat-mini-fab color="primary" class="upload-btn">
 
-        <button type="submit" [disabled]="addProductForm.invalid" >Add Product</button>
+            <mat-icon>attach_file</mat-icon>
+        </button>
+        <button type="submit" [disabled]="addProductForm.invalid || !file?.name" >Add Product</button>
 
     </form>
 </div>

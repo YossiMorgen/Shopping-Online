@@ -23,9 +23,10 @@ export class AddProductComponent implements OnInit {
     private formBuilder : FormBuilder
   ) {}
 
+  public file: File;
   
-  @ViewChild('productImage')
-  public productImage: ElementRef<HTMLInputElement>
+  // @ViewChild('productImage')
+  // public productImage: ElementRef<HTMLInputElement>
 
   async ngOnInit(): Promise<void> {
     try {
@@ -36,17 +37,19 @@ export class AddProductComponent implements OnInit {
     }
   }
 
-
+  public onFileSelected(event: any){
+    this.file = event.target.files[0];
+  }
 
   public async addProduct(){
     try {
-      if(!this.productImage.nativeElement.files[0]) {
+      if(!this.file) {
         alert('Product Image Is Required')
         return;
       }
       
       const formData = new FormData();
-      formData.append('image', this.productImage.nativeElement.files[0])
+      formData.append('image', this.file)
       formData.append('productName', this.addProductForm.value.productName)
       formData.append('categoryID', this.addProductForm.value.categoryID.toString())
       formData.append('price', this.addProductForm.value.price.toString())

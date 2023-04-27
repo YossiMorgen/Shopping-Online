@@ -1,8 +1,12 @@
-/* .file-input {
+.file-input {
     display: none;
-  } */
+  }
 
   mat-form-field{
     display: block;
     width: fit-content;
+  }
+  button{
+    display: block;
+    margin: 5px;
   }

@@ -13,6 +13,9 @@ export class CartService {
     public cart: Cart;
     public products: ProductCartModel[] = [];
 
+    public totalAmount: number = 0;
+    public totalPrice: number = 0;
+
     public constructor( 
         private http: HttpClient, 
         private config: ConfigService
@@ -46,20 +49,18 @@ export class CartService {
         if( i !== -1 && product.amount > 0) {
             product.cartProductID = this.products[i].cartProductID;
             this.products[i] = await this.updateProduct(product);
-
+            this.productsTotalAmountAndPrice();
             return;
         }
-        console.log(123);
         
         if( product.amount === 0) {            
             await this.deleteProduct(product.cartProductID);
-            
             return;
         }
-        console.log(1234);
 
         const observable = this.http.post<ProductCartModel>(this.config.addCartProduct, product);
         this.products.push(await firstValueFrom(observable));
+        this.productsTotalAmountAndPrice()
     }
 
     public async updateProduct( product: ProductCartModel ): Promise<ProductCartModel> {
@@ -77,7 +78,7 @@ export class CartService {
         await firstValueFrom(observable);
 
         this.products = this.products.filter(p => p.cartProductID !== cartProductID)
-        console.log(this.products);
+        this.productsTotalAmountAndPrice();
     }    
 
     public async deleteAllProducts():Promise<void>{
@@ -86,9 +87,10 @@ export class CartService {
         await firstValueFrom(observable);
 
         this.products = []
-
+        this.totalAmount =  0;
+        this.totalPrice = 0;
     }   
-    public productsTotalAmountAndPrice(): Array<number>{
+    public productsTotalAmountAndPrice(): void{
         let sum = 0;
         let count = 0;
 
@@ -97,19 +99,20 @@ export class CartService {
             count += product.amount;
         }
 
-        return [sum, count];
+        this.totalAmount = count;
+        this.totalPrice = sum;
     }
 
     
-    public productsTotalPrice(): number{
-        let sum = 0;
+    // public productsTotalPrice(): number{
+    //     let sum = 0;
+        
+    //     for(const product of this.products){
+    //         sum += product.price;
+    //     }
 
-        for(const product of this.products){
-            sum += product.price;
-        }
-
-        return sum;
-    }
+    //     return sum;
+    // }
 
 
 }

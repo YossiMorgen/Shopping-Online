@@ -1,13 +1,9 @@
-<div (click)="showEdit()" class="product">
-    <!-- <span *ngIf="auth.isAdmin()" class="trash" (click)="deleteProduct()">🗑</span> -->
-    <!-- <span *ngIf="!auth.isAdmin()" class="trash" (click)="addProductToCart()">➕</span> -->
-    <div >
-        <span>
-            <b>{{ product.productName }}</b>
-        </span>
-        <img src={{product.imageName}} alt="product pic">
-        <span>
-            {{ product.price | currency:"ILS" }}
-        </span>
-    </div>
-</div>
+<mat-card (click)="showEdit()" class="product">
+    
+    <img mat-card-image src src={{product.imageName}} alt="product pic">
+
+    <mat-card-header>
+        <mat-card-title>{{ product.productName }}</mat-card-title>
+        <mat-card-subtitle>{{ product.price | currency:"ILS" }}</mat-card-subtitle>
+    </mat-card-header>
+</mat-card>

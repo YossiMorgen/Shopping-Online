@@ -1,3 +1,5 @@
-<div *ngIf="cartService.productsTotalPrice()" class="cartFooter">
+<div *ngIf="cartService.totalPrice" class="cartFooter">
+        <div>Total Price - {{cartService.totalPrice}}</div>
+        <div>Total Products - {{cartService.totalAmount}}</div>
         <a routerLink="/order">make an order</a>
 </div>

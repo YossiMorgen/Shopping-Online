@@ -7,17 +7,9 @@ import { CartService } from 'src/app/services/cart.service';
   templateUrl: './cart-header.component.html',
   styleUrls: ['./cart-header.component.css']
 })
-export class CartHeaderComponent implements OnInit {
+export class CartHeaderComponent {
 
   constructor( public cartService : CartService ){}
-
-  async ngOnInit(): Promise<void> {
-    try {
-      await this.cartService.getCart();
-    } catch (error : any) {
-      alert(error.message);
-    }
-  }
 
   public async deleteCartProducts(){
     try {

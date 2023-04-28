@@ -1,4 +1,4 @@
 <div class="cartHeader">
-    <button *ngIf="cartService.productsTotalPrice()" (click)="deleteCartProducts()">Create New Cart</button>
+    <button *ngIf="cartService.totalPrice" (click)="deleteCartProducts()">Create New Cart</button>
 
 </div>

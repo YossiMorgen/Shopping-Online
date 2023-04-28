@@ -32,7 +32,7 @@ export class OrderFormComponent {
     try {
       this.order.userID = this.auth.user.userID;
       this.order.cartID = this.cartService.cart.cartID;
-      this.order.price = this.cartService.productsTotalPrice();
+      this.order.price = this.cartService.totalPrice;
       
       await this.orderService.makeAnOrder(this.order);
 

@@ -25,7 +25,7 @@ export class MyCartComponent implements OnInit {
       }
     }
 
-    if(this.cartService.productsTotalPrice() === 0){
+    if(this.cartService.totalPrice === 0){
       this.router.navigate(['/products']);
     }
   }

@@ -5,7 +5,6 @@
         <app-product-list></app-product-list>
     </div>
     <div class="stickyBar" >
-        {{cartService.totalPrice }}
         <app-cart-layout *ngIf=" cartService.totalPrice "></app-cart-layout>
         <app-edit-product *ngIf=" productsService.products[productsService.i] "></app-edit-product>
     </div>

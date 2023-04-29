@@ -1,5 +1,5 @@
 div{
-    width: 30vw;
+    width: fit-content;
     height: fit-content;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.392);
     margin: 10px;

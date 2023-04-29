@@ -1,6 +1,8 @@
 <div class="product_card">
-    {{product.productName}}
-    {{product.price | currency:"ILS"}}
+    <span>
+        {{product.productName}}
+        {{product.price | currency:"ILS"}}
+    </span>
     <span class="buttons">
         <button (click)="changeQuantity( amount - 1 )">
             ➖

@@ -1,7 +1,7 @@
 .products-cart-layout{
     display: flex;
     max-width: 100vw;
-    /* flex-wrap: ; */
+    justify-content: space-between
 }
 .products-layout{
     /* width: 70%; */
@@ -11,7 +11,7 @@
 .stickyBar{
     /* width: 25%; */
     flex-basis: 25%;
-    
+    min-width: fit-content;
     position: sticky;
     top: 18vh;
 }

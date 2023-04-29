@@ -1,19 +1,15 @@
 .categoriesContainer{
     overflow-x: scroll;
     max-width: 100%;
-    /* position: sticky;
-    top: 18vh; */
     width: fit-content;
     display: flex;
-    /* z-index: 9; */
 }
 
 .categoriesCard{
     padding: 10px;
-    
     min-width: fit-content;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
-}
+} */

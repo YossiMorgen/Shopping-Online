@@ -1,22 +1,70 @@
 .product_card{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     position: relative;
     min-width: fit-content;
+    margin: 20px 0;    
 }
 
-.product_card > span{
-    min-width: fit-content;
+img{
+    width: 80px;
+    height: 80px;
 }
+
+/* .product_card > span{
+    min-width: fit-content;
+} */
 .buttons {
-    display: none;
+    height: fit-content;
+    border-radius: 10%;
+    overflow: hidden;
 }
 
 .product_card:hover > .buttons{
-     display: block;
+     border: 2px solid #19b3cf;
 }
 
 .buttons > button {
-    background-color: transparent;
+    display: block;
     border: none;
+
+}
+
+.buttons > button.minus,
+.buttons > button.plus{
+    opacity: 0;
+    background-color: #19b3cf;
+}
+.minus, input[type = number]{
+    width: 20px;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.product_card:hover .buttons > button.minus,
+.product_card:hover .buttons > button.plus{
+    opacity: 100%;
+}
+
+.delete{
+    display: none;
+}
+
+.product_card:hover .delete{
+    display: block;
+    width: 50px;
+    height: 25px;
+    color: white;
+    position: absolute;
+    top: -15px;
+    right: 0;
 }

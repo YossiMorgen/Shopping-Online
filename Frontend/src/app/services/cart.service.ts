@@ -51,7 +51,7 @@ export class CartService {
             return;
         }
         
-        if( product.amount === 0) {            
+        if( product.amount === 0 || product.amount === null ) {            
             await this.deleteProduct(product.cartProductID);
             return;
         }

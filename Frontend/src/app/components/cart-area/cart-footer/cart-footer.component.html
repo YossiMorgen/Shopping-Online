@@ -1,4 +1,6 @@
 <mat-card-actions class="cartFooter">
-       <a cdkFocusInitial mat-button routerLink="/order">make an order</a>
-       <button mat-button *ngIf="cartService.totalPrice" (click)="deleteCartProducts()">Create New Cart</button>
+       <mat-divider></mat-divider>
+
+       <a cdkFocusInitial  color="primary" mat-button routerLink="/order">make an order</a>
+       <button mat-button color="accent" [disabled]="!cartService.totalPrice"  (click)="deleteCartProducts()">Create New Cart</button>
 </mat-card-actions>

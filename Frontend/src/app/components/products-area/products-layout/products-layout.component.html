@@ -5,7 +5,7 @@
         <app-product-list></app-product-list>
     </div>
     <div class="stickyBar" >
-        <app-cart-layout *ngIf=" cartService.totalPrice "></app-cart-layout>
+        <app-cart-layout *ngIf=" ! auth.isAdmin() "></app-cart-layout>
         <app-edit-product *ngIf=" productsService.products[productsService.i] "></app-edit-product>
     </div>
 </div>

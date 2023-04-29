@@ -9,7 +9,7 @@ import ProductCartModel from 'src/app/models/product-models/product-cart.model';
 })
 export class CartProductCardComponent implements OnInit {
 
-  public amount: number = 0;
+  public amount: number;
   
   @Input()
   public product: ProductCartModel;
@@ -22,6 +22,8 @@ export class CartProductCardComponent implements OnInit {
 
   public async changeQuantity(amount: number) {
     try {
+      console.log(amount);
+      
       this.product.amount = amount;
       await this.cartService.changeProductAmount(this.product);
     } catch (error: any) {

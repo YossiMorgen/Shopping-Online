@@ -36,13 +36,11 @@ export class CartService {
     public async getCartProductsByCartId ( ): Promise<void> {
         const observable = this.http.get<ProductCartModel[]>(this.config.getCartProductsByCartID + this.cart.cartID)
         this.products = await firstValueFrom(observable);
+
+        this.productsTotalAmountAndPrice();
     }
 
-    public async changeProductAmount(product: ProductCartModel):Promise<void>{
-        console.log(this.cart);
-        console.log(product);
-        console.log(product.amount);
-        
+    public async changeProductAmount(product: ProductCartModel):Promise<void>{        
         
         const i = this.products.findIndex(p => p.productID === product.productID);
         

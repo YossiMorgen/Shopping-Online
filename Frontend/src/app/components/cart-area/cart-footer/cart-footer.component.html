@@ -1,5 +1,4 @@
-<div *ngIf="cartService.totalPrice" class="cartFooter">
-        <div>Total Price - {{cartService.totalPrice}}</div>
-        <div>Total Products - {{cartService.totalAmount}}</div>
-        <a routerLink="/order">make an order</a>
-</div>
+<mat-card-actions class="cartFooter">
+       <a cdkFocusInitial mat-button routerLink="/order">make an order</a>
+       <button mat-button *ngIf="cartService.totalPrice" (click)="deleteCartProducts()">Create New Cart</button>
+</mat-card-actions>

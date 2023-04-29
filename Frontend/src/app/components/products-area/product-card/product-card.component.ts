@@ -41,8 +41,11 @@ export class ProductCardComponent {
   }
 
   public showEdit() {
-    this.productsService.i = 0
-    this.productsService.i = this.i;  
+    if(this.auth.isAdmin()){
+      this.productsService.i = 0
+      this.productsService.i = this.i;  
+      return;
+    }
 
     if(!this.auth.isAdmin()){
       const dialogRef = this.dialog.open(PopupAddProductComponent, {

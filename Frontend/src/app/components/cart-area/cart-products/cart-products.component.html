@@ -1,5 +1,5 @@
-<div *ngIf="cartService.totalPrice" class="cartProductList">
+<mat-card-content class="cartProductList">
     <div *ngFor="let product of cartService.products">
         <app-cart-product-card [product]="product"></app-cart-product-card>
     </div>
-</div>
+</mat-card-content>

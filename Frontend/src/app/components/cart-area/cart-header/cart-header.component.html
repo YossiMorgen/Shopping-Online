@@ -1,4 +1,5 @@
-<div class="cartHeader">
-    <button *ngIf="cartService.totalPrice" (click)="deleteCartProducts()">Create New Cart</button>
+<mat-card-header class="cartHeader">
+    <div>Total Price - {{cartService.totalPrice}}</div>
+    <div>Total Products - {{cartService.totalAmount}}</div>
 
-</div>
+</mat-card-header>

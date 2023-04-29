@@ -11,12 +11,6 @@ export class CartHeaderComponent {
 
   constructor( public cartService : CartService ){}
 
-  public async deleteCartProducts(){
-    try {
-      await this.cartService.deleteAllProducts();
-    } catch (error: any) {
-      alert(error.message);
-    }
-  }
+  
 
 }

@@ -7,6 +7,8 @@ import { CredentialsModel } from '../models/auth-models/credential.model';
 import { ConfigService } from '../utils/config.service';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import ProductModel from '../models/product-models/product.model';
+import { ProductsService } from './products.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,7 +17,12 @@ export class AuthService{
     public user: User;
     private token: string;
 
-    constructor( private http: HttpClient, private config: ConfigService, private router : Router ){ 
+    constructor( 
+        private http: HttpClient, 
+        private config: ConfigService, 
+        private router : Router,
+        private productsService : ProductsService
+    ){ 
       const token = window.localStorage.getItem('token')
       if( token ) this.setUser(token)
     }
@@ -62,6 +69,4 @@ export class AuthService{
     public getToken():string{
         return this.token;
     }
-
-
 }

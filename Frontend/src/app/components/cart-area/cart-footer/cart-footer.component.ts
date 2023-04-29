@@ -17,5 +17,11 @@ export class CartFooterComponent implements OnInit {
       alert(error.message);
     }
   }
-
+  public async deleteCartProducts(){
+    try {
+      await this.cartService.deleteAllProducts();
+    } catch (error: any) {
+      alert(error.message);
+    }
+  }
 }

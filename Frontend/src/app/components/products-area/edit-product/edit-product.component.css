@@ -1,5 +1,8 @@
 .EditProduct{
     width: fit-content;
+    position: sticky;
+    top: 18vh;
+    right: 5px;
 }
 
 mat-form-field{

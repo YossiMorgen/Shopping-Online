@@ -7,5 +7,6 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./cart-layout.component.css']
 })
 export class CartLayoutComponent {
-
+  constructor(private cartService: CartService){}
+  
 }

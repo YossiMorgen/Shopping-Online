@@ -1,7 +1,8 @@
 <div class="product_card">
     <span>
-        {{product.productName}}
-        {{product.price | currency:"ILS"}}
+        <mat-card-title>{{product.productName}}</mat-card-title>
+        <mat-card-subtitle>{{product.price | currency:"ILS"}}</mat-card-subtitle>
+        
     </span>
     <span class="buttons">
         <button (click)="changeQuantity( amount - 1 )">
@@ -13,8 +14,7 @@
         <button (click)="changeQuantity(amount + 1)">
             ➕
         </button>
-        <button class="remove" (click)="removeProduct()"> ❌ </button>
+        <button class="material-icons-round" (click)="removeProduct()"><mat-icon>remove_circle</mat-icon></button>
     </span>
-    <hr>
     
 </div>

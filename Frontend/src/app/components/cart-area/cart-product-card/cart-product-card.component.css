@@ -1,18 +1,19 @@
 .product_card{
-    /* margin: 15px 10px; */
-    /* padding-bottom: 5px; */
-    
     display: flex;
-    justify-content: s;
+    justify-content: space-between;
     position: relative;
-    flex-wrap: nowrap;
     min-width: fit-content;
-    /* border-bottom: 2px solid gray; */
-    /* width: fit-content; */
 }
 
 .product_card > span{
     min-width: fit-content;
+}
+.buttons {
+    display: none;
+}
+
+.product_card:hover > .buttons{
+     display: block;
 }
 
 .buttons > button {

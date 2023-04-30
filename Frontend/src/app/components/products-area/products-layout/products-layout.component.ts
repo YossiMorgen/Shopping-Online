@@ -18,6 +18,9 @@ export class ProductsLayoutComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
+    if(this.productsService.products.length){
+      return ;
+    }
     try {
       this.route.queryParams.subscribe(async (params: any) => {
         

@@ -13,7 +13,7 @@ export class ProductsService {
   public products: ProductModel[] = [];
   public categories: CategoryModel[] = [];
 
-  public seletor : Array<Number> = [];
+  // public seletor : Array<Number> = [];
   public i : number = -1;
 
   public constructor( private http:HttpClient, private config: ConfigService) { }
@@ -35,19 +35,19 @@ export class ProductsService {
     }
     const observable = this.http.get<ProductModel[]>(this.config.getRandomProducts)
     const products = await firstValueFrom(observable);
-    this.products = products;
+    this.products = this.products.concat(products);
   }
 
   public async getAllProductsByCategory(categoryID: number): Promise<void> {
     const observable = this.http.get<ProductModel[]>(this.config.getProductsByCategory + categoryID)
     const products = await firstValueFrom(observable);
-    this.products = products;
+    this.products = this.products.concat(products);
   }
 
   public async getProductsByName(name: string): Promise<void> {
     const observable = this.http.get<ProductModel[]>(this.config.searchProducts + name );
     const products = await firstValueFrom(observable);
-    this.products = products;
+    this.products = this.products.concat(products);
   }
 
   public async getOneProduct(productID: number): Promise<ProductModel>{

@@ -1,15 +1,23 @@
 .categoriesContainer{
-    overflow-x: scroll;
-    max-width: 100%;
-    width: fit-content;
-    display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  height: fit-content;
+  max-width: 100%;
+  width: fit-content;
+  display: flex;
+  position: relative;
+  margin-bottom: 20px;
 }
 
 .categoriesCard{
-    padding: 10px;
+    padding: auto;
     min-width: fit-content;
+    background-color: transparent;
+    font-size: larger;
 }
 
-/* ::-webkit-scrollbar {
-  display: none;
-} */
+.active{
+  font-weight: bolder;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  /* border-bottom: 1px solid gray; */
+}

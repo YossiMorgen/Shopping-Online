@@ -16,7 +16,7 @@ type Input = {
 export class SearchProductsComponent {
   public input: string = '';
   constructor(
-    private productsService : ProductsService,
+    public productsService : ProductsService,
     public router : Router,
     private cartService: CartService,
     private orderService : OrderService,
@@ -28,7 +28,7 @@ export class SearchProductsComponent {
       console.log(this.router.url);
       if (this.router.url === '/order') {
         this.orderService.search = this.input;
-        return
+        return ;
       }      
       // this.router.navigate(['products'], {queryParams: {search: this.input}});
       await this.productsService.getProductsByName( this.input );
@@ -44,8 +44,9 @@ export class SearchProductsComponent {
     }
     
     if (this.router.url.search('products') !== -1) {
-      return 'products'
+      return 'products';
     }
+
     return null;
   }
 }

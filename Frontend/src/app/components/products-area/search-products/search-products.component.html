@@ -29,12 +29,14 @@
     >
       <mat-icon>close</mat-icon>
     </button>
+    
     <a 
+        (click)=" productsService.products = []"
         matSuffix
         mat-icon-button
         *ngIf="visibility() === 'products' && input"
         [routerLink]="[]" 
-        [queryParams]="{ 'search': input  }"
+        [queryParams]="{ 'search': input }"
     ><mat-icon>search</mat-icon></a>
   </mat-form-field>
 

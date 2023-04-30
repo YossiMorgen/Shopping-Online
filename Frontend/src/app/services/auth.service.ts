@@ -9,6 +9,7 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import ProductModel from '../models/product-models/product.model';
 import { ProductsService } from './products.service';
+import { CartService } from './cart.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +22,8 @@ export class AuthService{
         private http: HttpClient, 
         private config: ConfigService, 
         private router : Router,
-        private productsService : ProductsService
+        private productsService : ProductsService,
+        private cartService: CartService
     ){ 
       const token = window.localStorage.getItem('token')
       if( token ) this.setUser(token)
@@ -48,6 +50,7 @@ export class AuthService{
         delete this.user;
         this.token = '';
         window.localStorage.removeItem('token')
+        this.cartService.products = [];
         this.router.navigate(['/login']);
     }
 

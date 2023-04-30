@@ -6,12 +6,32 @@
         [(ngModel)]="input"
         pattern="([a-z]{1,7})"
     >
-    <button matSuffix *ngIf="input" matSuffix mat-icon-button aria-label="Clear" (click)="input=''">
+   
+
+    <button 
+    matSuffix
+        *ngIf="visibility() === 'order' && input"
+        type="submit"
+        mat-icon-button
+        
+    >
+        <mat-icon>search</mat-icon>
+    </button>
+
+    
+     <button 
+        matSuffix 
+        *ngIf="visibility() === 'products' && input" 
+        matSuffix 
+        mat-icon-button 
+        aria-label="Clear" 
+        (click)="input=''"
+    >
       <mat-icon>close</mat-icon>
     </button>
-    <button *ngIf="visibility() === 'order' && input" type="submit"><mat-icon>search</mat-icon></button>
     <a 
         matSuffix
+        mat-icon-button
         *ngIf="visibility() === 'products' && input"
         [routerLink]="[]" 
         [queryParams]="{ 'search': input  }"

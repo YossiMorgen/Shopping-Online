@@ -1,5 +1,6 @@
 <header>
-    <h1>Shopping Online</h1>
+    <a routerLink="/products"><h1>Shopping Online</h1></a>
+    
     <app-auth-menu></app-auth-menu>
     <app-search-products  *ngIf="auth.isLoggedIn()"></app-search-products>
 </header>

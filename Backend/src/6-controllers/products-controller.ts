@@ -27,7 +27,7 @@ router.get('/random_products', verifyLoggedIn,  async (req: Request, res: Respon
     }
 });
 
-router.get('/search_products/:name([a-z]{1,7})', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
+router.get('/search_products/:name', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const products = await productsLogic.getProductsByName(req.params.name, (+req.query.start | 0), (+req.query.limit | 10));        
         res.json(products);

@@ -38,7 +38,6 @@ export class SearchProductsComponent {
   }
 
   public visibility(): string | null {
-    console.log(this.router.url);
     
     if(this.router.url === '/order'){
       return 'order';

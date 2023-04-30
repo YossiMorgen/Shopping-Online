@@ -1,10 +1,5 @@
-form{
+mat-form-field{
     position: absolute;
-    left: 25px;
-    bottom: 5px;
-}
-
-button {
-    border: none;
-    background-color: transparent;
+    right: 5px;
+    bottom: 0;
 }

@@ -21,16 +21,22 @@ export class ProductsLayoutComponent implements OnInit {
     try {
       this.route.queryParams.subscribe(async (params: any) => {
         
-
+        if(params.search){
+          await this.productsService.getProductsByName(params.search);
+          return ;
+        }
         if(params.category_id){
           await this.productsService.getAllProductsByCategory(params.category_id);
-        }else{
-          await this.productsService.getRandomProducts();
+          return ;
         }
-
-        await this.cartService.getCart();
-
+        await this.productsService.getRandomProducts();
       })
+    } catch (error: any) {
+      alert(error.message);
+    }
+
+    try {
+      await this.cartService.getCart();
     } catch (error: any) {
       alert(error.message);
     }

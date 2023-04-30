@@ -1,7 +1,7 @@
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from 'src/app/services/oreder.service';
 
 type Input = {
@@ -19,7 +19,8 @@ export class SearchProductsComponent {
     private productsService : ProductsService,
     public router : Router,
     private cartService: CartService,
-    private orderService : OrderService
+    private orderService : OrderService,
+    private route: ActivatedRoute
   ) {}
 
   public async search () {
@@ -34,5 +35,18 @@ export class SearchProductsComponent {
     } catch (error : any) {
       alert(error.message);
     }
+  }
+
+  public visibility(): string | null {
+    console.log(this.router.url);
+    
+    if(this.router.url === '/order'){
+      return 'order';
+    }
+    
+    if (this.router.url.search('products') !== -1) {
+      return 'products'
+    }
+    return null;
   }
 }

@@ -22,7 +22,8 @@ function getRandomProducts (start: number, end: number): Promise<ProductModel[]>
 
 async function getProductsByName(name : string, start: number, end: number): Promise<ProductModel[]> {
     const products = await dal.execute(`
-        SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName  FROM products, categoryID
+        SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID
+        FROM products
         WHERE productName LIKE ?
         LIMIT ?
         OFFSET ?

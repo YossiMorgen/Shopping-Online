@@ -8,7 +8,7 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit{
 
   public products: ProductModel[] = this.productsService.products;
 
@@ -17,4 +17,15 @@ export class ProductListComponent {
     public auth : AuthService
   ) {  }
 
+  ngOnInit(): void {
+    // window.addEventListener("scrollend", () => {
+    //   console.log("sup?");
+      
+    // })
+  }
+  public getMoreProducts(){
+    console.log("getMoreProducts");
+    
+    this.productsService.getProducts();
+  }
 }

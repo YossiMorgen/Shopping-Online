@@ -18,12 +18,12 @@ export class ProductsLayoutComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    if(this.productsService.products.length){
-      return ;
-    }
+    console.log(this.productsService.products);
+    
     try {
       this.route.queryParams.subscribe(async (params: any) => {
-        
+        this.productsService.products = [];
+
         if(params.search){
           await this.productsService.getProductsByName(params.search);
           return ;

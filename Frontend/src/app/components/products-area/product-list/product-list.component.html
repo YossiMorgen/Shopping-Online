@@ -10,4 +10,5 @@
         <app-product-card [i]="i" [product]="product"></app-product-card>
 
     </div>
+    <button [disabled]="!productsService.isThereProducts" *ngIf="productsService.products.length" (click)="getMoreProducts()" >Load More</button>
 </div>

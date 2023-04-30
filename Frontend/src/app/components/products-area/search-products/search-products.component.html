@@ -13,7 +13,6 @@
         *ngIf="visibility() === 'order' && input"
         type="submit"
         mat-icon-button
-        
     >
         <mat-icon>search</mat-icon>
     </button>
@@ -31,7 +30,6 @@
     </button>
     
     <a 
-        (click)=" productsService.products = []"
         matSuffix
         mat-icon-button
         *ngIf="visibility() === 'products' && input"

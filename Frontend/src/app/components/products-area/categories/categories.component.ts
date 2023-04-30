@@ -17,9 +17,13 @@ export class CategoriesComponent implements OnInit{
     private config : ConfigService, 
     public productsService: ProductsService,
     private route: ActivatedRoute
-    ) { }
+  ) { }
+  public paramsProductID: string;
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params: any): true | void => {
+      this.paramsProductID = params['category_id'];
+    })
     try {
       this.productsService.getCategories()
     } catch (error : any) {
@@ -39,13 +43,9 @@ export class CategoriesComponent implements OnInit{
 
   public isActive(categoryID : number): boolean {
     let boolean = false;
-    this.route.queryParams.subscribe((params: any): true | void => {
-      if(params.category_id == categoryID) {
-        console.log("hi");
-        
-        boolean = true;
-      }
-    })
+    if(this.paramsProductID == '' + categoryID) {      
+      boolean = true;
+    }
     return boolean;
   }
 }

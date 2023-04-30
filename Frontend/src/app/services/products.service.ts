@@ -4,6 +4,7 @@ import { ConfigService } from '../utils/config.service';
 import { firstValueFrom, Observable } from 'rxjs';
 import ProductModel from '../models/product-models/product.model';
 import CategoryModel from '../models/product-models/category.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,14 @@ export class ProductsService {
 
   public products: ProductModel[] = [];
   public categories: CategoryModel[] = [];
-
-  // public seletor : Array<Number> = [];
+  public isThereProducts: boolean = true;
   public i : number = -1;
 
-  public constructor( private http:HttpClient, private config: ConfigService) { }
+  public constructor( 
+    private http:HttpClient, 
+    private config: ConfigService,
+    private route: ActivatedRoute
+) { }
 
   public async getCategories ( ): Promise<void> {
     
@@ -29,17 +33,33 @@ export class ProductsService {
     this.categories = categories;    
   }
 
+  public async getProducts() {
+    
+    this.route.queryParams.subscribe(async (params: any) => {
+        
+      if(params.search){
+        await this.getProductsByName(params.search);
+        return ;
+      }
+      if(params.category_id){
+        await this.getAllProductsByCategory(params.category_id);
+        return ;
+      }
+      
+      await this.getRandomProducts();
+    })
+    console.log(this.products);
+    
+  }
+
   public async getRandomProducts ( ): Promise<void> {
-    if(this.products.length != 0 ){
-      return new Promise(resolve => resolve())
-    }
     const observable = this.http.get<ProductModel[]>(this.config.getRandomProducts)
     const products = await firstValueFrom(observable);
     this.products = this.products.concat(products);
   }
 
   public async getAllProductsByCategory(categoryID: number): Promise<void> {
-    const observable = this.http.get<ProductModel[]>(this.config.getProductsByCategory + categoryID)
+    const observable = this.http.get<ProductModel[]>(this.config.getProductsByCategory + categoryID + "?start=" + this.products.length)
     const products = await firstValueFrom(observable);
     this.products = this.products.concat(products);
   }

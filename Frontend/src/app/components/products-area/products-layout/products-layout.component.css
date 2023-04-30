@@ -1,17 +1,19 @@
 .products-cart-layout{
     display: flex;
-    max-width: 100vw;
-    justify-content: space-between
+    max-width: 100%;
+    justify-content: space-between;
+    margin-right: 0;
+
 }
 .products-layout{
-    /* width: 70%; */
     width: calc(100% - 330px);
 }
 
 .stickyBar{
-    /* width: 25%; */
+    margin-left: 20px;
     flex-basis: 25%;
-    min-width: fit-content;
+    width: fit-content;
     position: sticky;
     top: 18vh;
+    margin-right: 0;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
@@ -12,12 +13,24 @@ export class ProductsLayoutComponent implements OnInit {
   constructor(
     public auth : AuthService,
     public productsService : ProductsService,
-    public cartService: CartService
+    public cartService: CartService,
+    private route: ActivatedRoute
   ) { }
 
   async ngOnInit(): Promise<void> {
     try {
-      await this.cartService.getCart();
+      this.route.queryParams.subscribe(async (params: any) => {
+        
+
+        if(params.category_id){
+          await this.productsService.getAllProductsByCategory(params.category_id);
+        }else{
+          await this.productsService.getRandomProducts();
+        }
+
+        await this.cartService.getCart();
+
+      })
     } catch (error: any) {
       alert(error.message);
     }

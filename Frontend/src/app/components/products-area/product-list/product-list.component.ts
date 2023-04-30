@@ -8,7 +8,7 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent {
 
   public products: ProductModel[] = this.productsService.products;
 
@@ -17,11 +17,4 @@ export class ProductListComponent implements OnInit {
     public auth : AuthService
   ) {  }
 
-    async ngOnInit(): Promise<void> {
-      try {
-        await this.productsService.getRandomProducts();
-      } catch (error:any) {
-        alert(error.message);
-      }
-    }
 }

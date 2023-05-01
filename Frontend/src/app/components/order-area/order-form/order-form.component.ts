@@ -6,6 +6,7 @@ import Order from 'src/app/models/product-models/order.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { OrderService } from 'src/app/services/oreder.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
 @Component({
   selector: 'app-order-form',
@@ -21,7 +22,8 @@ export class OrderFormComponent implements OnInit {
     private orderService : OrderService,
     private cartService : CartService,
     private router : Router,
-    private formBuilder : FormBuilder
+    private formBuilder : FormBuilder,
+    private toast: ToastifyNotificationsService
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -54,7 +56,7 @@ export class OrderFormComponent implements OnInit {
 
       this.router.navigate(['/receipt'])
     } catch (error: any) {
-      alert(error.message);
+      this.toast.error(error);
     }
   }
 

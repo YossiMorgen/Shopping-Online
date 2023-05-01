@@ -19,9 +19,10 @@ export class HttpResponseInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       tap({
         next: (event : any) => {
-          this.app.loading = false;
           if (event instanceof HttpResponse) {
-            if(event.status == 401) {
+              this.app.loading = false;
+              
+              if(event.status == 401) {
               this.toast.error('Token expired or unavailable')
               this.auth.logout();
             }

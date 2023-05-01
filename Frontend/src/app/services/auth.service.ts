@@ -50,7 +50,7 @@ export class AuthService{
         delete this.user;
         this.token = '';
         window.localStorage.removeItem('token')
-        this.cartService.products = [];
+        this.cartService.logout;
         this.router.navigate(['/login']);
     }
 

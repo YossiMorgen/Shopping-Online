@@ -101,16 +101,11 @@ export class CartService {
         this.totalPrice = sum;
     }
 
-    
-    // public productsTotalPrice(): number{
-    //     let sum = 0;
-        
-    //     for(const product of this.products){
-    //         sum += product.price;
-    //     }
-
-    //     return sum;
-    // }
+    public logout():void {
+        this.products= [];
+        this.totalAmount = 0;
+        this.totalPrice = 0;
+    }
 
 
 }

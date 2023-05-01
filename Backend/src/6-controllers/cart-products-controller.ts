@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import verifyLoggedIn from "../3-middleware/auth-middlewares/verify-logged-in";
-import cardProductLogic from "../5-logic/products-logic/card-product-logic";
+import cardProductLogic from "../5-logic/card-product-logic";
 import ProductCartModel from "../4-models/product-models/product_cart-model";
 import cyber from "../2-utils/cyber";
 import User from "../4-models/auth-models/user-model";

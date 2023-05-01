@@ -14,7 +14,7 @@ import expressFileUpload from 'express-fileupload'
 const server = express();
 
 server.use(expressRateLimit({
-    max: 50,
+    max: 70,
     windowMs: 1000,
     message: "Fuck Of "
 }));

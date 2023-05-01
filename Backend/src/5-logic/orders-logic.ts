@@ -1,7 +1,7 @@
 import { OkPacket } from 'mysql';
-import { ValidationErrorModel } from '../../4-models/error-models';
-import OrdersModel from "../../4-models/product-models/orders-model";
-import dal from '../../2-utils/dal';
+import { ValidationErrorModel } from '../4-models/error-models';
+import OrdersModel from "../4-models/product-models/orders-model";
+import dal from '../2-utils/dal';
 
 async function addOrder( order : OrdersModel): Promise<OrdersModel> {
     

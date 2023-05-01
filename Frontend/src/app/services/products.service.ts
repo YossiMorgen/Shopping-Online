@@ -19,8 +19,7 @@ export class ProductsService {
   public constructor( 
     private http:HttpClient, 
     private config: ConfigService,
-    private route: ActivatedRoute
-) { }
+  ) { }
 
   public async getCategories ( ): Promise<void> {
     
@@ -33,39 +32,28 @@ export class ProductsService {
     this.categories = categories;    
   }
 
-  public async getProducts() {
+  public async getProducts(params: any) {
     
-    this.route.queryParams.subscribe(async (params: any) => {
-        
+      let products: ProductModel[] = []
       if(params.search){
-        await this.getProductsByName(params.search);
-        return ;
+        const observable = this.http.get<ProductModel[]>(this.config.searchProducts + name + "?start=" + this.products.length );
+        const products = await firstValueFrom(observable);
       }
-      if(params.category_id){
-        await this.getAllProductsByCategory(params.category_id);
-        return ;
+      else if(params.category_id){
+        const observable = this.http.get<ProductModel[]>(this.config.getProductsByCategory + params.category_id + "?start=" + this.products.length)
+        products = await firstValueFrom(observable);
+      } else {
+        const observable = this.http.get<ProductModel[]>(this.config.getRandomProducts + "?start=" + this.products.length)
+        products = await firstValueFrom(observable);
       }
-      
-      await this.getRandomProducts();
-    })
-    console.log(this.products);
-    
-  }
-
-  public async getRandomProducts ( ): Promise<void> {
-    const observable = this.http.get<ProductModel[]>(this.config.getRandomProducts)
-    const products = await firstValueFrom(observable);
-    this.products = this.products.concat(products);
-  }
-
-  public async getAllProductsByCategory(categoryID: number): Promise<void> {
-    const observable = this.http.get<ProductModel[]>(this.config.getProductsByCategory + categoryID + "?start=" + this.products.length)
-    const products = await firstValueFrom(observable);
-    this.products = this.products.concat(products);
+      this.products = this.products.concat(products);
+      if(products.length < 24){
+        this.isThereProducts = false ;
+      }
   }
 
   public async getProductsByName(name: string): Promise<void> {
-    const observable = this.http.get<ProductModel[]>(this.config.searchProducts + name );
+    const observable = this.http.get<ProductModel[]>(this.config.searchProducts + name + "?start=" + this.products.length );
     const products = await firstValueFrom(observable);
     this.products = this.products.concat(products);
   }
@@ -76,7 +64,6 @@ export class ProductsService {
   }
 
   public async addProduct(product: ProductModel | FormData):Promise<void>{
-    // const formData : FormData = product.getFormData();   
     const observable = this.http.post<ProductModel>(this.config.addProduct, product);
     const newProduct = await firstValueFrom(observable);
     this.products.push(newProduct);

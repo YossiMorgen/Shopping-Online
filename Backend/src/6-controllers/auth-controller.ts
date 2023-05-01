@@ -1,6 +1,6 @@
 import express, {Request, Response, NextFunction } from "express";
 import User from "../4-models/auth-models/user-model";
-import authLogic from "../5-logic/auth-logic/auth-logic";
+import authLogic from "../5-logic/auth-logic";
 import CredentialsModel from "../4-models/auth-models/credentials-model";
 import RoleModel from "../4-models/auth-models/role-model";
 

@@ -1,10 +1,10 @@
-import { ResourceNotFoundErrorModel } from '../../4-models/error-models';
+import { ResourceNotFoundErrorModel } from '../4-models/error-models';
 import { OkPacket } from 'mysql';
-import { ValidationErrorModel } from "../../4-models/error-models";
-import dal from '../../2-utils/dal';
-import ProductCartModel from '../../4-models/product-models/product_cart-model';
-import Cart from '../../4-models/product-models/shopping_cart-model';
-import appConfig from '../../2-utils/AppConfig';
+import { ValidationErrorModel } from "../4-models/error-models";
+import dal from '../2-utils/dal';
+import ProductCartModel from '../4-models/product-models/product_cart-model';
+import Cart from '../4-models/product-models/shopping_cart-model';
+import appConfig from '../2-utils/AppConfig';
 
 async function createCart(userID: number): Promise<object>{
     const date = new Date();

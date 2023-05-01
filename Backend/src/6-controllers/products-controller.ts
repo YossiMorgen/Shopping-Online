@@ -1,11 +1,11 @@
 import express, { NextFunction, Request, Response } from "express";
-import productsLogic from "../5-logic/products-logic/products-logic";
+import productsLogic from "../5-logic/products-logic";
 import verifyLoggedIn from "../3-middleware/auth-middlewares/verify-logged-in";
 import verifyAdmin from '../3-middleware/auth-middlewares/verify-admin';
 import cyber from "../2-utils/cyber";
 import ProductModel from "../4-models/product-models/product-model";
 import { log } from "console";
-import ordersLogic from "../5-logic/products-logic/orders-logic";
+import ordersLogic from "../5-logic/orders-logic";
 
 const router = express.Router();
 
@@ -20,7 +20,7 @@ router.get('/categories', verifyLoggedIn,  async (req: Request, res: Response, n
 
 router.get('/random_products', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
     try {  
-        const products = await productsLogic.getRandomProducts((+req.query.start | 0), (+req.query.limit | 15));        
+        const products = await productsLogic.getRandomProducts((+req.query.start | 0), (+req.query.limit | 24));        
         res.json(products);
     } catch (error) {
         next(error);
@@ -29,7 +29,7 @@ router.get('/random_products', verifyLoggedIn,  async (req: Request, res: Respon
 
 router.get('/search_products/:name', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
     try {  
-        const products = await productsLogic.getProductsByName(req.params.name, (+req.query.start | 0), (+req.query.limit | 15));        
+        const products = await productsLogic.getProductsByName(req.params.name, (+req.query.start | 0), (+req.query.limit | 24));        
         res.json(products);
     } catch (error) {
         next(error);
@@ -39,7 +39,7 @@ router.get('/search_products/:name', verifyLoggedIn,  async (req: Request, res: 
 router.get('/products_by_category/:categoryID([0-9]+)', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const categoryID = +req.params.categoryID;
-        const products = await productsLogic.getProductsByCategory(categoryID, (+req.query.start | 0), (+req.query.limit | 15));        
+        const products = await productsLogic.getProductsByCategory(categoryID, (+req.query.start | 0), (+req.query.limit | 24));        
         res.json(products);
     } catch (error) {
         next(error);

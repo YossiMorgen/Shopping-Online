@@ -22,17 +22,11 @@ export class ProductsLayoutComponent implements OnInit {
   async ngOnInit(): Promise<void> {    
     try {
       this.route.queryParams.subscribe(async (params: any) => {
-        this.productsService.products = [];
 
-        if(params.search){
-          await this.productsService.getProductsByName(params.search);
-          return ;
-        }
-        if(params.category_id){
-          await this.productsService.getAllProductsByCategory(params.category_id);
-          return ;
-        }
-        await this.productsService.getRandomProducts();
+        this.productsService.products = [];
+        
+        this.productsService.getProducts(params);
+      
       })
     } catch (error: any) {
       this.toast.error(error);

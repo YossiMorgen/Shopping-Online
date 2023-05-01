@@ -1,10 +1,10 @@
 import { OkPacket } from 'mysql';
-import dal from "../../2-utils/dal";
-import { ResourceNotFoundErrorModel, ValidationErrorModel } from '../../4-models/error-models';
-import fileHandler from '../../2-utils/file-handler';
-import appConfig from '../../2-utils/AppConfig';
-import ProductModel from '../../4-models/product-models/product-model';
-import CategoryModel from '../../4-models/product-models/category-model';
+import dal from "../2-utils/dal";
+import { ResourceNotFoundErrorModel, ValidationErrorModel } from '../4-models/error-models';
+import fileHandler from '../2-utils/file-handler';
+import appConfig from '../2-utils/AppConfig';
+import ProductModel from '../4-models/product-models/product-model';
+import CategoryModel from '../4-models/product-models/category-model';
 
 function getCategories():Promise<CategoryModel> {
     return dal.execute('SELECT * FROM categories');

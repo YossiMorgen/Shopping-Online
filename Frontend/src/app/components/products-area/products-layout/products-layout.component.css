@@ -5,15 +5,19 @@
     margin-right: 0;
 
 }
+
+.classic {
+    width: 100%;
+}
 .products-layout{
     width: calc(100% - 330px);
 }
 
 .stickyBar{
     margin-left: 20px;
-    flex-basis: 25%;
+    /* flex-basis: 25%; */
     width: fit-content;
     position: sticky;
     top: 18vh;
-    margin-right: 0;
+    margin-right: 10px;
 }

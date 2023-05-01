@@ -33,14 +33,6 @@ export class CategoriesComponent implements OnInit{
     }      
   }
 
-  public async getProductByCategory(categoryID : number): Promise<void>{
-    try {
-      await this.productsService.getAllProductsByCategory( categoryID )
-    } catch (error : any) {
-      this.toast.error(error);
-    }
-  }
-
   public isActive(categoryID : number): boolean {
     let boolean = false;
     if(this.paramsProductID == '' + categoryID) {      

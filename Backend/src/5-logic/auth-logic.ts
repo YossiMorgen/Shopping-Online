@@ -1,10 +1,10 @@
 import { OkPacket } from "mysql";
-import dal from "../../2-utils/dal";
-import { ResourceNotFoundErrorModel, ValidationErrorModel } from "../../4-models/error-models";
-import User from "../../4-models/auth-models/user-model";
-import cyber from "../../2-utils/cyber";
-import CredentialsModel from "../../4-models/auth-models/credentials-model";
-import RoleModel from "../../4-models/auth-models/role-model"
+import dal from "../2-utils/dal";
+import { ResourceNotFoundErrorModel, ValidationErrorModel } from "../4-models/error-models";
+import User from "../4-models/auth-models/user-model";
+import cyber from "../2-utils/cyber";
+import CredentialsModel from "../4-models/auth-models/credentials-model";
+import RoleModel from "../4-models/auth-models/role-model"
 async function register(user : User) {
 
     const error = user.validation();

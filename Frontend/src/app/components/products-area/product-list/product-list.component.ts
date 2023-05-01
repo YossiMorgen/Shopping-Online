@@ -31,9 +31,7 @@ export class ProductListComponent implements OnInit{
       if(this.productsService.isThereProducts && this.router.url.search('products') !== -1 && window.innerHeight + Math.round(window.scrollY) ===  document.body.offsetHeight ){
         try {
           this.route.queryParams.subscribe(async (params: any) => {
-            // if(this.app.loading){
-            //   return;
-            // }
+
             this.productsService.isThereProducts = true
             this.productsService.getProducts(params);
           })

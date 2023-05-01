@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 import { AppService } from '../services/app.service';
 
 @Injectable()
-export class JwtInterceptor implements HttpInterceptor {
+export class HttpRequestInterceptor implements HttpInterceptor {
 
   constructor( private auth: AuthService, private app: AppService) {}
 

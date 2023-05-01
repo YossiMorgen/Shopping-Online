@@ -14,13 +14,13 @@ import { AuthMenuComponent } from './components/auth-area/auth-menu/auth-menu.co
 import { CategoriesComponent } from './components/products-area/categories/categories.component';
 import { ProductListComponent } from './components/products-area/product-list/product-list.component';
 import { ProductCardComponent } from './components/products-area/product-card/product-card.component';
-import { JwtInterceptor } from './utils/jwt.interceptor';
+import { HttpRequestInterceptor } from './utils/request.interceptor';
 import { AddProductComponent } from './components/products-area/add-product/add-product.component';
 import { EditProductComponent } from './components/products-area/edit-product/edit-product.component';
 import { CartLayoutComponent } from './components/cart-area/cart-layout/cart-layout.component';
 import { CartProductsComponent } from './components/cart-area/cart-products/cart-products.component';
 import { CartHeaderComponent } from './components/cart-area/cart-header/cart-header.component';
-import { HttpResponseInterceptor } from './utils/auth.interceptor';
+import { HttpResponseInterceptor } from './utils/response.interceptor';
 import { CartProductCardComponent } from './components/cart-area/cart-product-card/cart-product-card.component';
 import { CartFooterComponent } from './components/cart-area/cart-footer/cart-footer.component';
 import { SearchProductsComponent } from './components/products-area/search-products/search-products.component';
@@ -174,7 +174,7 @@ import { LoaderComponent } from './components/playground/loader/loader.component
   ],
   providers: [
     ToastService,
-    {useClass: JwtInterceptor, provide: HTTP_INTERCEPTORS, multi: true},
+    {useClass: HttpRequestInterceptor, provide: HTTP_INTERCEPTORS, multi: true},
     {useClass: HttpResponseInterceptor, provide: HTTP_INTERCEPTORS, multi: true}
   ],
   bootstrap: [LayoutComponent]

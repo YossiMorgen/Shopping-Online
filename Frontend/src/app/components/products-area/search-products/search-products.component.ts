@@ -3,6 +3,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from 'src/app/services/oreder.service';
+import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
 type Input = {
   input: string;
@@ -20,7 +21,8 @@ export class SearchProductsComponent {
     public router : Router,
     private cartService: CartService,
     private orderService : OrderService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toast: ToastifyNotificationsService
   ) {}
 
   public async search () {
@@ -33,7 +35,7 @@ export class SearchProductsComponent {
       // this.router.navigate(['products'], {queryParams: {search: this.input}});
       await this.productsService.getProductsByName( this.input );
     } catch (error : any) {
-      alert(error.message);
+      this.toast.error(error)
     }
   }
 

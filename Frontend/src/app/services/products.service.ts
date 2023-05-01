@@ -5,6 +5,7 @@ import { firstValueFrom, Observable } from 'rxjs';
 import ProductModel from '../models/product-models/product.model';
 import CategoryModel from '../models/product-models/category.model';
 import { ActivatedRoute } from '@angular/router';
+import { ToastifyNotificationsService } from './toastify-notifications.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class ProductsService {
   public constructor( 
     private http:HttpClient, 
     private config: ConfigService,
+    private toast: ToastifyNotificationsService
   ) { }
 
   public async getCategories ( ): Promise<void> {
@@ -47,9 +49,12 @@ export class ProductsService {
         products = await firstValueFrom(observable);
       }
       this.products = this.products.concat(products);
+
       if(products.length < 24){
+        this.toast.message("We don't have any more products that fit your search")
         this.isThereProducts = false ;
       }
+      
   }
 
   public async getProductsByName(name: string): Promise<void> {

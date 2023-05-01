@@ -5,18 +5,21 @@ import { AuthService } from "../services/auth.service";
 import { tap } from 'rxjs';
 import { Router } from "@angular/router";
 import { ToastService } from "angular-toastify";
+import { AppService } from "../services/app.service";
 @Injectable()
 export class HttpResponseInterceptor implements HttpInterceptor {
   constructor(
     private auth: AuthService, 
     private router : Router,
-    private toast: ToastService
+    private toast: ToastService,
+    private app : AppService
   ) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       tap({
         next: (event : any) => {
+          this.app.loading = false;
           if (event instanceof HttpResponse) {
             if(event.status == 401) {
               this.toast.error('Token expired or unavailable')

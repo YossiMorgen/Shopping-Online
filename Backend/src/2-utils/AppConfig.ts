@@ -12,7 +12,7 @@ class DevelopmentConfig extends AppConfig{
 
     public port = 3001;
 
-    public siteUrl = 'http://localhost:3000/';
+    public siteUrl = 'http://localhost:4200/';
 
     public nodeUrl = "http://" + this.host + ":" + this.port + "/";
 

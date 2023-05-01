@@ -35,6 +35,8 @@ export class SearchProductsComponent {
       // this.router.navigate(['products'], {queryParams: {search: this.input}});
       await this.productsService.getProductsByName( this.input );
     } catch (error : any) {
+      console.log("hi");
+      
       this.toast.error(error)
     }
   }

@@ -1,5 +1,7 @@
 <div class="productsList">
-    <span *ngIf="productsService.products.length === 0">We Don't Have Products That Fit Your Search...</span>
+    <mat-spinner *ngIf="app.loading"></mat-spinner>
+
+    <span *ngIf="productsService.products.length === 0 && ! app.loading">We Don't Have Products That Fit Your Search...</span>
 
     <div *ngFor="let product of productsService.products, let i = index">
 

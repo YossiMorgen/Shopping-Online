@@ -36,24 +36,24 @@ export class ProductsService {
 
   public async getProducts(params: any) {
     
-      let products: ProductModel[] = []
-      if(params.search){
-        const observable = this.http.get<ProductModel[]>(this.config.searchProducts + name + "?start=" + this.products.length );
-        const products = await firstValueFrom(observable);
-      }
-      else if(params.category_id){
-        const observable = this.http.get<ProductModel[]>(this.config.getProductsByCategory + params.category_id + "?start=" + this.products.length)
-        products = await firstValueFrom(observable);
-      } else {
-        const observable = this.http.get<ProductModel[]>(this.config.getRandomProducts + "?start=" + this.products.length)
-        products = await firstValueFrom(observable);
-      }
-      this.products = this.products.concat(products);
+    let products: ProductModel[] = []
+    if(params.search){
+      const observable = this.http.get<ProductModel[]>(this.config.searchProducts + params.search + "?start=" + this.products.length );
+      products = await firstValueFrom(observable);
+    }
+    else if(params.category_id){
+      const observable = this.http.get<ProductModel[]>(this.config.getProductsByCategory + params.category_id + "?start=" + this.products.length)
+      products = await firstValueFrom(observable);
+    } else {
+      const observable = this.http.get<ProductModel[]>(this.config.getRandomProducts + "?start=" + this.products.length)
+      products = await firstValueFrom(observable);
+    }
+    this.products = this.products.concat(products);
 
-      if(products.length < 24){
-        this.toast.message("We don't have any more products that fit your search")
-        this.isThereProducts = false ;
-      }
+    if(products.length < 24){
+      this.toast.message("We don't have any more products that fit your search")
+      this.isThereProducts = false ;
+    }
       
   }
 

@@ -10,6 +10,7 @@
 
     <button 
     matSuffix
+        (click)="orderService.search = input"
         *ngIf="visibility() === 'order' && input"
         type="submit"
         mat-icon-button

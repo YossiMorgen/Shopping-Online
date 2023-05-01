@@ -26,20 +26,16 @@ export class MyCartComponent implements OnInit {
         this.toast.error(error);
       }
     }
-
-    if(this.cartService.totalPrice === 0){
-      this.router.navigate(['/products']);
-    }
   }
 
   public markSearch(value: string): string{
     if(value.search(this.orderService.search) >= 0){
+      console.log(this.orderService.search);
       
       const array = value.split(this.orderService.search)
       value = array.join(`<span class="highlighted-text">${this.orderService.search}</span>`)    
     
     }
-    console.log(value);
     return value;
     
   }

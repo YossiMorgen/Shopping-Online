@@ -20,21 +20,16 @@ export class HttpResponseInterceptor implements HttpInterceptor {
       tap({
         next: (event : any) => {
           if (event instanceof HttpResponse) {
-              this.app.loading = false;
-              
-              if(event.status == 401) {
-              this.toast.error('Token expired or unavailable')
-              this.auth.logout();
-            }
+            this.app.loading = false;
           }
           return event;
         },
-        // error: (error : any) => {
-        //   if(error.status === 401) {
-        //     // alert('Unauthorized access!')
-        //     this.auth.logout();
-        //   }
-        // }
+        error: (error : any) => {
+          this.app.loading = false;
+          if(error.status === 401) {
+            this.auth.logout();
+          }
+        }
       }));
   }
 }

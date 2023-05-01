@@ -29,7 +29,7 @@ export class CartService {
 
         const observable = this.http.get<Cart>(this.config.getCartDetails)
         this.cart = await firstValueFrom(observable);
-        this.getCartProductsByCartId();
+        await this.getCartProductsByCartId();
         
     }
 
@@ -38,6 +38,8 @@ export class CartService {
         this.products = await firstValueFrom(observable);
 
         this.productsTotalAmountAndPrice();
+        console.log(!this.products.length);
+
     }
 
     public async changeProductAmount(product: ProductCartModel):Promise<void>{        
@@ -102,9 +104,11 @@ export class CartService {
     }
 
     public logout():void {
+        this.cart = new Cart();
         this.products= [];
         this.totalAmount = 0;
         this.totalPrice = 0;
+        
     }
 
 

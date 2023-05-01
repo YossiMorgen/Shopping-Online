@@ -26,9 +26,18 @@ export class OrderFormComponent implements OnInit {
     private toast: ToastifyNotificationsService
   ) { }
 
+  public myFilter = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
+  };
+
   async ngOnInit(): Promise<void> {
     try {
       await this.cartService.getCart();
+      if(!this.cartService.products.length){
+        this.router.navigate(['/products']);
+      }
     } catch (error : any) {
       this.toast.error(error);
     }

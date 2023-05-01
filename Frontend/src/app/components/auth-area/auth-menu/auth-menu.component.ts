@@ -7,8 +7,5 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./auth-menu.component.css']
 })
 export class AuthMenuComponent {
-
-    public constructor( public auth: AuthService ){}
-    public user = this.auth;
-
+  public constructor( public auth: AuthService ){}
 }

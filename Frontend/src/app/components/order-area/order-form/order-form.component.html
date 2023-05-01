@@ -17,7 +17,10 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Delivery date</mat-label>
-        <input matInput type="date" formControlName="deliveryDate">
+        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" formControlName="deliveryDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
     </mat-form-field>
 
     <h3>Payments:</h3>

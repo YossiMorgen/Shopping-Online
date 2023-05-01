@@ -20,7 +20,7 @@ export class SearchProductsComponent {
     public productsService : ProductsService,
     public router : Router,
     private cartService: CartService,
-    private orderService : OrderService,
+    public orderService : OrderService,
     private route: ActivatedRoute,
     private toast: ToastifyNotificationsService
   ) {}
@@ -32,7 +32,6 @@ export class SearchProductsComponent {
         this.orderService.search = this.input;
         return ;
       }      
-      // this.router.navigate(['products'], {queryParams: {search: this.input}});
       await this.productsService.getProductsByName( this.input );
     } catch (error : any) {
       console.log("hi");

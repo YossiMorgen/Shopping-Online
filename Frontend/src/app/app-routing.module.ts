@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from './components/layout-area/page-not-found/page-not-found.component';
 import { LoginComponent } from './components/auth-area/login/login.component';
 import { RegisterComponent } from './components/auth-area/register/register.component';
 import { AuthGuard } from './utils/auth.guard';
@@ -10,6 +9,7 @@ import { RegisteredGuard } from './utils/registered.guard';
 import { OrderLayoutComponent } from './components/order-area/order-layout/order-layout.component';
 import { ReceiptComponent } from './components/order-area/receipt/receipt.component';
 import { DownloadPdfComponent } from './components/order-area/download-pdf/download-pdf.component';
+import { PageNotFoundComponent } from './components/playground/page-not-found/page-not-found.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent, canActivate: [RegisteredGuard] },

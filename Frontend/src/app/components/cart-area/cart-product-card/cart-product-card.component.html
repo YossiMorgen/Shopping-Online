@@ -3,7 +3,7 @@
         <button class="minus" (click)="changeQuantity( amount - 1 )">
             -
         </button>
-        <input (change)="changeQuantity(amount)" [(ngModel)]="amount"  type="number" min="1">
+        <input (change)="changeQuantity(+amount)" [(ngModel)]="amount"  type="number" min="1">
         <button class="plus" (click)="changeQuantity(amount + 1)">
             +
         </button>

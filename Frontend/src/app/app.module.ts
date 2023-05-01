@@ -6,7 +6,6 @@ import { LayoutComponent } from './components/layout-area/layout/layout.componen
 import { HeaderComponent } from './components/layout-area/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { PageNotFoundComponent } from './components/layout-area/page-not-found/page-not-found.component';
 import { LoginComponent } from './components/auth-area/login/login.component';
 import { RegisterComponent } from './components/auth-area/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,6 +30,7 @@ import { OrderFormComponent } from './components/order-area/order-form/order-for
 import { ReceiptComponent } from './components/order-area/receipt/receipt.component';
 import { DownloadPdfComponent } from './components/order-area/download-pdf/download-pdf.component';
 import { PopupAddProductComponent } from './components/products-area/popup-add-product/popup-add-product.component';
+import { ToastService, AngularToastifyModule } from 'angular-toastify'; 
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -82,6 +82,8 @@ import {CdkMenuModule} from '@angular/cdk/menu';
 import {DialogModule} from '@angular/cdk/dialog';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { PageNotFoundComponent } from './components/playground/page-not-found/page-not-found.component';
+
 @NgModule({
   declarations: [
     LayoutComponent,
@@ -107,8 +109,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     OrderFormComponent,
     ReceiptComponent,
     DownloadPdfComponent,
-    PopupAddProductComponent,
-    
+    PopupAddProductComponent,    
   ],
   imports: [
     BrowserModule,
@@ -117,6 +118,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    AngularToastifyModule,
     
     MatFormFieldModule,
     A11yModule,
@@ -169,6 +171,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DialogModule,
   ],
   providers: [
+    ToastService,
     {useClass: JwtInterceptor, provide: HTTP_INTERCEPTORS, multi: true},
     {useClass: HttpResponseInterceptor, provide: HTTP_INTERCEPTORS, multi: true}
   ],

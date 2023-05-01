@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
+import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
 @Component({
   selector: 'app-products-layout',
@@ -14,12 +15,11 @@ export class ProductsLayoutComponent implements OnInit {
     public auth : AuthService,
     public productsService : ProductsService,
     public cartService: CartService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toast: ToastifyNotificationsService
   ) { }
 
-  async ngOnInit(): Promise<void> {
-    console.log(this.productsService.products);
-    
+  async ngOnInit(): Promise<void> {    
     try {
       this.route.queryParams.subscribe(async (params: any) => {
         this.productsService.products = [];
@@ -35,13 +35,13 @@ export class ProductsLayoutComponent implements OnInit {
         await this.productsService.getRandomProducts();
       })
     } catch (error: any) {
-      alert(error.message);
+      this.toast.error(error);
     }
 
     try {
       await this.cartService.getCart();
     } catch (error: any) {
-      alert(error.message);
+      this.toast.error(error);
     }
   }
 

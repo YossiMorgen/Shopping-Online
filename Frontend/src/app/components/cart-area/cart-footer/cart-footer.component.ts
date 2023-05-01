@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
 @Component({
   selector: 'app-cart-footer',
@@ -8,20 +9,23 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartFooterComponent implements OnInit {
  
-  constructor( public cartService : CartService ){}
+  constructor( 
+    public cartService : CartService,
+    private toast: ToastifyNotificationsService
+  ){}
 
   async ngOnInit(): Promise<void> {
     try {
       await this.cartService.getCart();
     } catch (error : any) {
-      alert(error.message);
+      this.toast.error(error);
     }
   }
   public async deleteCartProducts(){
     try {
       await this.cartService.deleteAllProducts();
     } catch (error: any) {
-      alert(error.message);
+      this.toast.error(error);
     }
   }
 }

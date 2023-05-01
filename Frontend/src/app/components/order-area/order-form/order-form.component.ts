@@ -30,7 +30,7 @@ export class OrderFormComponent implements OnInit {
     try {
       await this.cartService.getCart();
     } catch (error : any) {
-      alert(error.message);
+      this.toast.error(error);
     }
   }
 

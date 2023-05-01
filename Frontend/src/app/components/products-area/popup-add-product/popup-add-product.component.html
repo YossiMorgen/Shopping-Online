@@ -1,8 +1,14 @@
+<mat-card-content>
+  <mat-card-title>{{product.productName}}</mat-card-title>
+  <mat-card-subtitle>{{product.price * amount | currency:"ILS"}} </mat-card-subtitle>
+</mat-card-content>
+
 <div mat-dialog-content>
   <mat-form-field>
     <input min="1" type="number" matInput [(ngModel)]="amount">
   </mat-form-field>
 </div>
+
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()" >No Thanks</button>
   <button mat-button [mat-dialog-close]="amount" cdkFocusInitial>Ok</button>

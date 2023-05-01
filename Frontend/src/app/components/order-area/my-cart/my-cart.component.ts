@@ -2,6 +2,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderService } from 'src/app/services/oreder.service';
+import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
 @Component({
   selector: 'app-my-cart',
@@ -12,7 +13,8 @@ export class MyCartComponent implements OnInit {
   constructor (
     public cartService : CartService,
     private router : Router,
-    public orderService: OrderService
+    public orderService: OrderService,
+    private toast: ToastifyNotificationsService
   ) { }
 
   ngOnInit(): void {
@@ -21,7 +23,7 @@ export class MyCartComponent implements OnInit {
         this.cartService.getCart();
       } catch (error : any) {
         this.router.navigate(['/products']);
-        alert(error.message);
+        this.toast.error(error);
       }
     }
 

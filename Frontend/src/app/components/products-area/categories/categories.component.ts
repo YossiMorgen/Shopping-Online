@@ -4,6 +4,7 @@ import axios from 'axios';
 import CategoryModel from 'src/app/models/product-models/category.model';
 import { ProductsService } from 'src/app/services/products.service';
 import { ConfigService } from 'src/app/utils/config.service';
+import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
 @Component({
   selector: 'app-categories',
@@ -16,7 +17,8 @@ export class CategoriesComponent implements OnInit{
   constructor (
     private config : ConfigService, 
     public productsService: ProductsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toast: ToastifyNotificationsService
   ) { }
   public paramsProductID: string;
 
@@ -27,17 +29,15 @@ export class CategoriesComponent implements OnInit{
     try {
       this.productsService.getCategories()
     } catch (error : any) {
-      alert(error.message);
-    }  
-    console.log(this.isActive(2));
-    
+      this.toast.error(error);
+    }      
   }
 
   public async getProductByCategory(categoryID : number): Promise<void>{
     try {
       await this.productsService.getAllProductsByCategory( categoryID )
     } catch (error : any) {
-      alert(error.message);
+      this.toast.error(error);
     }
   }
 

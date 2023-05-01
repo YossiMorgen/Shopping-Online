@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import ProductModel from 'src/app/models/product-models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
+import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
 @Component({
   selector: 'app-add-product',
@@ -20,7 +21,8 @@ export class AddProductComponent implements OnInit {
   constructor ( 
     public productsService: ProductsService, 
     private router: Router ,
-    private formBuilder : FormBuilder
+    private formBuilder : FormBuilder,
+    private toast: ToastifyNotificationsService
   ) {}
 
   public file: File;
@@ -30,7 +32,7 @@ export class AddProductComponent implements OnInit {
       await this.productsService.getCategories();
       console.log(this.productsService.categories);
     } catch (error : any) {
-      alert(error.message);
+      this.toast.error(error);
     }
   }
 
@@ -39,12 +41,7 @@ export class AddProductComponent implements OnInit {
   }
 
   public async addProduct(){
-    try {
-      if(!this.file) {
-        alert('Product Image Is Required')
-        return;
-      }
-      
+    try {      
       const formData = new FormData();
       formData.append('image', this.file)
       formData.append('productName', this.addProductForm.value.productName)
@@ -55,7 +52,7 @@ export class AddProductComponent implements OnInit {
       this.router.navigateByUrl('/products');
 
     } catch (error : any) {
-      alert(error.message);
+      this.toast.error(error);
     }
   }
 }

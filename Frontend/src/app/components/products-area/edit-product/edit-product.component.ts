@@ -4,6 +4,7 @@ import ProductModel from 'src/app/models/product-models/product.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
 @Component({
   selector: 'app-edit-product',
@@ -28,20 +29,17 @@ export class EditProductComponent implements OnInit {
   constructor ( 
     public productsService: ProductsService, 
     public auth: AuthService,
-    private formBuilder : FormBuilder
+    private formBuilder : FormBuilder,
+    private toast: ToastifyNotificationsService
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.productsService.products[this.productsService.i]);
-    
+  ngOnInit(): void {    
+    const i = this.productsService.i;
     this.editProductForm.setValue({
-      productName: this.productsService.products[this.productsService.i].productName,
-      categoryID: this.productsService.products[this.productsService.i].categoryID,
-      price: this.productsService.products[this.productsService.i].price
+      productName: this.productsService.products[i].productName,
+      categoryID: this.productsService.products[i].categoryID,
+      price: this.productsService.products[i].price
     })
-    // this.editProductForm.controls['productName'].setValue(this.productsService.products[this.productsService.i].productName)
-    // this.editProductForm.controls['categoryID'].setValue(this.productsService.products[this.productsService.i].categoryID)
-    // this.editProductForm.controls['price'].setValue(this.productsService.products[this.productsService.i].price)
   }
 
   public onFileSelected(event: any){
@@ -49,22 +47,23 @@ export class EditProductComponent implements OnInit {
   }
 
   public async editProduct(){
+    const i = this.productsService.i;
+
     try {
-      console.log(this.productsService.products[this.productsService.i]);
+      console.log(this.productsService.products[i]);
       
       const product = new ProductModel(this.editProductForm.value)
       const formData = product.getFormData();
-      formData.append('productID', this.productsService.products[this.productsService.i].productID.toString() );
+      formData.append('productID', this.productsService.products[i].productID.toString() );
 
       if(this.file){
         formData.append('image', this.file);
       }
 
-      await this.productsService.updateProduct(formData, this.productsService.products[this.productsService.i].productID);
-      alert('Product Edited Successfully');
-
+      await this.productsService.updateProduct(formData, this.productsService.products[i].productID);
+      this.toast.success('Product Edited Successfully')
     } catch (error : any) {
-      alert(error.message);
+      this.toast.error(error);
     }
   }
 

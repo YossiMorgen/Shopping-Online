@@ -27,9 +27,7 @@ export class PopupAddProductComponent implements OnInit {
   }
 
 
-  onNoClick(): void {
-    console.log(this.amount);
-    
+  onNoClick(): void {    
     this.dialogRef.close();
   }
 

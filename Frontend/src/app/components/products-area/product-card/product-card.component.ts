@@ -7,6 +7,7 @@ import { ConfigService } from 'src/app/utils/config.service';
 import ProductCartModel from 'src/app/models/product-models/product-cart.model';
 import { PopupAddProductComponent } from '../popup-add-product/popup-add-product.component';
 import {MatDialog} from '@angular/material/dialog';
+import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
 @Component({
   selector: 'app-product-card',
@@ -19,7 +20,8 @@ export class ProductCardComponent {
     public productsService: ProductsService,
     public auth : AuthService,
     public cartService : CartService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private toast: ToastifyNotificationsService
   ){}
   
   @Input()
@@ -31,12 +33,11 @@ export class ProductCardComponent {
   public async deleteProduct(){
     try {
         
-        if(!window.confirm('Are You Sure?')) return;
-        await this.productsService.deleteProduct( this.product.productID )
-        alert('Deleted!!!');
-
+      if(!window.confirm('Are You Sure?')) return;
+      await this.productsService.deleteProduct( this.product.productID )
+      this.toast.message('Deleted!!!');
     } catch (error:any) {
-        alert(error.message)
+      this.toast.error(error);
     }
   }
 
@@ -53,9 +54,7 @@ export class ProductCardComponent {
         data: {...this.product}
       });
       dialogRef.afterClosed().subscribe(async (result: number) => {
-        if(result){
-          console.log(result);
-          
+        if(result){          
           await this.addProductToCart(result);
         }
       });
@@ -68,12 +67,11 @@ export class ProductCardComponent {
       productCart.cartID = this.cartService.cart?.cartID;
       productCart.productID = this.product.productID;
       productCart.amount = amount;
-      console.log(productCart);
       
       this.cartService.changeProductAmount(productCart);
 
     } catch (error : any) {
-      alert(error.message);
+      this.toast.error(error);
     }
   }
 }

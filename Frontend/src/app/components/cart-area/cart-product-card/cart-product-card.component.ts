@@ -1,6 +1,7 @@
 import { CartService } from 'src/app/services/cart.service';
 import { Component, Input, OnInit } from '@angular/core';
 import ProductCartModel from 'src/app/models/product-models/product-cart.model';
+import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
 @Component({
   selector: 'app-cart-product-card',
@@ -14,7 +15,10 @@ export class CartProductCardComponent implements OnInit {
   @Input()
   public product: ProductCartModel;
 
-  constructor(private cartService : CartService) { }
+  constructor(
+    private cartService : CartService,
+    private toast: ToastifyNotificationsService
+  ) { }
 
   ngOnInit(): void {
     this.amount = this.cartService.products.find(product => product.productName === this.product.productName).amount || 0;
@@ -25,7 +29,7 @@ export class CartProductCardComponent implements OnInit {
       this.product.amount = amount;
       await this.cartService.changeProductAmount(this.product);
     } catch (error: any) {
-      alert(error.message);
+    this.toast.error(error);
     }
   }
 
@@ -33,7 +37,7 @@ export class CartProductCardComponent implements OnInit {
     try {
       this.cartService.deleteProduct(this.product.cartProductID);
     } catch (error : any) {
-      alert(error.message);
+      this.toast.error(error);
     }
   }
 

@@ -119,7 +119,6 @@ import { LoaderComponent } from './components/playground/loader/loader.component
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AngularToastifyModule,
-    
     MatFormFieldModule,
     A11yModule,
     CdkAccordionModule,

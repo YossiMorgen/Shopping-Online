@@ -1,8 +1,7 @@
 .myCart {
     display: flex;
     height: fit-content;
-    overflow-x: scroll;
-    height: 100vh;
+
 }
 .myCart > div {
     margin: auto;

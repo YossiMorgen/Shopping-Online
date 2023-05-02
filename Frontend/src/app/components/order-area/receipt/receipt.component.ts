@@ -17,17 +17,17 @@ export class ReceiptComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(!this.cartService.products.length){
-      this.router.navigate(['products']);
-    }
+    // if(!this.cartService.products.length){
+    //   this.router.navigate(['products']);
+    // }
   }
 
   public downloadPDF(){
     this.bool = true;
-    setTimeout(() => {
-      window.print();
-      this.router.navigate(['/products']);
-    }, 10);
+    // setTimeout(() => {
+    //   window.print();
+    //   this.router.navigate(['/products']);
+    // }, 10);
   }
 
 }

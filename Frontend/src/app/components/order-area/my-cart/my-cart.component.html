@@ -1,22 +1,22 @@
-<div>
-    <table>
-        <thead>
-            <tr>
-                <th>pic</th>
-                <th>name</th>
-                <th>amount</th>
-                <th>price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr  *ngFor="let product of cartService.products">
-                <td><img src={{product.imageName}} alt=""></td>
-                <td [innerHtml]="orderService.search ? markSearch(product.productName) : product.productName"></td>
-                <td>{{product.amount}}</td>
-                <td>{{product.price | currency:"ILS"}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <span>total price - {{ cartService.totalPrice | currency:"ILS" }}</span>
+<div class="myCart">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>product</th>
+                        <th>amount</th>
+                        <th>price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr  *ngFor="let product of cartService.products">
+                        <td [innerHtml]="orderService.search ? markSearch(product.productName) : product.productName"></td>
+                        <td>{{product.amount}}</td>
+                        <td>{{product.price | currency:"ILS"}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <span>total price - {{ cartService.totalPrice | currency:"ILS" }}</span>
+        </div>
 </div>
 

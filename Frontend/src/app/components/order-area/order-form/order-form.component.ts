@@ -57,9 +57,7 @@ export class OrderFormComponent implements OnInit {
 
   public async makeAnOrder(){
     try {
-      this.order.userID = this.auth.user.userID;
-      this.order.cartID = this.cartService.cart.cartID;
-      this.order.price = this.cartService.totalPrice;
+      this.order = new Order({...this.orderForm.value, userID:  this.auth.user.userID, cartID:  this.cartService.cart.cartID, price: this.cartService.totalPrice })
       
       await this.orderService.makeAnOrder(this.order);
 

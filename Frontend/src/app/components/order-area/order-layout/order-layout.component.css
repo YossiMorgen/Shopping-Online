@@ -6,3 +6,10 @@
 .cart{
     flex-basis: 50%;
 }
+
+.form{
+    margin: 50px;
+    position: sticky;
+    top: 18vh;
+    right: 0;
+}

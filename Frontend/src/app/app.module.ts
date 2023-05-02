@@ -28,7 +28,6 @@ import { MyCartComponent } from './components/order-area/my-cart/my-cart.compone
 import { OrderLayoutComponent } from './components/order-area/order-layout/order-layout.component';
 import { OrderFormComponent } from './components/order-area/order-form/order-form.component';
 import { ReceiptComponent } from './components/order-area/receipt/receipt.component';
-import { DownloadPdfComponent } from './components/order-area/download-pdf/download-pdf.component';
 import { PopupAddProductComponent } from './components/products-area/popup-add-product/popup-add-product.component';
 import { ToastService, AngularToastifyModule } from 'angular-toastify'; 
 
@@ -109,7 +108,6 @@ import { LoaderComponent } from './components/playground/loader/loader.component
     OrderLayoutComponent,
     OrderFormComponent,
     ReceiptComponent,
-    DownloadPdfComponent,
     PopupAddProductComponent,
     LoaderComponent,    
   ],

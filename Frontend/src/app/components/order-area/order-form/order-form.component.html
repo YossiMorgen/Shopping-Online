@@ -1,7 +1,7 @@
 
 <form (ngSubmit)="makeAnOrder()" [formGroup]="orderForm">
 
-    <h2>Order</h2>
+    <!-- <h2>Order</h2> -->
 
     <h3>Shipping Details:</h3>
 
@@ -17,7 +17,8 @@
 
     <mat-form-field appearance="fill">
         <mat-label>Delivery date</mat-label>
-        <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" formControlName="deliveryDate">
+        <input matInput [matDatepicker]="picker" formControlName="deliveryDate">
+        <!-- [matDatepickerFilter]="myFilter" -->
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker touchUi #picker></mat-datepicker>

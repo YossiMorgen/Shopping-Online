@@ -16,6 +16,10 @@ html, body{
     background: linear-gradient(45deg, rgba(173, 216, 230, 0.473), white);
 }
 
+.layout, body:nth-child(){
+    height: 100vh;
+}
+
 a{
     text-decoration: unset;
     color: black;
@@ -25,7 +29,6 @@ a{
     font-weight: bolder;
 }
 
-
 form > label {
     display: block;
 }
@@ -33,7 +36,6 @@ form > label {
 .red {
     color: red;
 }
-
 
 .highlighted-text{
     background-color: yellow;
@@ -44,20 +46,15 @@ form > label {
     display: none;
 }
 
-
-mat-form-field{
-    display: block;
-    width: fit-content;
-  }
-  button[type = submit]{
-    display: block;
-    margin: 10px;
-  }
-  .file_button{
-    display: flex;
-    align-items: center;
-    padding: 5px;
-  }
-  .file_button > div {
-    margin-left: 15px;
-  }
+button[type = submit]{
+display: block;
+margin: 10px;
+}
+.file_button{
+display: flex;
+align-items: center;
+padding: 5px;
+}
+.file_button > div {
+margin-left: 15px;
+}

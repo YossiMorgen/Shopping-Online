@@ -1,5 +1,9 @@
-<div  class="receipt htmlData">
-    <div>Your purchase has been successfully completed!!</div>
-    <div>download receipt press<a routerLink="/dlpdf">Download PDF</a></div>
-    <button class="😊">😊</button>
+<div class="receipt">
+    <mat-card>
+        <mat-card-content>
+            <p>Your cart has been successfully ordered!!</p>
+            <button (click)="downloadPDF()" mat-raised-button color="primary">Download Receipt</button>
+        </mat-card-content>
+    </mat-card>
+    <app-my-cart *ngIf="bool" class="reseiptPdf"></app-my-cart>
 </div>

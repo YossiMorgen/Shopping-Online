@@ -1,4 +1,16 @@
-img{
-    width: 30px;
-    height: 30px;
+.myCart {
+    display: flex;
+    height: fit-content;
+    overflow-x: scroll;
+    height: 100vh;
+}
+.myCart > div {
+    margin: auto;
+}
+/* table {
+    margin: 10rem 0;
+} */
+
+td, th , span{
+    padding: 50px;
 }

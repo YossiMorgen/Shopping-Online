@@ -9,7 +9,7 @@ import { ConfigService } from 'src/app/utils/config.service';
   styleUrls: ['./receipt.component.css']
 })
 export class ReceiptComponent implements OnInit {
-
+  public bool = false;
   constructor (
     public cartService : CartService,
     private router : Router,
@@ -20,6 +20,14 @@ export class ReceiptComponent implements OnInit {
     if(!this.cartService.products.length){
       this.router.navigate(['products']);
     }
+  }
+
+  public downloadPDF(){
+    this.bool = true;
+    setTimeout(() => {
+      window.print();
+      this.router.navigate(['/products']);
+    }, 10);
   }
 
 }

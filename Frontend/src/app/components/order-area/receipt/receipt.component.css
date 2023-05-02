@@ -1,10 +1,28 @@
 .receipt {
     text-align: center;
+    display: flex;
+    height: 100%;
 }
 
-button.😊 {
-    /* border: 1px solid rgba(0, 0, 255, 0.404);
-    background-color: rgba(9, 7, 126, 0.822); */
-    background-color: transparent;
-    border: none;
+mat-card{
+    margin: auto;
+}
+p{
+    margin: 10px;
+}
+
+button {
+    margin: 10px;
+}
+
+app-my-cart{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    background-color: white;
+    padding: auto;
+    font-size: xx-large;
 }

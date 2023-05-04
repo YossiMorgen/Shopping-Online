@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductsService } from 'src/app/services/products.service';
@@ -16,27 +16,37 @@ export class ProductsLayoutComponent implements OnInit {
     public productsService : ProductsService,
     public cartService: CartService,
     private route: ActivatedRoute,
-    private toast: ToastifyNotificationsService
+    private toast: ToastifyNotificationsService,
+    public router : Router,
+
   ) { }
 
   async ngOnInit(): Promise<void> {    
     try {
       this.route.queryParams.subscribe(async (params: any) => {
-
-        this.productsService.products = [];
         
-        this.productsService.getProducts(params);
-      
+        this.productsService.isThereProducts = true;
+        this.productsService.products = [];
+        await this.productsService.getProducts(params);
+        window.addEventListener("scroll", async () => {
+
+          if(
+            this.productsService.isThereProducts &&
+            this.router.url.search('products') !== -1 && 
+            window.innerHeight + Math.round(window.scrollY) ===  document.body.offsetHeight 
+          ){
+            try {
+              console.log("hi");
+
+              await this.productsService.getProducts(params);
+            } catch (error) {
+              this.toast.error(error)
+            } 
+          } 
+        })
       })
     } catch (error: any) {
       this.toast.error(error);
     }
-
-    try {
-      await this.cartService.getCart();
-    } catch (error: any) {
-      this.toast.error(error);
-    }
   }
-
 }

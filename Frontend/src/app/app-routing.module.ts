@@ -7,8 +7,8 @@ import { ProductsLayoutComponent } from './components/products-area/products-lay
 import { AddProductComponent } from './components/products-area/add-product/add-product.component';
 import { RegisteredGuard } from './utils/registered.guard';
 import { OrderLayoutComponent } from './components/order-area/order-layout/order-layout.component';
-import { ReceiptComponent } from './components/order-area/receipt/receipt.component';
 import { PageNotFoundComponent } from './components/playground/page-not-found/page-not-found.component';
+import { ReceiptComponent } from './components/order-area/receipt/receipt.component';
 
 const routes: Routes = [
     {path: 'login', component: LoginComponent, canActivate: [RegisteredGuard] },
@@ -17,7 +17,7 @@ const routes: Routes = [
     {path: 'order', component: OrderLayoutComponent, canActivate: [AuthGuard] },
     {path: 'add', component: AddProductComponent, canActivate: [AuthGuard] },
     {path: 'receipt', component: ReceiptComponent, canActivate: [AuthGuard] },
-    {path: '', redirectTo: '/products', pathMatch: "full" },
+    {path: '', redirectTo: '/login', pathMatch: "full" },
     {path: '**', component: PageNotFoundComponent }
 ];
 

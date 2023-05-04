@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ToastService } from 'angular-toastify';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -8,5 +9,4 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartLayoutComponent {
   constructor(private cartService: CartService){}
-  
 }

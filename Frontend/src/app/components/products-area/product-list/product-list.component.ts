@@ -11,7 +11,7 @@ import { ToastifyNotificationsService } from 'src/app/services/toastify-notifica
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit{
+export class ProductListComponent{
 
   public products: ProductModel[] = this.productsService.products;
 
@@ -25,20 +25,4 @@ export class ProductListComponent implements OnInit{
 
   ) {  }
 
-  ngOnInit(): void {
-    window.addEventListener("scroll", () => {
-
-      if(this.productsService.isThereProducts && this.router.url.search('products') !== -1 && window.innerHeight + Math.round(window.scrollY) ===  document.body.offsetHeight ){
-        try {
-          this.route.queryParams.subscribe(async (params: any) => {
-
-            this.productsService.isThereProducts = true
-            this.productsService.getProducts(params);
-          })
-        } catch (error) {
-          this.toast.error(error)
-        } 
-      } 
-    })
-  }
 }

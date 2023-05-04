@@ -57,12 +57,10 @@ function hash(plainText: string): string {
 
 async function getDecodeToken(req: Request):Promise <User>{
     const isValid = await verifyJwtToken(req);
-    console.log(req.body);
     
     if(!isValid) throw new AuthErrorModel("you ain't logged in");   
 
     const decodeUser: User = jwt.decode(req.header("authorization").substring(7))["user"];
-    console.log(decodeUser);
     
     return decodeUser;
 }

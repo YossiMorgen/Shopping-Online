@@ -8,6 +8,9 @@ import { OrderService } from 'src/app/services/oreder.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
+type DeliveryDate = {
+  deliveryDate: Date;
+}
 @Component({
   selector: 'app-order-form',
   templateUrl: './order-form.component.html',
@@ -16,6 +19,7 @@ import { ToastifyNotificationsService } from 'src/app/services/toastify-notifica
 export class OrderFormComponent implements OnInit {
 
   public order : Order = new Order();
+  public dates: DeliveryDate[] = [];
 
   constructor ( 
     private auth : AuthService,
@@ -26,21 +30,24 @@ export class OrderFormComponent implements OnInit {
     private toast: ToastifyNotificationsService
   ) { }
 
-  public myFilter = (d: Date | null): boolean => {
-    const day = (d || new Date()).getDay();
-    // Prevent Saturday and Sunday from being selected.
-    return day !== 0 && day !== 6;
-  };
-
   async ngOnInit(): Promise<void> {
     try {
-      await this.cartService.getCart();
+      if(! this.cartService.cart){
+        await this.cartService.getCart();
+      }
       if(!this.cartService.products.length){
         this.router.navigate(['/products']);
       }
     } catch (error : any) {
       this.toast.error(error);
     }
+
+    try {
+      this.dates = await this.orderService.getBusyDates();
+    } catch (error) {
+      this.toast.error(error);
+    }
+
   }
 
   public orderForm = this.formBuilder.group({
@@ -66,5 +73,15 @@ export class OrderFormComponent implements OnInit {
       this.toast.error(error);
     }
   }
+
+  public myFilter = (d: Date | null): boolean => {
+    const day = (d || new Date());
+    return (
+      this.dates.findIndex(d => new Date(d.deliveryDate).getDate() === new Date(day).getDate() && 
+      new Date(d.deliveryDate).getMonth() === new Date(day).getMonth() && 
+      new Date(d.deliveryDate).getFullYear() === new Date(day).getFullYear()) === -1 && 
+      new Date(day) > new Date()
+    );
+  };
 
 }

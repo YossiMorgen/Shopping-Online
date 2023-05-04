@@ -21,4 +21,13 @@ router.post('/create_order', async (req: Request, res: Response, next: NextFunct
     }
 })
 
+router.get('/get_busy_dates', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const dates = await ordersLogic.getBusyDates();
+        res.json(dates);
+    } catch (error) {
+        next(error);
+    }
+
+})
 export default router;

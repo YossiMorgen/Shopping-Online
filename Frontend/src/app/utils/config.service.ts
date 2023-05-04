@@ -10,8 +10,6 @@ export class ConfigService {
 
   private baseUrl = "http://localhost:3001/api/";
 
-  public operations = this.baseUrl + "operations/";
-
   public login = this.baseUrl + "auth/login";
   public register = this.baseUrl + "auth/register";
   public isEmailExist = this.baseUrl + "auth/is_email_exist/";
@@ -26,7 +24,8 @@ export class ConfigService {
   public removeAllCartProducts = this.baseUrl + "remove_cart_products/";
 
   public createOrder = this.baseUrl + "create_order"; 
-  public ordersAndProductsAmount = this.baseUrl + 'orders_and_products_amount'
+  public ordersAndProductsAmount = this.baseUrl + 'orders_and_products_amount';
+  public getBusyDates = this.baseUrl + 'get_busy_dates';
 
   public getAllCategories = this.baseUrl + "categories";
   public getRandomProducts = this.baseUrl + "random_products";

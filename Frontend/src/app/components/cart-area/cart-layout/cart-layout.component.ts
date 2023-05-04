@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ToastService } from 'angular-toastify';
+import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({

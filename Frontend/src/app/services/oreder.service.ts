@@ -5,6 +5,10 @@ import Order from '../models/product-models/order.model';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../utils/config.service';
 
+type DeliveryDate = {
+    deliveryDate: Date;
+}
+
 @Injectable({
     providedIn: 'root'
 })
@@ -20,10 +24,14 @@ export class OrderService {
     ) { }
 
     public async makeAnOrder(order: Order) {
-        
         const observable = this.http.post<Order>(this.config.createOrder, order);
-        this.order = (await firstValueFrom(observable))
+        this.order = await firstValueFrom(observable)
         this.cartService.cart.ordered = 1
+    }
+
+    public async getBusyDates(): Promise<DeliveryDate[]>{
+        const observable = this.http.get<DeliveryDate[]>(this.config.getBusyDates);
+        return firstValueFrom(observable);
     }
 
 }

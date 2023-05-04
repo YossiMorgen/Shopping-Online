@@ -38,7 +38,21 @@ async function getOrdersAmount() {
     const amount = await dal.execute('SELECT COUNT(*) as amount FROM orders');
     return amount[0]['amount'];
 }
+
+async function getBusyDates(){
+    const sql = `
+        SELECT deliveryDate
+        FROM orders
+        GROUP BY deliveryDate
+        HAVING COUNT(*) > 2 `
+    // const sql = `SELECT deliveryDate FROM orders`
+    const dates = await dal.execute(sql);
+    console.log(dates);
+    
+    return dates;
+}
 export default {
     addOrder,
-    getOrdersAmount
+    getOrdersAmount,
+    getBusyDates
 }

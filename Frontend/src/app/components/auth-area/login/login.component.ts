@@ -27,7 +27,7 @@ export class LoginComponent {
 
         try {
             await this.auth.login( new CredentialsModel(this.loginForm.value) );
-            this.toast.success('Welcome back')
+            this.toast.success('Welcome back ' + this.auth.user.firstName + " " + this.auth.user.lastName)
             this.router.navigateByUrl('/products');
         } catch (error:any) {
             this.toast.error(error);

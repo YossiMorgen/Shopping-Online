@@ -7,8 +7,6 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
     
     const err = order.validation();
     if(err) throw new ValidationErrorModel(err);
-
-    console.log(order.deliveryDate);
     
     const sum = await dal.execute(`
     SELECT COUNT(*) AS amount FROM orders
@@ -18,13 +16,11 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
         throw new ValidationErrorModel("We can't have any more orders this day we are too busy")
     }
     
-    
-
     let info: OkPacket = await dal.execute(`UPDATE shopping_cart SET ordered = 1 WHERE cartID = ? AND userID = ? AND ordered = 0`, [order.cartID, order.userID])
     if(info.affectedRows === 0) throw new ValidationErrorModel(`cart does'nt exist or it's not yours`);
 
     const sql = 'INSERT INTO orders VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?)'
-    const values = [ order.cartID, order.userID, order.price, order.city, order.street, order.deliveryDate, new Date(), order.creditCard]
+    const values = [ order.userID, order.cartID, order.price, order.city, order.street, order.deliveryDate, new Date(), order.creditCard]
 
     info = await dal.execute(sql, values);
     order.orderID = info.insertId;
@@ -46,9 +42,7 @@ async function getBusyDates(){
         GROUP BY deliveryDate
         HAVING COUNT(*) > 2 `
     // const sql = `SELECT deliveryDate FROM orders`
-    const dates = await dal.execute(sql);
-    console.log(dates);
-    
+    const dates = await dal.execute(sql);    
     return dates;
 }
 export default {

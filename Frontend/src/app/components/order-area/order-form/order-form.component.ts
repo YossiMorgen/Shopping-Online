@@ -77,9 +77,7 @@ export class OrderFormComponent implements OnInit {
   public myFilter = (d: Date | null): boolean => {
     const day = (d || new Date());
     return (
-      this.dates.findIndex(d => 
-        new Date(d.deliveryDate).toLocaleDateString() === new Date(day).toLocaleDateString()
-        ) === -1 && 
+      this.dates.findIndex(d => new Date(d.deliveryDate).toLocaleDateString() === new Date(day).toLocaleDateString()) === -1 && 
       new Date(day) > new Date()
     );
   };

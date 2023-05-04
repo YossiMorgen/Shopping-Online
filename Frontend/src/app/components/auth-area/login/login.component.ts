@@ -23,7 +23,7 @@ export class LoginComponent {
         password : ['', [Validators.required, Validators.minLength(5)]]
     })
 
-    public async login():Promise<void>{        
+    public async login():Promise<void>{       
 
         try {
             await this.auth.login( new CredentialsModel(this.loginForm.value) );

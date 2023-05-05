@@ -71,7 +71,9 @@ export class ProductsService {
   public async addProduct(product: ProductModel | FormData):Promise<void>{
     const observable = this.http.post<ProductModel>(this.config.addProduct, product);
     const newProduct = await firstValueFrom(observable);
-    this.products.push(newProduct);
+    if(!this.isThereProducts){
+      this.products.push(newProduct);
+    }
   }
 
   public async updateProduct(product: FormData, productID:number): Promise<void> {

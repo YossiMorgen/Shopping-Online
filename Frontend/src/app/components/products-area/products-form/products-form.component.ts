@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import ProductModel from 'src/app/models/product-models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
@@ -12,8 +13,11 @@ import { ToastifyNotificationsService } from 'src/app/services/toastify-notifica
 })
 export class ProductsFormComponent implements OnInit {
 
-  public editMode: boolean = false;
+  editMode = false;
+  editedItemIndex: number;
 
+  public subscription : Subscription
+  public index =  this.productsService.i;
   public productsForm = this.formBuilder.group({
     productName : ['', [Validators.required, Validators.minLength(2)]],
     categoryID : [0, [Validators.required]],
@@ -30,8 +34,15 @@ export class ProductsFormComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
+    this.subscription = this.productsService.startedEditing
+      .subscribe((index : number) => {
+        this.editedItemIndex = index;
+        this.editMode = true;
+      })
     try {
       await this.productsService.getCategories();
+      console.log(this.index);
+      
     } catch (error : any) {
       this.toast.error(error);
     }
@@ -44,9 +55,7 @@ export class ProductsFormComponent implements OnInit {
   public async submitProduct(){
     const i = this.productsService.i;
 
-    try {
-      console.log(this.productsService.products[i]);
-      
+    try {      
       const formData = new FormData();
 
       formData.append('productName', this.productsForm.value.productName)

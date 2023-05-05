@@ -15,6 +15,7 @@ import { ToastifyNotificationsService } from 'src/app/services/toastify-notifica
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent {
+
   
   public constructor( 
     public productsService: ProductsService,
@@ -43,8 +44,7 @@ export class ProductCardComponent {
 
   public showEdit() {
     if(this.auth.isAdmin()){
-      this.productsService.i = 0
-      this.productsService.i = this.i;  
+      this.productsService.startedEditing.next(this.i); 
       return;
     }
 

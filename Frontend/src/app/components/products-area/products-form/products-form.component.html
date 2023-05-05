@@ -2,9 +2,9 @@
     <mat-card>
     
         <mat-card-content>
-            
+            {{editMode}}
         <mat-card-header>
-            <h2>Add Product</h2>
+            <h2>{{editMode ? 'Edit ' : 'Add '}} Product</h2>
         </mat-card-header>
 
         <form (ngSubmit)="submitProduct()" [formGroup]="productsForm">
@@ -39,7 +39,13 @@
                 </button>
             </div>     
             
-            <button mat-raised-button type="submit" [disabled]="productsForm.invalid || !file?.name" >Add Product</button>
+            <button 
+                mat-raised-button 
+                type="submit" 
+                [disabled]="productsForm.invalid || !file?.name" 
+            >
+                {{editMode ? 'Edit ' : 'Add '}} Product
+            </button>
     
         </form>
     </mat-card-content>

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfigService } from '../utils/config.service';
-import { firstValueFrom, Observable } from 'rxjs';
+import { firstValueFrom, Observable, Subject } from 'rxjs';
 import ProductModel from '../models/product-models/product.model';
 import CategoryModel from '../models/product-models/category.model';
 import { ActivatedRoute } from '@angular/router';
@@ -11,6 +11,7 @@ import { ToastifyNotificationsService } from './toastify-notifications.service';
   providedIn: 'root'
 })
 export class ProductsService {
+  startedEditing = new Subject<number>();
 
   public products: ProductModel[] = [];
   public categories: CategoryModel[] = [];

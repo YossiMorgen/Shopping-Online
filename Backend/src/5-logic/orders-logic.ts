@@ -8,12 +8,27 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
     const err = order.validation();
     if(err) throw new ValidationErrorModel(err);
     
-    const sum = await dal.execute(`
-    SELECT COUNT(*) AS amount FROM orders
-    WHERE deliveryDate = ?`, [order.deliveryDate])
+    const isBusy = await dal.execute(`
+        SELECT COUNT(*) AS amount 
+        FROM orders
+        WHERE deliveryDate = ?
+        `, 
+        [order.deliveryDate]
+    )
 
-    if(sum[0]['amount']){
-        throw new ValidationErrorModel("We can't have any more orders this day we are too busy")
+    if(isBusy[0]['amount']) throw new ValidationErrorModel("We can't have any more orders this day we are too busy")
+    
+    const price = await dal.execute(` 
+        SELECT SUM(products.price * cart_product.amount ) AS price
+        FROM cart_product
+        LEFT JOIN products
+        ON cart_product.productID = products.productID
+        WHERE cartID = ?`, 
+        [order.cartID]
+    )
+
+    if(price[0]['price'] !== order.price) {
+        throw new ValidationErrorModel(`The price is ${price[0]['price']} please refresh the page`)
     }
     
     let info: OkPacket = await dal.execute(`UPDATE shopping_cart SET ordered = 1 WHERE cartID = ? AND userID = ? AND ordered = 0`, [order.cartID, order.userID])

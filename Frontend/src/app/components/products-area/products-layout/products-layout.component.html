@@ -6,6 +6,7 @@
     </div>
     <div class="stickyBar" >
         <app-cart-layout *ngIf=" ! auth.isAdmin() "></app-cart-layout>
-        <app-edit-product *ngIf=" productsService.products[productsService.i] "></app-edit-product>
+        <!-- <app-edit-product *ngIf=" productsService.products[productsService.i] "></app-edit-product> -->
+        <app-products-form></app-products-form>
     </div>
 </div>

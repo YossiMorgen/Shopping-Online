@@ -17,16 +17,4 @@ export default class ProductModel{
         }
     }
 
-    public getFormData(): FormData{
-        const formData = new FormData();
-        
-        formData.append('productName', this.productName );
-        formData.append('imageName', this.imageName );
-        formData.append('price', this.price?.toString() );
-        formData.append('productID', this.productID?.toString() );
-        formData.append('categoryID', this.categoryID?.toString() );
-        formData.append('image', this.image );
-
-        return formData;
-    }
 }

@@ -23,8 +23,6 @@ export class EditProductComponent implements OnInit {
   })
 
   public file: File;
-  @ViewChild('productImage')
-  public productImage: ElementRef<HTMLInputElement>
 
   constructor ( 
     public productsService: ProductsService, 
@@ -49,22 +47,22 @@ export class EditProductComponent implements OnInit {
   public async editProduct(){
     const i = this.productsService.i;
 
-    try {
-      console.log(this.productsService.products[i]);
+  //   try {
+  //     console.log(this.productsService.products[i]);
       
-      const product = new ProductModel(this.editProductForm.value)
-      const formData = product.getFormData();
-      formData.append('productID', this.productsService.products[i].productID.toString() );
+  //     const product = new ProductModel(this.editProductForm.value)
+  //     const formData = product.getFormData();
+  //     formData.append('productID', this.productsService.products[i].productID.toString() );
 
-      if(this.file){
-        formData.append('image', this.file);
-      }
+  //     if(this.file){
+  //       formData.append('image', this.file);
+  //     }
 
-      await this.productsService.updateProduct(formData, this.productsService.products[i].productID);
-      this.toast.success('Product Edited Successfully')
-    } catch (error : any) {
-      this.toast.error(error);
-    }
+  //     await this.productsService.updateProduct(formData, this.productsService.products[i].productID);
+  //     this.toast.success('Product Edited Successfully')
+  //   } catch (error : any) {
+  //     this.toast.error(error);
+  //   }
   }
 
   

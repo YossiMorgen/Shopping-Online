@@ -83,6 +83,7 @@ import {DialogModule} from '@angular/cdk/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './components/playground/page-not-found/page-not-found.component';
 import { LoaderComponent } from './components/playground/loader/loader.component';
+import { ProductsFormComponent } from './components/products-area/products-form/products-form.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +110,8 @@ import { LoaderComponent } from './components/playground/loader/loader.component
     OrderFormComponent,
     ReceiptComponent,
     PopupAddProductComponent,
-    LoaderComponent,    
+    LoaderComponent,
+    ProductsFormComponent,    
   ],
   imports: [
     BrowserModule,

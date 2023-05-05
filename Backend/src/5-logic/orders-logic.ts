@@ -26,7 +26,8 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
         WHERE cartID = ?`, 
         [order.cartID]
     )
-
+    console.log(price[0]['price']);
+    
     if(price[0]['price'] !== order.price) {
         throw new ValidationErrorModel(`The price is ${price[0]['price']} please refresh the page`)
     }
@@ -44,21 +45,18 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
     return order;
 }
 
-
 async function getOrdersAmount() {
     const amount = await dal.execute('SELECT COUNT(*) as amount FROM orders');
     return amount[0]['amount'];
 }
 
-async function getBusyDates(){
-    const sql = `
+function getBusyDates(){
+    return dal.execute(`
         SELECT deliveryDate
         FROM orders
         GROUP BY deliveryDate
-        HAVING COUNT(*) > 2 `
-    // const sql = `SELECT deliveryDate FROM orders`
-    const dates = await dal.execute(sql);    
-    return dates;
+        HAVING COUNT(*) > 2`
+    );    
 }
 export default {
     addOrder,

@@ -19,7 +19,7 @@ export class EditProductComponent implements OnInit {
   public editProductForm = this.formBuilder.group({
     productName : ['', [ Validators.minLength(2)]],
     categoryID : [1],
-    price : [1, [ Validators.min(1)] || 1]
+    price : [1, [ Validators.min(1)]]
   })
 
   public file: File;

@@ -63,8 +63,7 @@ async function addProduct(product:ProductModel): Promise<ProductModel> {
     
     const err = product.validation();
     if(err) throw new ValidationErrorModel(err);
-    console.log(await isProductNameExist(product.productName));
-    
+
     if(await isProductNameExist(product.productName)) throw new ValidationErrorModel(`Product ${product.productName} already exists`);
     
     product.imageName = await fileHandler.saveFile(product.image);
@@ -85,9 +84,13 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
     if(err) throw new ValidationErrorModel(err); 
 
     // need to change that and get the old photo from the old product
-    const [oldProduct] = await dal.execute(`SELECT imageName FROM products WHERE productID = ?`, [product.productID]);
-    console.log(isProductNameExist(product.productName));
-    
+    const [oldProduct] = await dal.execute(`
+        SELECT imageName, productName 
+        FROM products 
+        WHERE productID = ?`, 
+        [product.productID]
+    );
+
     if(
         oldProduct.productName !== product.productName && 
         await isProductNameExist(product.productName)

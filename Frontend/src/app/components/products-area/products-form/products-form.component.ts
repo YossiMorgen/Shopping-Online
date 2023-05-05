@@ -17,7 +17,7 @@ export class ProductsFormComponent implements OnInit {
   editedItemIndex: number;
 
   public subscription : Subscription
-  public index =  this.productsService.i;
+
   public productsForm = this.formBuilder.group({
     productName : ['', [Validators.required, Validators.minLength(2)]],
     categoryID : [0, [Validators.required]],
@@ -38,10 +38,15 @@ export class ProductsFormComponent implements OnInit {
       .subscribe((index : number) => {
         this.editedItemIndex = index;
         this.editMode = true;
+        this.productsForm.setValue({
+          productName: this.productsService.products[this.editedItemIndex].productName,
+          categoryID: this.productsService.products[this.editedItemIndex].categoryID,
+          price: this.productsService.products[this.editedItemIndex].price
+        })
       })
     try {
       await this.productsService.getCategories();
-      console.log(this.index);
+      console.log(this.editedItemIndex);
       
     } catch (error : any) {
       this.toast.error(error);
@@ -53,7 +58,6 @@ export class ProductsFormComponent implements OnInit {
   }
 
   public async submitProduct(){
-    const i = this.productsService.i;
 
     try {      
       const formData = new FormData();
@@ -66,15 +70,15 @@ export class ProductsFormComponent implements OnInit {
         formData.append('image', this.file);
       }
 
-      if(this.editMode){
-        formData.append('productID', this.productsService.products[i].productID.toString() );
-        await this.productsService.updateProduct(formData, this.productsService.products[i].productID);
+      if(this.editMode){        
+        formData.append('productID', this.productsService.products[this.editedItemIndex].productID.toString() );
+        await this.productsService.updateProduct(formData, this.productsService.products[this.editedItemIndex].productID);
         this.toast.success('Product Edited Successfully')
         return;
       }
 
       await this.productsService.addProduct(formData);
-      alert('Product Added Successfully');
+      this.toast.success('Product Added Successfully')
 
     } catch (error : any) {
       this.toast.error(error);

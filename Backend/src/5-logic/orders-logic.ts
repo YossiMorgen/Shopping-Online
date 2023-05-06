@@ -26,7 +26,6 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
         WHERE cartID = ?`, 
         [order.cartID]
     )
-    console.log(price[0]['price']);
     
     if(price[0]['price'] !== order.price) {
         throw new ValidationErrorModel(`The price is ${price[0]['price']} please refresh the page`)

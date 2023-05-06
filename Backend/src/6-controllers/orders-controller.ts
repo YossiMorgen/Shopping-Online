@@ -1,5 +1,5 @@
 import express, {Request, Response, NextFunction } from "express";
-import verifyLoggedIn from "../3-middleware/auth-middlewares/verify-logged-in";
+import verifyLoggedIn from "../3-middleware/verify-logged-in";
 import User from "../4-models/auth-models/user-model";
 import cyber from "../2-utils/cyber";
 import OrdersModel from "../4-models/product-models/orders-model";

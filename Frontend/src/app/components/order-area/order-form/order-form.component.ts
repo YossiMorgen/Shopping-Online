@@ -24,7 +24,7 @@ export class OrderFormComponent implements OnInit {
   public orderForm = this.formBuilder.group({
     city: ['', [Validators.required, Validators.minLength(2)]],
     street: ['', [Validators.required, Validators.minLength(2)]],
-    deliveryDate: [Date, [Validators.required]],
+    deliveryDate: ['', [Validators.required]],
     creditCard: ['', [Validators.required, Validators.pattern('([1-9]{4})')]]
   })
 
@@ -44,7 +44,7 @@ export class OrderFormComponent implements OnInit {
       }
       if(!this.cartService.products.length){
         this.router.navigate(['/products']);
-      }
+      }      
     } catch (error : any) {
       this.toast.error(error);
     }
@@ -57,9 +57,7 @@ export class OrderFormComponent implements OnInit {
 
   }
 
-  public copyDefaultUserDetails(cell: 'city' | 'street'){
-    console.log(cell);
-    
+  public copyDefaultUserDetails(cell: 'city' | 'street'){    
     this.orderForm.get(cell).setValue(this.auth.user[cell])
   }
 
@@ -82,5 +80,4 @@ export class OrderFormComponent implements OnInit {
       new Date(day) > new Date()
     );
   };
-
 }   

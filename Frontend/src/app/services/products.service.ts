@@ -64,11 +64,6 @@ export class ProductsService {
     this.products = this.products.concat(products);
   }
 
-  public async getOneProduct(productID: number): Promise<ProductModel>{
-    const observable = this.http.get<ProductModel>(this.config.getOneProduct + productID);
-    return firstValueFrom(observable);
-  }
-
   public async addProduct(product: ProductModel | FormData):Promise<void>{
     const observable = this.http.post<ProductModel>(this.config.addProduct, product);
     const newProduct = await firstValueFrom(observable);

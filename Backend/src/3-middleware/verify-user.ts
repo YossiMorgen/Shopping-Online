@@ -1,6 +1,6 @@
-import { ValidationErrorModel } from '../../4-models/error-models';
+import { ValidationErrorModel } from '../4-models/error-models';
 import {Request, Response, NextFunction } from "express";
-import cyber from "../../2-utils/cyber";
+import cyber from "../2-utils/cyber";
 
 async function verifyUser(req: Request, res: Response, next: NextFunction){
     try {

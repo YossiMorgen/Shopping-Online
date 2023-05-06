@@ -44,21 +44,6 @@ async function getProductsByCategory(categoryID: number,start: number, end: numb
     return products;
 }
 
-async function getOneProduct(id:number): Promise<ProductModel> {
-
-    const [res] = await dal.execute(
-        `SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID
-        FROM products 
-        WHERE productId =?`,
-        [appConfig.nodeUrl, id]
-    );
-    if( !res ) throw new ResourceNotFoundErrorModel(id);
-        
-    console.log(res);
-        
-    return res;  
-}
-
 async function addProduct(product:ProductModel): Promise<ProductModel> {
     
     const err = product.validation();
@@ -157,7 +142,6 @@ export default {
     getProductsByCategory,
     getRandomProducts,
     getProductsByName,
-    getOneProduct,
     addProduct,
     deleteProduct,
     getCategories,

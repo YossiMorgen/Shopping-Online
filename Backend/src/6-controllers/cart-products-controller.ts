@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from "express";
-import verifyLoggedIn from "../3-middleware/auth-middlewares/verify-logged-in";
+import verifyLoggedIn from "../3-middleware/verify-logged-in";
 import cardProductLogic from "../5-logic/card-product-logic";
 import ProductCartModel from "../4-models/product-models/product_cart-model";
 import cyber from "../2-utils/cyber";
@@ -30,17 +30,6 @@ router.get('/cart_products_by_cart_id/:cart_id([0-9]+)', verifyLoggedIn,  async 
     }
 });
 
-router.get('/cart_products_by_user',  async (req: Request, res: Response, next: NextFunction) => {
-    try {  
-        const decodeUser: User = await cyber.getDecodeToken(req);
-
-        const products = await cardProductLogic.getCartProductsByUser(decodeUser.userID);   
-        res.json(products);
-    } catch (error) {
-        next(error);
-    }
-});
-
 router.post('/add_cart_product', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const product = new ProductCartModel(req.body);   
@@ -57,16 +46,6 @@ router.put('/update_one_cart_product', verifyLoggedIn, async (req: Request, res:
     try {
         const cartProduct = new ProductCartModel(req.body);
         const newProduct = await cardProductLogic.updateCartProduct(cartProduct);
-        res.json(newProduct);
-    } catch (error) {
-        next(error);
-    }
-})
-
-router.put('/update_cart_products', verifyLoggedIn, async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        const cartProduct: ProductCartModel[] = req.body;
-        const newProduct = await cardProductLogic.updateCartProducts(cartProduct);
         res.json(newProduct);
     } catch (error) {
         next(error);

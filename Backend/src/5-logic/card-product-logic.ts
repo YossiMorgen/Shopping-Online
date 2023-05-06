@@ -33,19 +33,6 @@ function getCartProducts(cartID: number): Promise<ProductCartModel[]> {
     `, [appConfig.nodeUrl, cartID]);
 }
 
-function getCartProductsByUser(userID: number){
-    return dal.execute(` 
-        SELECT cartProductID, cart_product.productID, amount, (products.price * amount ) AS price, cartID, products.productName, CONCAT(?, products.imageName) as imageName
-        FROM cart_product
-        LEFT JOIN products
-        ON cart_product.productID = products.productID
-        WHERE cartID = (
-            SELECT shopping_cart.cartID from shopping_cart WHERE shopping_cart.userID = ? AND shopping_cart.ordered = 0
-        )`, 
-        [appConfig.nodeUrl, userID]
-    )
-}
-
 async function addCartProduct( product : ProductCartModel): Promise<ProductCartModel> {
     
     const err = product.validation();
@@ -77,19 +64,6 @@ async function updateCartProduct( product : ProductCartModel): Promise<ProductCa
     return productDetails;
 }
 
-async function updateCartProducts( products : Array<ProductCartModel>): Promise<void> {
-    for(let i = 0; i < products.length; i++) {
-        const err = products[i].validation();
-        if(err) throw new ValidationErrorModel(err);
-        
-        const sql = 'UPDATE cart_product SET amount =?, cartID = ? WHERE cartProductID = ?'
-        const values = [products[i].amount, products[i].cartID, products[i].cartProductID]
-
-        const info: OkPacket = await dal.execute(sql, values);
-        if(info.affectedRows === 0)  throw new ResourceNotFoundErrorModel(products[0].cartProductID);
-    }
-}
-
 function deleteCartProduct(cartProductID: number) {
     const sql = "DELETE FROM cart_product WHERE cartProductID =?";
     return dal.execute(sql, [cartProductID]); 
@@ -119,10 +93,8 @@ export default {
     createCart,
     getOrCreateCart,
     getCartProducts,
-    getCartProductsByUser,
     addCartProduct,
     updateCartProduct,
-    updateCartProducts,
     deleteCartProduct,
     deleteCartProducts,
     getOneProductDetails

@@ -27,8 +27,9 @@
                 </form>
                     
                 <div *ngIf="complete" >
-                    <span> ✅ your details has been successfully checked 😊</span>
-                    <br>
+                    <div class="successMessage">
+                        <span> ✅ your details has been successfully checked 😊</span>
+                    </div>
                     <button cdkFocusInitial mat-raised-button matStepperNext #next>Next</button>
                 </div>
             

@@ -22,7 +22,10 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Category </mat-label>
                     <mat-select formControlName="categoryID" >
-                        <mat-option *ngFor="let category of productsService.categories"  [value]="category.categoryID" >
+                        <mat-option 
+                            *ngFor="let category of productsService.categories"  
+                            [value]="category.categoryID" 
+                        >
                             {{category.categoryName}}
                         </mat-option>
                     </mat-select>

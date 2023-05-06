@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     public ordersAmount: number;
 
     public constructor( 
-        private auth: AuthService, private router: Router,
+        public auth: AuthService, private router: Router,
         private productsService :ProductsService,
         private formBuilder : FormBuilder,
         private toast: ToastifyNotificationsService

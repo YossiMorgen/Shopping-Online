@@ -20,9 +20,16 @@ export class OrderFormComponent implements OnInit {
 
   public order : Order = new Order();
   public dates: DeliveryDate[] = [];
+  
+  public orderForm = this.formBuilder.group({
+    city: ['', [Validators.required, Validators.minLength(2)]],
+    street: ['', [Validators.required, Validators.minLength(2)]],
+    deliveryDate: [Date, [Validators.required]],
+    creditCard: ['', [Validators.required, Validators.pattern('([1-9]{4})')]]
+  })
 
   constructor ( 
-    private auth : AuthService,
+    public auth : AuthService,
     private orderService : OrderService,
     private cartService : CartService,
     private router : Router,
@@ -50,12 +57,6 @@ export class OrderFormComponent implements OnInit {
 
   }
 
-  public orderForm = this.formBuilder.group({
-    city: ['', [Validators.required, Validators.minLength(2)]],
-    street: ['', [Validators.required, Validators.minLength(2)]],
-    deliveryDate: [Date, [Validators.required]],
-    creditCard: ['', [Validators.required, Validators.pattern('([1-9]{4})')]]
-  })
   public copyDefaultUserDetails(cell: 'city' | 'street'){
     console.log(cell);
     

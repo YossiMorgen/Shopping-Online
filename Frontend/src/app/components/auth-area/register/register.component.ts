@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit {
         private productsService :ProductsService,
         private formBuilder : FormBuilder,
         private toast: ToastifyNotificationsService
-
     ){}
 
     async ngOnInit(): Promise<void> {

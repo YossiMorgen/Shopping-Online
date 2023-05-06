@@ -1,11 +1,11 @@
-<div class="products-cart-layout">
-    <div [class]="productsService.products[productsService.i] || ! auth.isAdmin() ? 'products-layout' : 'classic'">
-        <a *ngIf="auth.isAdmin()" routerLink="/add">➕</a>
-        <app-categories></app-categories>
-        <app-product-list></app-product-list>
-    </div>
+<div class="productsAndCartLayout">
     <div class="stickyBar" >
         <app-cart-layout *ngIf=" !auth.isAdmin() "></app-cart-layout>
         <app-products-form *ngIf=" auth.isAdmin() "></app-products-form>
     </div>
+    <div class="productsLayOut">
+        <app-categories></app-categories>
+        <app-product-list></app-product-list>
+    </div>
+    
 </div>

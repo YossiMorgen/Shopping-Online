@@ -106,10 +106,7 @@ export class CartService {
     public logout():void {
         this.cart = new Cart();
         this.products= [];
-        this.totalAmount = 0;
-        this.totalPrice = 0;
-        
+        this.productsTotalAmountAndPrice()
     }
-
-
+    
 }

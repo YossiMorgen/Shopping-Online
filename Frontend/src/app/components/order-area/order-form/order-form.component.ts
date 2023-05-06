@@ -39,7 +39,7 @@ export class OrderFormComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     try {
-      if(! this.cartService.cart){
+      if(! this.cartService.cart || this.cartService.cart.ordered){
         await this.cartService.getCart();
       }
       if(!this.cartService.products.length){

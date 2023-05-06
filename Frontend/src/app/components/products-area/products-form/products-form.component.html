@@ -1,55 +1,57 @@
 <div class="ProductsForm">
     <mat-card>
-    
         <mat-card-content>
-            {{editMode}}
-        <mat-card-header>
-            <h2>{{editMode ? 'Edit ' : 'Add '}} Product</h2>
-        </mat-card-header>
-
-        <form (ngSubmit)="submitProduct()" [formGroup]="productsForm">
-    
-    
-            <mat-form-field appearance="fill">
-                <mat-label>Product Name</mat-label>
-                <input matInput type="text" formControlName="productName">
-            </mat-form-field>
-    
-            <mat-form-field appearance="fill">
-                <mat-label>Category </mat-label>
-                <mat-select formControlName="categoryID" >
-                    <mat-option *ngFor="let category of productsService.categories"  [value]="category.categoryID" >
-                        {{category.categoryName}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            
-    
-            <mat-form-field appearance="fill">
-                <mat-label>Price </mat-label>
-                <input min="1" matInput type="number" formControlName="price">
-            </mat-form-field>
-    
-            <input type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" #productImage>   
-            <div class="file_button">
-                {{file?.name || "No file uploaded yet."}}
-                <button (click)="productImage.click()" type="button" mat-mini-fab color="primary" class="upload-btn">
-    
-                    <mat-icon>attach_file</mat-icon>
+            <mat-card-header>
+                <button 
+                    class="toggle"
+                    (click)="addMode()"
+                    [disabled]="!editMode"
+                >
+                    <h2>{{editMode ? 'Edit ' : 'Add '}} Product</h2>
                 </button>
-            </div>     
-            
-            <button 
-                mat-raised-button 
-                type="submit" 
-                [disabled]="productsForm.invalid || !file?.name" 
-            >
-                {{editMode ? 'Edit ' : 'Add '}} Product
-            </button>
-    
-        </form>
-    </mat-card-content>
+            </mat-card-header>
+
+            <form (ngSubmit)="submitProduct()" [formGroup]="productsForm">
+        
+        
+                <mat-form-field appearance="fill">
+                    <mat-label>Product Name</mat-label>
+                    <input matInput type="text" formControlName="productName">
+                </mat-form-field>
+        
+                <mat-form-field appearance="fill">
+                    <mat-label>Category </mat-label>
+                    <mat-select formControlName="categoryID" >
+                        <mat-option *ngFor="let category of productsService.categories"  [value]="category.categoryID" >
+                            {{category.categoryName}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                
+        
+                <mat-form-field appearance="fill">
+                    <mat-label>Price </mat-label>
+                    <input min="1" matInput type="number" formControlName="price">
+                </mat-form-field>
+        
+                <input type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" #productImage>   
+                <div class="file_button">
+                    {{file?.name || "No file uploaded yet."}}
+                    <button (click)="productImage.click()" type="button" mat-mini-fab color="primary" class="upload-btn">
+        
+                        <mat-icon>attach_file</mat-icon>
+                    </button>
+                </div>     
+                
+                <button 
+                    mat-raised-button 
+                    type="submit" 
+                    [disabled]="productsForm.invalid || !file?.name" 
+                >
+                    {{editMode ? 'Edit ' : 'Add '}} Product
+                </button>
+        
+            </form>
+        </mat-card-content>
     </mat-card>
-    
-    </div>
-    <!-- queue  library_add  insert_invitation add_a_photo add_photo_alternate camera_alt notifications local_printshop mood menu check cancel close -->
+</div>

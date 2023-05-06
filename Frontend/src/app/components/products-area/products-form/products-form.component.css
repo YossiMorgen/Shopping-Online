@@ -12,3 +12,14 @@ mat-form-field{
 input[type = submit]{
     display: block;
 }
+
+.toggle{
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+.toggle:disabled{
+    color: black;
+    cursor: not-allowed;
+}

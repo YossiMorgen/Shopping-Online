@@ -15,8 +15,6 @@ import { CategoriesComponent } from './components/products-area/categories/categ
 import { ProductListComponent } from './components/products-area/product-list/product-list.component';
 import { ProductCardComponent } from './components/products-area/product-card/product-card.component';
 import { HttpRequestInterceptor } from './utils/request.interceptor';
-import { AddProductComponent } from './components/products-area/add-product/add-product.component';
-import { EditProductComponent } from './components/products-area/edit-product/edit-product.component';
 import { CartLayoutComponent } from './components/cart-area/cart-layout/cart-layout.component';
 import { CartProductsComponent } from './components/cart-area/cart-products/cart-products.component';
 import { CartHeaderComponent } from './components/cart-area/cart-header/cart-header.component';
@@ -97,8 +95,6 @@ import { ProductsFormComponent } from './components/products-area/products-form/
     CategoriesComponent,
     ProductListComponent,
     ProductCardComponent,
-    AddProductComponent,
-    EditProductComponent,
     CartLayoutComponent,
     CartProductsComponent,
     CartHeaderComponent,

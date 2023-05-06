@@ -53,6 +53,12 @@ export class ProductsFormComponent implements OnInit {
     }
   }
 
+  addMode() {
+    this.productsForm.reset();
+    this.editMode = false;
+  }
+
+
   public onFileSelected(event: any){
     this.file = event.target.files[0];
   }
@@ -74,11 +80,14 @@ export class ProductsFormComponent implements OnInit {
         formData.append('productID', this.productsService.products[this.editedItemIndex].productID.toString() );
         await this.productsService.updateProduct(formData, this.productsService.products[this.editedItemIndex].productID);
         this.toast.success('Product Edited Successfully')
+        this.editMode = false;
+        this.productsForm.reset();
         return;
       }
 
       await this.productsService.addProduct(formData);
-      this.toast.success('Product Added Successfully')
+      this.toast.success('Product Added Successfully');
+      this.productsForm.reset();
 
     } catch (error : any) {
       this.toast.error(error);

@@ -8,7 +8,8 @@ import { ToastifyNotificationsService } from 'src/app/services/toastify-notifica
 @Component({
   selector: 'app-products-layout',
   templateUrl: './products-layout.component.html',
-  styleUrls: ['./products-layout.component.css']
+  styleUrls: ['./products-layout.component.css'],
+  
 })
 export class ProductsLayoutComponent implements OnInit {
   constructor(

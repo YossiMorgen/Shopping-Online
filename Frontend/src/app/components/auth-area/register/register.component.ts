@@ -42,6 +42,8 @@ export class RegisterComponent implements OnInit {
         } catch (error : any) {
             this.toast.error(error);
         }
+
+        this.emailAndPasswordForm.valueChanges.subscribe(value => console.log(this.emailAndPasswordForm.controls?.['confirmPassword'].errors) )
     }
 
     public async completeStep(){

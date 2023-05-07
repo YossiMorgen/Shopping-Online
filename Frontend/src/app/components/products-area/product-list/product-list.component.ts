@@ -9,7 +9,8 @@ import { ToastifyNotificationsService } from 'src/app/services/toastify-notifica
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
+  
 })
 export class ProductListComponent{
 

@@ -8,11 +8,35 @@ import ProductCartModel from 'src/app/models/product-models/product-cart.model';
 import { PopupAddProductComponent } from '../popup-add-product/popup-add-product.component';
 import {MatDialog} from '@angular/material/dialog';
 import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
-  styleUrls: ['./product-card.component.css']
+  styleUrls: ['./product-card.component.css'],
+  animations: [
+    trigger('productsState', [
+      state('in', style({
+        'z-index' : -6,
+        opacity: 1,
+        transform: 'translateY(0)'
+      })),
+      transition('void => *', [
+        style({
+          'z-index' : -6,
+          opacity: 0,
+          transform: 'translateY(-200px)'
+        }),
+        animate(600)
+      ]),
+      transition('* => void', [
+        animate(600, style({
+          transform: 'translateY(200px)',
+          opacity: 0
+        }))
+      ])
+    ]),
+  ]
 })
 export class ProductCardComponent {
 

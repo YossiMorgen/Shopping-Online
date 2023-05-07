@@ -14,13 +14,17 @@
                     <mat-form-field appearance="fill">
                         <mat-label>Password</mat-label>
                         <input matInput type="password" formControlName="password">
-                        <!-- <mat-error *ngIf="password.invalid || password.errors?.['minlength']">Please enter password minimum 6 letters </mat-error> -->
                     </mat-form-field>
 
                     <mat-form-field appearance="fill">
                         <mat-label>Confirm Password:</mat-label>
                         <input matInput type="password" formControlName="confirmPassword">
-                        <!-- <mat-error *ngIf="confirmPassword.invalid || confirmPassword.errors?.['minlength']">Please enter confirm password minimum 6 letters </mat-error> -->
+                        <mat-error 
+                            *ngIf=" 
+                                emailAndPasswordForm.controls?.['confirmPassword'] && 
+                                (emailAndPasswordForm.touched || emailAndPasswordForm.dirty)"
+                        >   Passwords don't match 
+                        </mat-error>
                     </mat-form-field>
 
                     <button mat-raised-button  [disabled]="emailAndPasswordForm.invalid"  >Validate Details</button>

@@ -21,6 +21,7 @@ export class ProductsService {
   public constructor( 
     private http:HttpClient, 
     private config: ConfigService,
+    private route: ActivatedRoute,
     private toast: ToastifyNotificationsService
   ) { }
 
@@ -75,15 +76,25 @@ export class ProductsService {
   public async updateProduct(product: FormData, productID:number): Promise<void> {
     const Observable = this.http.put<ProductModel>(this.config.updateProduct, product);
     const newProduct = await firstValueFrom(Observable);
-    this.products = this.products.map((p: ProductModel) => {
-      if(p.productID === productID) {
-        return newProduct;
+    console.log(this.products);
+    console.log(newProduct);
+
+    let i = 0;
+
+    for (let j = 0; j < this.products.length; j ++){
+      if(newProduct.productID === this.products[j].productID){
+        i = j;
+        break
       }
-      return p;
-    })
-
+    }
+    
+    if( this.products[i].categoryID === newProduct.categoryID){
+      this.products[i] = newProduct;
+    }else {
+      this.products = this.products.splice(i, i+1);
+    }
   }
-
+  
   public async deleteProduct(id: number):Promise<void>{
   
     const observable = this.http.delete(this.config.deleteProduct + id);

@@ -1,6 +1,6 @@
 import { ProductsService } from 'src/app/services/products.service';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import User from 'src/app/models/auth-models/user.model';
@@ -16,8 +16,8 @@ export class RegisterComponent implements OnInit {
 
     public emailAndPasswordForm = this.formBuilder.group({
         email : ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
-        password : ['', [Validators.required, Validators.minLength(5)]],
-        confirmPassword : ['', [Validators.required, Validators.minLength(5)]]
+        password : ['', [Validators.required, Validators.minLength(5)], this.matchPasswords],
+        confirmPassword : ['', [Validators.required, Validators.minLength(5)], this.matchPasswords]
     })
     public nameAndAddressForm = this.formBuilder.group({
         firstName : ['', [Validators.required, Validators.minLength(2)]],
@@ -59,6 +59,28 @@ export class RegisterComponent implements OnInit {
         } catch (error: any){
             this.toast.error(error);
         }
+    }
+
+    public frobiddenEmail(controll: FormControl): Promise<any> | Observable<any> {
+        return new Promise<any>(async (resolve, reject) => {
+            try {
+                if(await this.auth.isEmailExist(this.emailAndPasswordForm.value.email)){
+                    this.toast.error('Email already exists');
+                    resolve({'Email already exists': true})
+                }
+                this.complete = true;      
+    
+            } catch (error: any){
+                this.toast.error(error);
+            }
+        })
+    }
+
+    public matchPasswords(): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const forbidden = this.emailAndPasswordForm.value.confirmPassword !== this.emailAndPasswordForm.value.password
+            return forbidden ? {noMatch: {value: control.value}} : null;
+        };
     }
 
     public async register():Promise<void>{

@@ -28,6 +28,7 @@ export class ProductsLayoutComponent implements OnInit {
         this.productsService.isThereProducts = true;
         this.productsService.products = [];
         await this.productsService.getProducts(params);
+        window.removeEventListener('scroll', ()=>{})
         window.addEventListener("scroll", async () => {
 
           if(

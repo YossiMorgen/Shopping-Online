@@ -38,8 +38,6 @@ export class CartService {
         this.products = await firstValueFrom(observable);
 
         this.productsTotalAmountAndPrice();
-        console.log(!this.products.length);
-
     }
 
     public async changeProductAmount(product: ProductCartModel):Promise<void>{        

@@ -2,3 +2,6 @@ mat-form-field {
     display: block;
     width: fit-content;
 }
+form{
+    margin-top: 20px;
+}

@@ -1,8 +1,8 @@
 <mat-card>
     <mat-card-content>
         <mat-stepper linear #stepper>
-            <mat-step [completed]="complete" [editable]="false" label="Email & password">
-                <form *ngIf="!complete" [formGroup]="emailAndPasswordForm" (submit)="completeStep()">
+            <mat-step [stepControl]="emailAndPasswordForm" label="Email & password">
+                <form [formGroup]="emailAndPasswordForm">
                     
                     <mat-form-field appearance="fill">
                         <mat-label>Email</mat-label>
@@ -17,33 +17,22 @@
                     <mat-form-field appearance="fill">
                         <mat-label>Confirm Password:</mat-label>
                         <input matInput type="password" formControlName="confirmPassword">
-                        <mat-error 
-                            *ngIf=" 
-                                emailAndPasswordForm.controls?.['confirmPassword'] && 
-                                (emailAndPasswordForm.touched || emailAndPasswordForm.dirty)"
-                        >   Passwords don't match 
-                        </mat-error>
                     </mat-form-field>
+                   
+                    <button [disabled]="emailAndPasswordForm.invalid" cdkFocusInitial mat-raised-button matStepperNext #next>Next</button>
 
-                    <button mat-raised-button  [disabled]="emailAndPasswordForm.invalid"  >Validate Details</button>
+                    <mat-error 
+                        *ngIf=" emailAndPasswordForm.errors?.['noMatch'] === true ">                        
+                        Passwords don't match 
+                    </mat-error>
                 </form>
-                    
-                <div *ngIf="complete" >
-                    <div class="successMessage">
-                        <span> ✅ your details has been successfully checked 😊</span>
-                    </div>
-                    <button cdkFocusInitial mat-raised-button matStepperNext #next>Next</button>
-                </div>
-            
-        
             </mat-step>
 
-            <mat-step  label="Name & Address">
+            <mat-step [stepControl]="nameAndAddressForm" label="Name & Address">
                 <form [formGroup]="nameAndAddressForm" (submit)="register()">
                     <mat-form-field appearance="fill">
                         <mat-label>First Name</mat-label>
                         <input matInput formControlName="firstName">
-                        <!-- <mat-error *ngIf="confirmPassword.invalid || confirmPassword.errors?.['minlength']">Please enter confirm password minimum 6 letters </mat-error> -->
                     </mat-form-field>
 
                     <mat-form-field appearance="fill">

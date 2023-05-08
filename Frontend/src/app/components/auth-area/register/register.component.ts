@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
         city : ['', [Validators.required, Validators.minLength(2)]],
         street : ['', [Validators.required, Validators.minLength(2)]],
     })
-    public complete = false;
+
     public productsAmount: number;
     public ordersAmount: number;
 
@@ -37,56 +37,33 @@ export class RegisterComponent implements OnInit {
     ){}
 
     async ngOnInit(): Promise<void> {
+        this.emailAndPasswordForm.addValidators(this.matchPasswords(this.emailAndPasswordForm.get('password'), this.emailAndPasswordForm.get('confirmPassword')))
         try {
             [this.productsAmount, this.ordersAmount] = await this.productsService.getProductsAndOrdersAmount();
         } catch (error : any) {
             this.toast.error(error);
         }
-
-        this.emailAndPasswordForm.valueChanges.subscribe(value => console.log(this.emailAndPasswordForm.controls?.['email'].errors) )
     }
 
-    public async completeStep(){
-
-        // try {
-        //     if(await this.auth.isEmailExist(this.emailAndPasswordForm.value.email)){
-        //         this.toast.error('Email already exists');
-        //         return;
-        //     }
-        //     this.complete = true;      
-
-        // } catch (error: any){
-        //     this.toast.error(error);
-        // }
-        this.complete = true;      
-
-    }
-
-    public async frobiddenEmail(controll: FormControl): Promise<any> {
-            console.log(await this.auth.isEmailExist(controll.value));
-            
-            try {
-                if(await this.auth.isEmailExist(controll.value)){
-                    this.toast.error("Email already exists")
-                    return({'Email already exists': true})
-                }else {
-                    return(null);
-                }
-    
-            } catch (error: any){
-                this.toast.error(error);
+    public async frobiddenEmail(controll: FormControl): Promise<any> {            
+        try {
+            if(await this.auth.isEmailExist(controll.value)){
+                this.toast.error("Email already exists")
+                return({EmailAlreadyExists: true})
+            }else {
+                return(null);
             }
+
+        } catch (error: any){
+            this.toast.error(error);
+        }
     }
 
-    public matchPasswords(control: AbstractControl): ValidatorFn {
-        // return new Promise(resolve => {
-        //     const forbidden = this.emailAndPasswordForm.value.confirmPassword !== this.emailAndPasswordForm.value.password
-        //     resolve(forbidden ? {'noMatch': {value: control.value}} : null)
-        // })
-        return (control: AbstractControl): ValidationErrors | null => {
-            const forbidden = this.emailAndPasswordForm.value.confirmPassword !== this.emailAndPasswordForm.value.password
-            return forbidden ? {noMatch: {value: control.value}} : null;
-        };
+    public matchPasswords(control: AbstractControl, secondControl: AbstractControl) {
+        return () => {
+            const isMatch = control.value === secondControl.value
+            return isMatch ? null : {noMatch: true};
+        }
     }
 
     public async register():Promise<void>{

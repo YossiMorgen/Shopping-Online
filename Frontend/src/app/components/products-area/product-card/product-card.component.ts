@@ -8,7 +8,7 @@ import ProductCartModel from 'src/app/models/product-models/product-cart.model';
 import { PopupAddProductComponent } from '../popup-add-product/popup-add-product.component';
 import {MatDialog} from '@angular/material/dialog';
 import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-product-card',
@@ -22,19 +22,36 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
         transform: 'translateY(0)'
       })),
       transition('void => *', [
-        style({
-          'z-index' : -6,
-          opacity: 0,
-          transform: 'translateY(-200px)'
-        }),
-        animate(600)
-      ]),
-      transition('* => void', [
-        animate(600, style({
-          transform: 'translateY(200px)',
-          opacity: 0
-        }))
-      ])
+        animate(1000, keyframes([
+          style({
+            'z-index' : -6,
+            opacity: 0,
+            transform: 'translateY(-200px)',
+            offset: 0,
+          }),
+          style({
+            offset: 0.4,
+            opacity: 0.7,
+            transform: 'translateY(-120px)',
+          }),
+          style({
+            offset: 0.8,
+            opacity: 0.8,
+            transform: 'translateY(90px)',
+          }),
+          style({
+            offset: 0.9,
+            opacity: 0.9,
+            transform: 'translateY(-10px)',
+          })
+        ])),
+        transition('* => void', [
+          animate(600, style({
+            transform: 'translateY(200px)',
+            opacity: 0
+          }))
+        ])])
+      
     ]),
   ]
 })

@@ -1,6 +1,6 @@
 <div class="productsAndCartLayout">
     <div class="stickyBar" >
-        <app-cart-layout *ngIf=" !auth.isAdmin() "></app-cart-layout>
+        <app-cart *ngIf=" !auth.isAdmin() "></app-cart>
         <app-products-form *ngIf=" auth.isAdmin() "></app-products-form>
     </div>
     <div class="productsLayOut">

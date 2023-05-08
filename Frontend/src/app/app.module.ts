@@ -15,12 +15,8 @@ import { CategoriesComponent } from './components/products-area/categories/categ
 import { ProductListComponent } from './components/products-area/product-list/product-list.component';
 import { ProductCardComponent } from './components/products-area/product-card/product-card.component';
 import { HttpRequestInterceptor } from './utils/request.interceptor';
-import { CartLayoutComponent } from './components/cart-area/cart-layout/cart-layout.component';
-import { CartProductsComponent } from './components/cart-area/cart-products/cart-products.component';
-import { CartHeaderComponent } from './components/cart-area/cart-header/cart-header.component';
 import { HttpResponseInterceptor } from './utils/response.interceptor';
 import { CartProductCardComponent } from './components/cart-area/cart-product-card/cart-product-card.component';
-import { CartFooterComponent } from './components/cart-area/cart-footer/cart-footer.component';
 import { SearchProductsComponent } from './components/products-area/search-products/search-products.component';
 import { MyCartComponent } from './components/order-area/my-cart/my-cart.component';
 import { OrderLayoutComponent } from './components/order-area/order-layout/order-layout.component';
@@ -82,6 +78,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './components/playground/page-not-found/page-not-found.component';
 import { LoaderComponent } from './components/playground/loader/loader.component';
 import { ProductsFormComponent } from './components/products-area/products-form/products-form.component';
+import { CartComponent } from './components/cart-area/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -95,11 +92,7 @@ import { ProductsFormComponent } from './components/products-area/products-form/
     CategoriesComponent,
     ProductListComponent,
     ProductCardComponent,
-    CartLayoutComponent,
-    CartProductsComponent,
-    CartHeaderComponent,
     CartProductCardComponent,
-    CartFooterComponent,
     SearchProductsComponent,
     MyCartComponent,
     OrderLayoutComponent,
@@ -107,7 +100,8 @@ import { ProductsFormComponent } from './components/products-area/products-form/
     ReceiptComponent,
     PopupAddProductComponent,
     LoaderComponent,
-    ProductsFormComponent,    
+    ProductsFormComponent,
+    CartComponent,    
   ],
   imports: [
     BrowserModule,

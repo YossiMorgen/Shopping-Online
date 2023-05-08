@@ -5,10 +5,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: antiquewhite;
-    /* background: linear-gradient(217deg, rgba(255, 0, 0, 0.13), rgba(255,0,0,0) 70.71%),
-    linear-gradient(127deg, rgba(65, 156, 65, 0.178), rgba(0,255,0,0) 70.71%),
-    linear-gradient(336deg, rgba(65, 65, 163, 0.164), rgba(0,0,255,0) 70.71%); */
+    background-color: #F5E3C8;
     border-bottom: 2px solid var(--border-color);
     z-index: 9;
 }

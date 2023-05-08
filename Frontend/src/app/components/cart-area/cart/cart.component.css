@@ -1,0 +1,33 @@
+mat-card {
+    overflow: hidden;
+    width: fit-content;
+    position: sticky;
+    top: 18vh;
+    right: 0;
+}
+
+mat-card-header{
+    background-color: #00abca;
+    padding: 10px;
+    color: white;
+    gap: 5px;
+}
+
+button {
+    margin: 10px 15px;
+    padding: 10px;
+}
+
+mat-card-subtitle{
+    color: rgb(226, 219, 219);
+}
+
+mat-card-content{
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+mat-card-actions{
+    background-color: #00abca;
+
+}

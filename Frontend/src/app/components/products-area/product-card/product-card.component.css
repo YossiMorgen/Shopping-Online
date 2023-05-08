@@ -1,6 +1,7 @@
  .product{
     width: 150px;
     margin: 18px 10px;
+    cursor: pointer;
 }
 
 img{

@@ -30,28 +30,29 @@ import { animate, keyframes, state, style, transition, trigger } from '@angular/
             offset: 0,
           }),
           style({
-            offset: 0.4,
+            offset: 0.3,
             opacity: 0.7,
             transform: 'translateY(-120px)',
           }),
           style({
-            offset: 0.8,
+            offset: 0.5,
             opacity: 0.8,
             transform: 'translateY(90px)',
           }),
           style({
-            offset: 0.9,
+            offset: 0.8,
             opacity: 0.9,
-            transform: 'translateY(-10px)',
+            transform: 'translateY(-40px)',
           })
         ])),
-        transition('* => void', [
-          animate(600, style({
-            transform: 'translateY(200px)',
-            opacity: 0
-          }))
-        ])])
-      
+
+      ]),
+      transition('* => void', [
+        animate(300, style({
+          opacity: 0.1,
+          transform: 'translateY(200px)'
+        }))
+      ])
     ]),
   ]
 })

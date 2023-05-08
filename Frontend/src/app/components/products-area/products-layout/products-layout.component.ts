@@ -25,30 +25,29 @@ export class ProductsLayoutComponent implements OnInit {
   async ngOnInit(): Promise<void> {    
     try {
       this.route.queryParams.subscribe(async (params: any) => {
-        
+        this.productsService.params = params;
         this.productsService.isThereProducts = true;
         this.productsService.products = [];
-        await this.productsService.getProducts(params);
-        window.removeEventListener('scroll', ()=>{})
-        window.addEventListener("scroll", async () => {
+        await this.productsService.getProducts();
 
-          if(
-            this.productsService.isThereProducts &&
-            this.router.url.search('products') !== -1 && 
-            window.innerHeight + Math.round(window.scrollY) ===  document.body.offsetHeight 
-          ){
-            try {
-              console.log("hi");
-
-              await this.productsService.getProducts(params);
-            } catch (error) {
-              this.toast.error(error)
-            } 
-          } 
-        })
+        
       })
     } catch (error: any) {
       this.toast.error(error);
     }
+    window.addEventListener("scroll", async () => {
+
+      if(
+        this.productsService.isThereProducts &&
+        this.router.url.search('products') !== -1 && 
+        window.innerHeight + Math.round(window.scrollY) ===  document.body.offsetHeight 
+      ){
+        try {
+          await this.productsService.getProducts();
+        } catch (error) {
+          this.toast.error(error)
+        } 
+      } 
+    })
   }
 }

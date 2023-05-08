@@ -12,7 +12,7 @@ import { ToastifyNotificationsService } from './toastify-notifications.service';
 })
 export class ProductsService {
   startedEditing = new Subject<number>();
-
+  public params: any;
   public products: ProductModel[] = [];
   public categories: CategoryModel[] = [];
   public isThereProducts: boolean = true;
@@ -36,15 +36,15 @@ export class ProductsService {
     this.categories = categories;    
   }
 
-  public async getProducts(params: any) {
+  public async getProducts() {
     
     let products: ProductModel[] = []
-    if(params.search){
-      const observable = this.http.get<ProductModel[]>(this.config.searchProducts + params.search + "?start=" + this.products.length );
+    if(this.params.search){
+      const observable = this.http.get<ProductModel[]>(this.config.searchProducts + this.params.search + "?start=" + this.products.length );
       products = await firstValueFrom(observable);
     }
-    else if(params.category_id){
-      const observable = this.http.get<ProductModel[]>(this.config.getProductsByCategory + params.category_id + "?start=" + this.products.length)
+    else if(this.params.category_id){
+      const observable = this.http.get<ProductModel[]>(this.config.getProductsByCategory + this.params.category_id + "?start=" + this.products.length)
       products = await firstValueFrom(observable);
     } else {
       const observable = this.http.get<ProductModel[]>(this.config.getRandomProducts + "?start=" + this.products.length)

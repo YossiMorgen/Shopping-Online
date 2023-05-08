@@ -29,8 +29,6 @@ export class ProductsLayoutComponent implements OnInit {
         this.productsService.isThereProducts = true;
         this.productsService.products = [];
         await this.productsService.getProducts();
-
-        
       })
     } catch (error: any) {
       this.toast.error(error);

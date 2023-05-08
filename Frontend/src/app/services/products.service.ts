@@ -91,7 +91,7 @@ export class ProductsService {
     if( this.products[i].categoryID === newProduct.categoryID){
       this.products[i] = newProduct;
     }else {
-      this.products = this.products.splice(i, i+1);
+      this.products.splice(i, 1);
     }
   }
   

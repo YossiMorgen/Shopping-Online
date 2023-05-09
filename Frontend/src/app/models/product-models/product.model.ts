@@ -1,3 +1,5 @@
+import WeightModel from "./weight-model";
+
 export default class ProductModel{
     public productID: number;
     public productName: string; 
@@ -7,6 +9,7 @@ export default class ProductModel{
     public imageName: string;
     public description: string;
     public weight: string;
+    public weightType: WeightModel;
 
     constructor(product?: ProductModel | any){
         if(product){
@@ -18,6 +21,7 @@ export default class ProductModel{
             this.imageName = product.imageName;
             this.description = product.description;
             this.weight = product.weight;
+            this.weightType = product.weightType;
         }
     }
 

@@ -12,7 +12,7 @@ function getCategories():Promise<CategoryModel> {
 
 function getRandomProducts (start: number, end: number): Promise<ProductModel[]> {
     const sql = `
-    SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID
+    SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID, description, weight, weightType
     FROM products
     LIMIT ?
     OFFSET ?
@@ -22,7 +22,7 @@ function getRandomProducts (start: number, end: number): Promise<ProductModel[]>
 
 async function getProductsByName(name : string, start: number, end: number): Promise<ProductModel[]> {
     const products = await dal.execute(`
-        SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID
+        SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID, description, weight, weightType
         FROM products
         WHERE productName LIKE ?
         LIMIT ?
@@ -34,7 +34,7 @@ async function getProductsByName(name : string, start: number, end: number): Pro
 
 async function getProductsByCategory(categoryID: number,start: number, end: number): Promise<ProductModel[]> {
     const products = await dal.execute(
-        `SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID
+        `SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID, description, weight, weightType
         FROM products
         WHERE products.categoryID = ?
         LIMIT ?
@@ -54,8 +54,8 @@ async function addProduct(product:ProductModel): Promise<ProductModel> {
     product.imageName = await fileHandler.saveFile(product.image);
     delete product.image;
     
-    const sql = "INSERT INTO products VALUES (DEFAULT, ?, ?, ?, ?)";
-    const info:OkPacket = await dal.execute(sql, [product.productName, product.categoryID, product.price, product.imageName]);
+    const sql = "INSERT INTO products VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?)";
+    const info:OkPacket = await dal.execute(sql, [product.productName, product.categoryID, product.price, product.imageName, product.description, product.weight, product.weightType]);
     
     product.productID = info.insertId;
     product.imageName = appConfig.nodeUrl + product.imageName;
@@ -84,8 +84,8 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
     }
         
     
-    let sql = "UPDATE products SET productName = ?, price = ?, categoryID = ?"
-    const arr: Array<any> = [product.productName, product.price, product.categoryID]
+    let sql = "UPDATE products SET productName = ?, price = ?, categoryID = ?, description = ?, weight = ?, weightType = ?"
+    const arr: Array<any> = [product.productName, product.price, product.categoryID, product.description, product.weight, product.weightType]
 
     
     if(product.image){        

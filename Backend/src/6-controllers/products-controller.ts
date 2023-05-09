@@ -9,7 +9,7 @@ import ordersLogic from "../5-logic/orders-logic";
 
 const router = express.Router();
 
-router.get('/categories', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
+router.get('/categories', async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const categories = await productsLogic.getCategories();        
         res.json(categories);
@@ -18,7 +18,7 @@ router.get('/categories', verifyLoggedIn,  async (req: Request, res: Response, n
     }
 });
 
-router.get('/random_products', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
+router.get('/random_products', async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const products = await productsLogic.getRandomProducts((+req.query.start | 0), (+req.query.limit | 24));        
         res.json(products);
@@ -27,7 +27,7 @@ router.get('/random_products', verifyLoggedIn,  async (req: Request, res: Respon
     }
 });
 
-router.get('/search_products/:name', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
+router.get('/search_products/:name', async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const products = await productsLogic.getProductsByName(req.params.name, (+req.query.start | 0), (+req.query.limit | 24));        
         res.json(products);
@@ -36,7 +36,7 @@ router.get('/search_products/:name', verifyLoggedIn,  async (req: Request, res: 
     }
 });
 
-router.get('/products_by_category/:categoryID([0-9]+)', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
+router.get('/products_by_category/:categoryID([0-9]+)', async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const categoryID = +req.params.categoryID;
         const products = await productsLogic.getProductsByCategory(categoryID, (+req.query.start | 0), (+req.query.limit | 24));        

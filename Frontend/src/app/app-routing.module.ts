@@ -12,7 +12,7 @@ import { ReceiptComponent } from './components/order-area/receipt/receipt.compon
 const routes: Routes = [
     {path: 'login', component: LoginComponent, canActivate: [RegisteredGuard] },
     {path: 'register', component: RegisterComponent, canActivate: [RegisteredGuard] },
-    {path: 'products', component: ProductsLayoutComponent, canActivate: [AuthGuard] },
+    {path: 'products', component: ProductsLayoutComponent},
     {path: 'order', component: OrderLayoutComponent, canActivate: [AuthGuard] },
     {path: 'receipt', component: ReceiptComponent, canActivate: [AuthGuard] },
     {path: '', redirectTo: '/login', pathMatch: "full" },

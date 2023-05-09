@@ -15,7 +15,7 @@ const routes: Routes = [
     {path: 'products', component: ProductsLayoutComponent},
     {path: 'order', component: OrderLayoutComponent, canActivate: [AuthGuard] },
     {path: 'receipt', component: ReceiptComponent, canActivate: [AuthGuard] },
-    {path: '', redirectTo: '/login', pathMatch: "full" },
+    {path: '', redirectTo: '/products', pathMatch: "full" },
     {path: '**', component: PageNotFoundComponent }
 ];
 

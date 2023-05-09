@@ -2,6 +2,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { Component, Input, OnInit } from '@angular/core';
 import ProductCartModel from 'src/app/models/product-models/product-cart.model';
 import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-cart-product-card',
@@ -17,7 +18,7 @@ export class CartProductCardComponent implements OnInit {
 
   constructor(
     private cartService : CartService,
-    private toast: ToastifyNotificationsService
+    private toast: ToastifyNotificationsService,
   ) { }
 
   ngOnInit(): void {

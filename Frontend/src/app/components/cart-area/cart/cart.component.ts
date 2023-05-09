@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
@@ -10,11 +11,14 @@ import { ToastifyNotificationsService } from 'src/app/services/toastify-notifica
 export class CartComponent {
   constructor(
     public cartService : CartService,
-    private toast: ToastifyNotificationsService
-
+    private toast: ToastifyNotificationsService,
+    private auth: AuthService
   ) { }
 
     async ngOnInit(): Promise<void> {
+    if(!this.auth.user){
+      return;
+    }
     try {
       await this.cartService.getCart();
     } catch (error : any) {

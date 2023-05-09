@@ -1,5 +1,6 @@
 import { UploadedFile } from 'express-fileupload';
 import Joi from "joi";
+import WeightModel from './weight-model';
 
 export default class ProductModel{
 
@@ -10,7 +11,8 @@ export default class ProductModel{
     public image: UploadedFile;
     public imageName: string;
     public description: string;
-    public weight: string;
+    public weight: number;
+    public weightType: WeightModel;
 
     public constructor(product: ProductModel){
         this.productID = product.productID;
@@ -21,6 +23,7 @@ export default class ProductModel{
         this.imageName = product.imageName;
         this.description = product.description;
         this.weight = product.weight;
+        this.weightType = product.weightType;
     }
 
     public static validationSchema = Joi.object({
@@ -29,7 +32,10 @@ export default class ProductModel{
         categoryID : Joi.number().required().positive(),
         price: Joi.number().positive().required(),
         image: Joi.object().optional(),
-        imageName: Joi.string().optional()
+        imageName: Joi.string().optional(),
+        description: Joi.string().min(2).max(100).required(),
+        weight: Joi.number().positive().required(),
+        weightType: Joi.valid(...Object.values(WeightModel))
     })
 
     public validation():string{

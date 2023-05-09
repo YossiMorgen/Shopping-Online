@@ -8,7 +8,7 @@ export default class ProductModel{
     public image: File;
     public imageName: string;
     public description: string;
-    public weight: string;
+    public weight: number;
     public weightType: WeightModel;
 
     constructor(product?: ProductModel | any){

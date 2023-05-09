@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import ProductModel from 'src/app/models/product-models/product.model';
+import WeightModel from 'src/app/models/product-models/weight-model';
 import { ProductsService } from 'src/app/services/products.service';
 import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
@@ -21,7 +22,10 @@ export class ProductsFormComponent implements OnInit {
   public productsForm = this.formBuilder.group({
     productName : ['', [Validators.required, Validators.minLength(2)]],
     categoryID : [0, [Validators.required]],
-    price : [1, [Validators.required, Validators.min(1)]]
+    price : [1, [Validators.required, Validators.min(1)]],
+    description : ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+    weight : [1, [Validators.required, Validators.min(1)]],
+    weightType : [WeightModel.kg, [Validators.required]]
   })
 
   public file: File;
@@ -41,7 +45,10 @@ export class ProductsFormComponent implements OnInit {
         this.productsForm.setValue({
           productName: this.productsService.products[this.editedItemIndex].productName,
           categoryID: this.productsService.products[this.editedItemIndex].categoryID,
-          price: this.productsService.products[this.editedItemIndex].price
+          price: this.productsService.products[this.editedItemIndex].price,
+          description: this.productsService.products[this.editedItemIndex].description,
+          weight: this.productsService.products[this.editedItemIndex].weight,
+          weightType: this.productsService.products[this.editedItemIndex].weightType
         })
       })
     try {

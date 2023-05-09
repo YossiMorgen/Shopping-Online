@@ -18,6 +18,11 @@
                     <mat-label>Product Name</mat-label>
                     <input matInput type="text" formControlName="productName">
                 </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <input matInput type="text" formControlName="description">
+                </mat-form-field>
         
                 <mat-form-field appearance="fill">
                     <mat-label>Category </mat-label>
@@ -35,6 +40,23 @@
                 <mat-form-field appearance="fill">
                     <mat-label>Price </mat-label>
                     <input min="1" matInput type="number" formControlName="price">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Weight </mat-label>
+                    <input min="1" matInput type="number" formControlName="weight">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>W eightType </mat-label>
+                    <mat-select formControlName="weightType" >
+                        <mat-option 
+                            *ngFor="let key of enumKeys"  
+                            [value]="key" 
+                        >
+                            {{key}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
         
                 <input type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" #productImage>   

@@ -14,10 +14,11 @@ import { ToastifyNotificationsService } from 'src/app/services/toastify-notifica
 })
 export class ProductsFormComponent implements OnInit {
 
-  editMode = false;
-  editedItemIndex: number;
+  public editMode = false;
+  public editedItemIndex: number;
 
-  public subscription : Subscription
+  public subscription : Subscription;
+  public enumKeys =  Object.values(WeightModel)
 
   public productsForm = this.formBuilder.group({
     productName : ['', [Validators.required, Validators.minLength(2)]],
@@ -78,6 +79,9 @@ export class ProductsFormComponent implements OnInit {
       formData.append('productName', this.productsForm.value.productName)
       formData.append('categoryID', this.productsForm.value.categoryID.toString())
       formData.append('price', this.productsForm.value.price.toString())
+      formData.append('description', this.productsForm.value.description)
+      formData.append('weight', this.productsForm.value.weight.toString())
+      formData.append('weightType', this.productsForm.value.weightType)
       
       if(this.file){
         formData.append('image', this.file);

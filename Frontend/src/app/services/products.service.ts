@@ -88,7 +88,7 @@ export class ProductsService {
       }
     }
     
-    if( this.products[i].categoryID === newProduct.categoryID){
+    if( this.products[i].categoryID == newProduct.categoryID){
       this.products[i] = newProduct;
     }else {
       this.products.splice(i, 1);

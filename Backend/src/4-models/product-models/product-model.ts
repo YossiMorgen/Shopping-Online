@@ -9,6 +9,8 @@ export default class ProductModel{
     public price: number;
     public image: UploadedFile;
     public imageName: string;
+    public description: string;
+    public weight: string;
 
     public constructor(product: ProductModel){
         this.productID = product.productID;
@@ -17,6 +19,8 @@ export default class ProductModel{
         this.price = product.price;
         this.image = product.image;
         this.imageName = product.imageName;
+        this.description = product.description;
+        this.weight = product.weight;
     }
 
     public static validationSchema = Joi.object({

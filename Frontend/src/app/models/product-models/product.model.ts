@@ -5,6 +5,8 @@ export default class ProductModel{
     public price: number;
     public image: File;
     public imageName: string;
+    public description: string;
+    public weight: string;
 
     constructor(product?: ProductModel | any){
         if(product){
@@ -14,6 +16,8 @@ export default class ProductModel{
             this.price = product.price;
             this.image = product.image;
             this.imageName = product.imageName;
+            this.description = product.description;
+            this.weight = product.weight;
         }
     }
 

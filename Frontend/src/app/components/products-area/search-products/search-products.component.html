@@ -1,20 +1,20 @@
-<form (onSubmit)="search()" *ngIf="visibility()" class="example-form-field">
-    <input 
-        type="text" 
-        [(ngModel)]="input"
-        pattern="([a-z]{1,7})"
-    >
-   
-
-    <button 
-        (click)="search()"
-        type="submit"
+<div class="searchContainer">
+    <form (onSubmit)="search()" *ngIf="visibility()" class="example-form-field">
+        <button (click)="search()" type="submit">
+            <img src="../../../../assets/Magnifying_Glass.png" alt="🔍">
+        </button>
+    
+        <input 
+            type="text" 
+            [(ngModel)]="input"
+            pattern="([a-z]{1,7})"
+        >
+       
+    
         
-    >
-        s
-    </button>
-
-
-</form>
+    
+    
+    </form>
+</div>
 
  

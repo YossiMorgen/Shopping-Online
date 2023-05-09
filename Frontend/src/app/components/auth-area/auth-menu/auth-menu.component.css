@@ -1,0 +1,13 @@
+img{
+    width: 40px;
+}
+
+button, a, button:hover, a:hover{
+    background-color: transparent;
+    color: white;
+    border: transparent;
+}
+
+.menuContainer{
+    background-color: red;
+}

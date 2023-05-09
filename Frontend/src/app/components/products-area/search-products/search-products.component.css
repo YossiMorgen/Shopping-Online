@@ -1,0 +1,29 @@
+.searchContainer{
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+form{
+    display: flex;
+    background-color: white;
+    width: 25vw;
+    height: 40px;
+    border-radius: 20px;
+}
+
+img{
+    width: 20px;
+}
+
+button, input, button:hover, input:hover{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+input {
+    height: 100%;
+    width: 70%;
+    font-size: large;
+}

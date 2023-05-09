@@ -1,11 +1,13 @@
 <div class="menu">
 
-    <div *ngIf="auth.isLoggedIn()">
-        <button mat-flat-button (click)="auth.logout()">Logout </button>
+    <div class="menuContainer" *ngIf="auth.isLoggedIn()">
+        <button (click)="auth.logout()">Logout </button>
     </div>
 
-    <div *ngIf="!auth.isLoggedIn()">
-        <a mat-flat-button routerLink="/login">login </a> <a mat-flat-button routerLink="/register" >Register </a>
+    <div class="menuContainer" *ngIf="!auth.isLoggedIn()">
+        <a routerLink="/login">login </a> <a routerLink="/register" >Register </a>
     </div>
+
+    <img src="../../../../assets/Cart.png" alt="">
 
 </div>

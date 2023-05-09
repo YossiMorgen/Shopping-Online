@@ -82,7 +82,8 @@ export class ProductsFormComponent implements OnInit {
       formData.append('description', this.productsForm.value.description)
       formData.append('weight', this.productsForm.value.weight.toString())
       formData.append('weightType', this.productsForm.value.weightType)
-      
+      formData.append('imageName', this.productsService.products[this.editedItemIndex].imageName)
+
       if(this.file){
         formData.append('image', this.file);
       }

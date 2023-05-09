@@ -34,8 +34,8 @@ export default class ProductModel{
         image: Joi.object().optional(),
         imageName: Joi.string().optional(),
         description: Joi.string().min(2).max(100).required(),
-        weight: Joi.number().positive().required(),
-        weightType: Joi.valid(...Object.values(WeightModel)).required()
+        weight: Joi.number().min(0).required(),
+        weightType: Joi.valid(...Object.values(WeightModel), '').required()
     })
 
     public validation():string{

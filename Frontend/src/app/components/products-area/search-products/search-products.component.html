@@ -1,7 +1,5 @@
-<mat-form-field class="example-form-field">
-    <mat-label>Search Products</mat-label>
+<form (onSubmit)="search()" *ngIf="visibility()" class="example-form-field">
     <input 
-        matInput 
         type="text" 
         [(ngModel)]="input"
         pattern="([a-z]{1,7})"
@@ -9,34 +7,14 @@
    
 
     <button 
-    matSuffix
-        (click)="orderService.search = input"
-        *ngIf="visibility() === 'order' && input"
+        (click)="search()"
         type="submit"
-        mat-icon-button
+        
     >
-        <mat-icon>search</mat-icon>
+        s
     </button>
 
-    
-     <button 
-        matSuffix 
-        *ngIf="visibility() === 'products' && input" 
-        matSuffix 
-        mat-icon-button 
-        aria-label="Clear" 
-        (click)="input=''"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-    
-    <a 
-        matSuffix
-        mat-icon-button
-        *ngIf="visibility() === 'products' && input"
-        [routerLink]="[]" 
-        [queryParams]="{ 'search': input }"
-    ><mat-icon>search</mat-icon></a>
-  </mat-form-field>
+
+</form>
 
  

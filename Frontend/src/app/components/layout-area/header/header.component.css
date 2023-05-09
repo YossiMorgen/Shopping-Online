@@ -1,15 +1,17 @@
-header {
+.header {
     height: 17vh;
     position: sticky;
     top: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    background-color: #F5E3C8;
-    border-bottom: 2px solid var(--border-color);
+    background-color: #E8E8E8;
     z-index: 9;
 }
 
 h1  {
     text-shadow: 3px 4px 5px rgba(56, 56, 56, 0.341);
+}
+
+img {
+    width: 20vw;
 }

@@ -25,8 +25,8 @@ export class ProductsFormComponent implements OnInit {
     categoryID : [0, [Validators.required]],
     price : [1, [Validators.required, Validators.min(1)]],
     description : ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
-    weight : [1, [Validators.required, Validators.min(1)]],
-    weightType : [WeightModel.kg, [Validators.required]]
+    weight : [0, [ Validators.min(0), Validators.required]],
+    weightType : ['']
   })
 
   public file: File;
@@ -80,15 +80,15 @@ export class ProductsFormComponent implements OnInit {
       formData.append('categoryID', this.productsForm.value.categoryID.toString())
       formData.append('price', this.productsForm.value.price.toString())
       formData.append('description', this.productsForm.value.description)
-      formData.append('weight', this.productsForm.value.weight.toString())
+      formData.append('weight', this.productsForm.value.weight?.toString())
       formData.append('weightType', this.productsForm.value.weightType)
-      formData.append('imageName', this.productsService.products[this.editedItemIndex].imageName)
 
       if(this.file){
         formData.append('image', this.file);
       }
 
       if(this.editMode){        
+        formData.append('imageName', this.productsService.products[this.editedItemIndex].imageName)
         formData.append('productID', this.productsService.products[this.editedItemIndex].productID.toString() );
         await this.productsService.updateProduct(formData, this.productsService.products[this.editedItemIndex].productID);
         this.toast.success('Product Edited Successfully')

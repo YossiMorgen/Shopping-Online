@@ -33,23 +33,17 @@ export class SearchProductsComponent {
         return ;
       }      
       await this.productsService.getProductsByName( this.input );
-    } catch (error : any) {
-      console.log("hi");
-      
+    } catch (error : any) {      
       this.toast.error(error)
     }
   }
 
-  public visibility(): string | null {
+  public visibility(): boolean {
     
-    if(this.router.url === '/order'){
-      return 'order';
+    if(this.router.url === '/order' || this.router.url.search('products') !== -1){
+      return true;
     }
     
-    if (this.router.url.search('products') !== -1) {
-      return 'products';
-    }
-
-    return null;
+    return false;
   }
 }

@@ -11,7 +11,7 @@ import { ToastifyNotificationsService } from './toastify-notifications.service';
   providedIn: 'root'
 })
 export class ProductsService {
-  startedEditing = new Subject<number>();
+  public startedEditing = new Subject<number>();
   public params: any;
   public products: ProductModel[] = [];
   public categories: CategoryModel[] = [];

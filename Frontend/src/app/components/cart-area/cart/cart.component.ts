@@ -19,6 +19,8 @@ export class CartComponent {
     if(!this.auth.user){
       return;
     }
+
+    // this.auth.user
     try {
       await this.cartService.getCart();
     } catch (error : any) {

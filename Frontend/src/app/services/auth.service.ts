@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import { Subject, firstValueFrom } from 'rxjs';
 import User from '../models/auth-models/user.model';
 import { CredentialsModel } from '../models/auth-models/credential.model';
 import { ConfigService } from '../utils/config.service';
@@ -14,6 +14,7 @@ import { CartService } from './cart.service';
   providedIn: 'root'
 })
 export class AuthService{
+    public userChanges = new Subject<User>();
 
     public user: User;
     private token: string;
@@ -53,7 +54,8 @@ export class AuthService{
         this.token = '';
         window.localStorage.removeItem('token')
         this.cartService.logout();
-        this.router.navigate(['/login']);
+        // this.router.navigate(['/login']);
+        this.userChanges.next(this.user)
     }
 
     private setUser(token: string):void{
@@ -61,6 +63,7 @@ export class AuthService{
         window.localStorage.setItem('token', token );
         const decode: any = jwtDecode( token )
         this.user = decode.user;
+        this.userChanges.next(this.user)
     }
 
     public isLoggedIn():boolean{

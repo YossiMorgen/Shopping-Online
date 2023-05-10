@@ -31,10 +31,21 @@ mat-card-subtitle{
 table {
     margin-top: 40px;
     width: 100%;
+    table-layout: fixed;
+    border-spacing: 5px;
+}
+td{
+    text-align: center;
+    white-space: nowrap;
 }
 
+.delete {
+    margin: 0;
+    padding: 0;
+}
 .delete > img {
     width: 30px;
+    margin: 0;
 }
 
 .cartFooter{

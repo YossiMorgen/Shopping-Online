@@ -10,8 +10,11 @@
                 <td>{{product.productName}}</td>
                 <td> {{product.amount}}</td>
                 <td> {{product.price * product.amount | currency:"ILS"}} </td>
-                <td>
-                    <button class="delete" (click)="changeProductAmount(product, product.amount -1)"><img src="../../../../assets/Min_V2.png" alt=""></button>
+                <td class="delete">
+                    <img (click)="changeProductAmount(product, product.amount -1)" src="../../../../assets/Min_V2.png" alt="">
+                </td> 
+                <td class="delete" (click)="changeProductAmount(product, product.amount +1)">
+                    <img (click)="changeProductAmount(product, product.amount +1)" src="../../../../assets/Plus_V2.png" alt="">
                 </td>           
             </tr>
         </table >

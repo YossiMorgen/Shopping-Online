@@ -11,7 +11,7 @@
                 <td> {{product.amount}}</td>
                 <td> {{product.price * product.amount | currency:"ILS"}} </td>
                 <td>
-                    <button class="delete" (click)="removeProduct(product.cartProductID)"><img src="../../../../assets/Min_V2.png" alt=""></button>
+                    <button class="delete" (click)="changeProductAmount(product, product.amount -1)"><img src="../../../../assets/Min_V2.png" alt=""></button>
                 </td>           
             </tr>
         </table >

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import ProductCartModel from 'src/app/models/product-models/product-cart.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
@@ -33,6 +34,7 @@ export class CartComponent {
       this.toast.error(error);
     }
   }
+
   public async deleteCartProducts(){
     try {
       await this.cartService.deleteAllProducts();
@@ -49,4 +51,12 @@ export class CartComponent {
     }
   }
 
+  public async changeProductAmount( product: ProductCartModel, amount: number ) {
+    try {
+      product.amount = amount;
+      await this.cartService.changeProductAmount(product)
+    } catch (error) {
+      this.toast.error(error);
+    }
+  }
 }

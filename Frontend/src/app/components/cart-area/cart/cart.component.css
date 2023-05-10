@@ -21,3 +21,17 @@ button, a, button:hover, a:hover{
 mat-card-subtitle{
     color: #F26522 ;
 }
+
+table {
+    width: 100%;
+}
+
+button.delete {
+    height: 20px;
+    width: 20px;
+    border: none;
+    background-color: #FAA61A;
+    color: white ;
+    font-weight: 400;
+    border-radius: 50%;
+}

@@ -33,4 +33,12 @@ export class CartComponent {
     }
   }
 
+  public removeProduct(cartProductId: number ){
+    try {
+      this.cartService.deleteProduct(cartProductId);
+    } catch (error : any) {
+      this.toast.error(error);
+    }
+  }
+
 }

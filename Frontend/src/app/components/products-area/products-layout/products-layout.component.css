@@ -7,13 +7,11 @@
 }
 
 .stickyBar{
-    margin: 10px;
     width: fit-content;
     position: sticky;
     top: 18vh;
 }
 
-.productsLayOut{
-    max-width: 72%;
+/* .productsLayOut{
     margin-left: 10px;
-}
+} */

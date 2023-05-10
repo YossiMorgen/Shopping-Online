@@ -16,7 +16,6 @@ import { ProductListComponent } from './components/products-area/product-list/pr
 import { ProductCardComponent } from './components/products-area/product-card/product-card.component';
 import { HttpRequestInterceptor } from './utils/request.interceptor';
 import { HttpResponseInterceptor } from './utils/response.interceptor';
-import { CartProductCardComponent } from './components/cart-area/cart-product-card/cart-product-card.component';
 import { SearchProductsComponent } from './components/products-area/search-products/search-products.component';
 import { MyCartComponent } from './components/order-area/my-cart/my-cart.component';
 import { OrderLayoutComponent } from './components/order-area/order-layout/order-layout.component';
@@ -92,7 +91,6 @@ import { CartComponent } from './components/cart-area/cart/cart.component';
     CategoriesComponent,
     ProductListComponent,
     ProductCardComponent,
-    CartProductCardComponent,
     SearchProductsComponent,
     MyCartComponent,
     OrderLayoutComponent,

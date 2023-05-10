@@ -4,11 +4,18 @@
         <mat-card-title > {{cartService.totalPrice | currency:"ILS"}} </mat-card-title >
     
     </mat-card-header >
-    <div >
-        <div *ngFor="let product of cartService.products">
-            <app-cart-product-card [product]="product"></app-cart-product-card>
-        </div>
-    </div >
+    <table >
+        <tr *ngFor="let product of cartService.products">
+            <td>{{product.productName}}</td>
+            <td>
+                <span>{{product.productName + product.weightType + " / " + product.price | currency:"ILS"}}</span>
+                {{product.price | currency:"ILS"}}
+            </td>
+            <td>
+                <button class="delete" (click)="removeProduct(product.cartProductID)">-</button>
+            </td>           
+        </tr>
+    </table >
     <div class="cartFooter">
         <button color="red" [disabled]="!cartService.totalPrice"  (click)="deleteCartProducts()">Create New Cart</button>
         <a color="primary" routerLink="/order">make an order</a>

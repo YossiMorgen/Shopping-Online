@@ -1,14 +1,17 @@
-<app-header></app-header>
+<div class="layout">
+    <app-header></app-header>
 
-<main>
-    <router-outlet></router-outlet>
-</main>
+    <main>
+        <router-outlet class="route"></router-outlet>
+    </main>
 
-<lib-toastify-toast-container 
-    [position]="'bottom-left'"
-    [transition]="'flip'"
-    [iconLibrary]="'material'"
->
-</lib-toastify-toast-container>
+    <lib-toastify-toast-container 
+        [position]="'bottom-left'"
+        [transition]="'flip'"
+        [iconLibrary]="'material'"
+    >
+    </lib-toastify-toast-container>
 
-<app-loader></app-loader>
+    <app-loader></app-loader>
+
+</div>

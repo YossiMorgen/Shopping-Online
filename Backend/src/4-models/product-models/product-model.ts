@@ -12,7 +12,6 @@ export default class ProductModel{
     public imageName: string;
     public description: string;
     public weight: number;
-    public weightType: WeightModel;
 
     public constructor(product: ProductModel){
         this.productID = product.productID;
@@ -23,7 +22,6 @@ export default class ProductModel{
         this.imageName = product.imageName;
         this.description = product.description;
         this.weight = product.weight;
-        this.weightType = product.weightType;
     }
 
     public static validationSchema = Joi.object({
@@ -35,7 +33,6 @@ export default class ProductModel{
         imageName: Joi.string().optional(),
         description: Joi.string().min(2).max(100).required(),
         weight: Joi.number().min(0).required(),
-        weightType: Joi.valid(...Object.values(WeightModel), '').required()
     })
 
     public validation():string{

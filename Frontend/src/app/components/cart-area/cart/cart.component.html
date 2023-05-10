@@ -1,23 +1,25 @@
-<div class="cart">
-    <mat-card-header >
-        <mat-card-subtitle >{{cartService.totalAmount}} {{cartService.totalAmount === 1 ? 'product' : 'products'}} </mat-card-subtitle>
-        <mat-card-title > {{cartService.totalPrice | currency:"ILS"}} </mat-card-title >
-    
-    </mat-card-header >
-    <table >
-        <tr *ngFor="let product of cartService.products">
-            <td>{{product.productName}}</td>
-            <td>
-                <span>{{product.productName + " / " + product.price | currency:"ILS"}}</span>
-                {{product.price | currency:"ILS"}}
-            </td>
-            <td>
-                <button class="delete" (click)="removeProduct(product.cartProductID)">-</button>
-            </td>           
-        </tr>
-    </table >
-    <div class="cartFooter">
-        <button color="red" [disabled]="!cartService.totalPrice"  (click)="deleteCartProducts()">Create New Cart</button>
-        <a color="primary" routerLink="/order">make an order</a>
-    </div >
+<div class="fixed">
+    <div class="cart">
+        <mat-card-header >
+            <mat-card-subtitle >{{cartService.totalAmount}} {{cartService.totalAmount === 1 ? 'product' : 'products'}} </mat-card-subtitle>
+            <mat-card-title > {{cartService.totalPrice | currency:"ILS"}} </mat-card-title >
+        
+        </mat-card-header >
+        <table >
+            <tr *ngFor="let product of cartService.products">
+                <td>{{product.productName}}</td>
+                <td>
+                    <span>{{product.productName + " / " + product.price | currency:"ILS"}}</span>
+                    {{product.price | currency:"ILS"}}
+                </td>
+                <td>
+                    <button class="delete" (click)="removeProduct(product.cartProductID)">-</button>
+                </td>           
+            </tr>
+        </table >
+        <div class="cartFooter">
+            <button color="red" [disabled]="!cartService.totalPrice"  (click)="deleteCartProducts()">Create New Cart</button>
+            <a color="primary" routerLink="/order">make an order</a>
+        </div >
+    </div>
 </div>

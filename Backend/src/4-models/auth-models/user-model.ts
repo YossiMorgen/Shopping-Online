@@ -32,7 +32,7 @@ class User{
         password: Joi.string().required().min(2).max(30),
         city: Joi.string().alphanum().required().min(2).max(30),
         street: Joi.string().required().min(2).max(30),
-        role: Joi.string().valid(RoleModel.admin, RoleModel.user),
+        role: Joi.string().valid(...Object.values(RoleModel)),
     })
 
     public validation():string{

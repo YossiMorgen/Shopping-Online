@@ -4,6 +4,7 @@
 }
 .cart {
     padding: 20px;
+    padding-top: 10px;
     height: 65vh;
     overflow: hidden;
     width: 25vw;
@@ -28,15 +29,10 @@ mat-card-subtitle{
 }
 
 table {
+    margin-top: 40px;
     width: 100%;
 }
 
-button.delete {
-    height: 20px;
-    width: 20px;
-    border: none;
-    background-color: #FAA61A;
-    color: white ;
-    font-weight: 400;
-    border-radius: 50%;
+.delete > img {
+    width: 30px;
 }

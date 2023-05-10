@@ -27,9 +27,9 @@ function getCartProducts(cartID: number): Promise<ProductCartModel[]> {
     return dal.execute(`
         SELECT 
             cartProductID, 
-            cart_product.productID, 
+   k         cart_product.productID, 
             amount, 
-            products.price, 
+            (products.price * amount ) AS price, 
             cartID, 
             products.productName, 
             CONCAT(?, products.imageName) as imageName, 

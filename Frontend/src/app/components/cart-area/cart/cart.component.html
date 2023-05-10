@@ -8,17 +8,20 @@
         <table >
             <tr *ngFor="let product of cartService.products">
                 <td>{{product.productName}}</td>
+                <td> {{product.amount}}</td>
+                <td> {{product.price | currency:"ILS"}} </td>
                 <td>
-                    <span>{{product.productName + " / " + product.price | currency:"ILS"}}</span>
-                    {{product.price | currency:"ILS"}}
-                </td>
-                <td>
-                    <button class="delete" (click)="removeProduct(product.cartProductID)">-</button>
+                    <button class="delete" (click)="removeProduct(product.cartProductID)"><img src="../../../../assets/Min_V2.png" alt=""></button>
                 </td>           
             </tr>
         </table >
         <div class="cartFooter">
-            <button color="red" [disabled]="!cartService.totalPrice"  (click)="deleteCartProducts()">Create New Cart</button>
+            <button
+                [disabled]="!cartService.totalPrice"  
+                (click)="deleteCartProducts()"
+            >
+                Create New Cart
+            </button>
             <a color="primary" routerLink="/order">make an order</a>
         </div >
     </div>

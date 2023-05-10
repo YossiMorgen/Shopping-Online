@@ -36,3 +36,12 @@ table {
 .delete > img {
     width: 30px;
 }
+
+.cartFooter{
+    position: absolute;
+    bottom: 0;
+}
+
+.opacity0{
+    opacity: 0;
+}

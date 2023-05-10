@@ -1,6 +1,6 @@
 <div class="fixed">
     <div class="cart">
-        <mat-card-header >
+        <mat-card-header *ngIf="cartService.products.length">
             <mat-card-subtitle >{{cartService.totalAmount}} {{cartService.totalAmount === 1 ? 'product' : 'products'}} </mat-card-subtitle>
             <mat-card-title > {{cartService.totalPrice | currency:"ILS"}} </mat-card-title >
         
@@ -9,7 +9,7 @@
             <tr *ngFor="let product of cartService.products">
                 <td>{{product.productName}}</td>
                 <td> {{product.amount}}</td>
-                <td> {{product.price | currency:"ILS"}} </td>
+                <td> {{product.price * product.amount | currency:"ILS"}} </td>
                 <td>
                     <button class="delete" (click)="removeProduct(product.cartProductID)"><img src="../../../../assets/Min_V2.png" alt=""></button>
                 </td>           
@@ -17,7 +17,7 @@
         </table >
         <div class="cartFooter">
             <button
-                [disabled]="!cartService.totalPrice"  
+                [class]="!cartService.totalPrice ? 'opacity0' : 'op'"  
                 (click)="deleteCartProducts()"
             >
                 Create New Cart

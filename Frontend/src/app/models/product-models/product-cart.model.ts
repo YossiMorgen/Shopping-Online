@@ -1,5 +1,3 @@
-import WeightModel from "./weight-model";
-
 export default class ProductCartModel{
 
     public cartProductID: number;
@@ -10,5 +8,4 @@ export default class ProductCartModel{
     public productName: string;
     public imageName: string;
     public weight: number;
-    public weightType: WeightModel;
 }

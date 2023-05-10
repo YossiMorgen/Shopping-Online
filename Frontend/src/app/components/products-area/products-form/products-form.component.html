@@ -47,18 +47,6 @@
                     <input min="0" matInput type="number" formControlName="weight">
                 </mat-form-field>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>WeightType </mat-label>
-                    <mat-select formControlName="weightType" >
-                        <mat-option 
-                            *ngFor="let key of enumKeys"  
-                            [value]="key" 
-                        >
-                            {{key}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-        
                 <input type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" #productImage>   
                 <div class="file_button">
                     {{file?.name || "No file uploaded yet."}}

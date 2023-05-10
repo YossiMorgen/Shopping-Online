@@ -1,16 +1,22 @@
-.header {
+header{
     height: fit-content;
     position: sticky;
     top: 0;
-    display: flex;
-    justify-content: space-between;
     background-color: #E8E8E8;
     z-index: 9;
     padding: 1vw;
+    padding-top: 8px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow:  5px 5px 15px rgb(146, 145, 145);
 }
-a{
-    background-color: transparent;
+.header {
+
+    display: flex;
+    justify-content: space-between;
+
 }
+
 img {
-    width: 27vw;
+    width: 25vw;
 }

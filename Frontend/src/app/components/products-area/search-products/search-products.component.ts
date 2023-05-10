@@ -5,10 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from 'src/app/services/oreder.service';
 import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
-type Input = {
-  input: string;
-}
-
 @Component({
   selector: 'app-search-products',
   templateUrl: './search-products.component.html',
@@ -27,12 +23,10 @@ export class SearchProductsComponent {
 
   public async search () {
     try {
-      console.log(this.router.url);
       if (this.router.url === '/order') {
         this.orderService.search = this.input;
         return ;
-      }      
-      await this.productsService.getProductsByName( this.input );
+      }
     } catch (error : any) {      
       this.toast.error(error)
     }

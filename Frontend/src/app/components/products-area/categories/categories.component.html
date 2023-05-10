@@ -1,11 +1,10 @@
 <div class="categoriesContainer">
     <a 
-        mat-button
         class="categoriesCard"
         [routerLink]="[]" 
         [queryParams]="{ 'category_id': category.categoryID  }"
         *ngFor="let category of productsService.categories"
-        [class]="isActive(category.categoryID) ? 'active' : 'inactive'"
+        [class]="isActive(category.categoryID) && 'active'"
     >
         {{category.categoryName}}
     </a>

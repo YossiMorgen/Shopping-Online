@@ -6,8 +6,8 @@
     padding: 10px;
 }
 img{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     margin: 0;
 }
 
@@ -16,19 +16,19 @@ button, a, button:hover, a:hover{
     color: white;
     border: transparent;
     cursor: pointer;
-    font-size: large;
 }
 
 .menuContainer{
-    height: 50%;
-    width: 70%;
+    height: 40px;
+    width: 140px;
     background-color: red;
-    border-radius: 40px;
+    border-radius: 90px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     gap: 3px;
     margin: 0;
-
+    font-weight: 200;
+    
 }

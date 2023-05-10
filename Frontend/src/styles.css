@@ -21,7 +21,7 @@ html, body{
 }
 
 a{
-    text-decoration: unset;
+    text-decoration: none;
 }
 
 .active{
@@ -56,4 +56,8 @@ padding: 5px;
 }
 .file_button > div {
 margin-left: 15px;
+}
+
+.dsnone{
+    display: none;
 }

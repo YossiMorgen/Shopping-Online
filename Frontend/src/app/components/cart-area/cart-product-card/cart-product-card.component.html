@@ -1,20 +1,10 @@
 <div class="product_card">
-    <span class="buttons">
-        <button class="minus" (click)="changeQuantity( amount - 1 )">
-            -
-        </button>
-        <input (change)="changeQuantity(+amount)" [(ngModel)]="amount"  type="number" min="1">
-        <button class="plus" (click)="changeQuantity(amount + 1)">
-            +
-        </button>
-    </span>
+    <span>{{product.productName}}</span>
     <span>
-        <mat-card-title>{{product.productName}}</mat-card-title>
-        <mat-card-subtitle>{{product.price | currency:"ILS"}}</mat-card-subtitle>
-        
+        <span>{{product.productName + product.weightType + " / " + product.price | currency:"ILS"}}</span>
+        {{product.price | currency:"ILS"}}
     </span>
-    <img src={{product.imageName}} alt="">
-    
+            
     <button mat-fab extended color="warn" class="delete" (click)="removeProduct()"><mat-icon>remove</mat-icon></button>
 
 </div>

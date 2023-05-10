@@ -4,7 +4,7 @@
         [routerLink]="[]" 
         [queryParams]="{ 'category_id': category.categoryID  }"
         *ngFor="let category of productsService.categories"
-        [class]="isActive(category.categoryID) && 'active'"
+        [class]="isActive(category.categoryID) ? 'active' : 'inactive'"
     >
         {{category.categoryName}}
     </a>

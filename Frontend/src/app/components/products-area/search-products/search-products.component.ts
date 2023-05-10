@@ -25,7 +25,6 @@ export class SearchProductsComponent {
     try {
       if (this.router.url === '/order') {
         this.orderService.search = this.input;
-        return ;
       }
     } catch (error : any) {      
       this.toast.error(error)

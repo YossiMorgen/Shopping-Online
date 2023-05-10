@@ -14,13 +14,19 @@ export class CartComponent {
     private toast: ToastifyNotificationsService,
     private auth: AuthService
   ) { }
-
-    async ngOnInit(): Promise<void> {
-    if(!this.auth.user){
+    
+  async ngOnInit(): Promise<void> {
+    if(this.auth.user){
+      this.getCart();
       return;
     }
+    this.auth.userChanges.subscribe(async () => {      
+      this.getCart();
+    })
 
-    // this.auth.user
+  }
+
+  public async getCart(){
     try {
       await this.cartService.getCart();
     } catch (error : any) {

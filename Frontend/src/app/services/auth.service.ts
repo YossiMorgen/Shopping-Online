@@ -14,7 +14,7 @@ import { CartService } from './cart.service';
   providedIn: 'root'
 })
 export class AuthService{
-    public userChanges = new Subject<User>();
+    public userChanges = new Subject<void>();
 
     public user: User;
     private token: string;
@@ -55,7 +55,6 @@ export class AuthService{
         window.localStorage.removeItem('token')
         this.cartService.logout();
         // this.router.navigate(['/login']);
-        this.userChanges.next(this.user)
     }
 
     private setUser(token: string):void{
@@ -63,7 +62,7 @@ export class AuthService{
         window.localStorage.setItem('token', token );
         const decode: any = jwtDecode( token )
         this.user = decode.user;
-        this.userChanges.next(this.user)
+        this.userChanges.next();
     }
 
     public isLoggedIn():boolean{

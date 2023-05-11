@@ -1,14 +1,10 @@
-div{
-    display: flex;
+.centerF{
+    display: grid;
+    place-items: center;
+    height: 100%;
 }
 
-mat-card {
-    margin: auto;
-}
 form {
     text-align: center;
 }
 
-mat-form-field{
-    display: block;
-}

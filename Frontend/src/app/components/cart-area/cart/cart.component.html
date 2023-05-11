@@ -19,6 +19,7 @@
         </table >
         <div class="cartFooter">
             <button
+                class="newCart"
                 [class]="!cartService.totalPrice ? 'opacity0' : 'op'"  
                 (click)="deleteCartProducts()"
             >

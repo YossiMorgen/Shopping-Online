@@ -4,7 +4,7 @@
   <div class="footer">
     <button cdkFocusInitial [mat-dialog-close]="amount">Add To Cart</button>
     <input min="1" type="number" [(ngModel)]="amount">
-    <span>{{product.price * amount}}</span>
+    <span>{{product.price * amount | currency:"ILS"}}</span>
   </div>
 </div>
 

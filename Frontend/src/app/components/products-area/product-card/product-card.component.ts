@@ -92,7 +92,7 @@ export class ProductCardComponent {
 
     if(!this.auth.isAdmin()){
       const dialogRef = this.dialog.open(PopupAddProductComponent, {
-        width: '30vw',
+        width: '45vh',
         enterAnimationDuration: '300',
         exitAnimationDuration: '200',
         data: {...this.product}

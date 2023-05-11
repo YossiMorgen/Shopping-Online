@@ -2,19 +2,18 @@
 <div class="centerF">
     <form [formGroup]="loginForm" (ngSubmit)="login()">
 
-        <h2>Login</h2>
-
+        <h1>Login</h1>
+        <span>Don't have an account? <a routerLink="/register">Join Now</a></span>
         <label appearance="fill">
-            <span>Email</span>
-            <input type="email" formControlName="email">
+            <input placeholder="Email" type="email" formControlName="email">
         </label>
 
         <label appearance="fill">
-            <span>Password</span>
-            <input type="password" formControlName="password" >
+            <input placeholder="Password" type="password" formControlName="password" >
             <!-- <mat-error *ngIf="password.invalid">Please enter password</mat-error> -->
         </label>
-
-        <button type="submit" [disabled]="!loginForm.valid" >Submit</button>
+        <div class="buttonContainer">
+            <button type="submit" [disabled]="!loginForm.valid" >Submit</button>
+        </div>
     </form>
 </div>

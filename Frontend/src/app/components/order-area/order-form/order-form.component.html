@@ -4,42 +4,39 @@
     <h3>Shipping Details:</h3>
 
 
-    <mat-form-field (dblclick)="copyDefaultUserDetails('city')" appearance="fill">
-        <mat-label>City</mat-label>
-        <mat-select formControlName="city" >
-            <mat-option *ngFor="let city of auth.cities"  [value]="city">
+    <label (dblclick)="copyDefaultUserDetails('city')" appearance="fill">
+        <select placeholder="City" formControlName="city" >
+            <option *ngFor="let city of auth.cities"  [value]="city">
                 {{city}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+            </option>
+        </select>
+    </label>
 
-    <mat-form-field (dblclick)="copyDefaultUserDetails('street')" appearance="fill">
-        <mat-label>Street</mat-label>
-        <input matInput type="text" formControlName="street">
-    </mat-form-field>
+    <label (dblclick)="copyDefaultUserDetails('street')" appearance="fill">
+        <input placeholder="Address" matInput type="text" formControlName="street">
+    </label>
 
-    <mat-form-field appearance="fill">
+    <label appearance="fill">
         <mat-label>Delivery date</mat-label>
         <input 
-            type="date" 
-            matInput 
+            placeholder="DD/MM/YYYY"
+            type="date"
             [matDatepickerFilter]="myFilter" 
             [matDatepicker]="picker" 
             formControlName="deliveryDate"
         >
-        <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker></mat-datepicker>
-    </mat-form-field>
+        <mat-datepicker #picker></mat-datepicker>
+    </label>
 
     <h3>Payments:</h3>
 
-    <mat-form-field appearance="fill">
+    <label appearance="fill">
         <mat-label>Credit Card</mat-label>
         <input matInput type="text" formControlName="creditCard">
-    </mat-form-field>
+    </label>
 
 
-    <button mat-raised-button type="submit" [disabled]="orderForm.invalid" >Make an Order</button>
+    <button type="submit" [disabled]="orderForm.invalid" >Make an Order</button>
 
 </form>

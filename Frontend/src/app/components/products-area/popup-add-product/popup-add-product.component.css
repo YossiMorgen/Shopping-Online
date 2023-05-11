@@ -54,12 +54,12 @@ input::-webkit-inner-spin-button {
 }
 
 .close{
-    height: 35px;
-    width: 35px;
-    color: white;
+    height: 50px;
+    width: 50px;
+    /* color: white;
     background-color: #F26522;
     font-size: x-large;
-    font-weight: bold;
+    font-weight: bold; */
     cursor: pointer;
     border: none;
     border-radius: 50%;

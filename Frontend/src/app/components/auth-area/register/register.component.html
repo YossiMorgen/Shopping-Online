@@ -1,6 +1,6 @@
 <div class="centerF">
     <div>
-        <form [@stepState1] class="step" [formGroup]="emailAndPasswordForm">
+        <form [class]="stepState === 1 ? 'visible' : 'invisible'" class="step" [formGroup]="emailAndPasswordForm">
             
             <label appearance="fill">
                 <input placeholder="Email" type="email" formControlName="email">
@@ -14,7 +14,7 @@
                 <input placeholder="Confirm Password" type="password" formControlName="confirmPassword">
             </label>
             
-            <button [disabled]="emailAndPasswordForm.invalid" #next>Next</button>
+            <button (click)="changeStepsState(2)" [disabled]="emailAndPasswordForm.invalid" #next>Next</button>
 
             <mat-error 
                 *ngIf=" emailAndPasswordForm.errors?.['noMatch'] === true ">                        
@@ -22,7 +22,7 @@
             </mat-error>
         </form>
 
-        <form [@stepState2] class="step" [formGroup]="nameAndAddressForm" (submit)="register()">
+        <form  [class]="stepState === 2 ? 'visible' : 'invisible'" class="step" [formGroup]="nameAndAddressForm" (submit)="register()">
             <label appearance="fill">
                 <input placeholder="First Name" formControlName="firstName">
             </label>
@@ -42,11 +42,11 @@
             <label appearance="fill">
                 <input placeholder="Street" formControlName="street">
             </label>
-            <button>back</button>
-            <button [disabled]="nameAndAddressForm.invalid" >next</button>
+            <button (click)="changeStepsState(1)">back</button>
+            <button (click)="changeStepsState(3)" [disabled]="nameAndAddressForm.invalid" >next</button>
         </form>
         
-        <div [@stepState3]  class="step"></div>
+        <div [class]="stepState === 3 ? 'visible' : 'invisible'" class="step"></div>
         <!-- <div>
             {{productsAmount}} products and {{ordersAmount}} orders
         </div> -->

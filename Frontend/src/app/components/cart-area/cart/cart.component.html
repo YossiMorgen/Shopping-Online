@@ -25,6 +25,6 @@
             >
                 Create A New Cart
             </button>
-            <a class="checkout" routerLink="/order">checkout</a>
+            <a [class]="cartService.totalPrice ? 'checkout' : 'noCheckout'"  class="checkout" routerLink="/order">checkout</a>
         </div >
     </div>

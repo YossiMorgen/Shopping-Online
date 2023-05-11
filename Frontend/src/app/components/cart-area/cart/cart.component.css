@@ -81,6 +81,12 @@ a.checkout{
     border-radius: 50px;
 }
 
+a.noCheckout {
+    background-color: #b4b4b4;
+    color: #666666;
+    pointer-events: none;
+}
+
 .newCart{
     color: #666666;
 }

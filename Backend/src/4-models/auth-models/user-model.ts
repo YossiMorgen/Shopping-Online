@@ -26,11 +26,11 @@ class User{
 
     public static validationSchema = Joi.object({
         userID: Joi.number().optional().integer().positive(),
-        firstName: Joi.string().alphanum().required().min(2).max(30),
-        lastName: Joi.string().alphanum().required().min(2).max(30),
+        firstName: Joi.string().required().min(2).max(30),
+        lastName: Joi.string().required().min(2).max(30),
         email: Joi.string().required().min(2).max(30),
         password: Joi.string().required().min(2).max(30),
-        city: Joi.string().alphanum().required().min(2).max(30),
+        city: Joi.string().required().min(2).max(30),
         street: Joi.string().required().min(2).max(30),
         role: Joi.string().valid(...Object.values(RoleModel)),
     })

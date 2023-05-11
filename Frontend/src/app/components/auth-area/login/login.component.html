@@ -1,5 +1,5 @@
 
-<div class="centerF">
+<div [class]=" this.router.url.search('login') !== -1 ? 'centerF' : 'f'">
     <form [formGroup]="loginForm" (ngSubmit)="login()">
 
         <h1>Login</h1>

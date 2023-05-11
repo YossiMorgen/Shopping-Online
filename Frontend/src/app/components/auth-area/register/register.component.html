@@ -1,68 +1,54 @@
-<mat-card>
-    <mat-card-content>
-        <mat-stepper linear #stepper>
-            <mat-step [stepControl]="emailAndPasswordForm" label="Email & password">
-                <form [formGroup]="emailAndPasswordForm">
-                    
-                    <mat-form-field appearance="fill">
-                        <mat-label>Email</mat-label>
-                        <input matInput type="email" formControlName="email">
-                    </mat-form-field>
+<div class="centerF">
+    <div>
+        <form [@stepState1] class="step" [formGroup]="emailAndPasswordForm">
             
-                    <mat-form-field appearance="fill">
-                        <mat-label>Password</mat-label>
-                        <input matInput type="password" formControlName="password">
-                    </mat-form-field>
+            <label appearance="fill">
+                <input placeholder="Email" type="email" formControlName="email">
+            </label>
+    
+            <label appearance="fill">
+                <input placeholder="Password" type="password" formControlName="password">
+            </label>
 
-                    <mat-form-field appearance="fill">
-                        <mat-label>Confirm Password:</mat-label>
-                        <input matInput type="password" formControlName="confirmPassword">
-                    </mat-form-field>
-                   
-                    <button [disabled]="emailAndPasswordForm.invalid" cdkFocusInitial mat-raised-button matStepperNext #next>Next</button>
+            <label appearance="fill">
+                <input placeholder="Confirm Password" type="password" formControlName="confirmPassword">
+            </label>
+            
+            <button [disabled]="emailAndPasswordForm.invalid" #next>Next</button>
 
-                    <mat-error 
-                        *ngIf=" emailAndPasswordForm.errors?.['noMatch'] === true ">                        
-                        Passwords don't match 
-                    </mat-error>
-                </form>
-            </mat-step>
+            <mat-error 
+                *ngIf=" emailAndPasswordForm.errors?.['noMatch'] === true ">                        
+                Passwords don't match 
+            </mat-error>
+        </form>
 
-            <mat-step [stepControl]="nameAndAddressForm" label="Name & Address">
-                <form [formGroup]="nameAndAddressForm" (submit)="register()">
-                    <mat-form-field appearance="fill">
-                        <mat-label>First Name</mat-label>
-                        <input matInput formControlName="firstName">
-                    </mat-form-field>
+        <form [@stepState2] class="step" [formGroup]="nameAndAddressForm" (submit)="register()">
+            <label appearance="fill">
+                <input placeholder="First Name" formControlName="firstName">
+            </label>
 
-                    <mat-form-field appearance="fill">
-                        <mat-label>Last Name</mat-label>
-                        <input matInput formControlName="lastName">
-                    </mat-form-field>
+            <label appearance="fill">
+                <input placeholder="Last Name" formControlName="lastName">
+            </label>
 
-                    <mat-form-field appearance="fill">
-                        <mat-label>City</mat-label>
-                        <mat-select formControlName="city" >
-                            <mat-option *ngFor="let city of auth.cities"  [value]="city">
-                                {{city}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+            <label appearance="fill">
+                <select formControlName="city" >
+                    <option *ngFor="let city of auth.cities"  [value]="city">
+                        {{city}}
+                    </option>
+                </select>
+            </label>
 
-                    <mat-form-field appearance="fill">
-                        <mat-label>Street</mat-label>
-                        <input matInput formControlName="street">
-                    </mat-form-field>
-
-                    <button  mat-raised-button [disabled]="nameAndAddressForm.invalid"  >Register</button>
-
-                </form>
-                
-            </mat-step>
-        </mat-stepper>
-
-        <div>
+            <label appearance="fill">
+                <input placeholder="Street" formControlName="street">
+            </label>
+            <button>back</button>
+            <button [disabled]="nameAndAddressForm.invalid" >next</button>
+        </form>
+        
+        <div [@stepState3]  class="step"></div>
+        <!-- <div>
             {{productsAmount}} products and {{ordersAmount}} orders
-        </div>
-    </mat-card-content>
-</mat-card>
+        </div> -->
+    </div>
+</div>

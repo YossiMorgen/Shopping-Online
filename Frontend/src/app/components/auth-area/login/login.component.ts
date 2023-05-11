@@ -14,7 +14,7 @@ export class LoginComponent {
 
     public constructor( 
         private auth: AuthService, 
-        private router: Router,
+        public router: Router,
         private formBuilder : FormBuilder,
         private toast: ToastifyNotificationsService
     ){}

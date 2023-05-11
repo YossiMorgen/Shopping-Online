@@ -6,13 +6,49 @@ import { Observable, of } from 'rxjs';
 import User from 'src/app/models/auth-models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
+import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  animations: [
+    trigger('stepState', [
+      state('visible', style({
+        opacity: 1,
+        transform: 'translateY(0)'
+      })),
+      transition('invisible => visible', [
+        animate(1000, 
+          style({
+            opacity: 0,
+            transform: 'translateX(-200px)',
+            offset: 0,
+          }),
+        )
+      ]),
+      transition('void => visible', [
+        animate(1000, 
+          style({
+            opacity: 0,
+            transform: 'translateX(-200px)',
+            offset: 0,
+          }),
+        )
+      ]),,
+      transition('visible => invisible', [
+        animate(300, style({
+          opacity: 0,
+          transform: 'translateX(200px)'
+        }))
+      ])
+    ]),
+  ]
 })
 export class RegisterComponent implements OnInit { 
+    public stepState1 = 'visible';
+    public stepState2 = 'invisible';
+    public stepState3 = 'invisible';
 
     public emailAndPasswordForm = this.formBuilder.group({
         email : ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')], this.frobiddenEmail.bind(this)],
@@ -70,7 +106,6 @@ export class RegisterComponent implements OnInit {
         try {
             await this.auth.register( new User({...this.emailAndPasswordForm.value, ...this.nameAndAddressForm.value}) );
             this.toast.success('Welcome ' + this.auth.user.firstName + " " + this.auth.user.lastName)
-            this.router.navigateByUrl('/products');
         } catch (error:any) {
             this.toast.error(error);
         }

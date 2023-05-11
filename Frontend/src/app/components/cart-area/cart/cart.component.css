@@ -1,3 +1,7 @@
+:root{
+    --strong-orange: #F26522;
+}
+
 .fixed{
     position: fixed;
     bottom: 0;
@@ -5,7 +9,7 @@
 .cart {
     padding: 20px;
     padding-top: 10px;
-    height: 65vh;
+    height: 63vh;
     overflow: hidden;
     width: 25vw;
     position: sticky;
@@ -16,6 +20,15 @@
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     margin-bottom: 0;
+
+}
+
+.emptyCart{
+    background: url("../../../../assets/Man_holds_apple_WT.png"), #FDEAD2;
+    background-size: contain;
+    /* max-height: 50px;
+    max-width: 50px; */
+    /* z-index: 99; */
 }
 
 button, a, button:hover, a:hover{
@@ -25,7 +38,7 @@ button, a, button:hover, a:hover{
 }
 
 mat-card-subtitle{
-    color: #F26522 ;
+    color: #F26522;
 }
 
 table {
@@ -50,9 +63,24 @@ td{
 
 .cartFooter{
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .opacity0{
     opacity: 0;
+}
+
+
+a.checkout{
+    color: white;
+    height: 40px;
+    background-color: #F26522;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+
+    border-radius: 50px;
 }

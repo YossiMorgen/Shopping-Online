@@ -1,5 +1,5 @@
 <div class="fixed">
-    <div class="cart">
+    <div class="cart" [class]="!cartService.products.length ? 'emptyCart' : 'fullCart'">
         <mat-card-header *ngIf="cartService.products.length">
             <mat-card-subtitle >{{cartService.totalAmount}} {{cartService.totalAmount === 1 ? 'product' : 'products'}} </mat-card-subtitle>
             <mat-card-title > {{cartService.totalPrice | currency:"ILS"}} </mat-card-title >
@@ -23,9 +23,9 @@
                 [class]="!cartService.totalPrice ? 'opacity0' : 'op'"  
                 (click)="deleteCartProducts()"
             >
-                Create New Cart
+                Create A New Cart
             </button>
-            <a color="primary" routerLink="/order">make an order</a>
+            <a class="checkout" routerLink="/order">checkout</a>
         </div >
     </div>
 </div>

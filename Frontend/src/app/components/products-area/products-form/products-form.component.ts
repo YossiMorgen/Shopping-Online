@@ -40,6 +40,7 @@ export class ProductsFormComponent implements OnInit {
       .subscribe((index : number) => {
         this.editedItemIndex = index;
         this.editMode = true;
+        delete this.file;
         this.productsForm.setValue({
           productName: this.productsService.products[this.editedItemIndex].productName,
           categoryID: this.productsService.products[this.editedItemIndex].categoryID,
@@ -60,6 +61,7 @@ export class ProductsFormComponent implements OnInit {
   addMode() {
     this.productsForm.reset();
     this.editMode = false;
+    delete this.file;
   }
 
 

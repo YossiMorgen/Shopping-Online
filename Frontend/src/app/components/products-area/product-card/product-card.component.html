@@ -1,9 +1,12 @@
-<mat-card [@productsState] (click)="showEdit()" class="product">
-    
-    <img mat-card-image src src={{product.imageName}} alt="product pic">
+<div [@productsState] class="product">
+    <div class="top">
+        <img src={{product.imageName}} alt="product pic">
+        <small>{{ product.price | currency:"ILS" }}</small>
+    </div>
 
-    <mat-card-header>
-        <mat-card-title>{{ product.productName }}</mat-card-title>
-        <mat-card-subtitle>{{ product.price | currency:"ILS" }}</mat-card-subtitle>
-    </mat-card-header>
-</mat-card>
+    <div class="bottom" [style.background]="product.imageName">
+        <div>{{ product.productName }}</div>
+    </div>
+    <button (click)="showEdit()"  class="addProduct"><img src="../../../../assets/Plus.png" alt=""></button>
+
+</div>

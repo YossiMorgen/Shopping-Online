@@ -1,8 +1,14 @@
 .productsList{
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    flex-direction: row;
+    gap: 18px 10px;
 }
 
 span{
     margin: auto;
+}
+
+.card {
+    flex-basis: 200px;
 }

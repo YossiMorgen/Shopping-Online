@@ -26,6 +26,7 @@
 .emptyCart{
     background: url("../../../../assets/Man_holds_apple_WT.png"), #FDEAD2;
     background-size: contain;
+    background-repeat: no-repeat;
     /* max-height: 50px;
     max-width: 50px; */
     /* z-index: 99; */

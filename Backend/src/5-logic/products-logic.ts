@@ -53,7 +53,7 @@ async function addProduct(product:ProductModel): Promise<ProductModel> {
     
     product.imageName = await fileHandler.saveFile(product.image);
     delete product.image;
-    
+
     const sql = "INSERT INTO products VALUES (DEFAULT, ?, ?, ?, ?, ?, ?)";
     const info:OkPacket = await dal.execute(sql, [product.productName, product.categoryID, product.price, product.imageName, product.description, product.weight]);
     
@@ -112,10 +112,8 @@ async function updateProduct(product: ProductModel): Promise<ProductModel> {
 }
 
 async function isProductNameExist(productName: string): Promise<boolean> {
-
     const sql = `SELECT COUNT(*) as productName FROM products WHERE productName = ?`;
     const [count] = await dal.execute(sql,[productName]);
-    console.log(count['productName']);
     
     return (count['productName'] > 0);
 }

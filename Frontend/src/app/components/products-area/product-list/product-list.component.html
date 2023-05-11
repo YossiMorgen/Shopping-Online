@@ -1,5 +1,5 @@
 <div class="productsList">
     <span *ngIf="productsService.products.length === 0 && ! app.loading">We Don't Have Products That Fit Your Search...</span>
 
-    <app-product-card *ngFor="let product of productsService.products, let i = index" [i]="i" [product]="product"></app-product-card>
+    <app-product-card class="card" *ngFor="let product of productsService.products, let i = index" [i]="i" [product]="product"></app-product-card>
 </div>

@@ -33,8 +33,7 @@ function getCartProducts(cartID: number): Promise<ProductCartModel[]> {
             cartID, 
             products.productName, 
             CONCAT(?, products.imageName) as imageName, 
-            products.weight, 
-            products.weightType
+            products.weight
         FROM cart_product
         LEFT JOIN products
         ON cart_product.productID = products.productID

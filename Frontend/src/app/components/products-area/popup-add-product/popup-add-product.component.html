@@ -1,12 +1,15 @@
 <app-login *ngIf="!auth.user"></app-login>
-<div class="box">
+<div *ngIf="auth.user" class="box">
   <app-product-card class="card" [product]="product" ></app-product-card>
   <div class="footer">
-    <button>Add To Cart</button>
+    <button cdkFocusInitial [mat-dialog-close]="amount">Add To Cart</button>
     <input min="1" type="number" [(ngModel)]="amount">
     <span>{{product.price * amount}}</span>
   </div>
 </div>
+
+<button (click)="onNoClick()" class="close">x</button>
+
 <!-- <mat-card *ngIf="auth.user">
   <mat-card-content>
     <mat-card-title>{{product.productName}}</mat-card-title>

@@ -15,12 +15,20 @@
 .footer button{
     grid-column: 1 / 7;
     grid-row: 1 / 7;
+    color: white;
     background-color: #EEC697;
+    font-size: x-large;
+    font-weight: bold;
+    cursor: pointer;
+    /* display: grid;
+    place-items: center; */
 }
 
 .footer input {
     grid-column: 7;
     grid-row: 1/5;
+    color: #F26522;
+    text-align: center;
 }
 
 input::-webkit-outer-spin-button,
@@ -30,7 +38,10 @@ input::-webkit-inner-spin-button {
 }
 
 .footer > span {
-    
+    background-color: #F26522;
+    display: grid;
+    place-items: center;
+    color: white;
     grid-column: 7;
     grid-row: 5/7;
 }
@@ -40,4 +51,20 @@ input::-webkit-inner-spin-button {
     padding: 0;
     border: none;
     outline: none;
+}
+
+.close{
+    height: 35px;
+    width: 35px;
+    color: white;
+    background-color: #F26522;
+    font-size: x-large;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }

@@ -2,9 +2,9 @@
 <div class="box">
   <app-product-card class="card" [product]="product" ></app-product-card>
   <div class="footer">
-    <button></button>
-    <input type="text">
-    <span></span>
+    <button>Add To Cart</button>
+    <input min="1" type="number" [(ngModel)]="amount">
+    <span>{{product.price * amount}}</span>
   </div>
 </div>
 <!-- <mat-card *ngIf="auth.user">

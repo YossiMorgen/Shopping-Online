@@ -1,5 +1,13 @@
 <app-login *ngIf="!auth.user"></app-login>
-<mat-card *ngIf="auth.user">
+<div class="box">
+  <app-product-card class="card" [product]="product" ></app-product-card>
+  <div class="footer">
+    <button></button>
+    <input type="text">
+    <span></span>
+  </div>
+</div>
+<!-- <mat-card *ngIf="auth.user">
   <mat-card-content>
     <mat-card-title>{{product.productName}}</mat-card-title>
     <mat-card-subtitle>{{product.price * amount | currency:"ILS"}} </mat-card-subtitle>
@@ -15,4 +23,4 @@
     <button mat-button (click)="onNoClick()" >No Thanks</button>
     <button mat-button [mat-dialog-close]="amount" cdkFocusInitial>Ok</button>
   </div>
-</mat-card>
+</mat-card> -->

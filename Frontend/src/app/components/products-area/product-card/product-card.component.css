@@ -1,9 +1,9 @@
- .product{
+.product{
     width: 100%;
     aspect-ratio: 1;
     border: 3px solid rgba(177, 176, 176, 0.329);
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 2px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -43,6 +43,7 @@ button.addProduct {
     bottom: 0;
     right: 0;
     cursor: pointer;
+    z-index: 4;
     /* background-color: #F26522;
     border-radius: 50%;
     text-align: center;

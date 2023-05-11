@@ -1,4 +1,3 @@
-<div class="fixed">
     <div class="cart" [class]="!cartService.products.length ? 'emptyCart' : 'fullCart'">
         <mat-card-header *ngIf="cartService.products.length">
             <mat-card-subtitle >{{cartService.totalAmount}} {{cartService.totalAmount === 1 ? 'product' : 'products'}} </mat-card-subtitle>
@@ -28,4 +27,3 @@
             <a class="checkout" routerLink="/order">checkout</a>
         </div >
     </div>
-</div>

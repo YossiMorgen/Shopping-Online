@@ -73,25 +73,14 @@ export class ProductsService {
     }
   }
 
-  public async updateProduct(product: FormData, productID:number): Promise<void> {
+  public async updateProduct(product: FormData, index: number): Promise<void> {
     const Observable = this.http.put<ProductModel>(this.config.updateProduct, product);
     const newProduct = await firstValueFrom(Observable);
-    console.log(this.products);
-    console.log(newProduct);
-
-    let i = 0;
-
-    for (let j = 0; j < this.products.length; j ++){
-      if(newProduct.productID === this.products[j].productID){
-        i = j;
-        break
-      }
-    }
     
-    if( this.products[i].categoryID == newProduct.categoryID){
-      this.products[i] = newProduct;
+    if( this.products[index].categoryID == newProduct.categoryID){
+      this.products[index] = newProduct;
     }else {
-      this.products.splice(i, 1);
+      this.products.splice(index, 1);
     }
   }
   

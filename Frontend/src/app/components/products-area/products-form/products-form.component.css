@@ -23,7 +23,7 @@ h2 {
 
 .footer{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 form {
@@ -74,13 +74,9 @@ input, select{
     width: 90%;
     margin: 5px 15px;
     background-color: white;
+    padding-left: 10px;
 }
-/* .file_button {
-    margin-left: 15px;
-    max-width: fit-content;
-    max-height: fit-content;
-    border: none;
-} */
+
 .upload-btn{
     border: none;
     max-width: 30px;
@@ -89,11 +85,6 @@ input, select{
     color: rgb(175, 172, 172);
     font-weight: bold;
     font-size: large;
-
-}
-
-.upload-btn img {
-    width: 30px;
 }
     
 .visible{

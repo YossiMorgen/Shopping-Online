@@ -73,7 +73,8 @@ export class ProductsFormComponent implements OnInit {
   }
 
   public async submitProduct(){
-
+    console.log("submitProduct");
+    
     try {      
       const formData = new FormData();
 
@@ -92,7 +93,7 @@ export class ProductsFormComponent implements OnInit {
       if(this.editMode){        
         formData.append('imageName', this.productsService.products[this.editedItemIndex].imageName)
         formData.append('productID', this.productsService.products[this.editedItemIndex].productID.toString() );
-        await this.productsService.updateProduct(formData, this.productsService.products[this.editedItemIndex].productID);
+        await this.productsService.updateProduct(formData, this.editedItemIndex);
         this.toast.success('Product Edited Successfully')
         this.editMode = false;
         this.productsForm.reset();

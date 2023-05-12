@@ -1,7 +1,7 @@
 <div class="centerF">
     <div class="containForm">
 
-        <div *ngIf="stepState !== 3 ">
+        <div class="header" *ngIf="stepState !== 3 ">
             <h1>Sign Up</h1>
             <p>Already have an account? <a routerLink="/login">Login</a></p>
         </div>
@@ -72,10 +72,8 @@
         </form>
         
         <div class="finish" [class]="stepState === 3 ? 'visible' : 'invisible'">
-            <h1>Welcome Newbie!</h1>
-            <div>Now all you got to do</div>
-            <div>is fill the cart</div>
-            <a routerLink="/products"></a> 
+            <img src="../../../../assets/Welcome_Mes.png" alt="">
+            <a routerLink="/products">Back to Homepage</a> 
         </div>
         <!-- <div>
             {{productsAmount}} products and {{ordersAmount}} orders

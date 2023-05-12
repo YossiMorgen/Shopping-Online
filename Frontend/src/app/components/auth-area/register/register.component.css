@@ -1,14 +1,22 @@
 
 .containForm{
-    background-color: #FDEAD2;
+    /* background-color: #FDEAD2; */
     border-radius: 20px;
     padding: 20px;
     height: fit-content;
     position: relative;
 }
 
+.header{
+    background-color: #FDEAD2;
+}
+
 .invisible{
     display: none;
+}
+
+form{
+    background-color: #FDEAD2;
 }
 
 h1{
@@ -66,16 +74,31 @@ button:disabled {
 }
 
 .finish {
-    background-image: url(../../../../assets/Empty_Cart.png);
-    background-repeat: no-repeat;
-    background-position: right bottom;
+    width: 30vw;
+    height: 40vh;
+    aspect-ratio: 3 / 4;
+    
 }
 
-.finish button {
-    height: 50px;
+.finish > img{
+    width: 35vw;
+}
+
+.finish a {
+    /* height: 40px; */
     background-color: red;
     color: white;
+    font-weight: bold;
+    font-size: small;
+    letter-spacing: 0;
     border: none;
-    border-radius: 30px;
-    padding: 5px;
+    border-radius: 15px;
+    padding: 3px 5px;
+
+    position: absolute;
+    bottom: 15%;
+    left: 20%;
+
+    display: grid;
+    place-items: center;
 }

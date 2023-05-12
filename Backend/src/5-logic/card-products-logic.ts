@@ -38,6 +38,7 @@ function getCartProducts(cartID: number): Promise<ProductCartModel[]> {
         LEFT JOIN products
         ON cart_product.productID = products.productID
         WHERE cartID = ?
+        ORDER BY products.productName
     `, [appConfig.nodeUrl, cartID]);
 }
 

@@ -38,10 +38,12 @@ mat-card-subtitle{
 }
 
 table {
+    max-height: 20vh;
     margin-top: 40px;
     width: 100%;
     table-layout: fixed;
-    border-spacing: 5px;
+    border-spacing: 0 10px ;
+    overflow-y: scroll;
 }
 td{
     text-align: center;

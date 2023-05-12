@@ -12,19 +12,21 @@
         </select>
     </label>
 
-    <label class="dsBlock" (dblclick)="copyDefaultUserDetails('street')" appearance="fill">
+    <label class="dsInlineBlock date" (dblclick)="copyDefaultUserDetails('street')" appearance="fill">
         <input placeholder="Address" matInput type="text" formControlName="street">
     </label>
 
-    <input 
-    class="hide"
-        type="date"
-        [matDatepickerFilter]="myFilter" 
-        [matDatepicker]="picker" 
-        formControlName="deliveryDate"
-    >
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <label class="dsInlineBlock date">
+        <input 
+            type="date"
+            [matDatepickerFilter]="myFilter" 
+            [matDatepicker]="picker" 
+            formControlName="deliveryDate"
+        >
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    
+    </label>
 
 
     <h2>Payments:</h2>
@@ -36,17 +38,24 @@
 
     <label class="dsInlineBlock" appearance="fill">
         <mat-label>Expiration Date</mat-label>
-        <input type="date" formControlName="creditCard">
+        <input 
+            type="date" 
+            formControlName="expirationDate"
+            [matDatepicker]="expirationDate" 
+        >
+        <mat-datepicker-toggle matIconSuffix [for]="expirationDate"></mat-datepicker-toggle>
+        <mat-datepicker #expirationDate></mat-datepicker>
     </label>
 
-    <label class="dsInlineBlock" appearance="fill">
+    <label class="dsInlineBlock date" appearance="fill">
         <mat-label>CVV</mat-label>
-        <input type="text" formControlName="creditCard">
+        <input type="text" formControlName="cvv">
+
     </label>
 
-
-    <button type="submit" [disabled]="orderForm.invalid" >Make an Order</button>
+    <button type="submit" [disabled]="orderForm.invalid" >Purchase</button>
+    
+    <img src="../../../../assets/Purchase.png" alt="">
 
 </form>
-
 </div>

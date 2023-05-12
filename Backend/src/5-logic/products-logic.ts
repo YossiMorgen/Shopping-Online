@@ -14,6 +14,7 @@ function getRandomProducts (start: number, end: number): Promise<ProductModel[]>
     const sql = `
     SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID, description, weight
     FROM products
+    ORDER BY products.productName
     LIMIT ?
     OFFSET ?
     `;
@@ -25,6 +26,7 @@ async function getProductsByName(name : string, start: number, end: number): Pro
         SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID, description, weight
         FROM products
         WHERE productName LIKE ?
+        ORDER BY products.productName
         LIMIT ?
         OFFSET ?
     `, [appConfig.nodeUrl, `%${name}%`, end, start ]);
@@ -37,6 +39,7 @@ async function getProductsByCategory(categoryID: number,start: number, end: numb
         `SELECT productID, productName, price,  CONCAT(?, imageName) AS imageName, categoryID, description, weight
         FROM products
         WHERE products.categoryID = ?
+        ORDER BY products.productName
         LIMIT ?
         OFFSET ?
     `, [appConfig.nodeUrl, categoryID, end, start]);

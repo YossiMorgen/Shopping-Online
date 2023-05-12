@@ -25,7 +25,9 @@ export class OrderFormComponent implements OnInit {
     city: ['', [Validators.required, Validators.minLength(2)]],
     street: ['', [Validators.required, Validators.minLength(2)]],
     deliveryDate: ['', [Validators.required]],
-    creditCard: ['', [Validators.required, Validators.pattern('([1-9]{16})')]]
+    creditCard: ['', [Validators.required, Validators.pattern('([1-9]{16})')]],
+    expirationDate: ['', [Validators.required]],
+    cvv: ['', [Validators.pattern('([1-9]{3})')]]
   })
 
   constructor ( 
@@ -63,8 +65,14 @@ export class OrderFormComponent implements OnInit {
 
   public async makeAnOrder(){
     try {
-      this.order = new Order({...this.orderForm.value, userID:  this.auth.user.userID, cartID:  this.cartService.cart.cartID, price: this.cartService.totalPrice })
+      console.log(this.orderForm.value);
       
+      this.order = new Order({...this.orderForm.value, userID:  this.auth.user.userID, cartID:  this.cartService.cart.cartID, price: this.cartService.totalPrice })
+      console.log(this.order);
+      
+      this.order.creditCard = this.order.creditCard.slice(-4, 16);
+      console.log(this.order.creditCard);
+      return;
       await this.orderService.makeAnOrder(this.order);
 
       this.router.navigate(['/receipt'])

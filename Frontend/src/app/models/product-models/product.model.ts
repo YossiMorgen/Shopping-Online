@@ -1,3 +1,4 @@
+import WeightModel from "./weight.model";
 
 export default class ProductModel{
     public productID: number;
@@ -8,5 +9,6 @@ export default class ProductModel{
     public imageName: string;
     public description: string;
     public weight: number;
-
+    public weightType: WeightModel;
+    public unitsInStock: number;
 }

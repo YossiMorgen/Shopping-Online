@@ -22,4 +22,5 @@
 
 .productsLayOut{
     margin: 2vh 0 0 2vw;
+    flex-basis: 75%;
 }

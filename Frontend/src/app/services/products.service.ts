@@ -52,7 +52,7 @@ export class ProductsService {
     }
     this.products = this.products.concat(products);
 
-    if(products.length < 24 && this.products.length){
+    if(products.length < 12 && this.products.length){
       this.toast.message("We don't have any more products that fit your search")
       this.isThereProducts = false ;
     }

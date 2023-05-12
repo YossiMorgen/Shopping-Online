@@ -20,7 +20,7 @@ router.get('/categories', async (req: Request, res: Response, next: NextFunction
 
 router.get('/random_products', async (req: Request, res: Response, next: NextFunction) => {
     try {  
-        const products = await productsLogic.getRandomProducts((+req.query.start | 0), (+req.query.limit | 24));        
+        const products = await productsLogic.getRandomProducts((+req.query.start | 0), (+req.query.limit | 12));        
         res.json(products);
     } catch (error) {
         next(error);
@@ -29,7 +29,7 @@ router.get('/random_products', async (req: Request, res: Response, next: NextFun
 
 router.get('/search_products/:name', async (req: Request, res: Response, next: NextFunction) => {
     try {  
-        const products = await productsLogic.getProductsByName(req.params.name, (+req.query.start | 0), (+req.query.limit | 24));        
+        const products = await productsLogic.getProductsByName(req.params.name, (+req.query.start | 0), (+req.query.limit | 12));        
         res.json(products);
     } catch (error) {
         next(error);
@@ -39,7 +39,7 @@ router.get('/search_products/:name', async (req: Request, res: Response, next: N
 router.get('/products_by_category/:categoryID([0-9]+)', async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const categoryID = +req.params.categoryID;
-        const products = await productsLogic.getProductsByCategory(categoryID, (+req.query.start | 0), (+req.query.limit | 24));        
+        const products = await productsLogic.getProductsByCategory(categoryID, (+req.query.start | 0), (+req.query.limit | 12));        
         res.json(products);
     } catch (error) {
         next(error);

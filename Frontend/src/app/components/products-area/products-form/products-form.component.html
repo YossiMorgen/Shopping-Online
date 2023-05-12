@@ -63,7 +63,7 @@
             </label>     
             
             <div class="footer">
-                <button [class]="editMode? 'visible' : 'invisible'" (click)="addMode()">Cancel</button>
+                <button type="button" [class]="editMode? 'visible' : 'invisible'" (click)="addMode()">Cancel</button>
                 <button 
                     type="submit" 
                     [disabled]="productsForm.invalid || (!file?.name && !editMode)" 

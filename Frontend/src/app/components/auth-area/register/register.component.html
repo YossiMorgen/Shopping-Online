@@ -1,6 +1,12 @@
 <div class="centerF">
-    <div>
-        <form [class]="stepState === 1 ? 'visible' : 'invisible'" class="step" [formGroup]="emailAndPasswordForm">
+    <div class="containForm">
+
+        <div *ngIf="stepState !== 3 ">
+            <h1>Sign Up</h1>
+            <p>Already have an account? <a routerLink="/login">Login</a></p>
+        </div>
+        
+        <form [class]="stepState === 1 ? 'visible' : 'invisible'" [formGroup]="emailAndPasswordForm">
             
             <label appearance="fill">
                 <input placeholder="Email" type="email" formControlName="email">
@@ -14,15 +20,31 @@
                 <input placeholder="Confirm Password" type="password" formControlName="confirmPassword">
             </label>
             
-            <button (click)="changeStepsState(2)" [disabled]="emailAndPasswordForm.invalid" #next>Next</button>
+            <div class="footer">
+                
+                <div></div>
 
-            <mat-error 
-                *ngIf=" emailAndPasswordForm.errors?.['noMatch'] === true ">                        
-                Passwords don't match 
-            </mat-error>
+                <mat-error 
+                    *ngIf=" emailAndPasswordForm.errors?.['noMatch'] === true ">                        
+                    Passwords don't match 
+                </mat-error>
+
+                <mat-error 
+                    *ngIf=" emailAndPasswordForm.errors?.['required'] === true ">                        
+                    A required field is missing. please
+                </mat-error>
+
+                <button 
+                    (click)="changeStepsState(2)" 
+                    [disabled]="emailAndPasswordForm.invalid" 
+                    class="next"
+                >
+                    <img src="../../../../assets/Right.png" alt="">
+                </button>
+            </div>
         </form>
 
-        <form  [class]="stepState === 2 ? 'visible' : 'invisible'" class="step" [formGroup]="nameAndAddressForm" (submit)="register()">
+        <form  [class]="stepState === 2 ? 'visible' : 'invisible'" [formGroup]="nameAndAddressForm" (submit)="register()">
             <label appearance="fill">
                 <input placeholder="First Name" formControlName="firstName">
             </label>
@@ -42,11 +64,19 @@
             <label appearance="fill">
                 <input placeholder="Street" formControlName="street">
             </label>
-            <button (click)="changeStepsState(1)">back</button>
-            <button (click)="changeStepsState(3)" [disabled]="nameAndAddressForm.invalid" >next</button>
+
+            <div class="footer">
+                <button (click)="changeStepsState(1)"><img src="../../../../assets/Left.png" alt="⬅️" ></button>
+                <button (click)="changeStepsState(3)" [disabled]="nameAndAddressForm.invalid" ><img src="../../../../assets/Right.png" alt="➡️"></button>
+            </div>
         </form>
         
-        <div [class]="stepState === 3 ? 'visible' : 'invisible'" class="step"></div>
+        <div class="finish" [class]="stepState === 3 ? 'visible' : 'invisible'">
+            <h1>Welcome Newbie!</h1>
+            <div>Now all you got to do</div>
+            <div>is fill the cart</div>
+            <a routerLink="/products"></a> 
+        </div>
         <!-- <div>
             {{productsAmount}} products and {{ordersAmount}} orders
         </div> -->

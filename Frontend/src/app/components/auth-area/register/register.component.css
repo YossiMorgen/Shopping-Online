@@ -1,12 +1,81 @@
-mat-form-field {
-    display: block;
-    width: fit-content;
-}
-form{
-    margin-top: 20px;
+
+.containForm{
     background-color: #FDEAD2;
+    border-radius: 20px;
+    padding: 20px;
+    height: fit-content;
+    position: relative;
 }
 
 .invisible{
     display: none;
+}
+
+h1{
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+p{
+    font-size: medium;
+}
+
+p a {
+    text-decoration: underline;
+    color: black;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    /* height: ; */
+    width: 100%;
+    margin: 5% 0;
+}
+
+input, select {
+    font-weight: bold;
+    font-size: large;
+    padding: 20px;
+    height: 50px;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer button{
+    background-color: transparent;
+    border: none;
+}
+
+
+
+.footer button  > img{
+    width: 40px;
+}
+
+button:disabled {
+    opacity: 60%;
+}
+
+.finish {
+    background-image: url(../../../../assets/Empty_Cart.png);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+
+.finish button {
+    height: 50px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 5px;
 }

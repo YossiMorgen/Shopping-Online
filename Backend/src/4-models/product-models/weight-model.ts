@@ -1,7 +1,9 @@
 enum WeightModel{
     kilo = "kilo",
     kg = "kg",
-    gram = "gram"
+    gram = "gram",
+    L = 'L',
+    ml = "ml"
 }
 
 export default WeightModel;

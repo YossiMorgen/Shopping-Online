@@ -1,5 +1,7 @@
-:root{
-    --strong-orange: #F26522;
+.fixed{
+    position: fixed;
+    bottom: 0;
+    left: 20px;
 }
 
 .cart {
@@ -7,6 +9,7 @@
     height: 63vh;
     overflow: hidden;
     width: 25vw;
+    position: relative;
     /* position: sticky;
     top: 18vh;
     right: 0;
@@ -14,6 +17,7 @@
     background-color: #FDEAD2;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
+    direction: ltr;
 }
 
 .emptyCart{
@@ -21,9 +25,6 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
-    /* max-height: 50px;
-    max-width: 50px; */
-    /* z-index: 99; */
 }
 
 button, a, button:hover, a:hover{

@@ -6,19 +6,20 @@
 
 .productsAndCartLayout{
     display: flex;
-    width: fit-content;
+    width: 100%;
     justify-content: space-between;
     max-width: 100vw;
     height: 100%;
     margin: 0;
+    direction: rtl;
 }
 
-.stickyBar{
+/* .stickyBar{
     width: fit-content;
     position: sticky;
     top: 18vh;
-}
+} */
 
 .productsLayOut{
-    margin-left: 2vw;
+    margin-top: 2vh;
 }

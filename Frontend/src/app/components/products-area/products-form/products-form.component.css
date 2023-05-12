@@ -5,21 +5,26 @@
     right: 5px;
 }
 
-mat-form-field{
-    display: block;
+.header {
+    align-items: center;
 }
 
-input[type = submit]{
-    display: block;
+h2 {
+    font-size: x-large;
+    color: white;
 }
 
-.toggle{
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
+.header, .footer{
+    background-color: rgb(102, 101, 101);
+    padding: 1vh;
+} 
+
+.footer{
+    display: flex;
+    justify-content: space-between;
 }
-.toggle:disabled{
-    color: black;
-    cursor: not-allowed;
+
+.invisible{
+    pointer-events: none;
+    opacity: 0;
 }

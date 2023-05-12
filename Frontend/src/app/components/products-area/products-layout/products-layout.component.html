@@ -1,12 +1,12 @@
-<div class="fixed">
+<div >
 <div class="productsAndCartLayout">
-    <div class="stickyBar" >
-        <app-cart *ngIf=" !auth.isAdmin() "></app-cart>
-        <app-products-form *ngIf=" auth.isAdmin() "></app-products-form>
-    </div>
+
     <div class="productsLayOut">
         <app-product-list></app-product-list>
     </div>
+        
+    <app-cart *ngIf=" !auth.isAdmin() "></app-cart>
     
+    <app-products-form *ngIf=" auth.isAdmin() "></app-products-form>
 </div>
 </div>

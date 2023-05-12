@@ -1,76 +1,74 @@
 <div class="ProductsForm">
     <div>
-        <div>
-            <div class="header">
-                <h2>{{editMode ? 'Edit ' : 'Add '}} Product</h2>
-            </div>
-
-            <form (ngSubmit)="submitProduct()" [formGroup]="productsForm">
-        
-        
-                <label>
-                    <mat-label>Product Name</mat-label>
-                    <input type="text" formControlName="productName">
-                </label>
-
-                <label>
-                    <mat-label>Description</mat-label>
-                    <input type="text" formControlName="description">
-                </label>
-        
-                <label>
-                    <mat-label>Category </mat-label>
-                    <mat-select formControlName="categoryID" >
-                        <mat-option 
-                            *ngFor="let category of productsService.categories"  
-                            [value]="category.categoryID" 
-                        >
-                            {{category.categoryName}}
-                        </mat-option>
-                    </mat-select>
-                </label>
-        
-                <label>
-                    <mat-label>Price </mat-label>
-                    <input min="1" type="number" formControlName="price">
-                </label>
-
-                <label>
-                    <mat-label>Supply Amount </mat-label>
-                    <input min="1" type="number" formControlName="unitsInStock">
-                </label>
-
-                <label>
-                    <mat-label>Weight Unit</mat-label>
-                    <input min="0" type="number" formControlName="weight">
-                </label>
-
-                <label >
-                    <select formControlName="weightType">
-                        <option *ngFor="let type of weightTypes" [value]="type">{{type}}</option>
-                    </select>
-                </label>
-
-                <input type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" #productImage>   
-                <div class="file_button">
-                    {{file?.name || "No file uploaded yet."}}
-                    <button (click)="productImage.click()" type="button" mat-mini-fab color="primary" class="upload-btn">
-        
-                        <mat-icon>attach_file</mat-icon>
-                    </button>
-                </div>     
-                
-                <div class="footer">
-                    <button *ngIf="editMode" (click)="addMode()">Cancel</button>
-                    <button 
-                        type="submit" 
-                        [disabled]="productsForm.invalid || (!file?.name && !editMode)" 
-                    >
-                        {{editMode ? 'Edit ' : 'Add '}} Product
-                    </button>
-                </div>
-        
-            </form>
+        <div class="header">
+            <h2>{{editMode ? 'Edit ' : 'Add '}} Product</h2>
         </div>
+
+        <form (ngSubmit)="submitProduct()" [formGroup]="productsForm">
+    
+    
+            <label>
+                <span>Product Name</span>
+                <input type="text" formControlName="productName">
+            </label>
+
+            <label>
+                <span>Description</span>
+                <input type="text" formControlName="description">
+            </label>
+    
+            <label>
+                <span>Category </span>
+                <select formControlName="categoryID" >
+                    <option 
+                        *ngFor="let category of productsService.categories"  
+                        [value]="category.categoryID" 
+                    >
+                        {{category.categoryName}}
+                    </option>
+                </select>
+            </label>
+    
+            <label>
+                <span>Price </span>
+                <input min="1" type="number" formControlName="price">
+            </label>
+
+            <label>
+                <span>Supply Amount </span>
+                <input min="1" type="number" formControlName="unitsInStock">
+            </label>
+
+            <label>
+                <span>Weight Unit</span>
+                <input min="0" type="number" formControlName="weight">
+            </label>
+
+            <label >
+                <select formControlName="weightType">
+                    <option *ngFor="let type of weightTypes" [value]="type">{{type}}</option>
+                </select>
+            </label>
+
+            <input type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" #productImage>   
+            <div class="file_button">
+                {{file?.name || "No file uploaded yet."}}
+                <button (click)="productImage.click()" type="button" mat-mini-fab color="primary" class="upload-btn">
+    
+                    <mat-icon>attach_file</mat-icon>
+                </button>
+            </div>     
+            
+            <div class="footer">
+                <button [class]="editMode? 'visible' : 'invisible'" (click)="addMode()">Cancel</button>
+                <button 
+                    type="submit" 
+                    [disabled]="productsForm.invalid || (!file?.name && !editMode)" 
+                >
+                    {{editMode ? 'Edit ' : 'Add '}} Product
+                </button>
+            </div>
+    
+        </form>
     </div>
 </div>

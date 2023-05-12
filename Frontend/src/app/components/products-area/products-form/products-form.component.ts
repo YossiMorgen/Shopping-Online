@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import ProductModel from 'src/app/models/product-models/product.model';
+import WeightModel from 'src/app/models/product-models/weight.model';
 import { ProductsService } from 'src/app/services/products.service';
 import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
 
@@ -17,13 +18,15 @@ export class ProductsFormComponent implements OnInit {
   public editedItemIndex: number;
 
   public subscription : Subscription;
-
+  public weightTypes = Object.values(WeightModel);
   public productsForm = this.formBuilder.group({
     productName : ['', [Validators.required, Validators.minLength(2)]],
     categoryID : [0, [Validators.required]],
     price : [1, [Validators.required, Validators.min(1)]],
     description : ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
     weight : [0, [ Validators.min(0), Validators.required]],
+    weightType: ['kg', [Validators.required]],
+    unitsInStock: [0, [Validators.required, Validators.minLength(1)]]
   })
 
   public file: File;
@@ -47,12 +50,12 @@ export class ProductsFormComponent implements OnInit {
           price: this.productsService.products[this.editedItemIndex].price,
           description: this.productsService.products[this.editedItemIndex].description,
           weight: this.productsService.products[this.editedItemIndex].weight,
+          weightType: this.productsService.products[this.editedItemIndex].weightType,
+          unitsInStock: this.productsService.products[this.editedItemIndex].unitsInStock,
         })
       })
     try {
-      await this.productsService.getCategories();
-      console.log(this.editedItemIndex);
-      
+      await this.productsService.getCategories();      
     } catch (error : any) {
       this.toast.error(error);
     }
@@ -79,6 +82,8 @@ export class ProductsFormComponent implements OnInit {
       formData.append('price', this.productsForm.value.price.toString())
       formData.append('description', this.productsForm.value.description)
       formData.append('weight', this.productsForm.value.weight?.toString())
+      formData.append('weightType', this.productsForm.value.weightType)
+      formData.append('unitsInStock', this.productsForm.value.unitsInStock?.toString())
 
       if(this.file){
         formData.append('image', this.file);

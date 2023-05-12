@@ -1,30 +1,24 @@
 <div class="ProductsForm">
-    <mat-card>
-        <mat-card-content>
-            <mat-card-header>
-                <button 
-                    class="toggle"
-                    (click)="addMode()"
-                    [disabled]="!editMode"
-                >
-                    <h2>{{editMode ? 'Edit ' : 'Add '}} Product</h2>
-                </button>
-            </mat-card-header>
+    <div>
+        <div>
+            <div class="header">
+                <h2>{{editMode ? 'Edit ' : 'Add '}} Product</h2>
+            </div>
 
             <form (ngSubmit)="submitProduct()" [formGroup]="productsForm">
         
         
-                <mat-form-field appearance="fill">
+                <label>
                     <mat-label>Product Name</mat-label>
-                    <input matInput type="text" formControlName="productName">
-                </mat-form-field>
+                    <input type="text" formControlName="productName">
+                </label>
 
-                <mat-form-field appearance="fill">
+                <label>
                     <mat-label>Description</mat-label>
-                    <input matInput type="text" formControlName="description">
-                </mat-form-field>
+                    <input type="text" formControlName="description">
+                </label>
         
-                <mat-form-field appearance="fill">
+                <label>
                     <mat-label>Category </mat-label>
                     <mat-select formControlName="categoryID" >
                         <mat-option 
@@ -34,18 +28,28 @@
                             {{category.categoryName}}
                         </mat-option>
                     </mat-select>
-                </mat-form-field>
-                
+                </label>
         
-                <mat-form-field appearance="fill">
+                <label>
                     <mat-label>Price </mat-label>
-                    <input min="1" matInput type="number" formControlName="price">
-                </mat-form-field>
+                    <input min="1" type="number" formControlName="price">
+                </label>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Weight </mat-label>
-                    <input min="0" matInput type="number" formControlName="weight">
-                </mat-form-field>
+                <label>
+                    <mat-label>Supply Amount </mat-label>
+                    <input min="1" type="number" formControlName="unitsInStock">
+                </label>
+
+                <label>
+                    <mat-label>Weight Unit</mat-label>
+                    <input min="0" type="number" formControlName="weight">
+                </label>
+
+                <label >
+                    <select formControlName="weightType">
+                        <option *ngFor="let type of weightTypes" [value]="type">{{type}}</option>
+                    </select>
+                </label>
 
                 <input type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" #productImage>   
                 <div class="file_button">
@@ -56,15 +60,17 @@
                     </button>
                 </div>     
                 
-                <button 
-                    mat-raised-button 
-                    type="submit" 
-                    [disabled]="productsForm.invalid || (!file?.name && !editMode)" 
-                >
-                    {{editMode ? 'Edit ' : 'Add '}} Product
-                </button>
+                <div class="footer">
+                    <button *ngIf="editMode" (click)="addMode()">Cancel</button>
+                    <button 
+                        type="submit" 
+                        [disabled]="productsForm.invalid || (!file?.name && !editMode)" 
+                    >
+                        {{editMode ? 'Edit ' : 'Add '}} Product
+                    </button>
+                </div>
         
             </form>
-        </mat-card-content>
-    </mat-card>
+        </div>
+    </div>
 </div>

@@ -1,10 +1,10 @@
-
+<div class="sticky">
 <form (ngSubmit)="makeAnOrder()" [formGroup]="orderForm">
 
-    <h3>Shipping Details:</h3>
+    <h2>Shipping Details:</h2>
 
 
-    <label (dblclick)="copyDefaultUserDetails('city')" appearance="fill">
+    <label class="dsBlock" (dblclick)="copyDefaultUserDetails('city')" appearance="fill">
         <select placeholder="City" formControlName="city" >
             <option *ngFor="let city of auth.cities"  [value]="city">
                 {{city}}
@@ -12,31 +12,41 @@
         </select>
     </label>
 
-    <label (dblclick)="copyDefaultUserDetails('street')" appearance="fill">
+    <label class="dsBlock" (dblclick)="copyDefaultUserDetails('street')" appearance="fill">
         <input placeholder="Address" matInput type="text" formControlName="street">
     </label>
 
-    <label appearance="fill">
-        <mat-label>Delivery date</mat-label>
-        <input 
-            placeholder="DD/MM/YYYY"
-            type="date"
-            [matDatepickerFilter]="myFilter" 
-            [matDatepicker]="picker" 
-            formControlName="deliveryDate"
-        >
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </label>
+    <input 
+    class="hide"
+        type="date"
+        [matDatepickerFilter]="myFilter" 
+        [matDatepicker]="picker" 
+        formControlName="deliveryDate"
+    >
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
 
-    <h3>Payments:</h3>
+
+    <h2>Payments:</h2>
 
     <label appearance="fill">
         <mat-label>Credit Card</mat-label>
-        <input matInput type="text" formControlName="creditCard">
+        <input type="text" formControlName="creditCard">
+    </label>
+
+    <label class="dsInlineBlock" appearance="fill">
+        <mat-label>Expiration Date</mat-label>
+        <input type="date" formControlName="creditCard">
+    </label>
+
+    <label class="dsInlineBlock" appearance="fill">
+        <mat-label>CVV</mat-label>
+        <input type="text" formControlName="creditCard">
     </label>
 
 
     <button type="submit" [disabled]="orderForm.invalid" >Make an Order</button>
 
 </form>
+
+</div>

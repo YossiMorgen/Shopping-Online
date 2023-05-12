@@ -10,11 +10,9 @@
                 <td> {{product.amount}}</td>
                 <td> {{product.price * product.amount | currency:"ILS"}} </td>
                 <td class="delete">
+                    <img (click)="changeProductAmount(product, product.amount +1)" src="../../../../assets/Plus_V2.png" alt="">
                     <img (click)="changeProductAmount(product, product.amount -1)" src="../../../../assets/Min_V2.png" alt="">
                 </td> 
-                <td class="delete" (click)="changeProductAmount(product, product.amount +1)">
-                    <img (click)="changeProductAmount(product, product.amount +1)" src="../../../../assets/Plus_V2.png" alt="">
-                </td>           
             </tr>
         </table >
         <div class="cartFooter">

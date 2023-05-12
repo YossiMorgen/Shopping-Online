@@ -24,8 +24,8 @@ export class OrderFormComponent implements OnInit {
   public orderForm = this.formBuilder.group({
     city: ['', [Validators.required, Validators.minLength(2)]],
     street: ['', [Validators.required, Validators.minLength(2)]],
-    deliveryDate: ['', [Validators.required, Validators.pattern('^[0-3]?[0-9]/[0-3]?[0-9]/(?:[0-9]{2})?[0-9]{2}$')]],
-    creditCard: ['', [Validators.required, Validators.pattern('([1-9]{4})')]]
+    deliveryDate: ['', [Validators.required]],
+    creditCard: ['', [Validators.required, Validators.pattern('([1-9]{16})')]]
   })
 
   constructor ( 

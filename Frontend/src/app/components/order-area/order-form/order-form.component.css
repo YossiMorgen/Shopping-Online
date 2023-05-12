@@ -1,5 +1,81 @@
-form {
+.sticky {
     position: sticky;
     top: 27vh;
     right: 0;
+    background-color: #FDEAD2;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+form {
+    position: relative;
+    gap: 20px;
+    width: 35vw;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+label {
+    margin: 20px 0;
+}
+
+input, select {
+    border: none;
+    outline: none;
+
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+input, select{
+    height: 90%;
+    width: 90%;
+    font-size: large;
+    font-weight: bold;
+    padding: 10px;
+    
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* .dsBlock {
+    display: block;
+    width: 25vw;
+    height: 40px;
+} */
+
+/* .dsBlock > input, .dsBlock > select {
+    height: 100%;
+    width: 100%;
+} */
+
+.dsInlineBlock {
+    display: inline-block;
+    width: 40%;
+    /* margin: 0 20px; */
+}
+
+.dsInlineBlock + .dsInlineBlock {
+    margin-left: 14%;
+}
+
+
+/* h3 + input[type="date"].hide{
+    height: 0;
+    width: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+} */
+
+mat-datepicker-toggle{
+    position: absolute;
+    top: -10px;
+    right: 10px;
 }

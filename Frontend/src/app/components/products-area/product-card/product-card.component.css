@@ -2,7 +2,6 @@
     width: 100%;
     aspect-ratio: 1;
     border: 3px solid rgba(177, 176, 176, 0.329);
-    overflow: hidden;
     border-radius: 2px;
     position: relative;
     display: flex;
@@ -11,6 +10,7 @@
     direction: ltr;
 }
 .top{
+    overflow: hidden;
     position: relative;
 }
 
@@ -46,15 +46,24 @@ button.addProduct {
     right: 0;
     cursor: pointer;
     z-index: 4;
-    /* background-color: #F26522;
-    border-radius: 50%;
-    text-align: center;
-    color: white;
-    font-weight: bolder; */
-    /* aspect-ratio: 1; */
-
 }
 
 .addProduct img {
+    width: 30px;
+}
+.editProduct{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    border-radius: 50%;
+    border: none;
+    display: grid;
+    place-items: center;
+    padding: 0;
+}
+
+.editProduct img{
     width: 30px;
 }

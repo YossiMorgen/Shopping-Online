@@ -7,7 +7,8 @@
     <div class="bottom" [style.background]="product.imageName">
         <div>{{ product.productName }}</div>
     </div>
+    <button (click)="productsService.startedEditing.next(this.i)" class="editProduct"><img src="../../../../assets/Edit.png" alt="✏️"></button>
     <!-- <button (click)="showEdit()"  class="addProduct">+</button> -->
-    <button (click)="showEdit()"  class="addProduct"><img src="../../../../assets/Plus.png" alt=""></button>
+    <button *ngIf="!this.auth.isAdmin()" (click)="showDialog()"  class="addProduct"><img src="../../../../assets/Plus.png" alt=""></button>
 
 </div>

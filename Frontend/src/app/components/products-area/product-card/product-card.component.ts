@@ -83,26 +83,19 @@ export class ProductCardComponent {
       this.toast.error(error);
     }
   }
-
-  public showEdit() {
-    if(this.auth.isAdmin()){
-      this.productsService.startedEditing.next(this.i); 
-      return;
-    }
-
-    if(!this.auth.isAdmin()){
-      const dialogRef = this.dialog.open(PopupAddProductComponent, {
-        width: '45vh',
-        enterAnimationDuration: '300',
-        exitAnimationDuration: '200',
-        data: {...this.product}
-      });
-      dialogRef.afterClosed().subscribe(async (result: number) => {
-        if(result){          
-          await this.addProductToCart(result);
-        }
-      });
-    }
+  
+  public showDialog(){
+    const dialogRef = this.dialog.open(PopupAddProductComponent, {
+      width: '45vh',
+      enterAnimationDuration: '300',
+      exitAnimationDuration: '200',
+      data: {...this.product}
+    });
+    dialogRef.afterClosed().subscribe(async (result: number) => {
+      if(result){          
+        await this.addProductToCart(result);
+      }
+    });
   }
 
   public async addProductToCart(amount: number) {

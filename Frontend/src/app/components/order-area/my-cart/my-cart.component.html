@@ -1,22 +1,20 @@
 <div class="myCart">
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>Amount</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr  *ngFor="let product of cartService.products">
-                        <td [innerHtml]="orderService.search ? markSearch(product.productName) : product.productName"></td>
-                        <td>{{product.amount}}</td>
-                        <td>{{product.price | currency:"ILS"}}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <span>total price - {{ cartService.totalPrice | currency:"ILS" }}</span>
-        </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Amount</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let product of cartService.products">
+                <td [innerHtml]="orderService.search ? markSearch(product.productName) : product.productName"></td>
+                <td>{{product.amount}}</td>
+                <td>{{product.price | currency:"ILS"}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <span class="price">total price - {{ cartService.totalPrice | currency:"ILS" }}</span>
 </div>
 

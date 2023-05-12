@@ -102,7 +102,7 @@ export class ProductsFormComponent implements OnInit {
       await this.productsService.addProduct(formData);
       this.toast.success('Product Added Successfully');
       this.productsForm.reset();
-
+      delete this.file;
     } catch (error : any) {
       this.toast.error(error);
     }

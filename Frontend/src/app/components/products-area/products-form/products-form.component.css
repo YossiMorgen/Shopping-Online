@@ -1,8 +1,9 @@
 .ProductsForm{
-    width: fit-content;
+    width: 20vw;
     position: sticky;
     top: 18vh;
     right: 5px;
+    direction: ltr;
 }
 
 .header {
@@ -17,6 +18,7 @@ h2 {
 .header, .footer{
     background-color: rgb(102, 101, 101);
     padding: 1vh;
+    margin: 0;
 } 
 
 .footer{
@@ -24,7 +26,98 @@ h2 {
     justify-content: space-between;
 }
 
+form {
+    background-color: rgb(219, 215, 215);
+    margin: 0;
+    padding-top: 10px;
+}
+
+label {
+    margin: 5px 15px;
+}
+
+label span {
+    display: block;
+}
+
+input, select{
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 30px;
+}
+
+.inputGroup{
+    display: flex;
+    margin: 5px 0;
+    flex-grow: initial;
+    justify-content: space-between;
+    align-items: flex-end
+}
+
+.inputGroup:first-child{
+    flex-basis: 45%;
+}
+
+.inputGroup:last-child{
+    flex-basis: 30%;
+}
+
+.file-input{
+    display: none;
+}
+
+.file_button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 5px 15px;
+    background-color: white;
+}
+/* .file_button {
+    margin-left: 15px;
+    max-width: fit-content;
+    max-height: fit-content;
+    border: none;
+} */
+.upload-btn{
+    border: none;
+    max-width: 30px;
+    max-height: 30px;
+    background-color: rgb(102, 101, 101);
+    color: rgb(175, 172, 172);
+    font-weight: bold;
+    font-size: large;
+
+}
+
+.upload-btn img {
+    width: 30px;
+}
+    
+.visible{
+    color: rgb(175, 172, 172);
+    background-color: transparent;
+    border: none;
+}
+
 .invisible{
     pointer-events: none;
     opacity: 0;
+}
+
+button[type=submit]{
+    padding: 10px 20px;
+    background-color: #F26522;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    font-weight: bold;
+}
+
+button[type=submit]:disabled{
+    
+    background-color: #b4b4b4;
+    color: #666666;
 }

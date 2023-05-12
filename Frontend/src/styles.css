@@ -36,23 +36,11 @@ form > label {
     color: blue;
 }
 
-.file-input{
-    display: none;
-}
 
 button[type = submit]{
 display: block;
 margin: 10px;
 }
-.file_button{
-display: flex;
-align-items: center;
-padding: 5px;
-}
-.file_button > div {
-margin-left: 15px;
-}
-
 .dsnone{
     display: none;
 }

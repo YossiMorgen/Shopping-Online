@@ -26,7 +26,7 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
         WHERE cartID = ?`, 
         [order.cartID]
     )
-    const price = Math.round(res[0]['price'])
+    const price = +(res[0]['price']).toFixed(2);
     if(price !== order.price) {
         throw new ValidationErrorModel(`The price is ${price} please refresh the page`)
     }

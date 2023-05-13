@@ -98,7 +98,7 @@ export class CartService {
         }
 
         this.totalAmount = count;
-        this.totalPrice = Math.round(sum);
+        this.totalPrice = +sum.toFixed(2);
     }
 
     public logout():void {

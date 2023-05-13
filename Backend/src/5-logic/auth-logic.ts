@@ -16,7 +16,7 @@ async function register(user : User) {
     
     user.password = cyber.hash(user.password);
     const sql = `INSERT INTO users VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?)`
-    const info: OkPacket = await dal.execute(sql, [user.firstName, user.lastName, user.email, user.password, user.city, user.street, user.role]);
+    const info: OkPacket = await dal.execute(sql, [user.firstName, user.lastName, user.email, user.password, user.city, user.address, user.role]);
 
     user.userID = info.insertId;
     delete user.password;

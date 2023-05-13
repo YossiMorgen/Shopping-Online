@@ -19,10 +19,10 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
     if(isBusy[0]['amount']) throw new ValidationErrorModel("We can't have any more orders this day we are too busy")
     
     const price = await dal.execute(` 
-        SELECT SUM(products.price * cart_product.amount ) AS price
-        FROM cart_product
+        SELECT SUM(products.price * cart_products.amount ) AS price
+        FROM cart_products
         LEFT JOIN products
-        ON cart_product.productID = products.productID
+        ON cart_products.productID = products.productID
         WHERE cartID = ?`, 
         [order.cartID]
     )

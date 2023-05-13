@@ -59,7 +59,7 @@ export class OrderFormComponent implements OnInit {
 
   }
 
-  public copyDefaultUserDetails(cell: 'city' | 'street'){    
+  public copyDefaultUserDetails(cell: 'city' | 'address'){    
     this.orderForm.get(cell).setValue(this.auth.user[cell])
   }
 

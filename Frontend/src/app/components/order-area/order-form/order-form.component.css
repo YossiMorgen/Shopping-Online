@@ -5,6 +5,7 @@
     background-color: #FDEAD2;
     border-radius: 20px;
     padding: 20px;
+    margin: 0;
 }
 
 form {
@@ -35,18 +36,6 @@ input, select, button {
     overflow: hidden;
 }
 
-
-/* .dsBlock {
-    display: block;
-    width: 25vw;
-    height: 40px;
-} */
-
-/* .dsBlock > input, .dsBlock > select {
-    height: 100%;
-    width: 100%;
-} */
-
 .dsInlineBlock {
     display: inline-block;
     width: 40%;
@@ -67,6 +56,7 @@ input, select, button {
 mat-datepicker-toggle{
     position: absolute;
     left: 0;
+    z-index: 9;
 }
 input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-calendar-picker-indicator {
@@ -88,9 +78,10 @@ button:disabled{
 }
 
 form >img {
-    height: 50vh;
+    /* height: 50vh; */
+    width: 25vw;
     position: absolute;
-    left: -16vw;
+    left: -20vw;
     bottom: 0;
     pointer-events: none;
 }

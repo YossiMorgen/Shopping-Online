@@ -65,4 +65,15 @@ button {
 
 .ng-invalid.ng-touched:not(form){
     box-shadow: 0 0 10px red;
+    animation-name: shaking;
+    animation-duration: 1s;
+}
+
+@keyframes shaking {
+    0% { transform: rotate(0turn); }
+    20% { transform: rotate(0.02turn); }
+    40% { transform: rotate(-0.02turn); }    
+    60% { transform: rotate(0.02turn); }
+    80% { transform: rotate(-0.02turn); }
+    100% { transform: rotate(0turn); }
 }

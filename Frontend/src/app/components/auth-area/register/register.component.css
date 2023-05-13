@@ -46,13 +46,16 @@ label {
 
 input, select {
     font-weight: bold;
-    font-size: large;
     padding: 10px;
     height: 100%;
     width: 100%;
     border: none;
     outline: none;
     border-radius: 40px;
+}
+
+input {
+    font-size: large;
 }
 
 .footer{
@@ -79,10 +82,15 @@ button:disabled {
 
 .error{
     word-wrap: initial;
-    color: red;
+    color: rgb(170, 37, 37);
     font-weight: bold;
     max-width: 14vw;
     text-align: center;
+}
+
+.step2{
+    width: 22vw;
+    height: 35vh;
 }
 
 .finish {

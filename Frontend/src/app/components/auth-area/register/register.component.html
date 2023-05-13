@@ -44,7 +44,13 @@
             </div>
         </form>
 
-        <form  [class]="stepState === 2 ? 'visible' : 'invisible'" [formGroup]="nameAndAddressForm" (submit)="register()">
+        <form 
+            class="step2" 
+            [class]="stepState === 2 ? 'visible' : 'invisible'" 
+            [formGroup]="nameAndAddressForm" 
+            (submit)="register()"
+        >
+        
             <label appearance="fill">
                 <input placeholder="First Name" formControlName="firstName">
             </label>
@@ -66,11 +72,11 @@
             </label>
 
             <div class="footer">
-                <button (click)="changeStepsState(1)"><img src="../../../../assets/Left.png" alt="⬅️" ></button>
+                <button type="button" (click)="changeStepsState(1)"><img src="../../../../assets/Left.png" alt="⬅️" ></button>
                 
                 <span class="error"> {{nameAndAddressError}} </span>
 
-                <button (click)="changeStepsState(3)" [disabled]="nameAndAddressForm.invalid" ><img src="../../../../assets/Right.png" alt="➡️"></button>
+                <button type="submit" (click)="register()" [disabled]="nameAndAddressForm.invalid" ><img src="../../../../assets/Right.png" alt="➡️"></button>
             </div>
         </form>
         

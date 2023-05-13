@@ -7,7 +7,7 @@ class User{
     public password: string;
     public confirmPassword: string;
     public city : string;
-    public street : string;
+    public address : string;
     public role: string;
 
     public constructor (user : User | any){
@@ -18,7 +18,7 @@ class User{
         this.password = user.password;
         this.confirmPassword = user.confirmPassword;
         this.city = user.city;
-        this.street = user.street;
+        this.address = user.address;
         this.role = user.role;
     }
 }

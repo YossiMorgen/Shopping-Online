@@ -10,7 +10,7 @@ class User{
     public email: string;
     public password: string;
     public city : string;
-    public street : string;
+    public address : string;
     public role: RoleModel;
 
     constructor(user: User) {
@@ -20,7 +20,7 @@ class User{
         this.email = user.email;
         this.password = user.password;
         this.city = user.city;
-        this.street = user.street;
+        this.address = user.address;
         this.role = RoleModel.user;
     }
 
@@ -31,7 +31,7 @@ class User{
         email: Joi.string().required().min(2).max(30),
         password: Joi.string().required().min(2).max(30),
         city: Joi.string().required().min(2).max(30),
-        street: Joi.string().required().min(2).max(30),
+        address: Joi.string().required().min(2).max(30),
         role: Joi.string().valid(...Object.values(RoleModel)),
     })
 

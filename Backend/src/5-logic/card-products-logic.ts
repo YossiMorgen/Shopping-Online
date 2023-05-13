@@ -27,16 +27,16 @@ function getCartProducts(cartID: number): Promise<ProductCartModel[]> {
     return dal.execute(`
         SELECT 
             cartProductID, 
-            cart_product.productID, 
+            cart_products.productID, 
             amount, 
             price, 
             cartID, 
             products.productName, 
             CONCAT(?, products.imageName) as imageName, 
             products.weight
-        FROM cart_product
+        FROM cart_products
         LEFT JOIN products
-        ON cart_product.productID = products.productID
+        ON cart_products.productID = products.productID
         WHERE cartID = ?
         ORDER BY products.productName
     `, [appConfig.nodeUrl, cartID]);
@@ -47,7 +47,7 @@ async function addCartProduct( product : ProductCartModel): Promise<ProductCartM
     const err = product.validation();
     if(err) throw new ValidationErrorModel(err);
     
-    const sql = 'INSERT INTO cart_product VALUES (DEFAULT, ?, ?, ?)'
+    const sql = 'INSERT INTO cart_products VALUES (DEFAULT, ?, ?, ?)'
     const values = [product.productID, product.amount, product.cartID]
     
     const info: OkPacket = await dal.execute(sql, values);
@@ -62,7 +62,7 @@ async function updateCartProduct( product : ProductCartModel): Promise<ProductCa
     const err = product.validation();
     if(err) throw new ValidationErrorModel(err);
     
-    const sql = 'UPDATE cart_product SET amount =? WHERE cartProductID = ?'
+    const sql = 'UPDATE cart_products SET amount =? WHERE cartProductID = ?'
     const values = [product.amount, product.cartProductID]
 
     const info: OkPacket = await dal.execute(sql, values);
@@ -74,13 +74,13 @@ async function updateCartProduct( product : ProductCartModel): Promise<ProductCa
 }
 
 function deleteCartProduct(cartProductID: number) {
-    const sql = "DELETE FROM cart_product WHERE cartProductID =?";
+    const sql = "DELETE FROM cart_products WHERE cartProductID =?";
     return dal.execute(sql, [cartProductID]); 
 }
 
 function deleteCartProducts(userID: number) {
     const sql = `
-        DELETE FROM cart_product 
+        DELETE FROM cart_products 
         WHERE cartID = (SELECT cartID FROM shopping_cart WHERE shopping_cart.userID = ? AND shopping_cart.ordered = 0)
     `;
     return dal.execute(sql, [userID]); 
@@ -88,11 +88,11 @@ function deleteCartProducts(userID: number) {
 
 async function getOneProductDetails(cartProductID: number): Promise<ProductCartModel>  {
     const [productDetails] = await dal.execute(`
-    SELECT cartProductID, cart_product.productID, amount, price, cartID, products.productName, CONCAT(?, products.imageName) as imageName
-    FROM cart_product
+    SELECT cartProductID, cart_products.productID, amount, price, cartID, products.productName, CONCAT(?, products.imageName) as imageName
+    FROM cart_products
     LEFT JOIN products
-    ON cart_product.productID = products.productID
-    WHERE cart_product.cartProductID = ? 
+    ON cart_products.productID = products.productID
+    WHERE cart_products.cartProductID = ? 
     `, [ appConfig.nodeUrl, cartProductID ])
 
     return productDetails;

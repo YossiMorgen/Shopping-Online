@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import ProductModel from 'src/app/models/product-models/product.model';
 import WeightModel from 'src/app/models/product-models/weight.model';
@@ -13,7 +13,8 @@ import { ToastifyNotificationsService } from 'src/app/services/toastify-notifica
   styleUrls: ['./products-form.component.css']
 })
 export class ProductsFormComponent implements OnInit {
-
+  public productID: number;
+  public imageName: string;
   public editMode = false;
   public editedItemIndex: number;
 
@@ -34,31 +35,43 @@ export class ProductsFormComponent implements OnInit {
   constructor ( 
     public productsService: ProductsService, 
     private router: Router ,
+    private route: ActivatedRoute,
     private formBuilder : FormBuilder,
     private toast: ToastifyNotificationsService
   ) {}
 
   async ngOnInit(): Promise<void> {
-    this.subscription = this.productsService.startedEditing
-      .subscribe((index : number) => {
-        this.editedItemIndex = index;
-        this.editMode = true;
-        delete this.file;
-        this.productsForm.setValue({
-          productName: this.productsService.products[this.editedItemIndex].productName,
-          categoryID: this.productsService.products[this.editedItemIndex].categoryID,
-          price: this.productsService.products[this.editedItemIndex].price,
-          description: this.productsService.products[this.editedItemIndex].description,
-          weight: this.productsService.products[this.editedItemIndex].weight,
-          weightType: this.productsService.products[this.editedItemIndex].weightType,
-          unitsInStock: this.productsService.products[this.editedItemIndex].unitsInStock,
-        })
+    this.subscription = this.productsService.startedEditing.subscribe((index : number) => {
+      this.editedItemIndex = index;
+      this.editMode = true;
+      delete this.file;
+
+      this.productID = this.productsService.products[this.editedItemIndex].productID;
+      this.imageName = this.productsService.products[this.editedItemIndex].imageName;
+      
+
+      this.productsForm.setValue({
+        productName: this.productsService.products[this.editedItemIndex].productName,
+        categoryID: this.productsService.products[this.editedItemIndex].categoryID,
+        price: this.productsService.products[this.editedItemIndex].price,
+        description: this.productsService.products[this.editedItemIndex].description,
+        weight: this.productsService.products[this.editedItemIndex].weight,
+        weightType: this.productsService.products[this.editedItemIndex].weightType,
+        unitsInStock: this.productsService.products[this.editedItemIndex].unitsInStock,
       })
-    try {
-      await this.productsService.getCategories();      
-    } catch (error : any) {
-      this.toast.error(error);
-    }
+
+    })
+    // option to switch to add mode if product no longer exists on the list
+    // this.route.queryParams.subscribe(async () => {
+    //   setTimeout(() => {
+    //     const i = this.productsService.products.findIndex(i => i.productID === this.productID)
+    //     if(i === -1){
+    //       this.addMode();
+    //       return;
+    //     }
+    //     this.editedItemIndex = i;
+    //   },100)
+    // })
   }
 
   addMode() {
@@ -91,8 +104,8 @@ export class ProductsFormComponent implements OnInit {
       }
 
       if(this.editMode){        
-        formData.append('imageName', this.productsService.products[this.editedItemIndex].imageName)
-        formData.append('productID', this.productsService.products[this.editedItemIndex].productID.toString() );
+        formData.append('imageName', this.imageName)
+        formData.append('productID', this.productID.toString());
         await this.productsService.updateProduct(formData, this.editedItemIndex);
         this.toast.success('Product Edited Successfully')
         this.editMode = false;

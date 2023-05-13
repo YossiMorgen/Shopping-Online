@@ -1,23 +1,26 @@
 
 .containForm{
-    /* background-color: #FDEAD2; */
+    background-color: #FDEAD2;
     border-radius: 20px;
     padding: 20px;
     height: fit-content;
     position: relative;
 }
 
-.header{
+/* .header{
     background-color: #FDEAD2;
-}
+} */
 
 .invisible{
     display: none;
 }
-
+/* .formContainer{
+    background-color: #FDEAD2;
+    padding: 15px;
+}
 form{
     background-color: #FDEAD2;
-}
+} */
 
 h1{
     font-weight: bold;
@@ -73,31 +76,40 @@ button:disabled {
     opacity: 60%;
 }
 
+
+.error{
+    word-wrap: initial;
+    color: red;
+    font-weight: bold;
+    max-width: 14vw;
+    text-align: center;
+}
+
 .finish {
-    width: 30vw;
-    height: 40vh;
-    aspect-ratio: 3 / 4;
-    
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+
 }
 
 .finish > img{
-    width: 35vw;
+    width: 30vw;
+    aspect-ratio: 7/6;
 }
 
 .finish a {
-    /* height: 40px; */
     background-color: red;
     color: white;
     font-weight: bold;
-    font-size: small;
+    font-size: smaller;
     letter-spacing: 0;
     border: none;
     border-radius: 15px;
-    padding: 3px 5px;
+    padding: 2px 7px;
 
     position: absolute;
-    bottom: 15%;
-    left: 20%;
+    bottom: 45%;
+    left: 10%;
 
     display: grid;
     place-items: center;

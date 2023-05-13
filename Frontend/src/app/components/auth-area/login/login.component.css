@@ -6,6 +6,8 @@ form {
     height: 45vh;
     aspect-ratio: 1;
     position: relative;
+    margin-top: 0;
+    padding: 15px;
 }
 
 h1{

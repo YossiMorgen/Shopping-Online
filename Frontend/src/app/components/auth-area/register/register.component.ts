@@ -14,18 +14,20 @@ import { ToastifyNotificationsService } from 'src/app/services/toastify-notifica
   
 })
 export class RegisterComponent implements OnInit { 
-    public stepState = 1;
+    public stepState = 2;
+    public emailAndPasswordsError = ''
+    public nameAndAddressError = '';
 
     public emailAndPasswordForm = this.formBuilder.group({
         email : ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')], this.frobiddenEmail.bind(this)],
-        password : ['', [Validators.required, Validators.minLength(5)]],
-        confirmPassword : ['', [Validators.required, Validators.minLength(5)]]
+        password : ['', [Validators.required, Validators.minLength(8)]],
+        confirmPassword : ['', [Validators.required]]
     })
     public nameAndAddressForm = this.formBuilder.group({
         firstName : ['', [Validators.required, Validators.minLength(2)]],
         lastName : ['', [Validators.required, Validators.minLength(2)]],
         city : ['', [Validators.required, Validators.minLength(2)]],
-        street : ['', [Validators.required, Validators.minLength(2)]],
+        address : ['', [Validators.required, Validators.minLength(2)]],
     })
 
     public productsAmount: number;
@@ -45,12 +47,14 @@ export class RegisterComponent implements OnInit {
         } catch (error : any) {
             this.toast.error(error);
         }
+        this.emailAndPasswordForm.valueChanges.subscribe(() => this.setEmailAndPasswordsError())
+        this.nameAndAddressForm.valueChanges.subscribe(() => this.setNameAndAddressError())
     }
 
     public async frobiddenEmail(controll: FormControl): Promise<any> {            
         try {
             if(await this.auth.isEmailExist(controll.value)){
-                this.toast.error("Email already exists")
+                this.emailAndPasswordsError = "Email already exists";
                 return({EmailAlreadyExists: true})
             }else {
                 return(null);
@@ -81,4 +85,45 @@ export class RegisterComponent implements OnInit {
         this.stepState = step;
     }
 
+    public setEmailAndPasswordsError(){
+        this.emailAndPasswordsError = '';
+        if(this.emailAndPasswordForm.get('email').errors?.['required'] || this.emailAndPasswordForm.get('email').errors?.['pattern']){
+            this.emailAndPasswordsError = 'Please enter a valid email';
+            return;
+        }
+
+        if(this.emailAndPasswordForm.get('password').errors?.['required'] || this.emailAndPasswordForm.get('password').errors?.['minlength']){
+            this.emailAndPasswordsError = 'password must be 8 or more characters long';
+            return;
+        }
+        
+        if(this.emailAndPasswordForm.errors?.['noMatch']){
+            this.emailAndPasswordsError = 'Passwords do not match';
+            return;
+        }
+    }
+
+    public setNameAndAddressError(){
+        this.nameAndAddressError = '';
+
+        if(this.nameAndAddressForm.get('firstName').errors?.['required'] || this.nameAndAddressForm.get('firstName').errors?.['minlength']){
+            this.nameAndAddressError = 'Please enter a valid first name';
+            return;
+        }
+
+        if(this.nameAndAddressForm.get('lastName').errors?.['required'] || this.nameAndAddressForm.get('lastName').errors?.['minlength']){
+            this.nameAndAddressError = 'Please enter a valid last name';
+            return;
+        }
+
+        if(this.nameAndAddressForm.get('city').errors?.['required'] ){
+            this.nameAndAddressError = 'Please enter a valid city';
+            return;
+        }
+
+        if(this.nameAndAddressForm.get('address').errors?.['required'] || this.nameAndAddressForm.get('address').errors?.['minlength']){
+            this.nameAndAddressError = 'Please enter a valid address';
+            return;
+        }
+    }
 }

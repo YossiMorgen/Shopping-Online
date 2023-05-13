@@ -39,7 +39,7 @@ p a {
 
 label {
     display: block;
-    /* height: ; */
+    height: 15%;
     width: 100%;
     margin: 5% 0;
 }
@@ -47,8 +47,8 @@ label {
 input, select {
     font-weight: bold;
     font-size: large;
-    padding: 20px;
-    height: 50px;
+    padding: 10px;
+    height: 100%;
     width: 100%;
     border: none;
     outline: none;

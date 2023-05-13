@@ -41,6 +41,7 @@ button[type = submit]{
 display: block;
 margin: 10px;
 }
+
 .dsnone{
     display: none;
 }
@@ -60,4 +61,8 @@ margin: 10px;
 
 button {
     cursor: pointer;
+}
+
+.ng-invalid.ng-touched:not(form){
+    box-shadow: 0 0 10px red;
 }

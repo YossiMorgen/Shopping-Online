@@ -14,7 +14,7 @@ import { ToastifyNotificationsService } from 'src/app/services/toastify-notifica
   
 })
 export class RegisterComponent implements OnInit { 
-    public stepState = 2;
+    public stepState = 1;
     public emailAndPasswordsError = ''
     public nameAndAddressError = '';
 

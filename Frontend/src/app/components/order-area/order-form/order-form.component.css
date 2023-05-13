@@ -36,6 +36,11 @@ input, select, button {
     overflow: hidden;
 }
 
+.opt:hover {
+    background-color: gray;
+    font-weight: bolder;
+}
+
 .dsInlineBlock {
     display: inline-block;
     width: 40%;

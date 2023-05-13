@@ -59,6 +59,8 @@ button {
     color: white;
     border: none;
     border-radius: 30px;
+    font-size: large;
+    font-weight: bold;
 }
 
 button:disabled {

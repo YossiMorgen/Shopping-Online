@@ -108,7 +108,7 @@ button:disabled {
 .finish a {
     background-color: red;
     color: white;
-    font-weight: bold;
+    font-weight: lighter;
     font-size: smaller;
     letter-spacing: 0;
     border: none;
@@ -117,7 +117,7 @@ button:disabled {
 
     position: absolute;
     bottom: 45%;
-    left: 10%;
+    left: 14%;
 
     display: grid;
     place-items: center;

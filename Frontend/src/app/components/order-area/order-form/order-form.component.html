@@ -6,7 +6,7 @@
 
     <label class="dsBlock" (dblclick)="copyDefaultUserDetails('city')" appearance="fill">
         <select placeholder="City" formControlName="city" >
-            <option *ngFor="let city of auth.cities"  [value]="city">
+            <option class="opt" *ngFor="let city of auth.cities"  [value]="city">
                 {{city}}
             </option>
         </select>

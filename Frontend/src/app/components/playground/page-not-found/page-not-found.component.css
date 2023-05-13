@@ -1,0 +1,11 @@
+div{
+    width: 95vw;
+    height: 70vh;
+    display: grid;
+    place-items: center;
+}
+
+img{
+    max-height: 70vh;
+    max-width: 100%;
+}

@@ -19,7 +19,6 @@ export class CartComponent {
   async ngOnInit(): Promise<void> {
     if(this.auth.user){
       this.getCart();
-      return;
     }
     this.auth.userChanges.subscribe(async () => {      
       this.getCart();

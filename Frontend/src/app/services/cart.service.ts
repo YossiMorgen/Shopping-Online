@@ -93,12 +93,12 @@ export class CartService {
         let count = 0;
 
         for(const product of this.products){
-            sum += product.price;
+            sum += product.price * product.amount;
             count += product.amount;
         }
 
         this.totalAmount = count;
-        this.totalPrice = sum;
+        this.totalPrice = Math.round(sum);
     }
 
     public logout():void {

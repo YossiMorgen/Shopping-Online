@@ -39,6 +39,10 @@
     overflow: hidden;
 }
 
+.bottom span {
+    font-size: smaller;
+}
+
 button.addProduct {
     background-color: transparent;
     border: none;

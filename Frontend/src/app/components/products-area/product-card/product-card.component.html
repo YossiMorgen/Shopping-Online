@@ -6,6 +6,7 @@
 
     <div class="bottom" [style.background]="product.imageName">
         <div>{{ product.productName }}</div>
+        <span>{{product.weight}}{{product.weightType}}</span>
     </div>
     
     <button *ngIf="this.auth.isAdmin()" (click)="productsService.startedEditing.next(this.i)" class="editProduct"><img src="../../../../assets/Edit.png" alt="✏️"></button>

@@ -75,8 +75,8 @@ export class RegisterComponent implements OnInit {
     public async register():Promise<void>{
 
         try {
-            this.stepState = 3
             await this.auth.register( new User({...this.emailAndPasswordForm.value, ...this.nameAndAddressForm.value}) );
+            this.stepState = 3;
             this.toast.success('Welcome ' + this.auth.user.firstName + " " + this.auth.user.lastName)
         } catch (error:any) {
             this.toast.error(error);

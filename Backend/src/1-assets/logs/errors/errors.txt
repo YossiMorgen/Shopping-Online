@@ -1656,3 +1656,10 @@ Sat, 13 May 2023 12:09:58 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'sh
     at fulfilled (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\orders-logic.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
 ----------------------------------------------------------------------------------------------------
+Sat, 13 May 2023 18:37:34 GMT 	 error!!Stack: TypeError: Cannot read properties of undefined (reading 'price')
+    at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\orders-logic.ts:31:64)
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\orders-logic.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\orders-logic.ts:14:53)
+    at fulfilled (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\orders-logic.ts:5:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+----------------------------------------------------------------------------------------------------

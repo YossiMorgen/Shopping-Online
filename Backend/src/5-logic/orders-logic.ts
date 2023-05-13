@@ -18,7 +18,7 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
 
     if(isBusy[0]['amount']) throw new ValidationErrorModel("We can't have any more orders this day we are too busy")
     
-    const price = await dal.execute(` 
+    const res = await dal.execute(` 
         SELECT SUM(products.price * cart_products.amount ) AS price
         FROM cart_products
         LEFT JOIN products
@@ -26,9 +26,9 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
         WHERE cartID = ?`, 
         [order.cartID]
     )
-    
-    if(price[0]['price'] !== order.price) {
-        throw new ValidationErrorModel(`The price is ${price[0]['price']} please refresh the page`)
+    const price = Math.round(res[0]['price'])
+    if(price !== order.price) {
+        throw new ValidationErrorModel(`The price is ${price} please refresh the page`)
     }
     
     let info: OkPacket = await dal.execute(`UPDATE shopping_cart SET ordered = 1 WHERE cartID = ? AND userID = ? AND ordered = 0`, [order.cartID, order.userID])

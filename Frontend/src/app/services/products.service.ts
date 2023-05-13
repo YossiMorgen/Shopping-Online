@@ -4,7 +4,6 @@ import { ConfigService } from '../utils/config.service';
 import { firstValueFrom, Observable, Subject } from 'rxjs';
 import ProductModel from '../models/product-models/product.model';
 import CategoryModel from '../models/product-models/category.model';
-import { ActivatedRoute } from '@angular/router';
 import { ToastifyNotificationsService } from './toastify-notifications.service';
 
 @Injectable({
@@ -21,7 +20,6 @@ export class ProductsService {
   public constructor( 
     private http:HttpClient, 
     private config: ConfigService,
-    private route: ActivatedRoute,
     private toast: ToastifyNotificationsService
   ) { }
 
@@ -52,7 +50,7 @@ export class ProductsService {
     }
     this.products = this.products.concat(products);
 
-    if(products.length < 12 && this.products.length){
+    if(products.length < 11 && this.products.length){
       this.toast.message("We don't have any more products that fit your search")
       this.isThereProducts = false ;
     }

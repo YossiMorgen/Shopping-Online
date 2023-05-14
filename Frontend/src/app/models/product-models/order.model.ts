@@ -5,7 +5,7 @@ export default class Order{
     public userID: number;
     public price: number;
     public city: string;
-    public street: string;
+    public address: string;
     public deliveryDate: Date;
     public orderDate: Date;
     public creditCard: string;
@@ -16,7 +16,7 @@ export default class Order{
             this.userID = order.userID;
             this.price = order.price;
             this.city = order.city;
-            this.street = order.street;
+            this.address = order.address;
             this.deliveryDate = order.deliveryDate;
             this.orderDate = order.orderDate;
             this.creditCard = order.creditCard;

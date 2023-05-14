@@ -35,7 +35,7 @@ async function addOrder( order : OrdersModel): Promise<OrdersModel> {
     if(info.affectedRows === 0) throw new ValidationErrorModel(`cart does'nt exist or it's not yours`);
 
     const sql = 'INSERT INTO orders VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?)'
-    const values = [ order.userID, order.cartID, order.price, order.city, order.street, order.deliveryDate, new Date(), order.creditCard]
+    const values = [ order.userID, order.cartID, order.price, order.city, order.address, order.deliveryDate, new Date(), order.creditCard]
 
     info = await dal.execute(sql, values);
     order.orderID = info.insertId;

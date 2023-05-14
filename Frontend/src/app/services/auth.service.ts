@@ -54,7 +54,7 @@ export class AuthService{
         this.token = '';
         window.localStorage.removeItem('token')
         this.cartService.logout();
-        this.router.navigate(['/products']);
+        // this.router.navigate(['/login']);
     }
 
     private setUser(token: string):void{

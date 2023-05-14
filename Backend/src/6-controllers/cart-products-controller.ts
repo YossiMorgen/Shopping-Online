@@ -33,9 +33,8 @@ router.get('/cart_products_by_cart_id/:cart_id([0-9]+)', verifyLoggedIn,  async 
 router.post('/add_cart_product', verifyLoggedIn,  async (req: Request, res: Response, next: NextFunction) => {
     try {  
         const product = new ProductCartModel(req.body);   
-        console.log("hi");
-        
         const newProduct = await cardProductLogic.addCartProduct(product); 
+
         res.json(newProduct);
     } catch (error) {
         next(error);
@@ -46,6 +45,7 @@ router.put('/update_one_cart_product', verifyLoggedIn, async (req: Request, res:
     try {
         const cartProduct = new ProductCartModel(req.body);
         const newProduct = await cardProductLogic.updateCartProduct(cartProduct);
+
         res.json(newProduct);
     } catch (error) {
         next(error);
@@ -66,7 +66,6 @@ router.delete('/remove_one_cart_product/:cart_product_id([0-9]+)', verifyLoggedI
 router.delete('/remove_cart_products', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const decodeUser: User = await cyber.getDecodeToken(req);
-
         await cardProductLogic.deleteCartProducts(decodeUser.userID);
       
         res.sendStatus(204)

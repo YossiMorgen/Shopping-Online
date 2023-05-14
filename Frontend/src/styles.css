@@ -63,7 +63,7 @@ button {
     cursor: pointer;
 }
 
-.ng-invalid.ng-touched:not(form){
+.ng-invalid.ng-touched:not(form), invalid{
     box-shadow: 0 0 10px red;
     animation-name: shaking;
     animation-duration: 1s;

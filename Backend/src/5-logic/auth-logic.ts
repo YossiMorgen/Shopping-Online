@@ -28,7 +28,6 @@ async function register(user : User) {
 async function isEmailExist(email: string): Promise<boolean> {
     const sql = `SELECT COUNT(*) as email FROM users WHERE email = ?`;
     const count = await dal.execute(sql,[email]);
-    console.log(count[0].email);
     
     return count[0].email > 0;
 }

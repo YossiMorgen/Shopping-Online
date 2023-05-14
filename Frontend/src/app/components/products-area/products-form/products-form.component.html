@@ -55,7 +55,7 @@
             </div>
 
             <input type="file" (change)="onFileSelected($event)" accept="image/*" class="file-input" #productImage>   
-            <label class="file_button" [class]="">
+            <label class="file_button" [class]="file ? ' valid ' : 'invalid '" #fileButton>
                 {{file?.name || "No file uploaded yet."}}
                 <button (click)="productImage.click()" type="button" class="upload-btn">
                     +
@@ -64,7 +64,7 @@
             
             <div class="footer">
                 <button type="button" [class]="editMode? 'visible' : 'invisible'" (click)="addMode()">Cancel</button>
-                <button 
+                <button
                     type="submit" 
                     [disabled]="productsForm.invalid || (!file?.name && !editMode)" 
                 >

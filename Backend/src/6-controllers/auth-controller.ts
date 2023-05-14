@@ -14,7 +14,6 @@ router.post("/auth/register", async (req: Request, res: Response, next: NextFunc
         const user = new User(req.body);
         
         user.role = RoleModel.user;
-        console.log(user);
         
         const token = await authLogic.register(user);
         res.status(201).json(token);
@@ -27,8 +26,8 @@ router.post("/auth/register", async (req: Request, res: Response, next: NextFunc
 router.post("/auth/login", async (req: Request, res: Response, next: NextFunction) =>{
     try {
         const credentials = new CredentialsModel(req.body);
-        console.log(credentials)
         const token = await authLogic.login(credentials);
+        
         res.json(token);
     } catch (error) {
         next(error);

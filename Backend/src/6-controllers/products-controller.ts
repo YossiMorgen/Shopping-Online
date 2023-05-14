@@ -58,12 +58,11 @@ router.get('/orders_and_products_amount', async (req: Request, res: Response, ne
 router.post('/add_product', verifyAdmin, async (req: Request, res: Response, next: NextFunction)=>{
     try {
         req.body.image = req.files?.image;
-        
         const product = new ProductModel(req.body);
-        
-        const newProduct = await productsLogic.addProduct(product);
-        res.status(201).json(newProduct);
 
+        const newProduct = await productsLogic.addProduct(product);
+
+        res.status(201).json(newProduct);
     } catch (error) {
         next(error);
     }
@@ -72,6 +71,7 @@ router.post('/add_product', verifyAdmin, async (req: Request, res: Response, nex
 router.delete('/delete_product/:productID([0-9]+)', verifyAdmin, async (req: Request, res: Response, next: NextFunction) => {
     try {
         await productsLogic.deleteProduct(+req.params.productID);
+
         res.status(204).end();
     } catch (error) {
         next(error);
@@ -80,15 +80,12 @@ router.delete('/delete_product/:productID([0-9]+)', verifyAdmin, async (req: Req
 
 router.put('/update_product', verifyAdmin, async (req: Request, res: Response, next: NextFunction) => {
     try {
-
         req.body.image = req.files?.image;
         const product = new ProductModel(req.body);
-        console.log(product);
         
         const newProduct = await productsLogic.updateProduct(product);
         
         res.status(201).json(newProduct);
-
     } catch (error) {
         next(error);
     }

@@ -37,26 +37,39 @@ mat-card-subtitle{
     display: block;
 }
 
-.tableContainer {
+.cartProductsContainer {
     margin-top: 20px;
     height: 100%;
     margin-bottom: 20px;
     width: 100%;
-    table-layout: fixed;
-    border-spacing: 0 10px ;
     overflow-y: scroll;
+
 }
-td{
+
+.cartProducts{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* .cartProducts:first-child{
+    min-width: 40%;
+    max-width: 40%;
+} */
+span:first-child{
+    min-width: 40%;
+    max-width: 40%;
+}
+span{
     text-align: center;
     white-space:pre-wrap; 
     word-wrap:break-word
 }
 
-.delete {
+.changeAmount {
     margin: 0;
     padding: 0;
 }
-.delete > img {
+.changeAmount > img {
     width: 30px;
     margin: 0;
 }

@@ -5,18 +5,16 @@
             <mat-card-title > {{cartService.totalPrice | currency:"ILS"}} </mat-card-title >
         
         </mat-card-header >
-        <div class="tableContainer">
-            <table >
-                <tr *ngFor="let product of cartService.products">
-                    <td>{{product.productName}}</td>
-                    <td> {{product.amount}}</td>
-                    <td> {{product.price * product.amount | currency:"ILS"}} </td>
-                    <td class="delete">
+        <div class="cartProductsContainer">
+                <div class="cartProducts" *ngFor="let product of cartService.products">
+                    <span>{{product.productName}}</span>
+                    <span> {{product.amount}}</span>
+                    <span> {{product.price * product.amount | currency:"ILS"}} </span>
+                    <span class="changeAmount">
                         <img (click)="changeProductAmount(product, product.amount +1)" src="../../../../assets/Plus_V2.png" alt="">
                         <img (click)="changeProductAmount(product, product.amount -1)" src="../../../../assets/Min_V2.png" alt="">
-                    </td> 
-                </tr>
-            </table >
+                    </span> 
+                </div>
         </div>
         <div class="cartFooter">
             <button

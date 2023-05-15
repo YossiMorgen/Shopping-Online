@@ -70,6 +70,7 @@ td{
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: 0;
+    font-size: large;
 }
 
 .opacity0{
@@ -81,9 +82,10 @@ a.checkout{
     color: white;
     height: 40px;
     background-color: #F26522;
+    font-weight: bold;
     cursor: pointer;
     text-align: center;
-    padding: 10px;
+    padding: 10px 15px;
 
     border-radius: 50px;
 }

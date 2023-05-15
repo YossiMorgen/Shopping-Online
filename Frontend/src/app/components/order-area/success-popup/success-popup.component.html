@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="header">
+        <h1>Hooray!</h1>
+        <p>Your purchase was </p>
+        <p>successful </p>
+    </div>
+    <div class="footer">
+        <button [mat-dialog-close]="true">View Receipt</button>
+        <img src="../../../../assets/Successful.png" alt="">
+    </div>
+</div>
+
+<img (click)="onNoClick()" class="close" src="../../../../assets/Exit.png" alt="">

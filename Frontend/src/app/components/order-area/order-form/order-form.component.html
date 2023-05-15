@@ -1,61 +1,60 @@
 <div class="sticky">
-<form (ngSubmit)="makeAnOrder()" [formGroup]="orderForm">
+    <form (ngSubmit)="makeAnOrder()" [formGroup]="orderForm">
 
-    <h2>Shipping Details:</h2>
-
-
-    <label class="dsBlock" (dblclick)="copyDefaultUserDetails('city')" appearance="fill">
-        <select placeholder="City" formControlName="city" >
-            <option class="opt" *ngFor="let city of auth.cities"  [value]="city">
-                {{city}}
-            </option>
-        </select>
-    </label>
-
-    <label class="dsInlineBlock date" (dblclick)="copyDefaultUserDetails('address')" appearance="fill">
-        <input placeholder="Address" matInput type="text" formControlName="address">
-    </label>
-
-    <label class="dsInlineBlock date">
-        <input 
-            type="date"
-            [matDatepickerFilter]="myFilter" 
-            [matDatepicker]="picker" 
-            formControlName="deliveryDate"
-        >
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #picker></mat-datepicker>
-    
-    </label>
+        <h2>Shipping Details:</h2>
 
 
-    <h2>Payments:</h2>
+        <label class="dsBlock" (dblclick)="copyDefaultUserDetails('city')" appearance="fill">
+            <select placeholder="City" formControlName="city" >
+                <option class="opt" *ngFor="let city of auth.cities"  [value]="city">
+                    {{city}}
+                </option>
+            </select>
+        </label>
 
-    <label appearance="fill">
-        <mat-label>Credit Card</mat-label>
-        <input type="text" formControlName="creditCard">
-    </label>
+        <label class="dsInlineBlock date" (dblclick)="copyDefaultUserDetails('address')" appearance="fill">
+            <input placeholder="Address" matInput type="text" formControlName="address">
+        </label>
 
-    <label class="dsInlineBlock" appearance="fill">
-        <mat-label>Expiration Date</mat-label>
-        <input 
-            type="date" 
-            formControlName="expirationDate"
-            [matDatepicker]="expirationDate" 
-        >
-        <mat-datepicker-toggle matIconSuffix [for]="expirationDate"></mat-datepicker-toggle>
-        <mat-datepicker touchUi #expirationDate></mat-datepicker>
-    </label>
+        <label class="dsInlineBlock date">
+            <input 
+                type="date"
+                [matDatepickerFilter]="myFilter" 
+                [matDatepicker]="picker" 
+                formControlName="deliveryDate"
+            >
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+        
+        </label>
 
-    <label class="dsInlineBlock date" appearance="fill">
-        <mat-label>CVV</mat-label>
-        <input type="text" formControlName="cvv">
 
-    </label>
+        <h2>Payments:</h2>
 
-    <button type="submit" [disabled]="orderForm.invalid" >Purchase</button>
-    
-    <img src="../../../../assets/Purchase.png" alt="">
+        <label appearance="fill">
+            <mat-label>Credit Card</mat-label>
+            <input type="text" formControlName="creditCard">
+        </label>
 
-</form>
+        <label class="dsInlineBlock" appearance="fill">
+            <mat-label>Expiration Date</mat-label>
+            <input 
+                type="date" 
+                formControlName="expirationDate"
+                [matDatepicker]="expirationDate" 
+            >
+            <mat-datepicker-toggle matIconSuffix [for]="expirationDate"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #expirationDate></mat-datepicker>
+        </label>
+
+        <label class="dsInlineBlock date" appearance="fill">
+            <mat-label>CVV</mat-label>
+            <input type="text" formControlName="cvv">
+        </label>
+
+        <button type="submit" [disabled]="orderForm.invalid" >Purchase</button>
+        
+        <img src="../../../../assets/Purchase.png" alt="">
+
+    </form>
 </div>

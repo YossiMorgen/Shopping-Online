@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import ProductModel from 'src/app/models/product-models/product.model';
 import WeightModel from 'src/app/models/product-models/weight.model';
 import { ProductsService } from 'src/app/services/products.service';
 import { ToastifyNotificationsService } from 'src/app/services/toastify-notifications.service';
@@ -34,8 +32,6 @@ export class ProductsFormComponent implements OnInit {
 
   constructor ( 
     public productsService: ProductsService, 
-    private router: Router ,
-    private route: ActivatedRoute,
     private formBuilder : FormBuilder,
     private toast: ToastifyNotificationsService
   ) {}

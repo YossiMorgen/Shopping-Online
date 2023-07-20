@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
 import { Component, OnInit } from '@angular/core';
-import User from 'src/app/models/auth-models/user.model';
 import Order from 'src/app/models/product-models/order.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { OrderService } from 'src/app/services/oreder.service';
@@ -25,9 +24,9 @@ export class OrderFormComponent implements OnInit {
     city: ['', [Validators.required, Validators.minLength(2)]],
     address: ['', [Validators.required, Validators.minLength(2)]],
     deliveryDate: ['', [Validators.required]],
-    creditCard: ['', [Validators.required, Validators.pattern('([1-9]{16})')]],
+    creditCard: ['', [Validators.required, Validators.pattern('([0-9]{16})')]],
     expirationDate: ['', [Validators.required]],
-    cvv: ['', [ Validators.required ,Validators.pattern('([1-9]{3})')]]
+    cvv: ['', [ Validators.required ,Validators.pattern('([0-9]{3})')]]
   })
 
   constructor ( 

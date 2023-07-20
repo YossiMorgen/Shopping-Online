@@ -58,9 +58,12 @@ input, select, button {
 .date{
     position: relative;
 }
+label:has(mat-datepicker-toggle){
+    position: relative;
+}
 mat-datepicker-toggle{
     position: absolute;
-    left: 0;
+    right: 10%;
     z-index: 9;
 }
 input[type="date"]::-webkit-inner-spin-button,

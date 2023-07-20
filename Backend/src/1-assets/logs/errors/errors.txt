@@ -1663,3 +1663,302 @@ Sat, 13 May 2023 18:37:34 GMT 	 error!!Stack: TypeError: Cannot read properties 
     at fulfilled (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\orders-logic.ts:5:58)
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
 ----------------------------------------------------------------------------------------------------
+Sun, 02 Jul 2023 18:16:26 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'shopping_online.products' doesn't exist
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getRandomProducts (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic.ts:21:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:23:46
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:8:71
+    at new Promise (<anonymous>)
+----------------------------------------------------------------------------------------------------
+Sun, 02 Jul 2023 18:16:26 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'shopping_online.categories' doesn't exist
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getCategories (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic.ts:10:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:14:48
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:8:71
+    at new Promise (<anonymous>)
+----------------------------------------------------------------------------------------------------
+Mon, 03 Jul 2023 10:34:13 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'shopping_online.products' doesn't exist
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getRandomProducts (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic.ts:21:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:23:46
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:8:71
+    at new Promise (<anonymous>)
+----------------------------------------------------------------------------------------------------
+Mon, 03 Jul 2023 10:34:13 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'shopping_online.categories' doesn't exist
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getCategories (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic.ts:10:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:14:48
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:8:71
+    at new Promise (<anonymous>)
+----------------------------------------------------------------------------------------------------
+Mon, 03 Jul 2023 12:37:27 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'shopping_online.cart_products' doesn't exist
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getCartProducts (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\card-products-logic.ts:27:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:26:49
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:8:71
+    at new Promise (<anonymous>)
+----------------------------------------------------------------------------------------------------
+Mon, 03 Jul 2023 12:37:32 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'shopping_online.cart_products' doesn't exist
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getCartProducts (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\card-products-logic.ts:27:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:26:49
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:8:71
+    at new Promise (<anonymous>)
+----------------------------------------------------------------------------------------------------
+Mon, 17 Jul 2023 08:03:48 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'shopping_online.cart_products' doesn't exist
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getCartProducts (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\card-products-logic.ts:27:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:26:49
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:8:71
+    at new Promise (<anonymous>)
+----------------------------------------------------------------------------------------------------
+Mon, 17 Jul 2023 08:03:50 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'shopping_online.cart_products' doesn't exist
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getCartProducts (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\card-products-logic.ts:27:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:26:49
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:8:71
+    at new Promise (<anonymous>)
+----------------------------------------------------------------------------------------------------
+Mon, 17 Jul 2023 08:04:13 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'shopping_online.cart_products' doesn't exist
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\card-products-logic.ts:53:38)
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\card-products-logic.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\card-products-logic.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\card-products-logic.ts:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\card-products-logic.ts:4:12)
+----------------------------------------------------------------------------------------------------
+Mon, 17 Jul 2023 08:04:35 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'shopping_online.cart_products' doesn't exist
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getCartProducts (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\card-products-logic.ts:27:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:26:49
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:8:71
+    at new Promise (<anonymous>)
+----------------------------------------------------------------------------------------------------
+Mon, 17 Jul 2023 08:04:35 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'shopping_online.cart_products' doesn't exist
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getCartProducts (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\card-products-logic.ts:27:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:26:49
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\cart-products-controller.ts:8:71
+    at new Promise (<anonymous>)
+----------------------------------------------------------------------------------------------------
+Mon, 17 Jul 2023 08:05:35 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'shopping_online.categories' doesn't exist
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getCategories (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic.ts:10:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:14:48
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:8:71
+    at new Promise (<anonymous>)
+----------------------------------------------------------------------------------------------------
+Mon, 17 Jul 2023 08:05:48 GMT 	 error!!Stack: Error: ER_NO_SUCH_TABLE: Table 'shopping_online.categories' doesn't exist
+    at Query.Sequence._packetToError (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Sequence.js:47:14)
+    at Query.ErrorPacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\sequences\Query.js:79:18)
+    at Protocol._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:291:23)
+    at Parser._parsePacket (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:433:10)
+    at Parser.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Parser.js:43:10)
+    at Protocol.write (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\protocol\Protocol.js:38:16)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:88:28)
+    at Socket.<anonymous> (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Connection.js:526:10)
+    at Socket.emit (node:events:513:28)
+    at Socket.emit (node:domain:489:12)
+    --------------------
+    at Pool.query (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\node_modules\mysql\lib\Pool.js:199:23)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:13:20
+    at new Promise (<anonymous>)
+    at Object.execute (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\2-utils\dal.ts:12:12)
+    at Object.getCategories (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\5-logic\products-logic.ts:10:16)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:14:48
+    at step (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:33:23)
+    at Object.next (C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:14:53)
+    at C:\Users\ASUS\Desktop\fullStack\Shopping_Online\Backend\src\6-controllers\products-controller.ts:8:71
+    at new Promise (<anonymous>)
+----------------------------------------------------------------------------------------------------

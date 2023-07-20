@@ -49,9 +49,7 @@ export class ProductsLayoutComponent implements OnInit {
           this.toast.error(error)
         } 
       } 
-    });
-    console.log(window);
-    
+    });    
   }
 
   private async addProducts() {
